@@ -61,17 +61,11 @@
                     <nav id="navMobile" class="navbar">
                         <div class="container-fluid">
 
-
-                            <div class="nav-btn">
-                                <asp:Button ID="Button1" runat="server"
-                                    Text="<%# FontAwesome.Icons.Bars %>" style="font-size: 26.5px; margin-top: 10.5px;" class="fa fa-bars" OnClientClick="return false" CssClass="fa" data-bs-toggle="offcanvas" data-bs-target="#Category" aria-controls="Category" />
-                            </div>
-
-                            <%-- <button id="btnNavigationBar" runat="server" class="nav-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#Category"
+                            <button id="btnNavigationBar" runat="server" class="nav-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#Category"
                                 aria-controls="Category">
                                 <span><i style="font-size: 26.5px; margin-top: 10.5px;" class="fa fa-bars"
                                     aria-hidden="true"></i></span>
-                            </button>--%>
+                            </button>
 
 
                             <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="Category">

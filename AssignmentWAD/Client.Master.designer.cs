@@ -33,13 +33,13 @@ namespace AssignmentWAD
         protected global::System.Web.UI.HtmlControls.HtmlForm client;
 
         /// <summary>
-        /// Button1 control.
+        /// btnNavigationBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnNavigationBar;
 
         /// <summary>
         /// btnCloseNavi control.
