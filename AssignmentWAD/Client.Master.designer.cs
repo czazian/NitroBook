@@ -33,13 +33,13 @@ namespace AssignmentWAD
         protected global::System.Web.UI.HtmlControls.HtmlForm client;
 
         /// <summary>
-        /// btnNavigationBar control.
+        /// btnNaviBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnNavigationBar;
+        protected global::System.Web.UI.WebControls.LinkButton btnNaviBar;
 
         /// <summary>
         /// btnCloseNavi control.
@@ -240,31 +240,40 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.HyperLink hrefMangaNovel4Mob;
 
         /// <summary>
-        /// btnCategory6Mob control.
+        /// btnCategory6Mobile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnCategory6Mob;
+        protected global::System.Web.UI.WebControls.LinkButton btnCategory6Mobile;
 
         /// <summary>
-        /// hrefOtherMob control.
+        /// hrefOther control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hrefOtherMob;
+        protected global::System.Web.UI.WebControls.HyperLink hrefOther;
 
         /// <summary>
-        /// imgLogo control.
+        /// HyperLink2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgLogo;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
+
+        /// <summary>
+        /// Image1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
 
         /// <summary>
         /// txtSearch control.
@@ -276,31 +285,31 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
-        /// btnSearch control.
+        /// btnSch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnSearch;
+        protected global::System.Web.UI.WebControls.LinkButton btnSch;
 
         /// <summary>
-        /// btnLogin control.
+        /// btnLgn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnLogin;
+        protected global::System.Web.UI.WebControls.LinkButton btnLgn;
 
         /// <summary>
-        /// imgAdmin control.
+        /// Image2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgAdmin;
+        protected global::System.Web.UI.WebControls.Image Image2;
 
         /// <summary>
         /// hrefCustomer control.
@@ -319,6 +328,15 @@ namespace AssignmentWAD
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hrefStaff;
+
+        /// <summary>
+        /// btnCategory1PC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCategory1PC;
 
         /// <summary>
         /// hrefNew1PC control.
@@ -357,6 +375,15 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.HyperLink hrefNew4PC;
 
         /// <summary>
+        /// btnCategory2PC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCategory2PC;
+
+        /// <summary>
         /// hrefFiction1PC control.
         /// </summary>
         /// <remarks>
@@ -382,6 +409,15 @@ namespace AssignmentWAD
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hrefFiction3PC;
+
+        /// <summary>
+        /// btnCategory3PC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCategory3PC;
 
         /// <summary>
         /// hrefNonfiction1PC control.
@@ -411,6 +447,15 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.HyperLink hrefNonfiction3PC;
 
         /// <summary>
+        /// btnCategory4PC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCategory4PC;
+
+        /// <summary>
         /// hrefChildren1PC control.
         /// </summary>
         /// <remarks>
@@ -427,6 +472,15 @@ namespace AssignmentWAD
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hrefChildren2PC;
+
+        /// <summary>
+        /// btnCategory5PC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCategory5PC;
 
         /// <summary>
         /// hrefMangaNovel1PC control.
@@ -465,13 +519,22 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.HyperLink hrefMangaNovel4PC;
 
         /// <summary>
-        /// hrefOtherPC control.
+        /// btnCategoryPC6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hrefOtherPC;
+        protected global::System.Web.UI.WebControls.LinkButton btnCategoryPC6;
+
+        /// <summary>
+        /// btnOtherPC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink btnOtherPC;
 
         /// <summary>
         /// ContentPlaceHolder1 control.
