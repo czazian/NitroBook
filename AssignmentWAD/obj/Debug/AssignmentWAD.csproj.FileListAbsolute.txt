@@ -19,13 +19,9 @@ C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\Microsoft.Dia
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\Microsoft.Managed.Core.targets
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Security.Cryptography.Primitives.dll
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Text.Encoding.CodePages.dll
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.ValueTuple.dll
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\vbc.exe
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\vbc.exe.config
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\vbc.rsp
