@@ -40,3 +40,7 @@ C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Memory
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\koyas\source\repos\AssignmentWAD\AssignmentWAD\bin\FontAwesome.dll
+C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.AssemblyReference.cache
+C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.dll
+C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.pdb
