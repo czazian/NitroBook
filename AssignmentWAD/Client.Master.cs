@@ -16,7 +16,7 @@ namespace AssignmentWAD
 
         protected void btnSch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Search/search.aspx");
+            Response.Redirect("~/Product/search.aspx");
         }
     }
 }

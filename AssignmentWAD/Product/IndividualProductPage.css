@@ -1,25 +1,12 @@
-﻿#row2 {
-    border-style: double;
-    border-color: #a3a3c2;
-    /* justify-content: space-around; */
-    padding: 20px 20px;
+﻿
+.noSpinners::-webkit-inner-spin-button,
+.noSpinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
 }
 
-hr {
-    border: 1px solid #a3a3c2;
-}
-
-#more {
-    display: none;
-}
-
-.BookImage{
-    width : 100%;
-}
-
-.info{
-    font-weight: bold;
-}
 
 /*Mobile and Tablet*/
 @media (max-width: 869px) {

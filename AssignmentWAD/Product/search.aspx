@@ -20,7 +20,7 @@
                     <asp:Label ID="lblPrice1" runat="server" CssClass="s3" Text="RM 20.00"></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn1" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round">
+                        <asp:LinkButton PostBackUrl="~/Product/IndividualProduct.aspx" ID="linkBtn1" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round">
                       Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
