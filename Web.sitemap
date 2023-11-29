@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode>
+		<siteMapNode title="NEW ARRIVALS" description="New Arrivals">
+			<siteMapNode url="~/BookCategories/newarrivals.aspx#list-item-1" title="Fiction New Arrivals"  description="Fiction New Arrivals" />
+			<siteMapNode url="~/BookCategories/newarrivals.aspx#list-item-2" title="Non-fiction New Arrivals"  description="Non-fiction New Arrivals" />
+			<siteMapNode url="~/BookCategories/newarrivals.aspx#list-item-3" title="Manga &amp; Light Novel New Arrivals"  description="Manga and Light Novel New Arrivals" />
+			<siteMapNode url="~/BookCategories/newarrivals.aspx#list-item-4" title="Children's New Arrivals"  description="Children's New Arrivals" />
+		</siteMapNode>
+		<siteMapNode title="FICTION" description="Fiction">
+			<siteMapNode url="~/BookCategories/fiction.aspx#list-item-1" title="Fantasy"  description="Fantasy" />
+			<siteMapNode url="~/BookCategories/fiction.aspx#list-item-2" title="Horror"  description="Horror" />
+			<siteMapNode url="~/BookCategories/fiction.aspx#list-item-3" title="General Fiction"  description="General Fiction" />
+		</siteMapNode>
+		<siteMapNode title="NON-FICTION" description="Non-Fiction">
+			<siteMapNode url="~/BookCategories/nonfiction.aspx#list-item-1" title="Marketing &amp; Sales" description="Marketing and Sales" />
+			<siteMapNode url="~/BookCategories/nonfiction.aspx#list-item-2" title="Computing &amp; Information Technology"  description="Computing and Information Technology" />
+			<siteMapNode url="~/BookCategories/nonfiction.aspx#list-item-3" title="Foods &amp; Drinks"  description="Food and Drink" />
+		</siteMapNode>
+		<siteMapNode title="CHILDREN'S" description="Children's">
+			<siteMapNode url="~/BookCategories/children.aspx#list-item-1" title="Character Stories"  description="Character Stories" />
+			<siteMapNode url="~/BookCategories/children.aspx#list-item-2" title="Picture Books"  description="Picture Books" />
+		</siteMapNode>
+		<siteMapNode title="MANGA &amp; LIGHT NOVEL" description="Managa and Light Novel">
+			<siteMapNode url="~/BookCategories/mangalightnovel.aspx#list-item-1" title="Reincarnation"  description="Reincarnation" />
+			<siteMapNode url="~/BookCategories/mangalightnovel.aspx#list-item-2" title="Action"  description="Action" />
+			<siteMapNode url="~/BookCategories/mangalightnovel.aspx#list-item-3" title="Romance"  description="Romance" />
+			<siteMapNode url="~/BookCategories/mangalightnovel.aspx#list-item-4" title="Slice-of-Life"  description="Slice-of-Life" />
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>
