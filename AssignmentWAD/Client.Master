@@ -221,7 +221,7 @@
                             <asp:HyperLink runat="server" ID="hrefCustomer" NavigateUrl="~/Customer/customerLogin.aspx" Text="Customer" CssClass="dropdown-item"></asp:HyperLink>
                         </li>
                         <li>
-                            <asp:HyperLink runat="server" ID="hrefStaff" NavigateUrl="~/BookCategories/newarrivals.aspx" Text="Staff" CssClass="dropdown-item"></asp:HyperLink>
+                            <asp:HyperLink runat="server" ID="hrefStaff" NavigateUrl="~/Staff/staffLogin.aspx" Text="Staff" CssClass="dropdown-item"></asp:HyperLink>
                         </li>
                     </ul>
                 </div>
