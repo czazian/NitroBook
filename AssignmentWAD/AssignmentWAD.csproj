@@ -125,8 +125,13 @@
     <Content Include="Search\search.aspx" />
     <Content Include="Staff\adminPage.css" />
     <Content Include="Staff\Dashboard\dashboard.aspx" />
+    <Content Include="Staff\Member\member.aspx" />
+    <Content Include="Staff\Order\order.aspx" />
+    <Content Include="Staff\Order\order_edit.aspx" />
+    <Content Include="Staff\Order\order_view.aspx" />
     <Content Include="Staff\Product\product.aspx" />
     <Content Include="Staff\Product\product_create.aspx" />
+    <Content Include="Staff\Product\product_delete.aspx" />
     <Content Include="Staff\Product\product_edit.aspx" />
     <Content Include="Staff\Product\product_view.aspx" />
     <Content Include="Staff\Report\report.aspx" />
@@ -144,6 +149,7 @@
     <Content Include="Product\IndividualProductPage.css" />
     <Content Include="Product\IndividualProductPage.js" />
     <Content Include="Product\search.aspx" />
+    <Content Include="Staff\Staff\staff.aspx" />
     <Content Include="style\reset.css" />
     <Content Include="style\style.css" />
     <Content Include="Web.config" />
@@ -251,6 +257,34 @@
     <Compile Include="Staff\Dashboard\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Staff\Member\member.aspx.cs">
+      <DependentUpon>member.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Member\member.aspx.designer.cs">
+      <DependentUpon>member.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Order\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Order\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Order\order_edit.aspx.cs">
+      <DependentUpon>order_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Order\order_edit.aspx.designer.cs">
+      <DependentUpon>order_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Order\order_view.aspx.cs">
+      <DependentUpon>order_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Order\order_view.aspx.designer.cs">
+      <DependentUpon>order_view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\Product\product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,6 +298,13 @@
     </Compile>
     <Compile Include="Staff\Product\product_create.aspx.designer.cs">
       <DependentUpon>product_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Product\product_delete.aspx.cs">
+      <DependentUpon>product_delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Product\product_delete.aspx.designer.cs">
+      <DependentUpon>product_delete.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff\Product\product_edit.aspx.cs">
       <DependentUpon>product_edit.aspx</DependentUpon>
@@ -310,6 +351,13 @@
     </Compile>
     <Compile Include="Product\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Staff\staff.aspx.cs">
+      <DependentUpon>staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Staff\staff.aspx.designer.cs">
+      <DependentUpon>staff.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

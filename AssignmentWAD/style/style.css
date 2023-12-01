@@ -344,7 +344,7 @@ nav .profile-details i {
 .sales-boxes .box .title {
     font-size: 24px;
     font-weight: 500;
-    /* margin-bottom: 10px; */
+    margin-bottom: 10px;
 }
 
 .sales-boxes .sales-details li.topic {
@@ -436,6 +436,11 @@ a {
     width: 50%;
     height: 50%;
     margin-bottom: 20px;
+}
+
+.img-small {
+    width:50px;
+    height:80px;
 }
 
 .sales-boxes .top-sales li a {

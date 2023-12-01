@@ -12,7 +12,7 @@
 
             <div class="recent-sales box">
 
-                <div class="title">Product Create</div>
+                <div class="title">Create Product</div>
                 <label class="label-field">Name: </label>
                 </br>
                             <input type="text" name="name" value="" class="input-field" required>

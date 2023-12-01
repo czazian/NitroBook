@@ -43,7 +43,7 @@
                 </asp:HyperLink>
             </li>
             <li>
-                <asp:HyperLink runat="server" ID="orderLink" NavigateUrl="~/Staff/Dashboard/dashboard.aspx">
+                <asp:HyperLink runat="server" ID="orderLink" NavigateUrl="~/Staff/Order/order.aspx">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Order List</span>
                 </asp:HyperLink>

@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="product.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="product.css" rel="stylesheet">
-    <script src="product.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,8 +10,8 @@
             <div class="recent-sales box">
                 <div class="title">Product</div>
                 <div class="search-box">
-                    <input type="text" name="searchValue" placeholder="Search...">
-                    <button type="submit" value="submit"><i class='bx bx-search'></i></button>
+                    <asp:TextBox runat="server" ID="txtSearch" placeholder="Search..."></asp:TextBox>
+                    <asp:LinkButton runat="server" ID="linkBtnSearch"><i class='bx bx-search'></i></asp:LinkButton>
                 </div>
             </div>
 
@@ -36,7 +34,7 @@
                     </ul>
                     <ul class="details">
                         <li class="topic">Name</li>
-                        <li><a href="#"><span class="product">Book 1</span></a></li>
+                        <li><a href="#"><span class="product">Suzume</span></a></li>
                         <li><a href="#"><span class="product">Book 2</span></a></li>
                         <li><a href="#"><span class="product">Book 3</span></a></li>
                     </ul>
@@ -55,9 +53,9 @@
                     <ul class="details">
                         <li class="topic">Operation</li>
                         <li class="txt-center">
-                            <a><i class='bx bx-show'></i></a>
-                            <a><i class='bx bxs-edit'></i></a>
-                            <a><i class='bx bxs-trash'></i></a>
+                            <asp:Hyperlink runat="server" ID="hrefCreate" NavigateUrl="~/Staff/Product/product_view.aspx"><i class='bx bx-show'></i></asp:Hyperlink>
+                            <asp:Hyperlink runat="server" ID="hrefEdit" NavigateUrl="~/Staff/Product/product_edit.aspx"><i class='bx bxs-edit'></i></asp:Hyperlink>
+                            <asp:Hyperlink runat="server" ID="Hyperlink1" NavigateUrl=""><i class='bx bxs-trash'></i></asp:Hyperlink>
                         </li>
                         <li class="txt-center">
                             <a><i class='bx bx-show'></i></a>

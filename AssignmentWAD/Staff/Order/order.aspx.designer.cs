@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AssignmentWAD.Staff.Product
+namespace AssignmentWAD.Staff.Order
 {
 
 
-    public partial class product
+    public partial class order
     {
 
         /// <summary>
@@ -33,15 +33,6 @@ namespace AssignmentWAD.Staff.Product
         protected global::System.Web.UI.WebControls.LinkButton linkBtnSearch;
 
         /// <summary>
-        /// productCreateLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink productCreateLink;
-
-        /// <summary>
         /// hrefCreate control.
         /// </summary>
         /// <remarks>
@@ -58,14 +49,5 @@ namespace AssignmentWAD.Staff.Product
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hrefEdit;
-
-        /// <summary>
-        /// Hyperlink1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink Hyperlink1;
     }
 }
