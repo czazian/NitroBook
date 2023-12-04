@@ -251,6 +251,7 @@ nav .profile-details i {
 .overview-boxes .box-topic {
     font-size: 20px;
     font-weight: 500;
+    margin-bottom:8px;
 }
 
 .home-content .box .number {

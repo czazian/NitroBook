@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeFile="dashboard.aspx.cs" Inherits="AssignmentWAD.Staff.Dashboard.dashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="AssignmentWAD.Staff.Dashboard.dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="dashboard.css" rel="stylesheet">
