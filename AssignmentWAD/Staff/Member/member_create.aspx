@@ -15,12 +15,32 @@
                 </br>
                 <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field"></asp:TextBox>
                 <br>
-                <label class="label-field">Email</label></br>
+                    <label class="label-field">Email</label></br>
                 <asp:TextBox runat="server" ID="txtEmail" CssClass="input-field"></asp:TextBox>
                 <br>
-                <label class="label-field">Password </label>
+                    <label class="label-field">Password </label>
                 </br>
                 <asp:TextBox runat="server" ID="txtPass" CssClass="input-field"></asp:TextBox>
+                <br>
+                    <label class="label-field">Phone No </label>
+                </br>
+                <asp:TextBox runat="server" ID="txtPhoneNo" CssClass="input-field"></asp:TextBox>
+                <br>
+                    <label class="label-field">Date of Birth </label>
+                </br>
+                <asp:TextBox runat="server" ID="txtDateOfBirth" CssClass="input-field-1-4"></asp:TextBox>
+                <asp:Calendar runat="server" ID="dateOfBirth" OnSelectionChanged="dateOfBirth_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                    <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                    <TodayDayStyle BackColor="#CCCCCC" />
+                </asp:Calendar>
+                <br>
+                    <label class="label-field">Address </label>
+                </br>
+                <asp:TextBox runat="server" ID="txtAddress" CssClass="input-field"></asp:TextBox>
                 <br>
 
                 <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
@@ -28,5 +48,5 @@
             </div>
 
         </div>
-        </div>
+    </div>
 </asp:Content>

@@ -13,5 +13,10 @@ namespace AssignmentWAD.Staff.Member
         {
 
         }
+
+        protected void dateOfBirth_SelectionChanged(object sender, EventArgs e)
+        {
+            txtDateOfBirth.Text = dateOfBirth.SelectedDate.ToShortDateString();
+        }
     }
 }

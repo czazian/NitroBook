@@ -43,13 +43,13 @@
 
                     </ul>
                     <ul class="details">
-                        <li class="topic">Member</li>
+                        <li class="topic">Report</li>
 
                         <li><a href="#"><i class='bx bxs-x-circle' ></i></a></li>
 
                     </ul>
                     <ul class="details">
-                        <li class="topic">Sales</li>
+                        <li class="topic">Member</li>
 
                         <li><a href="#"><i class='bx bxs-check-circle'></i></a></li>
 
@@ -60,6 +60,12 @@
                         <li><a href="#"><i class='bx bxs-check-circle'></i></a></li>
 
                     </ul>
+                    <ul class="details">
+                        <li class="topic">Role</li>
+
+                        <li><a href="#"><i class='bx bxs-check-circle'></i></a></li>
+                    </ul>
+
                     <ul class="details">
                         <li class="topic">Operation</li>
 

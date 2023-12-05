@@ -13,17 +13,21 @@
             <div class="recent-sales box">
 
                 <div class="title">Edit Product</div>
-                <label class="label-field">Name: </label>
+                <label class="label-field">Title: </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtName" CssClass="input-field"></asp:TextBox>
-                <br>
-                    <label class="label-field">Price: (RM XX.XX)</label></br>
-                <%--                <input type="text" name="price" value="" class="input-field" pattern="(\d+\.\d{1,2})" required>--%>
-                <asp:TextBox runat="server" ID="txtPrice" CssClass="input-field"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtTitle" CssClass="input-field"></asp:TextBox>
                 <br>
                     <label class="label-field">Description: </label>
                 </br>
                 <asp:TextBox runat="server" ID="txtDesc" CssClass="input-field"></asp:TextBox>
+                <br>
+                    <label class="label-field">Author: </label>
+                </br>
+                <asp:TextBox runat="server" ID="txtAuthor" CssClass="input-field"></asp:TextBox>
+                <br>
+                    <label class="label-field">Price: (RM XX.XX)</label></br>
+                <%--                <input type="text" name="price" value="" class="input-field" pattern="(\d+\.\d{1,2})" required>--%>
+                <asp:TextBox runat="server" ID="txtPrice" CssClass="input-field"></asp:TextBox>
                 <br>
                     <label class="label-field">Category: </label>
                 </br>
@@ -33,14 +37,22 @@
                     <asp:ListItem Text="Comedy" Value="Comedy" Selected="True"></asp:ListItem>
                 </asp:DropDownList>
                 </br>
-                     <label class="label-field">New Image: (Upload image to replace Default Image)</label></br>
+                <label class="label-field">Quantity: </label>
+                </br>
+                <asp:TextBox runat="server" ID="txtQuantity" CssClass="input-field"></asp:TextBox>
+                </br>
+                     <label class="label-field">Image:</label></br>
                 <asp:FileUpload runat="server" ID="newImgProd" CssClass="input-field" />
                 <br>
-                    <label class="label-field">Default Image: </label>
+                    <label class="label-field">Language: </label>
                 </br>
-                <asp:Image runat="server" ID="imgProd" ImageUrl="~/image/book1.jpg" CssClass="img-file" />
+                <asp:DropDownList runat="server" ID="ddlLanguage" CssClass="input-field">
+                    <asp:ListItem>English</asp:ListItem>
+                    <asp:ListItem>Chinese</asp:ListItem>
+                    <asp:ListItem>Japanese</asp:ListItem>
+                </asp:DropDownList>
+                </br>
 
-                <br>
                 <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Product/product.aspx" />
             </div>

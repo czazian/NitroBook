@@ -11,7 +11,7 @@ namespace AssignmentWAD.Staff.Staff
 {
 
 
-    public partial class staff_views
+    public partial class staff_view
     {
 
         /// <summary>

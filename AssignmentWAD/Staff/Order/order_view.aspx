@@ -6,16 +6,28 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="home-content">
-        <form>
+
             <div class="sales-boxes">
                 <!--                        order info-->
                 <div class="recent-sales box">
-                    <div class="title">Order Info</div>
+                    <div class="title">Customer Info</div>
                     <label class="label-field">Full Name</label></br>
                             <asp:TextBox runat="server" ID="txtFullName" Text="Zi An" CssClass="input-field" Enabled="false"></asp:TextBox>
                     <br>
+                        <label class="label-field">Email</label></br>
+                    <asp:TextBox runat="server" ID="txtEmail" Text="koyasi@gmail.com" CssClass="input-field" Enabled="false"></asp:TextBox>
+                    <br>
                         <label class="label-field">Phone No</label></br>
                     <asp:TextBox runat="server" ID="txtPhoneNo" Text="011 12345678" CssClass="input-field" Enabled="false"></asp:TextBox>
+                    <br>
+                </div>
+
+                <!--                        customer info-->
+                <div class="recent-sales box">
+                    <div class="title">Order Info</div>
+                    <label class="label-field">Address </label>
+                    </br>
+                    <asp:TextBox runat="server" ID="txtAddress" Text="no 5, jalan Bunga Raya" CssClass="input-field" Enabled="false"></asp:TextBox>
                     <br>
                         <label class="label-field">Subtotal (RM) </label>
                     </br>
@@ -39,31 +51,6 @@
                         <asp:ListItem Text="Delivered" Value="Delivered"></asp:ListItem>
                     </asp:DropDownList>
 
-                    <br>
-                </div>
-
-                <!--                        customer info-->
-                <div class="recent-sales box">
-                    <div class="title">Address Info</div>
-                    <label class="label-field">Address </label>
-                    </br>
-                    <asp:TextBox runat="server" ID="txtAddress" Text="no 5, jalan Bunga Raya" CssClass="input-field" Enabled="false"></asp:TextBox>
-                    <br>
-                        <label class="label-field">City </label>
-                    </br>
-                    <asp:TextBox runat="server" ID="txtCity" Text="Serdang" CssClass="input-field" Enabled="false"></asp:TextBox>
-                    <br>
-                        <label class="label-field">State </label>
-                    </br>
-                    <asp:TextBox runat="server" ID="txtState" Text="Selangor" CssClass="input-field" Enabled="false"></asp:TextBox>
-                    <br>
-                        <label class="label-field">Zipcode </label>
-                    </br>
-                    <asp:TextBox runat="server" ID="txtZipCode" Text="43000" CssClass="input-field" Enabled="false"></asp:TextBox>
-                    <br>
-                        <label class="label-field">Country </label>
-                    </br>
-                    <asp:TextBox runat="server" ID="txtCountry" Text="Malaysia" CssClass="input-field" Enabled="false"></asp:TextBox>
                     <br>
                 </div>
 
