@@ -29,11 +29,11 @@
                             <%--have to add required but it is not available in asp net--%>
                                 <div class="input-field">
                                     <asp:Textbox ID="staffId" runat="server" placeholder="Enter Staff ID" class="auto-style1" name="id"/>
-                                    <i class="uil uil-user"></i>                        
+                                    <i class="fa-solid fa-user"></i>                       
                                 </div>
                                 <div class="input-field">
                                     <asp:TextBox ID="password" runat="server" TextMode="Password" class="password" placeholder="Enter your password"/>
-                                    <i class="uil uil-lock icon"></i>
+                                    <i class="fa-solid fa-lock"></i>
                                     <i class="uil uil-eye-slash showHidePw"></i>
                                 </div>
                                 <div class="input-field button">
