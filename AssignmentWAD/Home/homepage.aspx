@@ -46,7 +46,7 @@
             <!-- First Photo Grid-->
             <div class="w3-row-padding w3-center group">
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book1.jpg" CssClass="poster" /><br />
+                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
                     <br />
                     <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
                     <br />
@@ -61,7 +61,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book2.jpg" CssClass="poster" /><br /><br />
+                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book/book26.jpg" CssClass="poster" /><br /><br />
                     <asp:Label ID="lblBookName2" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
                     <br />
                     <asp:Label ID="lblAuthorName2" runat="server" CssClass="s2" Text="Tun Dr Mahathir Mohamad"></asp:Label><br />
@@ -75,7 +75,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book3.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book/book42.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName3" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />
@@ -91,7 +91,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB4" runat="server" ImageUrl="~/image/book4.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB4" runat="server" ImageUrl="~/image/book/book17.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName4" runat="server" CssClass="s1" Text="Harry Potter"></asp:Label><br />
@@ -107,7 +107,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB5" runat="server" ImageUrl="~/image/book5.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB5" runat="server" ImageUrl="~/image/book/book6.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName5" runat="server" CssClass="s1" Text="Chainsaw Man"></asp:Label><br />
@@ -143,7 +143,7 @@
             <!-- Second Photo Grid-->
             <div class="w3-row-padding w3-padding-16 w3-center group">
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB6" runat="server" ImageUrl="~/image/book6.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB6" runat="server" ImageUrl="~/image/book/book18.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName6" runat="server" CssClass="s1" Text="The Maze Runner"></asp:Label><br />
@@ -159,7 +159,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB7" runat="server" ImageUrl="~/image/book7.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB7" runat="server" ImageUrl="~/image/book/book5.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName7" runat="server" CssClass="s1" Text="Attack on Titan"></asp:Label><br />
@@ -176,7 +176,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB8" runat="server" ImageUrl="~/image/book8.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB8" runat="server" ImageUrl="~/image/book/book22.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName8" runat="server" CssClass="s1" Text="IT"></asp:Label><br />
@@ -193,7 +193,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB9" runat="server" ImageUrl="~/image/book9.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB9" runat="server" ImageUrl="~/image/book/book19.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName9" runat="server" CssClass="s1" Text="The Shining"></asp:Label><br />
@@ -210,7 +210,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB10" runat="server" ImageUrl="~/image/book10.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB10" runat="server" ImageUrl="~/image/book/book24.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName10" runat="server" CssClass="s1" Text="The Hating Game"></asp:Label><br />
