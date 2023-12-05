@@ -10,7 +10,7 @@
     <div class="product-details container" style="padding: 50px 25px; width: 75%; height: 75%; border: 1px solid gray; border-radius: 10px">
         <div id="row2" class="row outer-cont">
             <div id="product-pic" class="col-4">
-                <asp:Image ID="imgBook" runat="server" ImageUrl="~/image/book1.jpg" Width="100%" />
+                <asp:Image ID="imgBook" runat="server" ImageUrl="~/image/book/book12.jpg" Width="100%" />
             </div>
             <div class="product-details col-8">
                 <div class="title" style="text-align: center;">

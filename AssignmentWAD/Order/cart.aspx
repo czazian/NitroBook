@@ -40,7 +40,7 @@
                 <tr class="content">
                     <!--Book Image-->
                     <td style="padding: 10px;">
-                        <asp:ImageButton ImageUrl="~/image/book1.jpg" runat="server" ID="imgBook" OnClick="imgBook_Click" Width="180" Height="280" />
+                        <asp:ImageButton ImageUrl="~/image/book/book12.jpg" runat="server" ID="imgBook" OnClick="imgBook_Click" Width="180" Height="280" />
                     </td>
 
                     <!--Author and Book title and price-->

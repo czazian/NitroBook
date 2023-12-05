@@ -11,7 +11,7 @@
             <p style="padding-left: 45px; padding-top: 6px; margin-bottom: 20px;">There are <b>3 </b>Search Results was found</p>
             <div class="w3-row-padding w3-center group">
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book1.jpg" CssClass="poster" /><br />
+                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
                     <br />
                     <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
                     <br />
@@ -26,7 +26,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book2.jpg" CssClass="poster" /><br />
+                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book/book26.jpg" CssClass="poster" /><br />
                     <br />
                     <asp:Label ID="lblBookName2" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
                     <br />
@@ -41,7 +41,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers">
-                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book3.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book/book42.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName3" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />

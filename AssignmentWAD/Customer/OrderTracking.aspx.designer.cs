@@ -11,52 +11,52 @@ namespace AssignmentWAD.Customer
 {
 
 
-    public partial class customerLogin
+    public partial class OrderTracking
     {
 
         /// <summary>
-        /// txtUsername control.
+        /// lkbAccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.LinkButton lkbAccount;
 
         /// <summary>
-        /// txtPassword control.
+        /// lkbMyPurchase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.LinkButton lkbMyPurchase;
 
         /// <summary>
-        /// hrefForgotPass control.
+        /// lkbLogout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hrefForgotPass;
+        protected global::System.Web.UI.WebControls.LinkButton lkbLogout;
 
         /// <summary>
-        /// hrefRegister control.
+        /// imagePurchase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hrefRegister;
+        protected global::System.Web.UI.WebControls.Image imagePurchase;
 
         /// <summary>
-        /// btnLogin control.
+        /// image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Image image1;
     }
 }

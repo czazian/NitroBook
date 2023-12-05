@@ -13,5 +13,20 @@ namespace AssignmentWAD.BookCategories
         {
 
         }
+
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBuyNow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnViewMore_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

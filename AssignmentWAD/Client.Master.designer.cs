@@ -312,6 +312,15 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.HyperLink hrefStaff;
 
         /// <summary>
+        /// lkbAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lkbAccount;
+
+        /// <summary>
         /// topmenucontainer control.
         /// </summary>
         /// <remarks>
