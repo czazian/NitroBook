@@ -99,7 +99,6 @@
     <Content Include="BookCategories\mangalightnovel.aspx" />
     <Content Include="BookCategories\newarrivals.aspx" />
     <Content Include="BookCategories\nonfiction.aspx" />
-    <Content Include="BookCategories\other.aspx" />
     <Content Include="Customer\customerLogin.aspx" />
     <Content Include="image\book10.jpg" />
     <Content Include="image\book6.jpg" />
@@ -213,13 +212,6 @@
     </Compile>
     <Compile Include="BookCategories\nonfiction.aspx.designer.cs">
       <DependentUpon>nonfiction.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BookCategories\other.aspx.cs">
-      <DependentUpon>other.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BookCategories\other.aspx.designer.cs">
-      <DependentUpon>other.aspx</DependentUpon>
     </Compile>
     <Compile Include="Client.Master.cs">
       <DependentUpon>Client.Master</DependentUpon>

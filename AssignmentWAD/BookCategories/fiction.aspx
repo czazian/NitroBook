@@ -63,7 +63,7 @@
 
 
                 <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book1.jpg" CssClass="poster" /><br />
+                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book/book1.jpg" CssClass="poster" /><br />
                     <br />
                     <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
                     <br />
@@ -88,7 +88,7 @@
 
                 </div>
                 <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book2.jpg" CssClass="poster" /><br />
+                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book/book2.jpg" CssClass="poster" /><br />
                     <br />
                     <asp:Label ID="lblBookName2" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
                     <br />
@@ -113,7 +113,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book3.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book/book3.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName3" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />
@@ -139,7 +139,7 @@
                     </p>
                 </div>
                 <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB4" runat="server" ImageUrl="~/image/book4.jpg" CssClass="poster" />
+                    <asp:Image ID="imgB4" runat="server" ImageUrl="~/image/book/book4.jpg" CssClass="poster" />
                     <br />
                     <br />
                     <asp:Label ID="lblBookName4" runat="server" CssClass="s1" Text="Harry Potter"></asp:Label><br />
