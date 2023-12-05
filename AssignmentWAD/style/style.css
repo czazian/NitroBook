@@ -157,42 +157,17 @@ nav .sidebar-button i {
     margin-bottom: 15px;
 }
 
-.input-field-1-4 {
-    height: 50px;
-    width: 25%;
-    outline: none;
-    background: #F5F6FA;
-    border: 2px solid #EFEEF1;
-    border-radius: 6px;
-    font-size: 18px;
-    padding: 0 15px;
-    margin-bottom: 15px;
+.width-25{
+    width:25%;
 }
 
-.input-field-2-4 {
-    height: 50px;
+.width-50 {
     width: 50%;
-    outline: none;
-    background: #F5F6FA;
-    border: 2px solid #EFEEF1;
-    border-radius: 6px;
-    font-size: 18px;
-    padding: 0 15px;
-    margin-bottom: 15px;
 }
 
-.input-field-3-4 {
-    height: 50px;
+.width-75 {
     width: 75%;
-    outline: none;
-    background: #F5F6FA;
-    border: 2px solid #EFEEF1;
-    border-radius: 6px;
-    font-size: 18px;
-    padding: 0 15px;
-    margin-bottom: 15px;
 }
-
 
 select.input-field a{
     background-color:red;
