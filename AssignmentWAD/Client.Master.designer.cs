@@ -276,6 +276,15 @@ namespace AssignmentWAD
         protected global::System.Web.UI.WebControls.LinkButton btnSch;
 
         /// <summary>
+        /// lbLanguage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbLanguage;
+
+        /// <summary>
         /// btnLgn control.
         /// </summary>
         /// <remarks>

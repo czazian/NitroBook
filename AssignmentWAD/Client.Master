@@ -211,6 +211,19 @@
             </div>
 
             <div class="button-container" id="btn">
+
+                <div class="languauge" style="padding-right : 10px;">
+                    <div class="dropdown">
+                        <asp:LinkButton runat="server" Style="background-color: rgb(215, 7, 7);" ID="lbLanguage" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i style="font-size: 19px;" class="fas fa-globe-americas"></i>
+                        </asp:LinkButton>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">Chinese</a></li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="login">
 
                     <asp:LinkButton ID="btnLgn" runat="server" CssClass="topBtns btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" Style="background-color: rgb(215, 7, 7);">
@@ -229,10 +242,12 @@
                 </div>
 
                 <div class="cart-container">
-                    <div style="padding-left:10px;">
-                    <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" PostBackUrl="~/Customer/UserProfile.aspx" Text="My Account"></asp:LinkButton>
+                    <div style="padding-left: 10px;">
+                        <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" PostBackUrl="~/Customer/UserProfile.aspx">
+                        <i style="font-size: 19px; padding-left: 4.5px; padding-right: 4.5px;" class="fa-solid fa-user"></i>
+                        </asp:LinkButton>
                     </div>
-                    </div>
+                </div>
 
                 <div class="cart-container">
                     <a href="<%= ResolveUrl("~/Order/cart.aspx") %>" id="btnCartPage">
