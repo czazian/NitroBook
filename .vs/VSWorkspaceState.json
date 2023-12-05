@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
+    "\\AssignmentWAD",
+    "\\AssignmentWAD\\Staff"
+=======
     "",
     "\\AssignmentWAD"
+>>>>>>> 71dfd99b749599cc3af0ae9338f0b2999ac302d4
   ],
   "SelectedNode": "\\AssignmentWAD.sln",
   "PreviewInSolutionExplorer": false

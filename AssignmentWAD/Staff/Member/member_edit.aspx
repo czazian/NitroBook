@@ -28,7 +28,7 @@
                 <br>
                     <label class="label-field">Date of Birth </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtDateOfBirth" CssClass="input-field-1-4"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtDateOfBirth" CssClass="input-field width-25"></asp:TextBox>
                 <asp:Calendar runat="server" ID="dateOfBirth" OnSelectionChanged="dateOfBirth_SelectionChanged" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                     <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
