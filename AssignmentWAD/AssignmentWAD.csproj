@@ -94,12 +94,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BookCategories\BookCategories.css" />
     <Content Include="BookCategories\children.aspx" />
     <Content Include="BookCategories\fiction.aspx" />
     <Content Include="BookCategories\mangalightnovel.aspx" />
     <Content Include="BookCategories\newarrivals.aspx" />
     <Content Include="BookCategories\nonfiction.aspx" />
+    <Content Include="BookCategories\other.aspx" />
+    <Content Include="Customer\customer.css" />
     <Content Include="Customer\customerLogin.aspx" />
+    <Content Include="Customer\Logout.aspx" />
+    <Content Include="Customer\OrderTracking.aspx" />
+    <Content Include="Customer\Register.aspx" />
+    <Content Include="Customer\UserProfile.aspx" />
     <Content Include="image\book10.jpg" />
     <Content Include="image\book6.jpg" />
     <Content Include="image\book8.jpg" />
@@ -125,22 +132,15 @@
     <Content Include="Staff\adminPage.css" />
     <Content Include="Staff\Dashboard\dashboard.aspx" />
     <Content Include="Staff\Member\member.aspx" />
-    <Content Include="Staff\Member\member_create.aspx" />
-    <Content Include="Staff\Member\member_edit.aspx" />
-    <Content Include="Staff\Member\member_view.aspx" />
     <Content Include="Staff\Order\order.aspx" />
     <Content Include="Staff\Order\order_edit.aspx" />
     <Content Include="Staff\Order\order_view.aspx" />
     <Content Include="Staff\Product\product.aspx" />
     <Content Include="Staff\Product\product_create.aspx" />
+    <Content Include="Staff\Product\product_delete.aspx" />
     <Content Include="Staff\Product\product_edit.aspx" />
     <Content Include="Staff\Product\product_view.aspx" />
-    <Content Include="Staff\profile.aspx" />
     <Content Include="Staff\Report\report.aspx" />
-    <Content Include="Staff\Role\role.aspx" />
-    <Content Include="Staff\Role\role_create.aspx" />
-    <Content Include="Staff\Role\role_edit.aspx" />
-    <Content Include="Staff\Role\role_view.aspx" />
     <Content Include="Staff\staffLogin.aspx" />
     <Content Include="Staff\staffLogin.css" />
     <Content Include="Staff\staffLogin.js" />
@@ -156,9 +156,6 @@
     <Content Include="Product\IndividualProductPage.js" />
     <Content Include="Product\search.aspx" />
     <Content Include="Staff\Staff\staff.aspx" />
-    <Content Include="Staff\Staff\staff_view.aspx" />
-    <Content Include="Staff\Staff\staff_create.aspx" />
-    <Content Include="Staff\Staff\staff_edit.aspx" />
     <Content Include="style\reset.css" />
     <Content Include="style\style.css" />
     <Content Include="Web.config" />
@@ -213,6 +210,13 @@
     <Compile Include="BookCategories\nonfiction.aspx.designer.cs">
       <DependentUpon>nonfiction.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BookCategories\other.aspx.cs">
+      <DependentUpon>other.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookCategories\other.aspx.designer.cs">
+      <DependentUpon>other.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Client.Master.cs">
       <DependentUpon>Client.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -226,6 +230,34 @@
     </Compile>
     <Compile Include="Customer\customerLogin.aspx.designer.cs">
       <DependentUpon>customerLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\OrderTracking.aspx.cs">
+      <DependentUpon>OrderTracking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\OrderTracking.aspx.designer.cs">
+      <DependentUpon>OrderTracking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home\homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
@@ -266,27 +298,6 @@
     <Compile Include="Staff\Member\member.aspx.designer.cs">
       <DependentUpon>member.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Staff\Member\member_create.aspx.cs">
-      <DependentUpon>member_create.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Member\member_create.aspx.designer.cs">
-      <DependentUpon>member_create.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Member\member_edit.aspx.cs">
-      <DependentUpon>member_edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Member\member_edit.aspx.designer.cs">
-      <DependentUpon>member_edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Member\member_view.aspx.cs">
-      <DependentUpon>member_view.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Member\member_view.aspx.designer.cs">
-      <DependentUpon>member_view.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Staff\Order\order.aspx.cs">
       <DependentUpon>order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,6 +333,13 @@
     <Compile Include="Staff\Product\product_create.aspx.designer.cs">
       <DependentUpon>product_create.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Staff\Product\product_delete.aspx.cs">
+      <DependentUpon>product_delete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Product\product_delete.aspx.designer.cs">
+      <DependentUpon>product_delete.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\Product\product_edit.aspx.cs">
       <DependentUpon>product_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -336,47 +354,12 @@
     <Compile Include="Staff\Product\product_view.aspx.designer.cs">
       <DependentUpon>product_view.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Staff\profile.aspx.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\profile.aspx.designer.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Staff\Report\report.aspx.cs">
       <DependentUpon>report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Staff\Report\report.aspx.designer.cs">
       <DependentUpon>report.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Role\role.aspx.cs">
-      <DependentUpon>role.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Role\role.aspx.designer.cs">
-      <DependentUpon>role.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Role\role_create.aspx.cs">
-      <DependentUpon>role_create.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Role\role_create.aspx.designer.cs">
-      <DependentUpon>role_create.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Role\role_edit.aspx.cs">
-      <DependentUpon>role_edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Role\role_edit.aspx.designer.cs">
-      <DependentUpon>role_edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Role\role_view.aspx.cs">
-      <DependentUpon>role_view.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Role\role_view.aspx.designer.cs">
-      <DependentUpon>role_view.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff\staffLogin.aspx.cs">
       <DependentUpon>staffLogin.aspx</DependentUpon>
@@ -409,27 +392,6 @@
     </Compile>
     <Compile Include="Staff\Staff\staff.aspx.designer.cs">
       <DependentUpon>staff.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Staff\staff_view.aspx.cs">
-      <DependentUpon>staff_view.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Staff\staff_view.aspx.designer.cs">
-      <DependentUpon>staff_view.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Staff\staff_create.aspx.cs">
-      <DependentUpon>staff_create.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Staff\staff_create.aspx.designer.cs">
-      <DependentUpon>staff_create.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Staff\Staff\staff_edit.aspx.cs">
-      <DependentUpon>staff_edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Staff\staff_edit.aspx.designer.cs">
-      <DependentUpon>staff_edit.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
