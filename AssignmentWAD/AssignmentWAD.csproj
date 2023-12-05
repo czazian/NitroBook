@@ -55,6 +55,7 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -130,9 +131,9 @@
     <Content Include="Staff\adminPage.css" />
     <Content Include="Staff\Dashboard\dashboard.aspx" />
     <Content Include="Staff\Member\member.aspx" />
-	  <Content Include="Staff\Member\member_create.aspx" />
-	  <Content Include="Staff\Member\member_edit.aspx" />
-	  <Content Include="Staff\Member\member_view.aspx" />
+    <Content Include="Staff\Member\member_create.aspx" />
+    <Content Include="Staff\Member\member_edit.aspx" />
+    <Content Include="Staff\Member\member_view.aspx" />
     <Content Include="Staff\Order\order.aspx" />
     <Content Include="Staff\Order\order_edit.aspx" />
     <Content Include="Staff\Order\order_view.aspx" />
@@ -140,12 +141,12 @@
     <Content Include="Staff\Product\product_create.aspx" />
     <Content Include="Staff\Product\product_edit.aspx" />
     <Content Include="Staff\Product\product_view.aspx" />
-	  <Content Include="Staff\profile.aspx" />
+    <Content Include="Staff\profile.aspx" />
     <Content Include="Staff\Report\report.aspx" />
-	  <Content Include="Staff\Role\role.aspx" />
-	  <Content Include="Staff\Role\role_create.aspx" />
-	  <Content Include="Staff\Role\role_edit.aspx" />
-	  <Content Include="Staff\Role\role_view.aspx" />
+    <Content Include="Staff\Role\role.aspx" />
+    <Content Include="Staff\Role\role_create.aspx" />
+    <Content Include="Staff\Role\role_edit.aspx" />
+    <Content Include="Staff\Role\role_view.aspx" />
     <Content Include="Staff\staffLogin.aspx" />
     <Content Include="Staff\staffLogin.css" />
     <Content Include="Staff\staffLogin.js" />
@@ -161,9 +162,9 @@
     <Content Include="Product\IndividualProductPage.js" />
     <Content Include="Product\search.aspx" />
     <Content Include="Staff\Staff\staff.aspx" />
-	  <Content Include="Staff\Staff\staff_view.aspx" />
-	  <Content Include="Staff\Staff\staff_create.aspx" />
-	  <Content Include="Staff\Staff\staff_edit.aspx" />
+    <Content Include="Staff\Staff\staff_view.aspx" />
+    <Content Include="Staff\Staff\staff_create.aspx" />
+    <Content Include="Staff\Staff\staff_edit.aspx" />
     <Content Include="style\reset.css" />
     <Content Include="style\style.css" />
     <Content Include="Web.config" />
@@ -182,11 +183,6 @@
     </Compile>
     <Compile Include="Admin2.Master.designer.cs">
       <DependentUpon>Admin2.Master</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\Client.Master.cn.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Client.Master.cn.resx</DependentUpon>
     </Compile>
     <Compile Include="BookCategories\children.aspx.cs">
       <DependentUpon>children.aspx</DependentUpon>
@@ -301,27 +297,27 @@
       <DependentUpon>member.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-	  <Compile Include="Staff\Member\member_create.aspx.cs">
-		  <DependentUpon>member_create.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Member\member_create.aspx.designer.cs">
-		  <DependentUpon>member_create.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Member\member_edit.aspx.cs">
-		  <DependentUpon>member_edit.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Member\member_edit.aspx.designer.cs">
-		  <DependentUpon>member_edit.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Member\member_view.aspx.cs">
-		  <DependentUpon>member_view.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Member\member_view.aspx.designer.cs">
-		  <DependentUpon>member_view.aspx</DependentUpon>
-	  </Compile>
+    <Compile Include="Staff\Member\member_create.aspx.cs">
+      <DependentUpon>member_create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Member\member_create.aspx.designer.cs">
+      <DependentUpon>member_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Member\member_edit.aspx.cs">
+      <DependentUpon>member_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Member\member_edit.aspx.designer.cs">
+      <DependentUpon>member_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Member\member_view.aspx.cs">
+      <DependentUpon>member_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Member\member_view.aspx.designer.cs">
+      <DependentUpon>member_view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\Member\member.aspx.designer.cs">
       <DependentUpon>member.aspx</DependentUpon>
     </Compile>
@@ -374,13 +370,13 @@
     <Compile Include="Staff\Product\product_view.aspx.designer.cs">
       <DependentUpon>product_view.aspx</DependentUpon>
     </Compile>
-	  <Compile Include="Staff\profile.aspx.cs">
-		  <DependentUpon>profile.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\profile.aspx.designer.cs">
-		  <DependentUpon>profile.aspx</DependentUpon>
-	  </Compile>
+    <Compile Include="Staff\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\Report\report.aspx.cs">
       <DependentUpon>report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -388,34 +384,34 @@
     <Compile Include="Staff\Report\report.aspx.designer.cs">
       <DependentUpon>report.aspx</DependentUpon>
     </Compile>
-	  <Compile Include="Staff\Role\role.aspx.cs">
-		  <DependentUpon>role.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Role\role.aspx.designer.cs">
-		  <DependentUpon>role.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Role\role_create.aspx.cs">
-		  <DependentUpon>role_create.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Role\role_create.aspx.designer.cs">
-		  <DependentUpon>role_create.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Role\role_edit.aspx.cs">
-		  <DependentUpon>role_edit.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Role\role_edit.aspx.designer.cs">
-		  <DependentUpon>role_edit.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Role\role_view.aspx.cs">
-		  <DependentUpon>role_view.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Role\role_view.aspx.designer.cs">
-		  <DependentUpon>role_view.aspx</DependentUpon>
-	  </Compile>
+    <Compile Include="Staff\Role\role.aspx.cs">
+      <DependentUpon>role.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Role\role.aspx.designer.cs">
+      <DependentUpon>role.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Role\role_create.aspx.cs">
+      <DependentUpon>role_create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Role\role_create.aspx.designer.cs">
+      <DependentUpon>role_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Role\role_edit.aspx.cs">
+      <DependentUpon>role_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Role\role_edit.aspx.designer.cs">
+      <DependentUpon>role_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Role\role_view.aspx.cs">
+      <DependentUpon>role_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Role\role_view.aspx.designer.cs">
+      <DependentUpon>role_view.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Staff\staffLogin.aspx.cs">
       <DependentUpon>staffLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -448,27 +444,27 @@
     <Compile Include="Staff\Staff\staff.aspx.designer.cs">
       <DependentUpon>staff.aspx</DependentUpon>
     </Compile>
-	  <Compile Include="Staff\Staff\staff_view.aspx.cs">
-		  <DependentUpon>staff_view.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Staff\staff_view.aspx.designer.cs">
-		  <DependentUpon>staff_view.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Staff\staff_create.aspx.cs">
-		  <DependentUpon>staff_create.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Staff\staff_create.aspx.designer.cs">
-		  <DependentUpon>staff_create.aspx</DependentUpon>
-	  </Compile>
-	  <Compile Include="Staff\Staff\staff_edit.aspx.cs">
-		  <DependentUpon>staff_edit.aspx</DependentUpon>
-		  <SubType>ASPXCodeBehind</SubType>
-	  </Compile>
-	  <Compile Include="Staff\Staff\staff_edit.aspx.designer.cs">
-		  <DependentUpon>staff_edit.aspx</DependentUpon>
-	  </Compile>
+    <Compile Include="Staff\Staff\staff_view.aspx.cs">
+      <DependentUpon>staff_view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Staff\staff_view.aspx.designer.cs">
+      <DependentUpon>staff_view.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Staff\staff_create.aspx.cs">
+      <DependentUpon>staff_create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Staff\staff_create.aspx.designer.cs">
+      <DependentUpon>staff_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Staff\staff_edit.aspx.cs">
+      <DependentUpon>staff_edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Staff\staff_edit.aspx.designer.cs">
+      <DependentUpon>staff_edit.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client.Master" />
@@ -483,19 +479,7 @@
     </None>
     <Content Include="Web.sitemap" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_LocalResources\" />
-    <Folder Include="Home\App_LocalResources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\Client.Master.resx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\Client.Master.cn.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Client.Master.cn.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
