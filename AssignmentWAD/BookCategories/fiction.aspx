@@ -11,7 +11,7 @@
             if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
                 box.style.top = 0;
             } else {
-                box.style.top = "32vh";
+                box.style.top = "260px";
             }
         });
     </script>
@@ -20,7 +20,7 @@
 
     <div class="row" id="content" style="position: relative;">
 
-        <div id="box" class="col-2" style="width: 280px; height: 37vh; position: fixed; top: 32vh;">
+        <div id="box" class="col-2" style="width: 280px; height: 290px; position: fixed; top: 260px;">
 
             <h1 style="padding-left: 25px; padding-top: 20px; font-size: 20px; color: #fa6464;"><strong>Fiction</strong></h1>
             <br />
