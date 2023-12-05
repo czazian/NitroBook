@@ -100,7 +100,6 @@
     <Content Include="BookCategories\mangalightnovel.aspx" />
     <Content Include="BookCategories\newarrivals.aspx" />
     <Content Include="BookCategories\nonfiction.aspx" />
-    <Content Include="BookCategories\other.aspx" />
     <Content Include="Customer\customer.css" />
     <Content Include="Customer\customerLogin.aspx" />
     <Content Include="Customer\Logout.aspx" />
@@ -128,7 +127,6 @@
     <Content Include="image\window-logo.png" />
     <Content Include="Order\cart.aspx" />
     <Content Include="Home\homepage.css" />
-    <Content Include="Search\search.aspx" />
     <Content Include="Staff\adminPage.css" />
     <Content Include="Staff\Dashboard\dashboard.aspx" />
     <Content Include="Staff\Member\member.aspx" />
@@ -137,7 +135,6 @@
     <Content Include="Staff\Order\order_view.aspx" />
     <Content Include="Staff\Product\product.aspx" />
     <Content Include="Staff\Product\product_create.aspx" />
-    <Content Include="Staff\Product\product_delete.aspx" />
     <Content Include="Staff\Product\product_edit.aspx" />
     <Content Include="Staff\Product\product_view.aspx" />
     <Content Include="Staff\Report\report.aspx" />
@@ -209,13 +206,6 @@
     </Compile>
     <Compile Include="BookCategories\nonfiction.aspx.designer.cs">
       <DependentUpon>nonfiction.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BookCategories\other.aspx.cs">
-      <DependentUpon>other.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BookCategories\other.aspx.designer.cs">
-      <DependentUpon>other.aspx</DependentUpon>
     </Compile>
     <Compile Include="Client.Master.cs">
       <DependentUpon>Client.Master</DependentUpon>
@@ -333,13 +323,6 @@
     <Compile Include="Staff\Product\product_create.aspx.designer.cs">
       <DependentUpon>product_create.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Staff\Product\product_delete.aspx.cs">
-      <DependentUpon>product_delete.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Staff\Product\product_delete.aspx.designer.cs">
-      <DependentUpon>product_delete.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Staff\Product\product_edit.aspx.cs">
       <DependentUpon>product_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -407,7 +390,10 @@
     </None>
     <Content Include="Web.sitemap" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_GlobalResources\" />
+    <Folder Include="Home\App_LocalResources\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

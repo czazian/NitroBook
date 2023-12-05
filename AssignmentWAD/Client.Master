@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Client.master.cs" Inherits="AssignmentWAD.Client" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Client.master.cs" Inherits="AssignmentWAD.Client"  %>
 
 <!DOCTYPE html>
 
@@ -60,104 +60,104 @@
                     <nav id="navMobile" class="navbar">
                         <div class="container-fluid">
 
-                            <asp:LinkButton ID="btnNaviBar" runat="server" CssClass="nav-btn" data-bs-toggle="offcanvas" data-bs-target="#Category" aria-controls="Category">
+                            <asp:LinkButton ID="btnNaviBar" runat="server" CssClass="nav-btn" data-bs-toggle="offcanvas" data-bs-target="#Category" aria-controls="Category" meta:resourcekey="btnNaviBarResource1">
                                 <span><i style=" font-size: 26.5px; margin-top: 10.5px;" class="fa fa-bars" aria-hidden="true"></i></span>
                             </asp:LinkButton>
 
                             <div class="offcanvas offcanvas-start text-bg-light" tabindex="-1" id="Category">
 
                                 <div class="offcanvas-header justify-content-end">
-                                    <asp:Button ID="btnCloseNavi" runat="server" Style="font-size: 20px; margin-right: 2.5px; margin-top: 1.5px;" CssClass="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
+                                    <asp:Button ID="btnCloseNavi" runat="server" Style="font-size: 20px; margin-right: 2.5px; margin-top: 1.5px;" CssClass="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" meta:resourcekey="btnCloseNaviResource1" />
                                 </div>
 
                                 <div class="offcanvas-body">
 
                                     <ul class="nav-item dropdown">
 
-                                        <asp:Button ID="btnCategory1Mob" runat="server" Text="NEW ARRIVALS" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <asp:Button ID="btnCategory1Mob" runat="server" Text="NEW ARRIVALS" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" meta:resourcekey="btnCategory1MobResource1" />
                                         <i style="font-size: 20px; margin-top: -10px;" class="dropdown-toggle"></i>
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNew1Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-1" Text="Fiction New Arrivals" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNew1Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-1" Text="Fiction New Arrivals" CssClass="dropdown-item" meta:resourcekey="hrefNew1MobResource1"></asp:HyperLink>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNew2Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-2" Text="Non-Fiction New Arrivals" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNew2Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-2" Text="Non-Fiction New Arrivals" CssClass="dropdown-item" meta:resourcekey="hrefNew2MobResource1"></asp:HyperLink>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNew3Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-3" Text="Manga & Light Novel New Arrivals" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNew3Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-3" Text="Manga & Light Novel New Arrivals" CssClass="dropdown-item" meta:resourcekey="hrefNew3MobResource1"></asp:HyperLink>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNew4Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-4" Text="Children's New Arrivals" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNew4Mob" NavigateUrl="~/BookCategories/newarrivals.aspx#list-item-4" Text="Children's New Arrivals" CssClass="dropdown-item" meta:resourcekey="hrefNew4MobResource1"></asp:HyperLink>
                                             </li>
                                         </ul>
                                     </ul>
 
 
                                     <ul class="nav-item dropdown">
-                                        <asp:Button ID="btnCategory2Mob" runat="server" Text="FICTION" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <asp:Button ID="btnCategory2Mob" runat="server" Text="FICTION" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" meta:resourcekey="btnCategory2MobResource1" />
                                         <i style="font-size: 20px; margin-top: -10px;" class="dropdown-toggle"></i>
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefFiction1Mob" NavigateUrl="~/BookCategories/fiction.aspx#list-item-1" Text="Fantasy" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefFiction1Mob" NavigateUrl="~/BookCategories/fiction.aspx#list-item-1" Text="Fantasy" CssClass="dropdown-item" meta:resourcekey="hrefFiction1MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefFiction2Mob" NavigateUrl="~/BookCategories/fiction.aspx#list-item-2" Text="Horror" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefFiction2Mob" NavigateUrl="~/BookCategories/fiction.aspx#list-item-2" Text="Horror" CssClass="dropdown-item" meta:resourcekey="hrefFiction2MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefFiction3Mob" NavigateUrl="~/BookCategories/fiction.aspx#list-item-3" Text="General Fiction" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefFiction3Mob" NavigateUrl="~/BookCategories/fiction.aspx#list-item-3" Text="General Fiction" CssClass="dropdown-item" meta:resourcekey="hrefFiction3MobResource1"></asp:HyperLink>
                                             </li>
                                         </ul>
                                     </ul>
 
 
                                     <ul class="nav-item dropdown">
-                                        <asp:Button ID="btnCategory3Mob" runat="server" Text="NON-FICTION" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <asp:Button ID="btnCategory3Mob" runat="server" Text="NON-FICTION" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" meta:resourcekey="btnCategory3MobResource1" />
                                         <i style="font-size: 20px; margin-top: -10px;" class="dropdown-toggle"></i>
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNonfiction1Mob" NavigateUrl="~/BookCategories/nonfiction.aspx#list-item-1" Text="Marketing & Sales" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNonfiction1Mob" NavigateUrl="~/BookCategories/nonfiction.aspx#list-item-1" Text="Marketing & Sales" CssClass="dropdown-item" meta:resourcekey="hrefNonfiction1MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNonfiction2Mob" NavigateUrl="~/BookCategories/nonfiction.aspx#list-item-2" Text="Computing & Information Technology" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNonfiction2Mob" NavigateUrl="~/BookCategories/nonfiction.aspx#list-item-2" Text="Computing & Information Technology" CssClass="dropdown-item" meta:resourcekey="hrefNonfiction2MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefNonfiction3Mob" NavigateUrl="~/BookCategories/nonfiction.aspx#list-item-3" Text="Food & Drinks" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefNonfiction3Mob" NavigateUrl="~/BookCategories/nonfiction.aspx#list-item-3" Text="Food & Drinks" CssClass="dropdown-item" meta:resourcekey="hrefNonfiction3MobResource1"></asp:HyperLink>
                                             </li>
                                         </ul>
                                     </ul>
 
 
                                     <ul class="nav-item dropdown">
-                                        <asp:Button ID="btnCategory4Mob" runat="server" Text="CHILDREN'S" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <asp:Button ID="btnCategory4Mob" runat="server" Text="CHILDREN'S" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" meta:resourcekey="btnCategory4MobResource1" />
                                         <i style="font-size: 20px; margin-top: -10px;" class="dropdown-toggle"></i>
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefChildren1Mob" NavigateUrl="~/BookCategories/children.aspx#list-item-1" Text="Character Stories" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefChildren1Mob" NavigateUrl="~/BookCategories/children.aspx#list-item-1" Text="Character Stories" CssClass="dropdown-item" meta:resourcekey="hrefChildren1MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefChildren2Mob" NavigateUrl="~/BookCategories/children.aspx#list-item-2" Text="Picture Books" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefChildren2Mob" NavigateUrl="~/BookCategories/children.aspx#list-item-2" Text="Picture Books" CssClass="dropdown-item" meta:resourcekey="hrefChildren2MobResource1"></asp:HyperLink>
                                             </li>
                                         </ul>
                                     </ul>
 
 
                                     <ul class="nav-item dropdown">
-                                        <asp:Button ID="btnCategory5Mob" runat="server" Text="MANGA & LIGHT NOVELS" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <asp:Button ID="btnCategory5Mob" runat="server" Text="MANGA & LIGHT NOVELS" CssClass="dropdown-toggle buttons btn dropbtn" data-bs-toggle="dropdown" aria-expanded="false" meta:resourcekey="btnCategory5MobResource1" />
                                         <i style="font-size: 20px; margin-top: -10px;" class="dropdown-toggle"></i>
 
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefMangaNovel1Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-1" Text="Reincarnation" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefMangaNovel1Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-1" Text="Reincarnation" CssClass="dropdown-item" meta:resourcekey="hrefMangaNovel1MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefMangaNovel2Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-2" Text="Action" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefMangaNovel2Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-2" Text="Action" CssClass="dropdown-item" meta:resourcekey="hrefMangaNovel2MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefMangaNovel3Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-3" Text="Romance" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefMangaNovel3Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-3" Text="Romance" CssClass="dropdown-item" meta:resourcekey="hrefMangaNovel3MobResource1"></asp:HyperLink>
                                             </li>
                                             <li>
-                                                <asp:HyperLink runat="server" ID="hrefMangaNovel4Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-4" Text="Slice-of-Life" CssClass="dropdown-item"></asp:HyperLink>
+                                                <asp:HyperLink runat="server" ID="hrefMangaNovel4Mob" NavigateUrl="~/BookCategories/mangalightnovel.aspx#list-item-4" Text="Slice-of-Life" CssClass="dropdown-item" meta:resourcekey="hrefMangaNovel4MobResource1"></asp:HyperLink>
                                             </li>
                                         </ul>
                                     </ul>
@@ -186,11 +186,12 @@
                 </div>
 
                 <div class="logo-container">
-                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Home/homepage.aspx">
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Home/homepage.aspx" meta:resourcekey="HyperLink2Resource1">
                         <asp:Image ID="Image1" runat="server"
                             AlternateText="Nitro-Books Logo"
-                            ImageUrl="/image/title-logo.png" />
-                    </asp:HyperLink>
+                            ImageUrl="/image/title-logo.png" meta:resourcekey="Image1Resource1" />
+                    
+</asp:HyperLink>
                 </div>
             </div>
 
@@ -199,9 +200,9 @@
                 <div class="container-fluid">
                     <div class="d-flex input-group" role="search">
                         <asp:TextBox ID="txtSearch" runat="server" class="form-control border border-1" placeholder="Book title/Author name"
-                            aria-label="Book title/Author name" aria-describedby="button-addon2" />
+                            aria-label="Book title/Author name" aria-describedby="button-addon2" meta:resourcekey="txtSearchResource1" />
 
-                        <asp:LinkButton ID="btnSch" runat="server" OnClick="btnSch_Click" CssClass="btn btn-outline-danger">
+                        <asp:LinkButton ID="btnSch" runat="server" OnClick="btnSch_Click" CssClass="btn btn-outline-danger" meta:resourcekey="btnSchResource1">
                             <i style="font-size: 18px; display: flex; justify-content: center; align-items: center; margin-top: 4.5px;"
     class="fa fa-search"></i>
                         </asp:LinkButton>
@@ -213,37 +214,36 @@
             <div class="button-container" id="btn">
 
                 <div class="languauge" style="padding-right : 10px;">
-                    <div class="dropdown">
-                        <asp:LinkButton runat="server" Style="background-color: rgb(215, 7, 7);" ID="lbLanguage" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i style="font-size: 19px;" class="fas fa-globe-americas"></i>
-                        </asp:LinkButton>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">English</a></li>
-                            <li><a class="dropdown-item" href="#">Chinese</a></li>
-                        </ul>
-                    </div>
+                    <asp:DropDownList CssClass="ddlLanguage" runat="server" ID="ddlLanguage" AutoPostBack="True" meta:resourcekey="ddlLanguageResource1">
+                        <asp:ListItem Value="en" meta:resourcekey="ListItemResource1">English</asp:ListItem>
+                        <asp:ListItem Value="cn" meta:resourcekey="ListItemResource2">中文</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
 
                 <div class="login">
 
-                    <asp:LinkButton ID="btnLgn" runat="server" CssClass="topBtns btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" Style="background-color: rgb(215, 7, 7);">
-                        <asp:Image ID="Image2" runat="server" ImageUrl="/image/administrator-icon.png" AlternateText="AdminLogo" Style="width: 30%; border-radius: 50%; margin-top: 5px; margin-bottom: -8px;" />
+                    <asp:LinkButton ID="btnLgn" runat="server" CssClass="topBtns btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" Style="background-color: rgb(215, 7, 7);" meta:resourcekey="btnLgnResource1">
+                        <asp:Image ID="Image2" runat="server" ImageUrl="/image/administrator-icon.png" AlternateText="AdminLogo" Style="width: 30%; border-radius: 50%; margin-top: 5px; margin-bottom: -8px;" meta:resourcekey="Image2Resource1" />
+                        
+
+                        
+
                         Login
                     </asp:LinkButton>
 
                     <ul class="dropdown-menu">
                         <li>
-                            <asp:HyperLink runat="server" ID="hrefCustomer" NavigateUrl="~/Customer/customerLogin.aspx" Text="Customer" CssClass="dropdown-item"></asp:HyperLink>
+                            <asp:HyperLink runat="server" ID="hrefCustomer" NavigateUrl="~/Customer/customerLogin.aspx" Text="Customer" CssClass="dropdown-item" meta:resourcekey="hrefCustomerResource1"></asp:HyperLink>
                         </li>
                         <li>
-                            <asp:HyperLink runat="server" ID="hrefStaff" NavigateUrl="~/Staff/staffLogin.aspx" Text="Staff" CssClass="dropdown-item"></asp:HyperLink>
+                            <asp:HyperLink runat="server" ID="hrefStaff" NavigateUrl="~/Staff/staffLogin.aspx" Text="Staff" CssClass="dropdown-item" meta:resourcekey="hrefStaffResource1"></asp:HyperLink>
                         </li>
                     </ul>
                 </div>
 
                 <div class="cart-container">
                     <div style="padding-left: 10px;">
-                        <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" PostBackUrl="~/Customer/UserProfile.aspx">
+                        <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" PostBackUrl="~/Customer/UserProfile.aspx" meta:resourcekey="lkbAccountResource1">
                         <i style="font-size: 19px; padding-left: 4.5px; padding-right: 4.5px;" class="fa-solid fa-user"></i>
                         </asp:LinkButton>
                     </div>
@@ -269,9 +269,9 @@
             <ItemTemplate>
                 <li>
                     <div class="drop">
-                        <asp:HyperLink ID="HyperLink1" CssClass="btn bt dropdown-toggle dropbtn" data-bs-toggle="dropdown" aria-expanded="false" runat="server" NavigateUrl='<%# Eval("url") %>'><%# Eval("title") %></asp:HyperLink>
+                        <asp:HyperLink ID="HyperLink1" CssClass="btn bt dropdown-toggle dropbtn" data-bs-toggle="dropdown" aria-expanded="false" runat="server" NavigateUrl='<%# Eval("url") %>' meta:resourcekey="HyperLink1Resource1"><%# Eval("title") %></asp:HyperLink>
 
-                        <asp:Repeater ID="Repeater1" runat="server" DataSource='<%# ((SiteMapNode)Container.DataItem).ChildNodes  %>'>
+                        <asp:Repeater ID="Repeater1" runat="server" DataSource='<%# ((SiteMapNode)Container.DataItem).ChildNodes %>'>
 
                             <HeaderTemplate>
 
@@ -280,7 +280,7 @@
 
                             <ItemTemplate>
                                 <li>
-                                    <asp:HyperLink ID="HyperLink2" CssClass="dropdown-item HyperLinkHover" runat="server" NavigateUrl='<%# Eval("url") %>'><%# Eval("title") %></asp:HyperLink>
+                                    <asp:HyperLink ID="HyperLink2" CssClass="dropdown-item HyperLinkHover" runat="server" NavigateUrl='<%# Eval("url") %>' meta:resourcekey="HyperLink2Resource2"><%# Eval("title") %></asp:HyperLink>
                                 </li>
                             </ItemTemplate>
 
@@ -294,10 +294,10 @@
             </ItemTemplate>
             <FooterTemplate></div></div></FooterTemplate>
         </asp:Repeater>
-        <asp:SiteMapDataSource ShowStartingNode="false" ID="SiteMapDataSource1" runat="server" />
+        <asp:SiteMapDataSource ShowStartingNode="False" ID="SiteMapDataSource1" runat="server" />
 
 
-        <asp:Menu ID="navigation" runat="server" DataSourceID="SiteMapDataSource1" CssClass="dropdown-menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal"></asp:Menu>
+        <asp:Menu ID="navigation" runat="server" DataSourceID="SiteMapDataSource1" CssClass="dropdown-menu" EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" meta:resourcekey="navigationResource1"></asp:Menu>
 
 
 

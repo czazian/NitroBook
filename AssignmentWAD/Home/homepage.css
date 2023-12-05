@@ -6,6 +6,22 @@ body {
     overflow-x: hidden;
 }
 
+
+.ddlLanguage {
+    padding: 6.5px;
+    border-radius: 5px;
+    color: #D20808;
+    border: #D20808 1px solid;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+    .ddlLanguage:active {
+        color: #D20808;
+        border: #D20808 1px solid;
+    }
+
+
 /* width */
 ::-webkit-scrollbar {
     width: 12px;
@@ -141,13 +157,13 @@ body {
     justify-content: right;
 }
 
-.myAccount{
-    border:none;
+.myAccount {
+    border: none;
     text-decoration: none;
-    background-color:rgb(215,7,7);
-    color:white;
-    border-radius:5.5px;
-    padding:8.5px;
+    background-color: rgb(215,7,7);
+    color: white;
+    border-radius: 5.5px;
+    padding: 8.5px;
 }
 
 /*Categories*/
@@ -354,7 +370,8 @@ hrefGrp {
     margin-top: 10px;
     padding-top: 10px;
 }
-.s3{
+
+.s3 {
     font-weight: bold;
 }
 
