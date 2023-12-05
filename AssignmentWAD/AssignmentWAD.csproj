@@ -183,6 +183,11 @@
     <Compile Include="Admin2.Master.designer.cs">
       <DependentUpon>Admin2.Master</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\Client.Master.cn.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Client.Master.cn.resx</DependentUpon>
+    </Compile>
     <Compile Include="BookCategories\children.aspx.cs">
       <DependentUpon>children.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -479,8 +484,17 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_GlobalResources\" />
+    <Folder Include="App_LocalResources\" />
     <Folder Include="Home\App_LocalResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Client.Master.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Client.Master.cn.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Client.Master.cn.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

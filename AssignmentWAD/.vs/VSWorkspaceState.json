@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\App_GlobalResources"
   ],
-  "SelectedNode": "\\Order",
+  "SelectedNode": "\\Client.Master",
   "PreviewInSolutionExplorer": false
 }
