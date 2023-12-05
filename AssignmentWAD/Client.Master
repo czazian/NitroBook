@@ -225,6 +225,13 @@
                         </li>
                     </ul>
                 </div>
+
+                <div class="cart-container">
+                    <div style="padding-left:10px;">
+                    <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" PostBackUrl="~/Customer/UserProfile.aspx" Text="My Account"></asp:LinkButton>
+                    </div>
+                    </div>
+
                 <div class="cart-container">
                     <a href="<%= ResolveUrl("~/Order/cart.aspx") %>" id="btnCartPage">
                         <i data-bs-toggle="tooltip" data-bs-title="Cart" class="fa fa-shopping-cart" aria-hidden="true"
