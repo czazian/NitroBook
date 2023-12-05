@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\AssignmentWAD",
+    "\\AssignmentWAD\\Home",
     "\\AssignmentWAD\\image"
   ],
-  "SelectedNode": "\\AssignmentWAD\\Client.Master",
+  "SelectedNode": "\\AssignmentWAD\\Home\\homepage.aspx",
   "PreviewInSolutionExplorer": false
 }
