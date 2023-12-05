@@ -141,6 +141,15 @@ body {
     justify-content: right;
 }
 
+.myAccount{
+    border:none;
+    text-decoration: none;
+    background-color:rgb(215,7,7);
+    color:white;
+    border-radius:5.5px;
+    padding:8.5px;
+}
+
 /*Categories*/
 .dropdowns {
     margin-top: 1.5rem;
