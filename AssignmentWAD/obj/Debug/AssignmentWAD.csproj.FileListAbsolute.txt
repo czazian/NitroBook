@@ -93,7 +93,6 @@ C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\bin\roslyn\VBCSCompile
 C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\bin\FontAwesome.dll
 C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.AssemblyReference.cache
 C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.CoreCompileInputs.cache
 C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.CopyComplete
 C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.dll

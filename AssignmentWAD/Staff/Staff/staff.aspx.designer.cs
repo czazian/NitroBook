@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AssignmentWAD.Staff.staff
+namespace AssignmentWAD.Staff.Staff
 {
 
 

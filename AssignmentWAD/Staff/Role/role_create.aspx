@@ -16,33 +16,23 @@
                 <br>
                     <label class="label-field">Module Permission</label></br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbProdPermit" CssClass="toggle-checkbox"></asp:CheckBox>
-                    <div class="toggle-switch"></div>
-                    <span class="toggle-label">Product</span>
+                    <asp:CheckBox runat="server" ID="cbProdPermit" CssClass="toggle-checkbox" Text="Product"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbMemberPermit" CssClass="toggle-checkbox"></asp:CheckBox>
-                    <div class="toggle-switch"></div>
-                    <span class="toggle-label">Member</span>
+                    <asp:CheckBox runat="server" ID="cbMemberPermit" CssClass="toggle-checkbox" Text="Member"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbReportPermit" CssClass="toggle-checkbox"></asp:CheckBox>
-                    <div class="toggle-switch"></div>
-                    <span class="toggle-label">Report</span>
+                    <asp:CheckBox runat="server" ID="cbReportPermit" CssClass="toggle-checkbox" Text="Report"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbStaffPermit" CssClass="toggle-checkbox"></asp:CheckBox>
-                    <div class="toggle-switch"></div>
-                    <span class="toggle-label">Staff</span>
+                    <asp:CheckBox runat="server" ID="cbStaffPermit" CssClass="toggle-checkbox" Text="Staff"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbRolePermit" CssClass="toggle-checkbox"></asp:CheckBox>
-                    <div class="toggle-switch"></div>
-                    <span class="toggle-label">Role</span>
+                    <asp:CheckBox runat="server" ID="cbRolePermit" CssClass="toggle-checkbox" Text="Role"></asp:CheckBox>
                 </label>
                 <br>
                 <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
@@ -51,57 +41,3 @@
 
         </div>
 </asp:Content>
-<style>
-    .toggle {
-        cursor: pointer;
-        display: inline-block;
-        margin-bottom: 10px;
-    }
-
-    .toggle-switch {
-        display: inline-block;
-        background: #ccc;
-        border-radius: 16px;
-        width: 58px;
-        height: 32px;
-        position: relative;
-        vertical-align: middle;
-        transition: background 0.25s;
-    }
-    .toggle-switch:before, .toggle-switch:after {
-        content: "";
-    }
-    .toggle-switch:before {
-        display: block;
-        background: linear-gradient(to bottom, #fff 0%, #eee 100%);
-        border-radius: 50%;
-        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-        width: 24px;
-        height: 24px;
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        transition: left 0.25s;
-    }
-    .toggle:hover .toggle-switch:before {
-        background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
-    }
-    .toggle-checkbox:checked + .toggle-switch {
-        background: #56c080;
-    }
-    .toggle-checkbox:checked + .toggle-switch:before {
-        left: 30px;
-    }
-
-    .toggle-checkbox {
-        position: absolute;
-        visibility: hidden;
-    }
-
-    .toggle-label {
-        margin-left: 5px;
-        position: relative;
-        top: 2px;
-    }
-</style>

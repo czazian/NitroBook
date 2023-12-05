@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="staff.aspx.cs" Inherits="AssignmentWAD.Staff.staff.staff" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="staff.aspx.cs" Inherits="AssignmentWAD.Staff.Staff.staff" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -21,20 +21,20 @@
         <div class="sales-boxes">
             <div class="recent-sales box">
                 <div>
-                    <button class="form-button"><asp:HyperLink runat="server" ID="memberCreateLink" NavigateUrl="~/Staff/Member/member_create.aspx">Create</asp:HyperLink></button>
+                    <button class="form-button"><asp:HyperLink runat="server" ID="memberCreateLink" NavigateUrl="~/Staff/Staff/staff_create.aspx">Create</asp:HyperLink></button>
                 </div>
                 <div class="sales-details">
 
                     <ul class="details">
                         <li class="topic">No.</li>
 
-                        <li><a><%= i + 1%></a></li>
+                        <li><a>1</a></li>
 
                     </ul>
                     <ul class="details">
                         <li class="topic">Username</li>
 
-                        <li><a href="#"><%= staff.get(i).getUsername()%></a></li>
+                        <li><a href="#">Ali</a></li>
 
                     </ul>
                     <ul class="details">
