@@ -30,6 +30,8 @@
 
 <body>
     <form runat="server" id="client">
+
+
         <!--Promoter-->
         <div class="outer-header">
             <div class="header-container">
@@ -298,7 +300,7 @@
 
 
         <!--Footer-->
-        <footer>
+        <footer id="footer">
             <div class="footer-container container-fluid">
                 <div class="socialMedia">
                     <ul class="adjustment" style="list-style-type: none;">

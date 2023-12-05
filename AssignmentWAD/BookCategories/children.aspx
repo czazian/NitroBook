@@ -5,11 +5,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link rel="stylesheet" type="text/css" href="BookCategories.css" />
 
-
+    <script>
+        window.addEventListener("scroll", function () {
+            let box = document.getElementById("box");
+            var elementTarget = document.getElementById("btnCartPage");
+            if (window.scrollY > (elementTarget.offsetTop + elementTarget.offsetHeight)) {
+                box.style.top = 0;
+            } else {
+                box.style.top = "32vh";
+            }
+        });
+    </script>
     <!-- Temporary Book Content -->
 
-    <div class="row">
-        <div class="col-2">
+    <div class="row" id="content" style="position: relative;">
+
+        <div id="box" class="col-2" style="width: 280px; height: 32vh; position: fixed; top: 32vh;">
+
             <h1 style="padding-left: 25px; padding-top: 20px; font-size: 20px; color: #fa6464;"><strong>Children's</strong></h1>
             <br />
             <div id="list-example" class="list-group">
@@ -21,23 +33,23 @@
 
             <h2 style="margin-left: 25px; font-size: 15px;"><strong>Price range</strong></h2>
             <br />
-            <div class="priceRangeForm">
-                <asp:TextBox ID="txtMinPrice" runat="server" placeholder="Min RM" Width="70px" Style="font-size: 12px;"></asp:TextBox>
-                &nbsp;
-                <asp:TextBox ID="txtMaxPrice" runat="server" placeholder="Max RM" Width="70px" Style="font-size: 12px;"></asp:TextBox>
-                <br />
-                <br />
+            <div style="display: flex; width: 100%; flex-flow: row nowrap">
+                <div class="priceRangeForm" style="width: 100%;">
+                    <asp:TextBox ID="txtMinPrice" runat="server" placeholder="Min RM" Width="60px" Style="font-size: 12px;"></asp:TextBox>
+                    -
+                <asp:TextBox ID="txtMaxPrice" runat="server" placeholder="Max RM" Width="60px" Style="font-size: 12px;"></asp:TextBox>
+
+                    <asp:Button ID="btnPriceRange" runat="server" Text="Apply" CssClass="priceRange" />
+                </div>
             </div>
-            <asp:Button ID="btnPriceRange" runat="server" Text="Apply" CssClass="priceRange" />
-            <hr />
+
         </div>
 
 
 
         <!--Start of retriving records-->
-        <div class="col-10">
-
-            <h1 style="padding-left: 15px; font-size: 50px;"><strong>Character Stories</strong></h1>
+        <div class="col-9" style="margin-left: 325px;" id="main">
+            <h1 style="padding-left: 15px; font-size: 35px;"><strong>Children's</strong></h1>
             <p style="float: right; margin-right: 20px; margin-top: 10px;">Showing 1 - 4</p>
 
             <!-- Start Filter Bar -->
@@ -55,10 +67,9 @@
             <!-- End Filter Bar -->
 
 
-            <!-- First Photo Grid-->
-            <!--FICTION-->
-            <div id="group" class="w3-row-padding w3-center">
-
+            <!-- Photo Grid-->
+            <h1 id="list-item-1" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Character Stories</strong></h1>
+            <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
                 <div class="w3-quarter displayborder sContainers" style="width: 25%;">
                     <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
@@ -71,18 +82,16 @@
                     <br />
                     <asp:Label ID="lblStatus" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
                     <br />
-
-
                     <p>
 
                         <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                         </asp:LinkButton>
                     </p>
 
@@ -102,13 +111,13 @@
                     <p>
 
                         <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                         </asp:LinkButton>
                     </p>
                 </div>
@@ -128,13 +137,13 @@
                     <p>
 
                         <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="LinkButton6" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                         </asp:LinkButton>
                     </p>
                 </div>
@@ -154,19 +163,132 @@
                     <p>
 
                         <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
                         </asp:LinkButton>
                         <asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-          <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                         </asp:LinkButton>
                     </p>
                 </div>
 
 
             </div>
+
+
+
+            <!-- Photo Grid-->
+            <h1 id="list-item-2" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Picture Books</strong></h1>
+            <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
+
+                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
+                    <asp:Image ID="imgB5" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
+                    <br />
+                    <asp:Label ID="lblBookName5" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblAuthor5" runat="server" CssClass="s2" Text="Makoto Shinkai"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblPrice5" runat="server" CssClass="s3" Text="RM 20.00"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblStatus5" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
+                    <br />
+                    <p>
+
+                        <asp:LinkButton ID="LinkButton10" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+                        </asp:LinkButton>
+                    </p>
+
+                </div>
+                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
+                    <asp:Image ID="imgB6" runat="server" ImageUrl="~/image/book/book26.jpg" CssClass="poster" /><br />
+                    <br />
+                    <asp:Label ID="lblBookName6" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblAuthor6" runat="server" CssClass="s2" Text="Tun Dr Mahathir Mohamad"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblPrice6" runat="server" CssClass="s3" Text="RM 100.00"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblStatus6" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
+
+                    <br />
+                    <p>
+
+                        <asp:LinkButton ID="LinkButton13" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton15" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+                        </asp:LinkButton>
+                    </p>
+                </div>
+                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
+                    <asp:Image ID="ImageB7" runat="server" ImageUrl="~/image/book/book42.jpg" CssClass="poster" />
+                    <br />
+                    <br />
+                    <asp:Label ID="lblBookName7" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblAuthor7" runat="server" CssClass="s2" Text="Orion"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblPrice7" runat="server" CssClass="s3" Text="RM 49.90"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblStatus7" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
+
+                    <br />
+                    <p>
+
+                        <asp:LinkButton ID="LinkButton16" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton17" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+                        </asp:LinkButton>
+                    </p>
+                </div>
+                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
+                    <asp:Image ID="imgB8" runat="server" ImageUrl="~/image/book/book17.jpg" CssClass="poster" />
+                    <br />
+                    <br />
+                    <asp:Label ID="lblBookName8" runat="server" CssClass="s1" Text="Harry Potter"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblAuthor8" runat="server" CssClass="s2" Text="J. K. Rowling"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblPrice8" runat="server" CssClass="s3" Text="RM 47.50"></asp:Label><br />
+                    <br />
+                    <asp:Label ID="lblStatus8" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
+
+                    <br />
+                    <p>
+
+                        <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton20" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton21" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
+                        </asp:LinkButton>
+                    </p>
+                </div>
+
+
+            </div>
+
         </div>
     </div>
     <%--<script type="text/javascript">
