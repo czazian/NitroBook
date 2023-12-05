@@ -1,0 +1,382 @@
+﻿
+/*------ Login --------*/
+.loginContent {
+    background: url(http://www.timurtek.com/wp-content/uploads/2014/10/form-bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'HelveticaNeue','Arial', sans-serif;
+    width:750px;
+    margin:50px auto;
+    margin-top:-10px;
+
+}
+
+#Loginform {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    margin-top: -12px;
+}
+
+.hlk {
+    color: #fa6464;
+    text-decoration: none;
+}
+
+    .hlk:hover {
+        color: #aaa;
+    }
+
+.pull-right {
+    float: right;
+}
+
+.pull-left {
+    float: left;
+}
+
+.clear-fix {
+    clear: both;
+}
+
+/*div.logo {
+    text-align: center;
+    width: 750px;
+    height: 100px;
+    font-size:35px;
+    margin-left:-220px;
+    margin-bottom:-30px;*/
+/* margin: 20px 20px 30px 20px;
+*/
+/*}*/
+
+
+    /*div.logo svg {
+        width: 180px;
+        height: 100px;
+    }*/
+
+/*.logo-active {
+    fill: #44aacc !important;
+}*/
+
+/*#formWrapper {
+    width: 100%;
+    height: 100%;*/
+/*    position: absolute;
+*/  /*top: 0;
+    left: 0;
+    transition: all .3s ease;
+}*/
+
+
+/*div#form {*/
+/*    position: absolute;
+*/    /*width: 360px;
+    height: 320px;
+    height: auto;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 5px;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    margin-left:450px;*/
+   /* margin-left: -180px;
+    margin-top: -200px;*/
+/*}*/
+
+div.form-item {
+    height:80px;
+    margin-top:-10px;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    margin:auto;
+    text-align:center;
+    background-color: #fff;
+    font-size: 12px;
+       
+}
+
+  .form-style {
+        transition: all .2s ease;
+        color: #8a8a8a;
+        display: block;
+        width: 90%;
+        height: 44px;
+        padding: 5px 5%;
+        border: 1px solid #ccc;
+        -moz-border-radius: 27px;
+        -webkit-border-radius: 27px;
+        border-radius: 27px;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        background-color: #fff;
+        font-family: 'HelveticaNeue','Arial', sans-serif;
+        font-size: 90%;
+        letter-spacing: .8px;
+    }
+
+div.form-item .form-style:focus {
+    outline: none;
+    border: 1px solid #fa6464;
+    color: #fa6464;
+}
+
+div.form-item p.formLabel {
+    position: absolute;
+    left: 26px;
+    top: 2px;
+    transition: all .4s ease;
+    color: #bbb;
+}
+
+.formTop {
+    top: -8px !important;
+    left: 26px;
+    background-color: #fff;
+    padding: 0 5px;
+    font-size: 10px;
+    color: #fa6464 !important;
+}
+
+.formStatus {
+    color: #8a8a8a !important;
+}
+
+.btnLogin {
+    float: right;
+    width: 112px;
+    height: 37px;
+    -moz-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fa6464;
+    border: 1px solid #fa6464;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+    .btnLogin:hover {
+        background-color: #fff;
+        border: 1px solid #fa6464;
+        color: #fa6464;
+        cursor: pointer;
+    }
+
+.btnLogin:focus {
+        outline: none;
+    }
+
+/*------ Register part ------*/
+
+/*form styles*/
+#msform {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+    margin-top:-12px;
+}
+
+.fieldsets {
+    background: white;
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+
+#msform .input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
+
+/*buttons*/
+.action-button {
+    width: 100px;
+    background: #fa6464;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+    .action-button:hover, .action-button:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;
+    }
+
+/*headings*/
+.fs-title {
+    font-size: 19px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.fs-subtitle {
+    font-weight: bold;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+    float:left;
+}
+
+.fs-subtitleLogin {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+
+    #progressbar li {
+        list-style-type: none;
+        color: white;
+        text-transform: uppercase;
+        font-size: 9px;
+        width: 33.33%;
+        float: left;
+        position: relative;
+    }
+
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 20px;
+            line-height: 20px;
+            display: block;
+            font-size: 10px;
+            color: #333;
+            background: white;
+            border-radius: 3px;
+            margin: 0 auto 5px auto;
+        }
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none;
+        }
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before, #progressbar li.active:after {
+            background: #27AE60;
+            color: white;
+        }
+
+        /* User Profile */
+.col-2 {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    height:250px;
+}
+
+.UserProfileOption {
+    color: #000000;
+    font-family: "Open Sans", sans-serif;
+    margin: auto;
+    padding: 1px;
+    text-decoration: none;
+    width: 100%;
+    line-height: 30px;
+    padding-left: 25px;
+}
+
+    .UserProfileOption:hover {
+        background: #fa6464;
+        color: #fff;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+.list-group {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Logout part */
+#Logutform {
+    width: 750px;
+    margin: 50px auto;
+    text-align: center;
+    position: relative;
+}
+
+.LoginAgain{
+    font-size:16px;
+    text-decoration:none;
+    color:#fa6464;
+}
+
+    .LoginAgain:hover {
+        color: #aaa;
+    }
+
+/* OrderTracking */
+.bookImage {
+    width: 150px;
+    height: 150px;
+}
+
+.shippingStatus{
+    float:right;
+    color:#29fc82;
+    margin-top:-150px;
+    text-align:right;
+    font-size:18px;
+}
+
+.priceLabel {
+    float: right;
+    text-align: right;
+    font-size:17px;
+}
+
+.PurchaseDetails {
+    font-size: 20px;
+    margin-left: 150px;
+    margin-top: -120px;
+}
