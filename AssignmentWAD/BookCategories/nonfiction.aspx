@@ -53,7 +53,7 @@
         <!--Start of retriving records-->
         <div class="col-9" style="margin-left: 325px;" id="main">
 
-            <h1 style="padding-left: 15px; font-size: 35px;"><strong>Marketing & Sales</strong></h1>
+            <h1 style="padding-left: 15px; font-size: 35px;"><strong>Non-Fiction</strong></h1>
             <p style="float: right; margin-right: 20px; margin-top: 10px;">Showing 1 - 4</p>
             <%--                    <h4 id="list-item-1" class="setsubtitlepadding">Fantasy</h4>--%>
 
