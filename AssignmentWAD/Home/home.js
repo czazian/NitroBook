@@ -9,6 +9,25 @@ window.onload = function () {
     setInterval(function () {
         plusSlides(1);
     }, duration);
+
+
+    //=======================================================================
+
+
+    //Function for OrderTracking Page - Display Delivered Item (Rate button)
+    let stasList = document.getElementsByClassName("shippingStatus");
+    let rateBtns = document.getElementsByClassName("ratebtn");
+
+    for (var i = 0; i < stasList.length; i++) {
+        //alert(stasList.item(i).textContent);
+        if (stasList.item(i).textContent == "Delivered") {
+            rateBtns.item(i).style.display = "padding-box";
+            stasList.item(i).style.color = "#29fc82";
+        } else {
+            rateBtns.item(i).style.display = "none";
+            stasList.item(i).style.color = "coral";
+        }
+    }
 };
 
 function plusSlides(number) {

@@ -238,7 +238,7 @@
 
                 <div class="cart-container">
                     <div style="padding-left: 10px;">
-                        <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" PostBackUrl="~/Customer/UserProfile.aspx">
+                        <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" data-bs-toggle="tooltip" data-bs-title="User Profile" PostBackUrl="~/Customer/UserProfile.aspx">
                         <i style="font-size: 19px; padding-left: 4.5px; padding-right: 4.5px;" class="fa-solid fa-user"></i>
                         </asp:LinkButton>
                     </div>
