@@ -137,7 +137,7 @@
                                 <i class="fa-solid fa-star" style="color: darkgray"></i>
                             </div>
                             <div class="noOfPeople">
-                                <asp:Label runat="server" ID="people" Text="10 Peoples Rated" />
+                                <asp:Label runat="server" ID="people" Text="10 People Rated" />
                             </div>
                         </div>
                     </div>
