@@ -23,7 +23,7 @@
              <asp:TextBox ID="txtEmail" runat="server" placeholder="Email (xxx@xxxx.com)" TextMode="Email" CssClass="input"></asp:TextBox>
              <asp:TextBox ID="txtPhoneNum" runat="server" placeholder="Phone Number (without -)" TextMode="Phone" CssClass="input"></asp:TextBox>
                          <asp:TextBox ID="txtDOB" runat="server" placeholder="Date of Birth" TextMode="Date" CssClass="input"></asp:TextBox>
-             <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" CssClass="input"></asp:TextBox>
+             <asp:TextBox ID="txtAddress" runat="server" placeholder="Address" TextMode="MultiLine" CssClass="input"></asp:TextBox>
             <br /><br />
 <asp:LinkButton ID="lbtSubmit" runat="server" CssClass="submit action-button" Text="Submit" PostBackUrl="~/Customer/customerLogin.aspx"/><%--not sure yet--%>        </div>
 
