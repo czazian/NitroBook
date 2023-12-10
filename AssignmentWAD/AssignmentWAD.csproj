@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\NitroBooks.mdf" />
     <Content Include="BookCategories\BookCategories.css" />
     <Content Include="BookCategories\children.aspx" />
     <Content Include="BookCategories\fiction.aspx" />
