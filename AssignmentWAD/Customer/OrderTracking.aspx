@@ -24,6 +24,47 @@
                 modalBodyInput.value = recipient;
             });
         });
+
+            function openModal() {
+            var exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
+            // Update the modal's content (optional)
+            var modalTitle = exampleModal._element.querySelector('.modal-title');
+            var modalBodyInput = exampleModal._element.querySelector('.modal-body input');
+
+            //modalTitle.textContent = 'New message to @getbootstrap';
+            //modalBodyInput.value = '@getbootstrap';
+
+            // Show the modal
+            exampleModal.show();
+        }
+
+
+            $(function () {
+
+                $(document).on({
+                    mouseover: function (event) {
+                        $(this).find('.far').addClass('star-over');
+                        $(this).prevAll().find('.far').addClass('star-over');
+                    },
+                    mouseleave: function (event) {
+                        $(this).find('.far').removeClass('star-over');
+                        $(this).prevAll().find('.far').removeClass('star-over');
+                    }
+                }, '.rate');
+
+
+            $(document).on('click', '.rate', function () {
+                if (!$(this).find('.star').hasClass('rate-active')) {
+                $(this).siblings().find('.star').addClass('far').removeClass('fas rate-active');
+            $(this).find('.star').addClass('rate-active fas').removeClass('far star-over');
+            $(this).prevAll().find('.star').addClass('fas').removeClass('far star-over');
+                } else {
+                console.log('has');
+                }
+            });
+
+        });
     </script>
 
 </asp:Content>
@@ -365,49 +406,7 @@
         </div>
     </section>
 
-    <script defer>
 
-        function openModal() {
-            var exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
-
-            // Update the modal's content (optional)
-            var modalTitle = exampleModal._element.querySelector('.modal-title');
-            var modalBodyInput = exampleModal._element.querySelector('.modal-body input');
-
-            //modalTitle.textContent = 'New message to @getbootstrap';
-            //modalBodyInput.value = '@getbootstrap';
-
-            // Show the modal
-            exampleModal.show();
-        }
-
-
-        $(function () {
-
-            $(document).on({
-                mouseover: function (event) {
-                    $(this).find('.far').addClass('star-over');
-                    $(this).prevAll().find('.far').addClass('star-over');
-                },
-                mouseleave: function (event) {
-                    $(this).find('.far').removeClass('star-over');
-                    $(this).prevAll().find('.far').removeClass('star-over');
-                }
-            }, '.rate');
-
-
-            $(document).on('click', '.rate', function () {
-                if (!$(this).find('.star').hasClass('rate-active')) {
-                    $(this).siblings().find('.star').addClass('far').removeClass('fas rate-active');
-                    $(this).find('.star').addClass('rate-active fas').removeClass('far star-over');
-                    $(this).prevAll().find('.star').addClass('fas').removeClass('far star-over');
-                } else {
-                    console.log('has');
-                }
-            });
-
-        });
-    </script>
 
 </asp:Content>
 
