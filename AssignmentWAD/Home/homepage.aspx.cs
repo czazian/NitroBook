@@ -9,20 +9,6 @@ namespace AssignmentWAD.Home
 {
     public partial class homepage : System.Web.UI.Page
     {
-
-        protected override void InitializeCulture()
-        {
-            
-            string lang = Request.Form["ddlLanguage"];
-            if (lang != null)
-            {
-                UICulture = lang;
-                Culture = lang;
-            }
-
-            base.InitializeCulture();
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
 

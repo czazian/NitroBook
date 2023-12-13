@@ -215,22 +215,120 @@ div.form-item p.formLabel {
 
 /*buttons*/
 .action-button {
-    width: 100px;
+    display:inline-block;
+    text-align:center;
+    height: 37px;
+    width: 112px;
     background: #fa6464;
     font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 1px;
+    -moz-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fa6464;
+    border: 1px solid #fa6464;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 12px;
+ 
+}
+    .action-button:hover {
+        background-color: #fff;
+        border: 1px solid #fa6464;
+        color: #fa6464;
+        cursor: pointer;
+    }
+
+    .action-button:focus {
+        outline: none;
+    }
+
+  /*  .action-button:hover, .action-button:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;
+    }*/
+
+/*.action-button {*/
+    /*   width: 100px;
+    background-color: #fa6464;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #fa6464;
+    border-radius: 19px;
     cursor: pointer;
     padding: 10px;
     margin: 10px 5px;
     text-decoration: none;
     font-size: 14px;
+    height: 37px;
+    -moz-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;*/
+
+    /*width: 112px;
+    height: 37px;
+    -moz-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fa6464;
+    border: 1px solid #fa6464;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    text-decoration:none;
+    cursor:pointer;
 }
 
-    .action-button:hover, .action-button:focus {
-        box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;
+    .action-button:hover, .action-button:focus {*/
+        /*        box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;*/
+    /*background-color: #fff;
+        border: 1px solid #fa6464;
+        color: #fa6464;
+        cursor: pointer;
+
+    }*/
+
+/*.action-button {
+    width: 500px;
+    height: 50px;
+    -moz-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #000000;
+    border: 1px solid #fa6464;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+    .action-button:hover {
+        background-color: #fff;
+        border: 1px solid #fa6464;
+        color: #fa6464;
+        cursor: pointer;
     }
+
+    .action-button:focus {
+        outline: none;
+    }*/
+
+
+
 
 /*headings*/
 .fs-title {
@@ -337,6 +435,19 @@ div.form-item p.formLabel {
     margin-right: auto;
 }
 
+.editprofilePic {
+    float: left; 
+    position: relative; 
+    margin-left:-150px;
+    color:#474747;
+    font-size:10px;
+}
+
+.editprofilePic:hover {
+    color: #000000;
+}
+
+
 /* Logout part */
 #Logutform {
     width: 750px;
@@ -361,22 +472,166 @@ div.form-item p.formLabel {
     height: 150px;
 }
 
+.an-item{ 
+    margin-bottom : 10px;
+    width: 100%;
+}
+
 .shippingStatus{
-    float:right;
-    color:#29fc82;
-    margin-top:-150px;
     text-align:right;
     font-size:18px;
+    text-shadow : 1px .5px dimgray;
 }
 
 .priceLabel {
-    float: right;
     text-align: right;
-    font-size:17px;
+    font-size: 17px;
+    margin-top : -10px;
+    flex: 1 1 300px;
+    display:flex;
+    align-items: end;
+    justify-content: end;
 }
 
 .PurchaseDetails {
     font-size: 20px;
-    margin-left: 150px;
-    margin-top: -120px;
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+.RatingButton {
+    border: 1px solid #fa6464;
+    color: #fff;
+    width: 100px;
+    height: 37px;
+    -moz-border-radius: 19px;
+    -webkit-border-radius: 19px;
+    border-radius: 19px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fa6464;
+    font-weight: bold;
+}
+
+.RatingButton:hover{
+    background-color:#fe3e3e;
+    color:white;
+}
+
+.wrap {
+    width: 190px;
+    height: 50px;
+    background: #fff;
+    position: absolute;
+    left: 45%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+}
+
+.stars {
+    width: fit-content;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.star {
+    color: #fa6464 !important;
+}
+
+.rate {
+    height: 50px;
+    margin-left: -2px;
+    margin-top:-5px;
+    padding: 2px;
+    font-size: 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+    .rbtRating{
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,0%);
+        pointer-events: none;
+        background-color:black;
+    }
+
+.star-over::after {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 17px;
+    content: "\f005";
+    display: inline-block;
+    color: #fa6464;
+    z-index: 1;
+    position: absolute;
+    top: 7px;
+    left: 6.5px;
+}
+
+.rate:nth-child(1) .face::after {
+    content: "\f119"; 
+}
+
+.rate:nth-child(2) .face::after {
+    content: "\f11a";
+}
+
+.rate:nth-child(3) .face::after {
+    content: "\f118"; 
+}
+
+.rate:nth-child(4) .face::after {
+    content: "\f580"; 
+}
+
+.rate:nth-child(5) .face::after {
+    content: "\f59a"; 
+}
+
+.face {
+    opacity: 0;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #fa6464;
+    border-radius: 5px;
+    top: -50px;
+    left: 2px;
+    transition: 0.2s;
+    pointer-events: none;
+}
+
+    .face::before {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        content: "\f0dd";
+        display: inline-block;
+        color: #fa6464;
+        z-index: 1;
+        position: absolute;
+        left: 9px;
+        bottom: -15px;
+        top: 2px;
+    }
+
+    .face::after {
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        display: inline-block;
+        color: #fff;
+        z-index: 1;
+        position: absolute;
+        left: 5px;
+
+    }
+
+.rate:hover .face {
+    opacity: 1;
 }
