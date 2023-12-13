@@ -19,7 +19,7 @@
                 <br>
                     <label class="label-field">Role </label>
                 </br>
-s
+
                 <!--                            edit role is not allow in profile-->
                 <asp:DropDownList runat="server" ID="ddlRole" CssClass="input-field" Enabled="False">
                     <asp:ListItem Text="Admin" Value="Admin" Selected="False"></asp:ListItem>
