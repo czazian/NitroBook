@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="input-field button">
 <%--                                    redirect to admin page--%>
-                                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" PostBackUrl="~/Staff/Dashboard/dashboard.aspx" />
+                                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" PostBackUrl="~/Staff/Product/product.aspx" />
                                 </div>
 
                         </div>

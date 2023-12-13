@@ -33,15 +33,6 @@ namespace AssignmentWAD.Staff.Role
         protected global::System.Web.UI.WebControls.CheckBox cbProdPermit;
 
         /// <summary>
-        /// cbMemberPermit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbMemberPermit;
-
-        /// <summary>
         /// cbReportPermit control.
         /// </summary>
         /// <remarks>
@@ -49,6 +40,15 @@ namespace AssignmentWAD.Staff.Role
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbReportPermit;
+
+        /// <summary>
+        /// cbMemberPermit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbMemberPermit;
 
         /// <summary>
         /// cbStaffPermit control.

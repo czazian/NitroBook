@@ -419,6 +419,15 @@ a {
     background: #0d3073;
 }
 
+.toggle-checkbox input {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 2px;
+}
+
 /* Right box */
 .home-content .sales-boxes .top-sales {
     width: 35%;

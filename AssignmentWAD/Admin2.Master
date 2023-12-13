@@ -30,12 +30,12 @@
             <span class="logo_name">Nitro-Books</span>
         </div>
         <ul class="nav-links">
-            <li>
+<%--            <li>
                 <asp:HyperLink runat="server" ID="dashboardLink" NavigateUrl="~/Staff/Dashboard/dashboard.aspx">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </asp:HyperLink>
-            </li>
+            </li>--%>
             <li>
                 <asp:HyperLink runat="server" ID="productLink" NavigateUrl="~/Staff/Product/product.aspx">
                     <i class='bx bx-box'></i>

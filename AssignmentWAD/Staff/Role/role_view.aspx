@@ -20,11 +20,11 @@
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbMemberPermit" CssClass="toggle-checkbox" Text="Member"></asp:CheckBox>
+                    <asp:CheckBox runat="server" ID="CheckBox1" CssClass="toggle-checkbox" Text="Report"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbReportPermit" CssClass="toggle-checkbox" Text="Report"></asp:CheckBox>
+                    <asp:CheckBox runat="server" ID="cbMemberPermit" CssClass="toggle-checkbox" Text="Member"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
@@ -39,5 +39,6 @@
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Role/role.aspx" />
             </div>
 
-        </div>s
+        </div>
+    s
 </asp:Content>

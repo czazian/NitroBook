@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-      <div class="home-content">
+    <div class="home-content">
         <div class="sales-boxes">
 
             <div class="recent-sales box">
@@ -20,11 +20,11 @@
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbMemberPermit" CssClass="toggle-checkbox" Text="Member"></asp:CheckBox>
+                    <asp:CheckBox runat="server" ID="cbReportPermit" CssClass="toggle-checkbox" Text="Report"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
-                    <asp:CheckBox runat="server" ID="cbReportPermit" CssClass="toggle-checkbox" Text="Report"></asp:CheckBox>
+                    <asp:CheckBox runat="server" ID="cbMemberPermit" CssClass="toggle-checkbox" Text="Member"></asp:CheckBox>
                 </label>
                 <br>
                 <label class="toggle">
@@ -40,8 +40,6 @@
             </div>
 
         </div>
-          <style>
-
+        <style>
           </style>
-
 </asp:Content>
