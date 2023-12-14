@@ -134,7 +134,6 @@ C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentW
 C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\bin\FontAwesome.dll
 C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.AssemblyReference.cache
 C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.CoreCompileInputs.cache
 C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.csproj.CopyComplete
 C:\Users\koyas\OneDrive\Documents\GitHub\Web-Application-Development\AssignmentWAD\obj\Debug\AssignmentWAD.dll

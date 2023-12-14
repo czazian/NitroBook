@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeFile="product_edit.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_edit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <style>
+        .form-button:hover {
+            cursor: pointer;
+        }
+    </style>
     <link href="product.css" rel="stylesheet">
     <script src="product.js"></script>
 </asp:Content>

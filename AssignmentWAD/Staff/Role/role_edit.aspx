@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="role_edit.aspx.cs" Inherits="AssignmentWAD.Staff.Role.role_edit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <style>
+        .form-button:hover {
+            cursor: pointer;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
