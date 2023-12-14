@@ -7,10 +7,9 @@
     -o-background-size: cover;
     background-size: cover;
     font-family: 'HelveticaNeue','Arial', sans-serif;
-    width:750px;
-    margin:50px auto;
-    margin-top:-10px;
-
+    width: 750px;
+    margin: 50px auto;
+    margin-top: -10px;
 }
 
 #Loginform {
@@ -54,7 +53,7 @@
 /*}*/
 
 
-    /*div.logo svg {
+/*div.logo svg {
         width: 180px;
         height: 100px;
     }*/
@@ -67,7 +66,7 @@
     width: 100%;
     height: 100%;*/
 /*    position: absolute;
-*/  /*top: 0;
+*/ /*top: 0;
     left: 0;
     transition: all .3s ease;
 }*/
@@ -75,7 +74,7 @@
 
 /*div#form {*/
 /*    position: absolute;
-*/    /*width: 360px;
+*/ /*width: 360px;
     height: 320px;
     height: auto;
     background-color: #fff;
@@ -85,42 +84,41 @@
     left: 50%;
     top: 50%;
     margin-left:450px;*/
-   /* margin-left: -180px;
+/* margin-left: -180px;
     margin-top: -200px;*/
 /*}*/
 
 div.form-item {
-    height:80px;
-    margin-top:-10px;
+    height: 80px;
+    margin-top: -10px;
     position: relative;
     display: block;
     margin-bottom: 20px;
-    margin:auto;
-    text-align:center;
+    margin: auto;
+    text-align: center;
     background-color: #fff;
     font-size: 12px;
-       
 }
 
-  .form-style {
-        transition: all .2s ease;
-        color: #8a8a8a;
-        display: block;
-        width: 90%;
-        height: 44px;
-        padding: 5px 5%;
-        border: 1px solid #ccc;
-        -moz-border-radius: 27px;
-        -webkit-border-radius: 27px;
-        border-radius: 27px;
-        -moz-background-clip: padding;
-        -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-        background-color: #fff;
-        font-family: 'HelveticaNeue','Arial', sans-serif;
-        font-size: 90%;
-        letter-spacing: .8px;
-    }
+.form-style {
+    transition: all .2s ease;
+    color: #8a8a8a;
+    display: block;
+    width: 90%;
+    height: 44px;
+    padding: 5px 5%;
+    border: 1px solid #ccc;
+    -moz-border-radius: 27px;
+    -webkit-border-radius: 27px;
+    border-radius: 27px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background-color: #fff;
+    font-family: 'HelveticaNeue','Arial', sans-serif;
+    font-size: 90%;
+    letter-spacing: .8px;
+}
 
 div.form-item .form-style:focus {
     outline: none;
@@ -173,7 +171,7 @@ div.form-item p.formLabel {
         cursor: pointer;
     }
 
-.btnLogin:focus {
+    .btnLogin:focus {
         outline: none;
     }
 
@@ -185,7 +183,7 @@ div.form-item p.formLabel {
     margin: 50px auto;
     text-align: center;
     position: relative;
-    margin-top:-12px;
+    margin-top: -12px;
 }
 
 .fieldsets {
@@ -215,8 +213,8 @@ div.form-item p.formLabel {
 
 /*buttons*/
 .action-button {
-    display:inline-block;
-    text-align:center;
+    display: inline-block;
+    text-align: center;
     height: 37px;
     width: 112px;
     background: #fa6464;
@@ -235,8 +233,8 @@ div.form-item p.formLabel {
     padding: 10px;
     text-decoration: none;
     font-size: 12px;
- 
 }
+
     .action-button:hover {
         background-color: #fff;
         border: 1px solid #fa6464;
@@ -248,12 +246,12 @@ div.form-item p.formLabel {
         outline: none;
     }
 
-  /*  .action-button:hover, .action-button:focus {
+/*  .action-button:hover, .action-button:focus {
         box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;
     }*/
 
 /*.action-button {*/
-    /*   width: 100px;
+/*   width: 100px;
     background-color: #fa6464;
     border: none;
     color: #fff;
@@ -272,7 +270,7 @@ div.form-item p.formLabel {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;*/
 
-    /*width: 112px;
+/*width: 112px;
     height: 37px;
     -moz-border-radius: 19px;
     -webkit-border-radius: 19px;
@@ -290,8 +288,8 @@ div.form-item p.formLabel {
 }
 
     .action-button:hover, .action-button:focus {*/
-        /*        box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;*/
-    /*background-color: #fff;
+/*        box-shadow: 0 0 0 2px white, 0 0 0 3px #fa6470;*/
+/*background-color: #fff;
         border: 1px solid #fa6464;
         color: #fa6464;
         cursor: pointer;
@@ -343,7 +341,7 @@ div.form-item p.formLabel {
     font-size: 12px;
     color: #666;
     margin-bottom: 5px;
-    float:left;
+    float: left;
 }
 
 .fs-subtitleLogin {
@@ -405,10 +403,10 @@ div.form-item p.formLabel {
             color: white;
         }
 
-        /* User Profile */
+/* User Profile */
 .col-2 {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    height:250px;
+    height: 250px;
 }
 
 .UserProfileOption {
@@ -436,17 +434,17 @@ div.form-item p.formLabel {
 }
 
 .editprofilePic {
-    float: left; 
-    position: relative; 
-    margin-left:-150px;
-    color:#474747;
-    font-size:10px;
+    color: white;
+    font-size: 10px;
+    background-color: indianred;
+    border-radius: 15px;
+    padding: 10px;
+    text-decoration: none;
+    margin-left: -150px;
+    float: left;
+    position: relative;
+    text-align:center;
 }
-
-.editprofilePic:hover {
-    color: #000000;
-}
-
 
 /* Logout part */
 #Logutform {
@@ -456,10 +454,10 @@ div.form-item p.formLabel {
     position: relative;
 }
 
-.LoginAgain{
-    font-size:16px;
-    text-decoration:none;
-    color:#fa6464;
+.LoginAgain {
+    font-size: 16px;
+    text-decoration: none;
+    color: #fa6464;
 }
 
     .LoginAgain:hover {
@@ -472,23 +470,23 @@ div.form-item p.formLabel {
     height: 150px;
 }
 
-.an-item{ 
-    margin-bottom : 10px;
+.an-item {
+    margin-bottom: 10px;
     width: 100%;
 }
 
-.shippingStatus{
-    text-align:right;
-    font-size:18px;
-    text-shadow : 1px .5px dimgray;
+.shippingStatus {
+    text-align: right;
+    font-size: 18px;
+    text-shadow: 1px .5px dimgray;
 }
 
 .priceLabel {
     text-align: right;
     font-size: 17px;
-    margin-top : -10px;
+    margin-top: -10px;
     flex: 1 1 300px;
-    display:flex;
+    display: flex;
     align-items: end;
     justify-content: end;
 }
@@ -517,10 +515,10 @@ textarea {
     font-weight: bold;
 }
 
-.RatingButton:hover{
-    background-color:#fe3e3e;
-    color:white;
-}
+    .RatingButton:hover {
+        background-color: #fe3e3e;
+        color: white;
+    }
 
 .wrap {
     width: 190px;
@@ -545,22 +543,22 @@ textarea {
 .rate {
     height: 50px;
     margin-left: -2px;
-    margin-top:-5px;
+    margin-top: -5px;
     padding: 2px;
     font-size: 25px;
     position: relative;
     cursor: pointer;
 }
 
-    .rbtRating{
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,0%);
-        pointer-events: none;
-        background-color:black;
-    }
+.rbtRating {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    pointer-events: none;
+    background-color: black;
+}
 
 .star-over::after {
     font-family: 'Font Awesome 5 Free';
@@ -576,7 +574,7 @@ textarea {
 }
 
 .rate:nth-child(1) .face::after {
-    content: "\f119"; 
+    content: "\f119";
 }
 
 .rate:nth-child(2) .face::after {
@@ -584,15 +582,15 @@ textarea {
 }
 
 .rate:nth-child(3) .face::after {
-    content: "\f118"; 
+    content: "\f118";
 }
 
 .rate:nth-child(4) .face::after {
-    content: "\f580"; 
+    content: "\f580";
 }
 
 .rate:nth-child(5) .face::after {
-    content: "\f59a"; 
+    content: "\f59a";
 }
 
 .face {
@@ -629,7 +627,6 @@ textarea {
         z-index: 1;
         position: absolute;
         left: 5px;
-
     }
 
 .rate:hover .face {

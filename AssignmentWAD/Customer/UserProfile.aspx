@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="col-8">
-                    <div id="row-profile" style="border-style: solid; border-color: #D0D0D0; border-radius: 2px;">
+                    <div id="row-profile" style="border-style: solid; border-color: #D0D0D0; border-radius: 2px; display:flex; flex-flow :column nowrap;">
                         <div class="row">
                             <h2 class="heading"
                                 style="font-size: 1.3rem; font-weight: bold; margin-top: 20px; margin-left: 20px; font-family: Arial, Helvetica, sans-serif">Hi, Jason Tan!</h2>
