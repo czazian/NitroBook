@@ -12,17 +12,17 @@
     <div class="product-details container" style="padding: 50px 25px; width: 75%; height: 75%; border: 1px solid gray; border-radius: 10px">
         <div id="row2" class="row outer-cont">
             <div id="product-pic" class="col-4">
-                <asp:Image ID="imgBook" runat="server" ImageUrl="~/image/book/book12.jpg" Width="100%" />
+                <asp:Image ID="imgBook" runat="server" Width="100%" />
             </div>
             <div class="product-details col-8">
                 <div class="title" style="text-align: center;">
-                    <asp:Label runat="server" ID="lblBookName" CssClass="s1" Text="Suzume" Style="font-size: 20px; font-weight: bold"></asp:Label>
+                    <asp:Label runat="server" ID="lblBookName" CssClass="s1" Text="" Style="font-size: 20px; font-weight: bold"></asp:Label>
                     <br />
                     <br />
-                    <asp:Label runat="server" ID="lblAuthorName" CssClass="s2" Text="Makoto Shinkai"></asp:Label>
+                    <asp:Label runat="server" ID="lblAuthorName" CssClass="s2" Text=""></asp:Label>
                     <br />
                     <br />
-                    <asp:Label runat="server" ID="lblPrice" CssClass="s3 info" Text="RM 20.00"></asp:Label>
+                    RM&nbsp;<asp:Label runat="server" ID="lblPrice" CssClass="s3 info" Text=""></asp:Label>
                     <br />
                 </div>
 
@@ -35,7 +35,7 @@
                             <p style="font-weight: bold; text-align: right;">Language:</p>
                         </div>
                         <div class="col-9">
-                            <asp:Label runat="server" ID="lblLanguage" Text="Japanese"></asp:Label>
+                            <asp:Label runat="server" ID="lblLanguage" Text=""></asp:Label>
                         </div>
                         <br />
                         <br />
@@ -47,7 +47,7 @@
                             <p style="font-weight: bold; text-align: right;">Availability:</p>
                         </div>
                         <div class="col-9">
-                            <asp:Label runat="server" ID="lblAvailability" Text="2 Units Left"></asp:Label><br />
+                            <asp:Label runat="server" ID="lblAvailability" Text=""></asp:Label>&nbsp;Units Left<br />
                             <br />
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <p style="font-weight: bold; text-align: right; margin-top: 4px;">Description:</p>
                         </div>
                         <div class="col-9" style="line-height: 25px; text-align: justify">
-                            <asp:Label ID="lblDescription" runat="server" Text="She followed the young man named Souta to an abandoned location in the forest. But what was there was just an old white door in the middle things started to happen...">
+                            <asp:Label ID="lblDescription" runat="server" Text="">
                             </asp:Label><br />
                             <br />
                         </div>
@@ -110,7 +110,7 @@
                     <!-- Add to card button here -->
                     <div class="row details-row" style="justify-content: center;">
                         <div class="col-6" style="display: flex;">
-                            <asp:Button PostBackUrl="~/Order/cart.aspx" runat="server" ID="btnCart" CssClass="btn btn-danger" Style="background-color: #cc3300; width: 100%; margin-top: 15px;" Text="Add to cart" />
+                            <asp:Button OnClick="btnCart_Click" runat="server" ID="btnCart" CssClass="btn btn-danger" Style="background-color: #cc3300; width: 100%; margin-top: 15px;" Text="Add to cart" /> 
                         </div>
                     </div>
 
@@ -118,6 +118,13 @@
                 </div>
 
             </div>
+
+
+
+
+
+
+
 
             <!--Addtional Feature Product Rating-->
             <hr style="margin-top: 40px; padding: 0px;">
@@ -315,6 +322,5 @@
 
 
 <asp:Content runat="server" ID="Content3" ContentPlaceHolderID="jsScript">
-    <script type="text/javascript" src="../Home/home.js"></script>
     <script type="text/javascript" src="IndividualProductPage.js"></script>
 </asp:Content>

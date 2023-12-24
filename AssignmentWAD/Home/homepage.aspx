@@ -55,7 +55,7 @@
                     <asp:Label ID="lblPrice1" runat="server" CssClass="s3" Text="RM 20.00" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn1" PostBackUrl="~/Product/IndividualProduct.aspx" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton ID="linkBtn1" PostBackUrl="~/Product/IndividualProduct.aspx?bookID=12" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
@@ -69,7 +69,7 @@
                     <asp:Label ID="lblPrice2" runat="server" CssClass="s3" Text="RM 100.00"></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn2" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=26" ID="linkBtn2" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
@@ -85,7 +85,7 @@
                     <asp:Label ID="lblPrice3" runat="server" CssClass="s3" Text="RM 49.90" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn3" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round">
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=42" ID="linkBtn3" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round">
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
@@ -101,7 +101,7 @@
                     <asp:Label ID="lblPrice4" runat="server" CssClass="s3" Text="RM 47.50" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn4" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=17" ID="linkBtn4" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
@@ -117,7 +117,7 @@
                     <asp:Label ID="lblPrice5" runat="server" CssClass="s3" Text="RM 49.90"></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn5" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=6" ID="linkBtn5" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
@@ -153,7 +153,7 @@
                     <asp:Label ID="lblPrice6" runat="server" CssClass="s3" Text="RM 27.00" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=18" ID="LinkButton1" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
       Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>
@@ -169,7 +169,7 @@
                     <asp:Label ID="lblPrice7" runat="server" CssClass="s3" Text="RM 45.00" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn7" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=5" ID="linkBtn7" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
 
@@ -186,7 +186,7 @@
                     <asp:Label ID="lblPrice8" runat="server" CssClass="s3" Text="RM 19.90"></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn8" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=22" ID="linkBtn8" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
 
@@ -203,7 +203,7 @@
                     <asp:Label ID="lblPrice9" runat="server" CssClass="s3" Text="RM 56.50" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn9" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=19" ID="linkBtn9" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round" >
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
 
@@ -220,7 +220,7 @@
                     <asp:Label ID="lblPrice10" runat="server" CssClass="s3" Text="RM 52.90" ></asp:Label><br />
                     <br />
                     <p>
-                        <asp:LinkButton ID="linkBtn10" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round">
+                        <asp:LinkButton  PostBackUrl="~/Product/IndividualProduct.aspx?bookID=24" ID="linkBtn10" runat="server" CssClass="mrg w3-button w3-block w3-deep-orange w3-hover-red w3-round">
                                   Add to cart <i class="fa fa-shopping-cart"></i>
                         </asp:LinkButton>
                     </p>

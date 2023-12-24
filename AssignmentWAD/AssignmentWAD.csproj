@@ -96,6 +96,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NitroBooks.mdf" />
+    <Content Include="App_Data\NitroBooks_log.ldf">
+      <DependentUpon>NitroBooks.mdf</DependentUpon>
+    </Content>
     <Content Include="BookCategories\BookCategories.css" />
     <Content Include="BookCategories\children.aspx" />
     <Content Include="BookCategories\fiction.aspx" />
@@ -108,6 +111,7 @@
     <Content Include="Customer\OrderTracking.aspx" />
     <Content Include="Customer\Register.aspx" />
     <Content Include="Customer\UserProfile.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="image\book10.jpg" />
     <Content Include="image\book6.jpg" />
     <Content Include="image\book8.jpg" />
@@ -262,6 +266,9 @@
     <Compile Include="Customer\UserProfile.aspx.designer.cs">
       <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Home\homepage.aspx.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -269,6 +276,7 @@
     <Compile Include="Home\homepage.aspx.designer.cs">
       <DependentUpon>homepage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Cart.cs" />
     <Compile Include="Order\cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
