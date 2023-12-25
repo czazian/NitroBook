@@ -277,6 +277,7 @@
       <DependentUpon>homepage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Objects\Cart.cs" />
+    <Compile Include="Objects\ShoppingCart.cs" />
     <Compile Include="Order\cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

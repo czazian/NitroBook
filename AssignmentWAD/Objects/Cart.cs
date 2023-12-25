@@ -7,24 +7,20 @@ namespace AssignmentWAD
 {
     public class Cart
     {
-        public int bookID;
-        public string title;
-        public string author;
-        public double price;
-        public string language;
-        public int selectedQuantity;
-        public string description;
-        public string image;
+        public int bookID {  get; set; }
+        public string title { get; set; }
+        public string author { get; set; }
+        public double price { get; set; }
+        public int selectedQuantity { get; set; }
+        public string image { get; set; }
 
-        public Cart(int bookID, string title, string author, double price, string language, int selectedQuantity, string description, string image)
+        public Cart(int bookID, string title, string author, double price, int selectedQuantity, string image)
         {
             this.bookID = bookID;
             this.title = title;
             this.author = author;
             this.price = price;
-            this.language = language;
             this.selectedQuantity = selectedQuantity;
-            this.description = description;
             this.image = image;
         }
 
@@ -42,7 +38,6 @@ namespace AssignmentWAD
         {
             this.price = price;
         }
-
 
         public int getQuantity()
         {
@@ -72,25 +67,6 @@ namespace AssignmentWAD
         public void setAuthor(string author)
         {
             this.author = author;
-        }
-        public string getLanguage()
-        {
-            return language;
-        }
-
-        public void setLanguage(string language)
-        {
-            this.language = language;
-        }
-
-        public string getDescription()
-        {
-            return description;
-        }
-
-        public void setDescription(string description)
-        {
-            this.description = description;
         }
 
         public string getImage()

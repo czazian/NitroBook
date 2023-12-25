@@ -51,7 +51,8 @@ namespace AssignmentWAD.Order
 
         protected void btnCart_Click(object sender, EventArgs e)
         {
-            btnCart.PostBackUrl = "~/Order/cart.aspx";
+            string postback = "~/Order/cart.aspx?bookID=" + Request.QueryString["bookID"] + "&qty=" + txtQuantity.Text;
+            Response.Redirect(postback);
         }
     }
 }

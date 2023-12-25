@@ -107,6 +107,7 @@
 
                     <br />
 
+       
                     <!-- Add to card button here -->
                     <div class="row details-row" style="justify-content: center;">
                         <div class="col-6" style="display: flex;">
