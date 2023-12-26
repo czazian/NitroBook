@@ -5,6 +5,12 @@ body {
     font-family: 'Poppins';
     overflow-x: hidden;
 }
+/*
+.hidden{
+    display: none;
+}*/
+
+
 
 /* width */
 ::-webkit-scrollbar {

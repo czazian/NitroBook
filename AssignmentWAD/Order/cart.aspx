@@ -6,8 +6,49 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!--Start of Shopping Cart-->
 
+
+    <!--Remove the Query String after it is obtained, to avoid keep adding item-->
+    <script>
+        $(document).ready(function () {
+            history.pushState(null, "", location.href.split("?")[0]);
+
+            //Disabled the checkout and total amount if the cart is empty
+            var qty = document.getElementById('<%= lblAmount.ClientID %>').innerHTML;
+            var checkout = document.getElementById('checkout');
+            var amount = document.getElementById('overall-payment');
+
+            if (qty > 0) {
+                checkout.style.display = "flex";
+                amount.style.display = "flex";
+            } else {
+                checkout.style.display = "none";
+                amount.style.display = "none";
+            }
+
+        })
+    </script>
+
+
+    <% 
+        //Obtain shopping cart
+        AssignmentWAD.ShoppingCart shoppingCart = (AssignmentWAD.ShoppingCart)Session["shoppingCart"];
+
+        if (shoppingCart == null)
+        {
+            shoppingCart = new AssignmentWAD.ShoppingCart();
+            Session["shoppingCart"] = shoppingCart;
+        }
+
+        List<AssignmentWAD.Cart> books = shoppingCart.getCartItems();
+
+        if (books.Count == 0)
+        {
+            lblEmptyCart.Text = "Cart is empty. Kindly add an item and come back again!";
+        }
+    %>
+
+    <!--Start of Shopping Cart-->
     <div class="cartitems-container">
 
         <div class="cart-title">
@@ -17,25 +58,6 @@
             Spend RM200 to obtain a free delivery for all regions in Malaysia.
         </div>
 
-
-        <!--Test-->
-        <% 
-            //Obtain shopping cart
-            AssignmentWAD.ShoppingCart shoppingCart = (AssignmentWAD.ShoppingCart)Session["shoppingCart"];
-
-            if (shoppingCart == null)
-            {
-                shoppingCart = new AssignmentWAD.ShoppingCart();
-                Session["shoppingCart"] = shoppingCart;
-            }
-
-            List<AssignmentWAD.Cart> books = shoppingCart.getCartItems();
-
-            if (books.Count == 0)
-            {
-                emptyCart.Text = "Sorry, your shopping cart is currently empty. Kindly add an item and come back agian!";
-            }
-        %>
 
         <!--Start of cart content-->
 
@@ -55,18 +77,14 @@
                     </th>
                 </tr>
 
-
-                <!--If the cart is empty-->
-                <asp:Label runat="server" ID="emptyCart" Style="font-size: 1rem; text-align: center; font-weight: bold;" />
-
-                <asp:Repeater runat="server" ID="BookRepeater">
+                <asp:Repeater runat="server" ID="BookRepeater" OnItemDataBound="BookRepeater_ItemDataBound">
 
                     <ItemTemplate>
 
                         <tr class="content">
                             <!--Book Image-->
                             <td style="padding: 10px;">
-                                <asp:ImageButton runat="server" ImageUrl='<%# Eval("image") %>' ID="imgBook" Width="180" Height="280" OnCommand="imgBook_Command" CommandArgument='<%# Eval("bookID") %>'/>
+                                <asp:ImageButton runat="server" ImageUrl='<%# Eval("image") %>' ID="imgBook" Width="180" Height="280" OnCommand="imgBook_Command" CommandArgument='<%# Eval("bookID") %>' />
                             </td>
 
                             <!--Author and Book title and price-->
@@ -86,41 +104,30 @@
                             <!--dustbin-->
                             <td class="dus">
 
-                                <!---->
-                                <asp:LinkButton OnClientClick="return false;" CssClass="btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmation" ID="lnBtnDustbin" runat="server">
-        <svg class="icon-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" width="40" height="40">
-          <path class="trash-lid" fill-rule="evenodd" d="M6 15l4 0 0-3 8 0 0 3 4 0 0 2 -16 0zM12 14l4 0 0 1 -4 0z" />
-          <path class="trash-can" d="M8 17h2v9h8v-9h2v9a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" />
-        </svg>
-                                </asp:LinkButton>
 
-                                <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <span>Delete Item</span>
-                                                <asp:LinkButton Style="background-color: transparent; border: none; color: coral; font-size: 1.5rem; text-decoration: none;" runat="server" ID="btnCloseModal" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                                                </asp:LinkButton>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure to delete this item?
-                                            </div>
-                                            <div class="modal-footer d-flex align-items-center justify-content-center">
-                                                <asp:Button runat="server" ID="btnCancel" class="btn btn-primary" data-dismiss="modal" Text="Cancel" />
-                                                <asp:Button runat="server" ID="btnDelete" class="btn btn-danger" data-dismiss="modal" Text="Delete" />
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <asp:LinkButton CommandArgument='<%# Eval("bookID") %>' OnClick="btnDelete_Click" runat="server" ID="btnDelete" class="example btn" OnClientClick="return confirm('Are you sure you want to delete this item ?')">
+                                        <svg class="icon-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" width="40" height="40">
+                                            <path class="trash-lid" fill-rule="evenodd" d="M6 15l4 0 0-3 8 0 0 3 4 0 0 2 -16 0zM12 14l4 0 0 1 -4 0z" />
+                                            <path class="trash-can" d="M8 17h2v9h8v-9h2v9a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" />
+                                        </svg>
+                                    </asp:LinkButton>
+
+
                                 </div>
 
+
+
                             </td>
+
+
 
                             <!--Total-->
                             <td class="total" id="oTotal" style="text-align: right;">
                                 <asp:Label runat="server" ID="lblTotal" Text="RM 60.00" />
                             </td>
                         </tr>
+
                     </ItemTemplate>
 
                 </asp:Repeater>
@@ -130,13 +137,18 @@
             </table>
 
 
-            <div class="overall-payment">
+            <!--If cart is empty-->
+            <div style="text-align: center; width: 100%; padding: 10px; margin-top: 15px;">
+                <asp:Label ID="lblEmptyCart" runat="server" Style="color: crimson; font-size: 1.2rem; font-weight: bold; text-align: center;"></asp:Label>
+            </div>
+
+            <div class="overall-payment" id="overall-payment">
                 <div colspan="5" class="amount-container">
                     <div id="payment-title">
                         Total : RM
                     </div>
                     <div class="amount" id="amount">
-                        <asp:Label runat="server" ID="lblAmount" Text="60.00" />
+                        <asp:Label runat="server" ID="lblAmount" Text="9" />
                     </div>
                 </div>
 
@@ -161,12 +173,5 @@
 <asp:Content runat="server" ID="Content3" ContentPlaceHolderID="jsScript">
     <script type="text/javascript" src="../Home/home.js"></script>
     <script type="text/javascript" src="../Product/cart.js"></script>
-    <script type="text/javascript">
-        const myModal = document.getElementById('myModal')
-        const myInput = document.getElementById('myInput')
 
-        myModal.addEventListener('shown.bs.modal', () => {
-            myInput.focus()
-        })
-    </script>
 </asp:Content>

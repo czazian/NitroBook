@@ -10,11 +10,11 @@ namespace AssignmentWAD
         public int bookID {  get; set; }
         public string title { get; set; }
         public string author { get; set; }
-        public double price { get; set; }
+        public decimal price { get; set; }
         public int selectedQuantity { get; set; }
         public string image { get; set; }
 
-        public Cart(int bookID, string title, string author, double price, int selectedQuantity, string image)
+        public Cart(int bookID, string title, string author, decimal price, int selectedQuantity, string image)
         {
             this.bookID = bookID;
             this.title = title;
@@ -29,12 +29,12 @@ namespace AssignmentWAD
             return bookID;
         }
 
-        public double getPrice()
+        public decimal getPrice()
         {
             return price;
         }
 
-        public void setPrice(Double price)
+        public void setPrice(decimal price)
         {
             this.price = price;
         }

@@ -1,12 +1,8 @@
-﻿using Microsoft.SqlServer.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 
 namespace AssignmentWAD.Order
@@ -34,7 +30,6 @@ namespace AssignmentWAD.Order
                 int bookID = Convert.ToInt32(Request.QueryString["bookID"]);
                 int selectedQuantity = Convert.ToInt32(Request.QueryString["qty"]);
 
-
                 SqlConnection conn;
                 string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
                 conn = new SqlConnection(strConnection);
@@ -52,13 +47,14 @@ namespace AssignmentWAD.Order
                     string msg = "";
                     while (reader.Read())
                     {
-                        msg += reader["Title"].ToString() + "|" + reader["Author"].ToString() + "|" + reader["Price"].ToString() + "|" + reader["Image"].ToString();
+                        msg += reader["Title"].ToString() + "|" + reader["Author"].ToString() + "|" + reader["Price"] + "|" + reader["Image"].ToString();
                     }
 
                     string[] data = msg.Split('|');
 
                     //Object creation
-                    Cart book = new Cart(bookID, data[0], data[1], Double.Parse(data[2]), selectedQuantity, data[3]);
+                    decimal p = Convert.ToDecimal(data[2]);
+                    Cart book = new Cart(bookID, data[0], data[1], Decimal.Round(p, 2), selectedQuantity, data[3]);
 
                     shoppingCart.addItem(book);
                 }
@@ -67,13 +63,61 @@ namespace AssignmentWAD.Order
                 BookRepeater.DataSource = shoppingCart.getCartItems();
                 BookRepeater.DataBind();
             }
+
+
+
         }
 
         protected void imgBook_Command(object sender, CommandEventArgs e)
         {
             string destination = "~/Product/IndividualProduct.aspx?bookID=" + e.CommandArgument;
-            Response.Redirect(destination);
+            Response.Redirect(destination, false);
+            Context.ApplicationInstance.CompleteRequest();
         }
 
+
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            //Obtian the bookid of the clicked item in the cart 
+            int index = Convert.ToInt32(((Button)sender).CommandArgument);
+            System.Diagnostics.Debug.WriteLine("Idx of Item : " + index);
+
+            //Get all cart items stored in the session
+            ShoppingCart shoppingCart = (ShoppingCart)Session["shoppingCart"];
+
+
+            if (shoppingCart == null)
+            {
+                shoppingCart = new ShoppingCart();
+                Session["shoppingCart"] = shoppingCart;
+            }
+
+            shoppingCart.removeItem(index);
+            Response.Redirect("~/Order/cart.aspx"); //Refresh page
+        }
+
+        protected void BookRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                //Get All Cart Values
+                ShoppingCart shoppingCart = (ShoppingCart)Session["shoppingCart"];
+                if (shoppingCart == null)
+                {
+                    shoppingCart = new ShoppingCart();
+                    Session["shoppingCart"] = shoppingCart;
+                }
+
+                List<Cart> items = shoppingCart.getCartItems();
+
+                foreach (Cart item in items)
+                {
+                    
+                }
+
+                Label lblTotal = ((Label)e.Item.FindControl("lblTotal"));
+            }
+        }
     }
 }
