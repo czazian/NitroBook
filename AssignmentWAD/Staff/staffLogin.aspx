@@ -28,18 +28,23 @@
                             </span>
                             <%--have to add required but it is not available in asp net--%>
                                 <div class="input-field">
-                                    <asp:Textbox ID="staffId" runat="server" placeholder="Enter Staff ID" class="auto-style1" name="id"/>
-                                    <i class="fa-solid fa-user"></i>                       
+                                    <asp:Textbox ID="staffId" runat="server" placeholder="Enter Staff Username" class="auto-style1" name="id"/>
+                                    <i class="fa-solid fa-user"></i>
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="staffId" ErrorMessage="Staff Username is required" ForeColor="Red"></asp:RequiredFieldValidator>
                                 <div class="input-field">
                                     <asp:TextBox ID="password" runat="server" TextMode="Password" class="password" placeholder="Enter your password"/>
                                     <i class="fa-solid fa-lock"></i>
                                     <i class="uil uil-eye-slash showHidePw"></i>
                                 </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password is Required" ForeColor="Red" ControlToValidate="password"></asp:RequiredFieldValidator>
                                 <div class="input-field button">
 <%--                                    redirect to admin page--%>
                                     <asp:Button ID="btnSubmit" runat="server" Text="Submit" PostBackUrl="~/Staff/Product/product.aspx" />
                                 </div>
+
+                            <br />
+                            
 
                         </div>
                     </div>
