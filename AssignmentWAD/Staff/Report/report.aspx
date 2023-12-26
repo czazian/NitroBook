@@ -109,7 +109,7 @@
 
                     <li>
                         <asp:HyperLink runat="server" NavigateUrl="~/Staff/Product/product.aspx">
-                                <asp:Image runat="server" ImageUrl="~/image/book1.jpg" />
+                                <asp:Image runat="server" ImageUrl="~/image/book/book12.jpg" />
                                 <span runat="server" class="product">Suzume</span>
                         </asp:HyperLink>
                         <span runat="server" class="quantitySold">3</span>
@@ -124,7 +124,7 @@
 
                     <li>
                         <asp:HyperLink runat="server" NavigateUrl="~/Staff/Product/product.aspx">
-                                <asp:Image runat="server" ImageUrl="~/image/book1.jpg" />
+                                <asp:Image runat="server" ImageUrl="~/image/book/book12.jpg" />
                                 <span runat="server" class="product">Suzume</span>
                         </asp:HyperLink>
                         <span runat="server" class="quantitySold">3</span>

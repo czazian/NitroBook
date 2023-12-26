@@ -17,9 +17,32 @@
             Spend RM200 to obtain a free delivery for all regions in Malaysia.
         </div>
 
+
+        <!--Test-->
+        <% 
+            //Obtain shopping cart
+            AssignmentWAD.ShoppingCart shoppingCart = (AssignmentWAD.ShoppingCart)Session["shoppingCart"];
+
+            if (shoppingCart == null)
+            {
+                shoppingCart = new AssignmentWAD.ShoppingCart();
+                Session["shoppingCart"] = shoppingCart;
+            }
+
+            List<AssignmentWAD.Cart> books = shoppingCart.getCartItems();
+
+            if (books.Count == 0)
+            {
+                emptyCart.Text = "Sorry, your shopping cart is currently empty. Kindly add an item and come back agian!";
+            }
+        %>
+
+        <!--Start of cart content-->
+
         <div class="cart-contents">
 
             <table style="border-collapse: collapse">
+
                 <!--HEADER-->
                 <tr class="titles">
                     <th class="title-image">Product
@@ -33,78 +56,76 @@
                 </tr>
 
 
+                <!--If the cart is empty-->
+                <asp:Label runat="server" ID="emptyCart" Style="font-size: 1rem; text-align: center; font-weight: bold;" />
 
+                <asp:Repeater runat="server" ID="BookRepeater">
 
+                    <ItemTemplate>
 
-                <!--CONTENT-->
-                <tr class="content">
-                    <!--Book Image-->
-                    <td style="padding: 10px;">
-                        <asp:ImageButton ImageUrl="~/image/book/book12.jpg" runat="server" ID="imgBook" OnClick="imgBook_Click" Width="180" Height="280" />
-                    </td>
+                        <tr class="content">
+                            <!--Book Image-->
+                            <td style="padding: 10px;">
+                                <asp:ImageButton runat="server" ImageUrl='<%# Eval("image") %>' ID="imgBook" Width="180" Height="280" OnCommand="imgBook_Command" CommandArgument='<%# Eval("bookID") %>'/>
+                            </td>
 
-                    <!--Author and Book title and price-->
-                    <td class="listing">
-                        <asp:Label CssClass="t1" runat="server" ID="lblTitle" Text="Makoto Shinkai" />
-                        <asp:Label CssClass="t2" runat="server" ID="lblAuthor" Text="Suzume" />
-                        <asp:Label CssClass="t3 price" runat="server" ID="lblPrice" Text="RM 60.00" />
-                    </td>
+                            <!--Author and Book title and price-->
+                            <td class="listing">
+                                <asp:Label CssClass="t1" runat="server" ID="lblAuthor" Text='<%# Eval("author") %>' />
+                                <asp:Label CssClass="t2" runat="server" ID="lblTitle" Text='<%# Eval("title") %>' />
+                                <asp:Label CssClass="t3 price" runat="server" ID="lblPrice" Text='<%# "RM " + Eval("price") %>' />
+                            </td>
 
-                    <!--Quantity-->
-                    <td class="input-container" style="text-align: center;">
-                        <div class="qtyContainer" style="font-size: 1.05em">
-                            <asp:Label runat="server" ID="lblCurrentQty" Text="1" />
-                        </div>
-                    </td>
+                            <!--Quantity-->
+                            <td class="input-container" style="text-align: center;">
+                                <div class="qtyContainer" style="font-size: 1.05em">
+                                    <asp:Label runat="server" ID="lblCurrentQty" Text='<%# Eval("selectedQuantity") %>' />
+                                </div>
+                            </td>
 
-                    <!--dustbin-->
-                    <td class="dus">
+                            <!--dustbin-->
+                            <td class="dus">
 
-                        <!---->
-                        <asp:LinkButton OnClientClick="return false;" CssClass="btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmation" ID="lnBtnDustbin" runat="server">
-                            <svg class="icon-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" width="40" height="40">
-                              <path class="trash-lid" fill-rule="evenodd" d="M6 15l4 0 0-3 8 0 0 3 4 0 0 2 -16 0zM12 14l4 0 0 1 -4 0z" />
-                              <path class="trash-can" d="M8 17h2v9h8v-9h2v9a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" />
-                            </svg>
-                        </asp:LinkButton>
+                                <!---->
+                                <asp:LinkButton OnClientClick="return false;" CssClass="btn" data-bs-toggle="modal" data-bs-target="#deleteConfirmation" ID="lnBtnDustbin" runat="server">
+        <svg class="icon-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" width="40" height="40">
+          <path class="trash-lid" fill-rule="evenodd" d="M6 15l4 0 0-3 8 0 0 3 4 0 0 2 -16 0zM12 14l4 0 0 1 -4 0z" />
+          <path class="trash-can" d="M8 17h2v9h8v-9h2v9a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" />
+        </svg>
+                                </asp:LinkButton>
 
-                        <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <span>Delete Item</span>
-                                        <asp:LinkButton Style="background-color: transparent; border: none; color: coral; font-size: 1.5rem; text-decoration: none;" runat="server" ID="btnCloseModal" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </asp:LinkButton> 
-                                    </div>
-                                    <div class="modal-body">
-                                        Are you sure to delete this item?
-                                    </div>
-                                    <div class="modal-footer d-flex align-items-center justify-content-center">
-                                        <asp:Button runat="server" ID="btnCancel" class="btn btn-primary" data-dismiss="modal" Text="Cancel"/>
-                                        <asp:Button runat="server" ID="btnDelete" class="btn btn-danger" data-dismiss="modal" Text="Delete"/>
+                                <div class="modal fade" id="deleteConfirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <span>Delete Item</span>
+                                                <asp:LinkButton Style="background-color: transparent; border: none; color: coral; font-size: 1.5rem; text-decoration: none;" runat="server" ID="btnCloseModal" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                                                </asp:LinkButton>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure to delete this item?
+                                            </div>
+                                            <div class="modal-footer d-flex align-items-center justify-content-center">
+                                                <asp:Button runat="server" ID="btnCancel" class="btn btn-primary" data-dismiss="modal" Text="Cancel" />
+                                                <asp:Button runat="server" ID="btnDelete" class="btn btn-danger" data-dismiss="modal" Text="Delete" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!---->
 
+                            </td>
 
-    <%--                    <asp:LinkButton ID="lnBtnDustbin" runat="server">
-                            <svg class="icon-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 40" width="40" height="40">
-                              <path class="trash-lid" fill-rule="evenodd" d="M6 15l4 0 0-3 8 0 0 3 4 0 0 2 -16 0zM12 14l4 0 0 1 -4 0z" />
-                              <path class="trash-can" d="M8 17h2v9h8v-9h2v9a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z" />
-                            </svg>
-                        </asp:LinkButton>--%>
-                    </td>
+                            <!--Total-->
+                            <td class="total" id="oTotal" style="text-align: right;">
+                                <asp:Label runat="server" ID="lblTotal" Text="RM 60.00" />
+                            </td>
+                        </tr>
+                    </ItemTemplate>
 
-                    <!--Total-->
-                    <td class="total" id="oTotal" style="text-align: right;">
-                        <asp:Label runat="server" ID="lblTotal" Text="RM 60.00" />
-                    </td>
-                </tr>
+                </asp:Repeater>
 
-                <!--END CONTENT-->
+                <!--End of Cart Content-->
 
             </table>
 
@@ -133,9 +154,8 @@
             </div>
 
         </div>
-    </div>
 
-    <!--End of Shopping Cart-->
+        <!--End of Shopping Cart-->
 </asp:Content>
 
 <asp:Content runat="server" ID="Content3" ContentPlaceHolderID="jsScript">
