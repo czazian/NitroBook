@@ -16,7 +16,8 @@ namespace AssignmentWAD
 
         protected void btnSch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Product/search.aspx");
+            string destination = "~/Product/search.aspx?para=" + txtSearch.Text;
+            Response.Redirect(destination);
         }
 
         protected void Page_Load(object sender, EventArgs e)
