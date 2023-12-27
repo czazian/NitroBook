@@ -136,7 +136,7 @@
                     <tr class="content">
                         <!--Book Image-->
                         <td style="padding: 10px; width: 20%;">
-                            <asp:ImageButton ImageUrl="~/image/book/book12.jpg" runat="server" ID="imgBook" Width="180" Height="280" />
+                            <asp:ImageButton OnClientClick="return false;" Style="cursor: content-item" ImageUrl="~/image/book/book12.jpg" runat="server" ID="imgBook" Width="180" Height="280" />
                         </td>
 
                         <!--Author and Book title and price-->
@@ -160,6 +160,7 @@
                     </tr>
 
                     <!--END CONTENT-->
+
 
 
                 </table>
@@ -266,7 +267,7 @@
                         Payment Method
                     </div>
                     <div class="paymentsum-method">
-                        <asp:Label ID="lblPaymentMethod" CssClass="displayMethod" runat="server" />
+                        <asp:Label ID="lblPaymentMethod" CssClass="displayMethod" Text="Cash" runat="server" />
                     </div>
                 </div>
                 <div class="display">

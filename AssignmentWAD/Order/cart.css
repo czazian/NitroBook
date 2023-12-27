@@ -10,7 +10,12 @@ body {
     display: none;
 }*/
 
-
+.txtBorder:active, .txtBorder:hover, .txtBorder:focus {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: context-menu;
+}
 
 /* width */
 ::-webkit-scrollbar {

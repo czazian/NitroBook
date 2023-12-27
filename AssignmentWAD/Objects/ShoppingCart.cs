@@ -13,6 +13,7 @@ namespace AssignmentWAD
     {
 
         protected List<Cart> book;
+        public int numberOfItems = 0;
 
         public ShoppingCart()
         {
@@ -46,6 +47,7 @@ namespace AssignmentWAD
 
             //If the book is not found / it is the first item, baru add into the cart
             book.Add(newItem);
+            numberOfItems++;
             System.Diagnostics.Debug.WriteLine("This is not equal objects");
         }
 
@@ -70,11 +72,12 @@ namespace AssignmentWAD
             foreach (Cart currentItem in book)
             {
                 if (currentItem.bookID.Equals(bookID)){
-                    total = currentItem.price * qty;
+                    total = currentItem.price * qty; 
                 }
             }
 
             return total;
         }
+
     }
 }

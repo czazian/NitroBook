@@ -114,6 +114,15 @@ namespace AssignmentWAD.Order
         protected global::System.Web.UI.WebControls.LinkButton btnAdd;
 
         /// <summary>
+        /// rangevalidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangevalidator;
+
+        /// <summary>
         /// btnCart control.
         /// </summary>
         /// <remarks>

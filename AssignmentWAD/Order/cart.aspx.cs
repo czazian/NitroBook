@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -9,6 +12,8 @@ namespace AssignmentWAD.Order
 {
     public partial class cart : System.Web.UI.Page
     {
+
+        decimal overallPrice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,7 +28,6 @@ namespace AssignmentWAD.Order
                     shoppingCart = new ShoppingCart();
                     Session["shoppingCart"] = shoppingCart;
                 }
-
 
 
                 //Obtain values
@@ -62,6 +66,8 @@ namespace AssignmentWAD.Order
                 //Define the data source for the repeater
                 BookRepeater.DataSource = shoppingCart.getCartItems();
                 BookRepeater.DataBind();
+
+
             }
 
 
@@ -101,23 +107,32 @@ namespace AssignmentWAD.Order
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                //Get All Cart Values
                 ShoppingCart shoppingCart = (ShoppingCart)Session["shoppingCart"];
                 if (shoppingCart == null)
                 {
                     shoppingCart = new ShoppingCart();
                     Session["shoppingCart"] = shoppingCart;
                 }
-
-                List<Cart> items = shoppingCart.getCartItems();
-
-                foreach (Cart item in items)
+                else
                 {
-                    
+                    TextBox qty = e.Item.FindControl("currentQty") as TextBox;
+                    HiddenField bookID = e.Item.FindControl("hdnID") as HiddenField;
+                    decimal price = shoppingCart.calculate(Convert.ToInt32(bookID.Value), Convert.ToInt32(qty.Text));
+
+                    //Price for individual product
+                    ((Label)e.Item.FindControl("lblTotal")).Text = "RM " + (price).ToString();
+
+
+                    //Calculate overall total
+                    overallPrice += price;
+                    //Price for overall
+                    System.Diagnostics.Debug.WriteLine("Overall : " + overallPrice);
+                    lblAmount.Text = overallPrice.ToString();
+
                 }
 
-                Label lblTotal = ((Label)e.Item.FindControl("lblTotal"));
             }
         }
+
     }
 }
