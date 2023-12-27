@@ -25,6 +25,8 @@
     <title>Nitro-Books | Your Preferable Choice</title>
     <link rel="icon" type="image/x-icon" href="image/window-logo.png">
 
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -200,15 +202,15 @@
             <div class="search-container col-5" id="search">
                 <div class="container-fluid">
                     <div class="d-flex input-group" role="search">
-                        <asp:TextBox ID="txtSearch" runat="server" class="form-control border border-1" placeholder="Book title/Author name"
+                        <asp:TextBox Style="color: black;" TextMode="Search" ID="txtSearch" runat="server" class="form-control border border-1" placeholder="Book title/Author name"
                             aria-label="Book title/Author name" aria-describedby="button-addon2" />
 
-                        <asp:LinkButton ID="btnSch" runat="server" OnClick="btnSch_Click" CssClass="btn btn-outline-danger">
+                        <asp:LinkButton ID="btnSch" ValidationGroup="btn" runat="server" OnClick="btnSch_Click" CssClass="btn btn-outline-danger ">
                             <i style="font-size: 18px; display: flex; justify-content: center; align-items: center; margin-top: 4.5px;"
     class="fa fa-search"></i>
                         </asp:LinkButton>
-
                     </div>
+                    <asp:RequiredFieldValidator Style="font-size: 13px; margin-left: 3px;" Display="Dynamic" ID="searchtext" runat="server" ControlToValidate="txtSearch" ErrorMessage="Please enter book title or author name." ForeColor="Red" ValidationGroup="btn" />
                 </div>
             </div>
 
@@ -359,10 +361,11 @@
                 </div>
             </div>
         </footer>
+
         <script type="text/javascript" src="home.js"></script>
         <script type="text/javascript">
-            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         </script>
         <script src="https://kit.fontawesome.com/06c32b9e65.js" crossorigin="anonymous"></script>
         <asp:ContentPlaceHolder ID="jsScript" runat="server"></asp:ContentPlaceHolder>
