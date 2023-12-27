@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeFile="product_view.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_view" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="product_view.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_view" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -40,7 +40,7 @@
                 <asp:TextBox runat="server" ID="txtQuantity" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 </br>
                      <label class="label-field">Image:</label></br>
-                <asp:Image runat="server" ID="image" ImageUrl="~/image/title-logo.png"/>
+                <asp:Image runat="server" ID="image"/>
                 <br>
                     <label class="label-field">Language: </label>
                 </br>
@@ -53,6 +53,7 @@
 
                 <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Product/product.aspx" />
+                <br />
             </div>
 
         </div>

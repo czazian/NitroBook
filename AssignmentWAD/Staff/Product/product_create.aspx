@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeFile="product_create.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_create" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="product_create.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_create" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="product.css" rel="stylesheet">
@@ -15,7 +15,7 @@
                 <div class="title">Create Product</div>
                 <label class="label-field">Title: </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtTitle" CssClass="input-field"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtTitle" CssClass="input-field" AutoPostBack="True" EnableTheming="True"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTitle" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br>
                     <br />
@@ -69,7 +69,7 @@
                 </br>
                  </br>
 
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
+                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" OnClick="btnSubmit_Click" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Product/product.aspx" CausesValidation="False" OnClick="btnBack_Click" />
             </div>
 

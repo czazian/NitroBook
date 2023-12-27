@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeFile="product_edit.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_edit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="product_edit.aspx.cs" Inherits="AssignmentWAD.Staff.Product.product_edit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <style>
@@ -51,7 +51,7 @@
                 <br>
                     <label class="label-field">Default Image: </label>
                 </br>
-                <asp:Image runat="server" ID="imgProd" ImageUrl="~/image/title-logo.png"/>
+                <asp:Image runat="server" ID="image"/>
                 <br>
                 <label class="label-field">Language: </label>
                 <br>
