@@ -53,6 +53,18 @@
                     </div>
 
 
+                    <!-- Product category here -->
+                    <div class="details-row row">
+                        <div class="col-3">
+                            <p style="font-weight: bold; text-align: right;">Category:</p>
+                        </div>
+                        <div class="col-9">
+                            <asp:Label runat="server" ID="lblCategory"></asp:Label><br />
+                            <br />
+                        </div>
+                    </div>
+
+
                     <!-- Product delivery duration here -->
                     <div class="details-row row">
                         <div class="col-3">
@@ -105,7 +117,7 @@
                                     </span>
                                 </span>
                             </div>
-                            <div style="display:flex; align-items:center; flex-flow: row nowrap; margin-top: 5px;">
+                            <div style="display: flex; align-items: center; flex-flow: row nowrap; margin-top: 5px;">
                                 <asp:RangeValidator ID="rangevalidator" Type="Integer" SetFocusOnError="true" ForeColor="Red" ErrorMessage="Quantity must not be more than available unit." runat="server" ControlToValidate="txtQuantity" MinimumValue="1" />
                             </div>
                         </div>

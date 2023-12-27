@@ -46,6 +46,7 @@ namespace AssignmentWAD.Order
                         lblLanguage.Text = book["Language"].ToString();
                         lblAvailability.Text = book["Quantity"].ToString();
                         lblDescription.Text = book["Description"].ToString();
+                        lblCategory.Text = book["Category"].ToString(); 
                     }
                 }
 

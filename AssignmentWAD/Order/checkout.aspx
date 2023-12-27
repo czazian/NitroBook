@@ -18,11 +18,20 @@
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link href="../style/reset.css" rel="stylesheet" />
     <link href="checkout.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="~/image/window-logo.png" />
     <title>Checkout</title>
+    <style>
+        .toright {
+            text-align: right;
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: right;
+            margin-top: 5px;
+        }
+    </style>
 
 </head>
 <body>
@@ -53,19 +62,9 @@
                     </div>
                 </div>
                 <div class="address-container">
-                    <asp:TextBox TextMode="MultiLine" CssClass="form-control getAddress" Columns="30" Rows="30" ID="txtAddress" runat="server" required=""></asp:TextBox>
-                    <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
-                        Looks great!
-                    </div>
-                    <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1">
-                        Please enter your shipping address before proceeding.
-                    </div>
+                    <asp:TextBox required="" TextMode="MultiLine" CssClass="form-control getAddress" Columns="30" Rows="30" ID="txtAddress" runat="server"></asp:TextBox>
+                    <asp:RequiredFieldValidator CssClass="toright" ForeColor="Red" runat="server" ControlToValidate="txtAddress" ErrorMessage="Please enter your shipping address before proceeding." />
                 </div>
-
-                <div class="map">
-                </div>
-
-
             </div>
         </div>
 
@@ -81,12 +80,7 @@
                     </div>
                     <div class="mb-4 mt-3">
                         <asp:TextBox CssClass="form-control" runat="server" ID="txtName" required="" />
-                        <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Looks great!
-                        </div>
-                        <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Please enter your name before proceeding.
-                        </div>
+                        <asp:RequiredFieldValidator CssClass="toright" ForeColor="Red" runat="server" ControlToValidate="txtName" ErrorMessage="Please enter your name before proceeding." />
                     </div>
                 </div>
 
@@ -96,12 +90,8 @@
                     </div>
                     <div class="mb-4 mt-3">
                         <asp:TextBox TextMode="Phone" CssClass="form-control" runat="server" ID="txtPhone" required="" />
-                        <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Looks great!
-                        </div>
-                        <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Please enter your phone number with correct format before proceeding.
-                        </div>
+                        <asp:RequiredFieldValidator CssClass="toright" ForeColor="Red" runat="server" ControlToValidate="txtPhone" ErrorMessage="Please enter your phone number before proceeding." />
+                        <asp:RegularExpressionValidator CssClass="toright" ControlToValidate="txtPhone" ForeColor="Red" ValidationExpression="\d{10,11}" runat="server" ErrorMessage="Please enter your phone number with correct format before proceeding." />
                     </div>
                 </div>
 
@@ -111,58 +101,55 @@
                     </div>
                     <div class="mb-1 mt-3">
                         <asp:TextBox TextMode="Email" CssClass="form-control" runat="server" ID="txtEmail" required="" />
-                        <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Looks great!
-                        </div>
-                        <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1" required="">
-                            Please enter your email address with correct format before proceeding.
-                        </div>
+                        <asp:RequiredFieldValidator CssClass="toright" ForeColor="Red" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address before proceeding." />
+                        <asp:RegularExpressionValidator CssClass="toright" ControlToValidate="txtEmail" ForeColor="Red" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" runat="server" ErrorMessage="Please enter your email address with correct format before proceeding." />
                     </div>
                 </div>
             </div>
         </div>
 
         <!--Order items-->
-        <div class="order-container">
+        <div class="order-container" style="overflow: hidden;">
             <div class="s-outer-title2">
                 Order items
             </div>
 
-            <div class="order-input">
-                <table>
+            <div class="order-input" style="overflow: hidden;">
+                <table style="overflow: hidden;">
 
+                    <!--Content-->
+                    <asp:Repeater runat="server" ID="Repeater1" OnItemDataBound="Repeater1_ItemDataBound">
+                        <ItemTemplate>
+                            <asp:HiddenField runat="server" ID="hdnID" Value='<%# Eval("bookID") %>' />
+                            <tr class="content" style="overflow: hidden;">
+                                <!--Book Image-->
+                                <td style="padding: 10px; width: 20%;">
+                                    <asp:ImageButton OnClientClick="return false;" Style="cursor: context-menu;" ImageUrl='<%# Eval("Image") %>' runat="server" ID="ImageButton1" Width="180" Height="280" />
+                                </td>
 
-                    <!--CONTENT-->
-                    <tr class="content">
-                        <!--Book Image-->
-                        <td style="padding: 10px; width: 20%;">
-                            <asp:ImageButton OnClientClick="return false;" Style="cursor: content-item" ImageUrl="~/image/book/book12.jpg" runat="server" ID="imgBook" Width="180" Height="280" />
-                        </td>
+                                <!--Author and Book title and price-->
+                                <td class="listing" style="width: 30%;">
+                                    <asp:Label CssClass="t1" runat="server" ID="lblAuthor" Text='<%# Eval("author") %>' />
+                                    <asp:Label CssClass="t2" runat="server" ID="lblTitle" Text='<%# Eval("title") %>' />
+                                    <asp:Label CssClass="t3 price" runat="server" ID="lblPrice" Text='<%# "RM " + Eval("price") %>' />
+                                </td>
 
-                        <!--Author and Book title and price-->
-                        <td class="listing" style="width: 30%;">
-                            <asp:Label CssClass="t1" runat="server" ID="lblTitle" Text="Makoto Shinkai" />
-                            <asp:Label CssClass="t2" runat="server" ID="lblAuthor" Text="Suzume" />
-                            <asp:Label CssClass="t3 price" runat="server" ID="lblPrice" Text="RM 60.00" />
-                        </td>
+                                <!--Quantity-->
+                                <td class="input-container" style="text-align: center; width: 25%;">
+                                    <div class="input" style="overflow: hidden;">
+                                        QTY : &nbsp;<b><asp:Label runat="server" ID="lblQty" Text='<%# Eval("selectedQuantity") %>' /></b>
+                                    </div>
+                                </td>
 
-                        <!--Quantity-->
-                        <td class="input-container" style="text-align: center; width: 25%;">
-                            <div class="input">
-                                QTY : &nbsp;<b><asp:Label runat="server" ID="lblQty" Text="1" /></b>
-                            </div>
-                        </td>
-
-                        <!--Total-->
-                        <td class="total" id="oTotal" style="text-align: right; width: 25%;">
-                            <b>RM &nbsp;<asp:Label runat="server" ID="lblTotal" Text="20.00" /></b>
-                        </td>
-                    </tr>
-
-                    <!--END CONTENT-->
-
-
-
+                                <!--Total-->
+                                <td class="total" id="oTotal" style="text-align: right; width: 25%;">
+                                    <b>
+                                        <asp:Label runat="server" ID="lblTotal" /></b>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <!---->
                 </table>
 
                 <div class="overall">
@@ -212,20 +199,21 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Please enter 16 digits card number with correct format.
+                        <div class="invalid-feedback" style="text-align:right">
+                            Please enter 16 digits card number with correct format before proceeding.
                         </div>
                     </div>
 
 
+
                     <div class="input-group mb-3 col-lg-2">
                         <span class="input-group-text">Expiration Date</span>
-                        <asp:TextBox required="" runat="server" ID="txtFront" CssClass="bd form-control" onkeypress="return this.value.length<5" />
+                        <asp:TextBox required="" pattern="[0-9]{4}" runat="server" ID="txtFront" CssClass="bd form-control" onkeypress="return this.value.length<5" />
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Please enter your expiration date with correct format.
+                        <div class="invalid-feedback" style="text-align:right">
+                            Please enter your expiration date with correct format before proceeding.
                         </div>
                     </div>
 
@@ -237,8 +225,8 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align: right;" bis_skin_checked="1">
-                            Please enter your 3 digits CCV/Security Code with correct format.
+                        <div class="invalid-feedback" style="text-align:right">
+                            Please enter your 3 digits CCV/Security Code with correct format before proceeding.
                         </div>
                     </div>
                 </div>
@@ -275,7 +263,7 @@
                         Shipping Fee
                     </div>
                     <div class="shipping-amount">
-                        <asp:Label ID="lblShippingAmount" runat="server" Text="RM25.00" />
+                        <asp:Label ID="lblShippingAmount" runat="server" />
                     </div>
                 </div>
                 <div class="display">
@@ -283,7 +271,7 @@
                         Discount
                     </div>
                     <div class="discount-amount">
-                        <asp:Label ID="lblDeliveryAmount" runat="server" Text="RM20.00" />
+                        <asp:Label ID="lblDiscountAmount" runat="server" />
                     </div>
                 </div>
                 <div class="display">
@@ -307,15 +295,15 @@
 
         <!--Submit-->
         <div class="btn-container mb-3">
-            <div>
-                <asp:LinkButton PostBackUrl="~/Order/completeOrder.aspx" ID="btnSubmitOdr" runat="server" CssClass="cta" Text="Place Order">
+
+            <asp:LinkButton OnClick="btnSubmitOdr_Click" PostBackUrl="~/Order/completeOrder.aspx" ID="btnSubmitOdr" runat="server" CssClass="cta" Text="Place Order">
                     <span>Place Order</span>
                     <svg width="13px" height="10px" style="margin-top : -5px;" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>
                         <polyline points="8 1 12 5 8 9"></polyline>
                     </svg>
-                </asp:LinkButton>
-            </div>
+            </asp:LinkButton>
+
         </div>
 
 

@@ -13,7 +13,11 @@ namespace AssignmentWAD.Home
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Repeater1.DataSource = ds1;
+            Repeater1.DataBind();
 
+            Repeater2.DataSource = ds2;
+            Repeater2.DataBind();
         }
     }
 }
