@@ -80,7 +80,7 @@ namespace AssignmentWAD.Order
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             //Obtian the bookid of the clicked item in the cart 
-            int index = Convert.ToInt32(((Button)sender).CommandArgument);
+            int index = Convert.ToInt32(((LinkButton)sender).CommandArgument);
             System.Diagnostics.Debug.WriteLine("Idx of Item : " + index);
 
             //Get all cart items stored in the session
