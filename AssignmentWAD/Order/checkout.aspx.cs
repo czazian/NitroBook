@@ -173,8 +173,50 @@ namespace AssignmentWAD.Order
             cmd3.Parameters.AddWithValue("@OrderID", insertedOrderID);
             cmd3.ExecuteNonQuery();
 
-            clearCart();
 
+
+            //Update the purchase book quantity
+            //Get All Books
+            string command4 = "SELECT BookID, Quantity FROM Book";
+            SqlCommand cmd4 = new SqlCommand(command4, conn);
+            SqlDataReader reader = cmd4.ExecuteReader();
+
+            //Update
+            string updateQtyCmd = "UPDATE Book SET Quantity = @Quantity WHERE BookID = @BookID";
+            SqlCommand cmd5 = new SqlCommand(updateQtyCmd, conn);
+
+            if(items.Count > 0)
+            {
+                int i = 0;
+                int different = 0;
+                int affected = 0;
+                while (reader.Read())
+                {
+                    cmd5.Parameters.Clear();
+
+                    if (reader["BookID"].Equals(items[i].bookID))
+                    {
+                        different = Convert.ToInt32(reader["Quantity"]) - items[i].selectedQuantity;
+                        cmd5.Parameters.AddWithValue("@Quantity", different);
+                        cmd5.Parameters.AddWithValue("@BookID", items[i].bookID);
+                        affected = cmd5.ExecuteNonQuery();
+                        System.Diagnostics.Debug.WriteLine("Affetced : " + affected);
+                    }
+
+                    if (i + 1 >= items.Count)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+            }
+
+            //Make the cart empty
+            clearCart();
+            //Redirect to the complete order page
             Response.Redirect("~/Order/completeOrder.aspx?orderID=" + insertedOrderID + "&reachDate=" + dateTime.AddDays(5).ToString("dd/MM/yyyy"));
         }
 
