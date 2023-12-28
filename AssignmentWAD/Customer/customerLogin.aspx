@@ -46,11 +46,10 @@
                 <div class="form-item">
                     <p class="formLabel">Password</p>
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-style"></asp:TextBox>
-                    <!-- You can include the eye icon for password visibility if needed -->
-                    <%--                     <div class="pw-view"><i class="fa fa-eye"></i></div> --%>
+
                     <br />
                     <p>
-                        <asp:HyperLink runat="server" ID="hrefForgotPass" NavigateUrl="~/Customer/ForgotPassword.aspx" CssClass="hlk" Text="Forgot password?"/>
+                        <asp:HyperLink runat="server" ID="hrefForgotPass" NavigateUrl="~/Customer/ForgotPassword.aspx" CssClass="hlk" Text="Forgot password?" />
                         <br />
 
                     </p>
@@ -61,8 +60,16 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btnLogin pull-right" PostBackUrl="~/Customer/Register.aspx" />
 
                     </p>
-                    <asp:Button ID="btnLogin" runat="server" Text="Log In" CssClass="btnLogin pull-right" OnClick="btnLogin_Click" PostBackUrl="~/Home/homepage.aspx" />
-                    <div class="clear-fix"></div>
+                    <asp:Button ID="btnLogin" runat="server" Text="Log In" CssClass="btnLogin pull-right" OnClick="btnLogin_Click"/>
+                    <br /><br />
+                        <br /><br />
+                        <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
+                    <div class="clear-fix">
+                       <%-- <br />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#FF3300" />
+                        <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
+                        <br />--%>
+                    </div>
                 </div>
             </div>
 

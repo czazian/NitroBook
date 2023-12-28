@@ -21,11 +21,25 @@
             if (qty > 0) {
                 checkout.style.display = "flex";
                 amount.style.display = "flex";
-            } else {
+            } else if (qty == 0) {
                 checkout.style.display = "none";
                 amount.style.display = "none";
             }
+        })
 
+        $('<%= lblAmount.ClientID %>').on('labelchanged', function () {
+            //Disabled the checkout and total amount if the cart is empty
+            var qty = document.getElementById('<%= lblAmount.ClientID %>').innerHTML;
+            var checkout = document.getElementById('checkout');
+            var amount = document.getElementById('overall-payment');
+
+            if (qty > 0) {
+                checkout.style.display = "flex";
+                amount.style.display = "flex";
+            } else if (qty == 0) {
+                checkout.style.display = "none";
+                amount.style.display = "none";
+            }
         })
     </script>
 
@@ -80,7 +94,7 @@
                 <asp:Repeater runat="server" ID="BookRepeater" OnItemDataBound="BookRepeater_ItemDataBound">
 
                     <ItemTemplate>
-
+                        <asp:HiddenField runat="server" ID="hdnID" Value='<%# Eval("bookID") %>' />
                         <tr class="content">
                             <!--Book Image-->
                             <td style="padding: 10px;">
@@ -97,8 +111,12 @@
                             <!--Quantity-->
                             <td class="input-container" style="text-align: center;">
                                 <div class="qtyContainer" style="font-size: 1.05em">
-                                    <asp:Label runat="server" ID="lblCurrentQty" Text='<%# Eval("selectedQuantity") %>' />
+                                    <asp:TextBox CssClass="txtBorder" runat="server" Style="text-align:center" ID="currentQty" BorderColor="Transparent" BorderWidth="0" BorderStyle="None" Text='<%# Eval("selectedQuantity") %>' ReadOnly="true"/>
+                                    <%--<asp:Label runat="server" ID="lblCurrentQty" Text='<%# Eval("selectedQuantity") %>' />--%>
                                 </div>
+                                <%--<div style="">
+                                    <asp:RangeValidator ID="rangevalidator" Type="Integer" SetFocusOnError="true" ForeColor="Red" ErrorMessage="Quantity must not be more than available unit." runat="server" ControlToValidate="currentQty" MinimumValue="1" />
+                                </div>--%>
                             </td>
 
                             <!--dustbin-->
@@ -124,7 +142,7 @@
 
                             <!--Total-->
                             <td class="total" id="oTotal" style="text-align: right;">
-                                <asp:Label runat="server" ID="lblTotal" Text="RM 60.00" />
+                                <asp:Label runat="server" ID="lblTotal" Text="" />
                             </td>
                         </tr>
 
@@ -143,12 +161,14 @@
             </div>
 
             <div class="overall-payment" id="overall-payment">
-                <div colspan="5" class="amount-container">
+                <div colspan="5" style="margin-left: -10px;" class="amount-container">
                     <div id="payment-title">
                         Total : RM
                     </div>
                     <div class="amount" id="amount">
-                        <asp:Label runat="server" ID="lblAmount" Text="9" />
+
+                        <asp:Label runat="server" ID="lblAmount" />
+
                     </div>
                 </div>
 

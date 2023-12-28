@@ -24,4 +24,12 @@ $(document).ready(function () {
         }
     });
 
+    var availableQty = document.getElementById('<%= hdnAvailableQty.ClientID %>').val();
+    //var currentQty = document.getElementById('<%= txtQuantity.ClientID%>').val();
+
+    alert(currentQty + " " + availableQty)
+    if (currentQty + 1 >= availableQty) {
+        document.getElementById('<%= txtQuantity.ClientID %>').value = availableQty;
+    } 
+
 });

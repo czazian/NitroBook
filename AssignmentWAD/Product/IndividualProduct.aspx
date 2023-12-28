@@ -22,7 +22,7 @@
                     <asp:Label runat="server" ID="lblAuthorName" CssClass="s2" Text=""></asp:Label>
                     <br />
                     <br />
-                    RM&nbsp;<asp:Label runat="server" ID="lblPrice" CssClass="s3 info" Text=""></asp:Label>
+                    <asp:Label runat="server" ID="lblPrice" CssClass="s3 info" Text=""></asp:Label>
                     <br />
                 </div>
 
@@ -48,6 +48,18 @@
                         </div>
                         <div class="col-9">
                             <asp:Label runat="server" ID="lblAvailability" Text=""></asp:Label>&nbsp;Units Left<br />
+                            <br />
+                        </div>
+                    </div>
+
+
+                    <!-- Product category here -->
+                    <div class="details-row row">
+                        <div class="col-3">
+                            <p style="font-weight: bold; text-align: right;">Category:</p>
+                        </div>
+                        <div class="col-9">
+                            <asp:Label runat="server" ID="lblCategory"></asp:Label><br />
                             <br />
                         </div>
                     </div>
@@ -87,31 +99,37 @@
                             <div class="input-group">
                                 <!--Minus 1-->
                                 <span class="input-group-btn">
-                                    <asp:LinkButton OnClientClick="return false" runat="server" ID="btnMinus" CssClass="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
+                                    <asp:LinkButton ValidationGroup="grp" OnClientClick="return false" runat="server" ID="btnMinus" CssClass="quantity-left-minus btn btn-danger btn-number" data-type="minus" data-field="">
                                         <i class="fa-solid fa-minus"></i>
                                     </asp:LinkButton>
                                 </span>
                                 <!--Display Qty-->
-                                <asp:TextBox AutoPostBack="true" Text="1" ID="txtQuantity" runat="server" Style="border-color: #f0f0f0; text-align: center;" type="text" TextMode="Number" min="1" max="100" CssClass="noSpinners quantity" />
+                                <%--<script>
+                                    alert(document.getElementById('<%= hdnAvailableQty.ClientID %>').value)
+                                </script>--%>
+                                <asp:TextBox ValidationGroup="grp" AutoPostBack="true" Text="1" ID="txtQuantity" runat="server" Style="border-color: #f0f0f0; text-align: center;" type="text" TextMode="Number" min="1" max="100" CssClass="noSpinners quantity" />
                                 <!--Add 1-->
                                 <span class="input-group-btn">
                                     <span class="input-group-btn">
-                                        <asp:LinkButton OnClientClick="return false" runat="server" ID="btnAdd" CssClass="quantity-right-plus btn btn-danger btn-number" data-type="plus" data-field="">
+                                        <asp:LinkButton ValidationGroup="grp" OnClientClick="return false;" runat="server" ID="btnAdd" CssClass="quantity-right-plus btn btn-danger btn-number" data-type="plus" data-field="">
                                             <i class="fa-solid fa-plus"></i>
                                         </asp:LinkButton>
                                     </span>
                                 </span>
+                            </div>
+                            <div style="display: flex; align-items: center; flex-flow: row nowrap; margin-top: 5px;">
+                                <asp:RangeValidator ID="rangevalidator" Type="Integer" SetFocusOnError="true" ForeColor="Red" ErrorMessage="Quantity must not be more than available unit." runat="server" ControlToValidate="txtQuantity" MinimumValue="1" />
                             </div>
                         </div>
                     </div>
 
                     <br />
 
-       
+
                     <!-- Add to card button here -->
                     <div class="row details-row" style="justify-content: center;">
                         <div class="col-6" style="display: flex;">
-                            <asp:Button OnClick="btnCart_Click" runat="server" ID="btnCart" CssClass="btn btn-danger" Style="background-color: #cc3300; width: 100%; margin-top: 15px;" Text="Add to cart" /> 
+                            <asp:Button OnClick="btnCart_Click" runat="server" ID="btnCart" CssClass="btn btn-danger" Style="background-color: #cc3300; width: 100%; margin-top: 5px;" Text="Add to cart" />
                         </div>
                     </div>
 

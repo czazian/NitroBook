@@ -6,6 +6,7 @@ body {
     overflow-x: hidden;
 }
 
+
 /* width */
 ::-webkit-scrollbar {
     width: 12px;
