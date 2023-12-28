@@ -25,36 +25,66 @@
                 </div>
                 <div class="sales-details">
 
-                    <ul class="details">
-                        <li class="topic">No.</li>
+                    <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">No</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Container.ItemIndex + 1 %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
-                        <li><a>1</a></li>
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Username</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("StaffName") %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Username</li>
+                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Role</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("RoleName") %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
-                        <li><a href="#">Ali</a></li>
-
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Role</li>
-
-                        <li><a href="#">Manager</a></li>
-
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Operation</li>
-
-                        <li class="txt-center">                            
-                            <asp:Hyperlink runat="server" ID="hrefCreate" NavigateUrl="~/Staff/Staff/staff_view.aspx"><i class='bx bx-show'></i></asp:Hyperlink>
-                            <asp:Hyperlink runat="server" ID="hrefEdit" NavigateUrl="~/Staff/Staff/staff_edit.aspx"><i class='bx bxs-edit'></i></asp:Hyperlink>
-                            <asp:Hyperlink runat="server" ID="Hyperlink1" NavigateUrl=""><i class='bx bxs-trash'></i></asp:Hyperlink>
-                        </li>
-
-                    </ul>
+                    <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Operation</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li class="txt-center">
+                                <%--still trying make it query string send and retrieve work--%>
+                                <a href="staff_view.aspx?staffID=<%# Eval("StaffID") %>"><i class='bx bx-show'></i></a>
+                                <a href="staff_edit.aspx?staffID=<%# Eval("StaffID") %>"><i class='bx bxs-edit'></i></a>
+                                <asp:LinkButton runat="server" ID="Hyperlink1" OnClientClick='<%# CreateConfirmation(Eval("StaffName")) %>' OnCommand="delete_click" CommandName="deleteClick" CommandArgument=<%# Eval("StaffID")%>><i class='bx bxs-trash'></i></asp:LinkButton>
+                            </li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
         </div>
     </div>
+    <br />
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT Staff.StaffID, Staff.StaffName, Role.RoleName  FROM [Staff], [Role] WHERE Staff.RoleID = Role.RoleID"></asp:SqlDataSource>
 </asp:Content>
