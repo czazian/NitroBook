@@ -29,6 +29,12 @@ namespace AssignmentWAD.Order
             Repeater1.DataBind();
         }
 
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("~/Order/cart.aspx");
+        }
+
         protected void Repeater1_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
