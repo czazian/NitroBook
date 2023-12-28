@@ -75,7 +75,7 @@
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="ddlLanguage" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br>
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" OnClientClick="return comfirm('Sure to edit this product?')" OnClick="btnSubmit_Click"/>
+                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button"  OnClick="btnSubmit_Click"/>
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Product/product.aspx" CausesValidation="False" />
             </div>
 

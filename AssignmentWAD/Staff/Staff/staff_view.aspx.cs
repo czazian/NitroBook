@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +13,35 @@ namespace AssignmentWAD.Staff.Staff
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SqlConnection cnn;
+            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            cnn = new SqlConnection(strConnection);
+            cnn.Open();
 
+            String sql = "";
+
+            sql = "SELECT * FROM [Staff] WHERE StaffID=@id";
+
+            SqlCommand cmdRetrieve = new SqlCommand(sql, cnn);
+
+            cmdRetrieve.Parameters.AddWithValue("@id", Request.QueryString["staffID"]);
+            SqlDataReader staff = cmdRetrieve.ExecuteReader();
+
+            if (staff.HasRows && staff.Read())
+            {
+                //work, can get query string
+                txtUsername.Text = staff.GetValue(1).ToString();
+                txtPass.Text = staff.GetValue(2).ToString();
+                ddlRole.SelectedValue = staff.GetValue(3).ToString();
+
+            }
+            else
+            {
+                Response.Write("Invalid Records");
+            }
+
+            cmdRetrieve.Dispose();
+            cnn.Close();
         }
     }
 }

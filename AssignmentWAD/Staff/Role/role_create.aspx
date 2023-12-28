@@ -12,7 +12,8 @@
                 <div class="title">Create Role</div>
                 <label class="label-field">Name </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtName" CssClass="input-field"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtUserName" CssClass="input-field"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtUserName" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br>
                     <label class="label-field">Module Permission</label></br>
                 <label class="toggle">
@@ -35,8 +36,8 @@
                     <asp:CheckBox runat="server" ID="cbRolePermit" CssClass="toggle-checkbox" Text="Role"></asp:CheckBox>
                 </label>
                 <br>
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
-                <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Role/role.aspx" />
+                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" OnClick="btnSubmit_Click" />
+                <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Role/role.aspx" CausesValidation="False"/>
             </div>
 
         </div>

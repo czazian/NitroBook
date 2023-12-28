@@ -19,15 +19,18 @@
                 <br>
                     <label class="label-field">Role </label>
                 </br>
-                <asp:DropDownList runat="server" ID="ddlRole" CssClass="input-field">
+                <asp:DropDownList runat="server" ID="ddlRole" CssClass="input-field" DataSourceID="SqlDataSource1" DataTextField="RoleName" DataValueField="RoleID">
                     <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>
                     <asp:ListItem Text="Manager" Value="Manager"></asp:ListItem>
                     <asp:ListItem Text="Crew" Value="Crew"></asp:ListItem>
                 </asp:DropDownList>
                 <br>
 
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
+                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" OnClick="btnSubmit_Click" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Staff/staff.aspx" />
+                <br />
+                <br />
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Role]"></asp:SqlDataSource>
             </div>
 
         </div>
