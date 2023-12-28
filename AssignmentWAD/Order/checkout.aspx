@@ -199,7 +199,7 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align:right">
+                        <div class="invalid-feedback" style="text-align: right">
                             Please enter 16 digits card number with correct format before proceeding.
                         </div>
                     </div>
@@ -212,7 +212,7 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align:right">
+                        <div class="invalid-feedback" style="text-align: right">
                             Please enter your expiration date with correct format before proceeding.
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align:right">
+                        <div class="invalid-feedback" style="text-align: right">
                             Please enter your 3 digits CCV/Security Code with correct format before proceeding.
                         </div>
                     </div>
