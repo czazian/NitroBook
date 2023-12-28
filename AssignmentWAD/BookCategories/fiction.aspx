@@ -41,7 +41,9 @@
                     -
                 <asp:TextBox ID="txtMaxPrice" runat="server" placeholder="Max RM" Width="60px" Style="font-size: 12px;"></asp:TextBox>
 
-                    <asp:Button ID="btnPriceRange" runat="server" Text="Apply" CssClass="priceRange" />
+                    <asp:Button ID="btnPriceRange" runat="server" Text="Apply" CssClass="priceRange" OnClick="btnPriceRange_Click" />
+                     <br /><br />
+                            <asp:Label ID="lblErrMsg" runat="server" ForeColor="Red" style="font-size:12px;"></asp:Label>
                 </div>
             </div>
 
@@ -53,12 +55,12 @@
         <!--Start of retriving records-->
         <div class="col-9" style="margin-left: 325px;" id="main">
             <h1 style="padding-left: 15px; font-size: 35px;"><strong>Fiction</strong></h1>
-            <p style="float: right; margin-right: 20px; margin-top: 10px;">Showing 1 - 4</p>
+            <asp:Label runat="server" ID="lblTotalShow" Style="float: right; margin-right: 20px; margin-top: 10px;"></asp:Label>
 
             <!-- Start Filter Bar -->
             <div style="float: right; margin-right: 150px; padding-bottom: 10px;">
 
-                <asp:DropDownList ID="ddlFilter" runat="server" CssClass="ddlFilter" AutoPostBack="True">
+                <asp:DropDownList ID="ddlFilter" runat="server" CssClass="ddlFilter" AutoPostBack="True" OnSelectedIndexChanged="ddlFilter_SelectedIndexChanged">
                     <asp:ListItem Value="0">Price Low to High</asp:ListItem>
                     <asp:ListItem Value="1">Price High to Low</asp:ListItem>
                     <asp:ListItem Value="2">Book Name A-Z</asp:ListItem>
@@ -74,111 +76,43 @@
             <h1 id="list-item-1" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Fantasy</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB1" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
-                    <br />
-                    <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthorName1" runat="server" CssClass="s2" Text="Makoto Shinkai"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice1" runat="server" CssClass="s3" Text="RM 20.00"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-                    <br />
-                    <p>
+                <asp:Label runat="server" ID="lblFantasyNotFound" />
+                <asp:SqlDataSource ID="FantasySource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'Fantasy';"></asp:SqlDataSource>
+                <asp:Repeater ID="FantasyRepeater" runat="server">
+                    <ItemTemplate>
+                        <div class="w3-quarter displayborder bookContainer">
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" /><br />
+                            <br />
 
-                        <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+                            <br />
+                            <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text='<%#Eval("Title") %>'></asp:Label><br />
+
+                            <br />
+                            <asp:Label ID="lblAuthorName1" runat="server" CssClass="s2" Text='<%#Eval("Author") %>'></asp:Label><br />
+                            <br />
+                            <asp:Label ID="lblPrice" runat="server" CssClass="s3" Text='<%# "RM " + Eval("Price") %>'></asp:Label><br />
+
+                            <br />
+                            <asp:Label ID="lblStatus" runat="server" CssClass="status" Text='<%# Eval("Quantity").ToString() == "0" ? "Out of Stock" : "In Stock" %>'></asp:Label><br />
+                            <br />
+                            <p>
+
+                                <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
 <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
+                                </asp:LinkButton>
+                            </p>
 
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB2" runat="server" ImageUrl="~/image/book/book26.jpg" CssClass="poster" /><br />
-                    <br />
-                    <asp:Label ID="lblBookName2" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthorName2" runat="server" CssClass="s2" Text="Tun Dr Mahathir Mohamad"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice2" runat="server" CssClass="s3" Text="RM 100.00"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="Label1" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB3" runat="server" ImageUrl="~/image/book/book42.jpg" CssClass="poster" />
-                    <br />
-                    <br />
-                    <asp:Label ID="lblBookName3" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthorName3" runat="server" CssClass="s2" Text="Orion"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice3" runat="server" CssClass="s3" Text="RM 49.90"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="Label2" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton5" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton6" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB4" runat="server" ImageUrl="~/image/book/book17.jpg" CssClass="poster" />
-                    <br />
-                    <br />
-                    <asp:Label ID="lblBookName4" runat="server" CssClass="s1" Text="Harry Potter"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthorName4" runat="server" CssClass="s2" Text="J. K. Rowling"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice4" runat="server" CssClass="s3" Text="RM 47.50"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="Label3" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton7" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton8" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton9" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-
-
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
+
 
 
 
@@ -186,241 +120,87 @@
             <h1 id="list-item-2" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Horror</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB5" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
-                    <br />
-                    <asp:Label ID="lblBookName5" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor5" runat="server" CssClass="s2" Text="Makoto Shinkai"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice5" runat="server" CssClass="s3" Text="RM 20.00"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus5" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-                    <br />
-                    <p>
+                <asp:Label runat="server" ID="lblHorrorNotFound" />
+                <asp:SqlDataSource ID="HorrorSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'Horror';"></asp:SqlDataSource>
+                <asp:Repeater ID="HorrorRepeater" runat="server">
+                    <ItemTemplate>
+                        <div class="w3-quarter displayborder bookContainer">
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" /><br />
+                            <br />
 
-                        <asp:LinkButton ID="LinkButton10" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+                            <br />
+                            <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text='<%#Eval("Title") %>'></asp:Label><br />
+
+                            <br />
+                            <asp:Label ID="lblAuthorName1" runat="server" CssClass="s2" Text='<%#Eval("Author") %>'></asp:Label><br />
+                            <br />
+                            <asp:Label ID="lblPrice" runat="server" CssClass="s3" Text='<%# "RM " + Eval("Price") %>'></asp:Label><br />
+
+                            <br />
+                            <asp:Label ID="lblStatus" runat="server" CssClass="status" Text='<%# Eval("Quantity").ToString() == "0" ? "Out of Stock" : "In Stock" %>'></asp:Label><br />
+                            <br />
+                            <p>
+
+                                <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton11" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton12" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
 <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
+                                </asp:LinkButton>
+                            </p>
 
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB6" runat="server" ImageUrl="~/image/book/book26.jpg" CssClass="poster" /><br />
-                    <br />
-                    <asp:Label ID="lblBookName6" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor6" runat="server" CssClass="s2" Text="Tun Dr Mahathir Mohamad"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice6" runat="server" CssClass="s3" Text="RM 100.00"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus6" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton13" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton14" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton15" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="ImageB7" runat="server" ImageUrl="~/image/book/book42.jpg" CssClass="poster" />
-                    <br />
-                    <br />
-                    <asp:Label ID="lblBookName7" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor7" runat="server" CssClass="s2" Text="Orion"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice7" runat="server" CssClass="s3" Text="RM 49.90"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus7" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton16" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton17" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton18" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB8" runat="server" ImageUrl="~/image/book/book17.jpg" CssClass="poster" />
-                    <br />
-                    <br />
-                    <asp:Label ID="lblBookName8" runat="server" CssClass="s1" Text="Harry Potter"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor8" runat="server" CssClass="s2" Text="J. K. Rowling"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice8" runat="server" CssClass="s3" Text="RM 47.50"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus8" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton19" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton20" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton21" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-
-
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
 
 
             <!-- Photo Grid-->
-            <h1 id="list-item-3" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>General Fiction</strong></h1>
+            <h1 id="list-item-3" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>General Fictions</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB9" runat="server" ImageUrl="~/image/book/book12.jpg" CssClass="poster" /><br />
-                    <br />
-                    <asp:Label ID="lblBookName9" runat="server" CssClass="s1" Text="Suzume"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor9" runat="server" CssClass="s2" Text="Makoto Shinkai"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice9" runat="server" CssClass="s3" Text="RM 20.00"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus9" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-                    <br />
-                    <p>
+                <asp:Label runat="server" ID="lblGeneralFicNotFound" />
+                <asp:SqlDataSource ID="GeneralFicSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'General Fictions';"></asp:SqlDataSource>
+                <asp:Repeater ID="GeneralFicRepeater" runat="server">
+                    <ItemTemplate>
+                        <div class="w3-quarter displayborder bookContainer">
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" /><br />
+                            <br />
 
-                        <asp:LinkButton ID="LinkButton22" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+                            <br />
+                            <asp:Label ID="lblBookName1" runat="server" CssClass="s1" Text='<%#Eval("Title") %>'></asp:Label><br />
+
+                            <br />
+                            <asp:Label ID="lblAuthorName1" runat="server" CssClass="s2" Text='<%#Eval("Author") %>'></asp:Label><br />
+                            <br />
+                            <asp:Label ID="lblPrice" runat="server" CssClass="s3" Text='<%# "RM " + Eval("Price") %>'></asp:Label><br />
+
+                            <br />
+                            <asp:Label ID="lblStatus" runat="server" CssClass="status" Text='<%# Eval("Quantity").ToString() == "0" ? "Out of Stock" : "In Stock" %>'></asp:Label><br />
+                            <br />
+                            <p>
+
+                                <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton23" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton24" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+                                </asp:LinkButton>
+                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
 <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
+                                </asp:LinkButton>
+                            </p>
 
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB10" runat="server" ImageUrl="~/image/book/book26.jpg" CssClass="poster" /><br />
-                    <br />
-                    <asp:Label ID="lblBookName10" runat="server" CssClass="s1" Text="Capturing Hope"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor10" runat="server" CssClass="s2" Text="Tun Dr Mahathir Mohamad"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice10" runat="server" CssClass="s3" Text="RM 100.00"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus10" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton25" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton26" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton27" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB11" runat="server" ImageUrl="~/image/book/book42.jpg" CssClass="poster" />
-                    <br />
-                    <br />
-                    <asp:Label ID="lblBookName11" runat="server" CssClass="s1" Text="The Silent Patient"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor11" runat="server" CssClass="s2" Text="Orion"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice11" runat="server" CssClass="s3" Text="RM 49.90"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus11" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton28" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton29" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton30" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-                <div class="w3-quarter displayborder sContainers" style="width: 25%;">
-                    <asp:Image ID="imgB12" runat="server" ImageUrl="~/image/book/book17.jpg" CssClass="poster" />
-                    <br />
-                    <br />
-                    <asp:Label ID="lblBookName12" runat="server" CssClass="s1" Text="Harry Potter"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblAuthor12" runat="server" CssClass="s2" Text="J. K. Rowling"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblPrice12" runat="server" CssClass="s3" Text="RM 47.50"></asp:Label><br />
-                    <br />
-                    <asp:Label ID="lblStatus12" runat="server" CssClass="status" Text="In stock"></asp:Label><br />
-
-                    <br />
-                    <p>
-
-                        <asp:LinkButton ID="LinkButton31" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton32" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="LinkButton33" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
-<i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
-                        </asp:LinkButton>
-                    </p>
-                </div>
-
-
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
             </div>
+
         </div>
-
     </div>
-
-
-    <%--<script type="text/javascript">
-    function AddHoverClass(buttonText, event) {
-        var btn = event.target;  // The element that triggered the event
-        btn.classList.add("hover-effect");
-        btn.innerText = buttonText;  // Set the text based on the parameter
-    }
-
-    function RemoveHoverClass(iconClass, event) {
-        var btn = event.target;  // The element that triggered the event
-        btn.classList.remove("hover-effect");
-        // Set the content to the respective <i> element
-        btn.innerHTML = `<i class="fa ${iconClass}"></i>`;
-    }
-</script>--%>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content3" ContentPlaceHolderID="jsScript">
