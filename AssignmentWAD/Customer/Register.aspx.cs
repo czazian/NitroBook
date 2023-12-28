@@ -29,7 +29,7 @@ namespace AssignmentWAD.Customer
         private int getLatestUserID()
         {
             SqlConnection conn;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             conn = new SqlConnection(strCon);
             conn.Open();
 
@@ -49,7 +49,7 @@ namespace AssignmentWAD.Customer
         protected void lbtSubmit_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             conn = new SqlConnection(strCon);
             conn.Open();
 

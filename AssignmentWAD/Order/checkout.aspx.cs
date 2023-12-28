@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -118,13 +119,17 @@ namespace AssignmentWAD.Order
         ///CREATE ORDER
         protected void btnSubmitOdr_Click(object sender, EventArgs e)
         {
+            //Obtian values required
             ShoppingCart shoppingCart = (ShoppingCart)Session["shoppingCart"];
-            List<Cart> items = shoppingCart.getCartItems();
             if (shoppingCart == null)
             {
                 shoppingCart = new ShoppingCart();
                 Session["shoppingCart"] = shoppingCart;
             }
+            List<Cart> items = shoppingCart.getCartItems();
+            int userID = Convert.ToInt32(Session["UserID"]);
+            System.Diagnostics.Debug.WriteLine("Checkout - UserID : " + userID);
+            //int userID = 2; //For Testing Purpose
 
             //DB
             SqlConnection conn;
@@ -134,10 +139,48 @@ namespace AssignmentWAD.Order
             conn.Open();
 
             //Processing
-            string command1 = "INSERT INTO Order VALUES(@Status, @UserID)";
-            string command2 = "SELECT * FROM Book WHERE BookID = @bookID";
-            string command3 = "SELECT * FROM Book WHERE BookID = @bookID";
+            //Insert to Order Table
+            string command1 = "INSERT INTO [Order] VALUES (@Status, @UserID)" + "SELECT SCOPE_IDENTITY()";
+            SqlCommand cmd1 = new SqlCommand(command1, conn);
+            cmd1.Parameters.AddWithValue("@Status", "Pending");
+            cmd1.Parameters.AddWithValue("@UserID", userID);
+            string insertedOrderID = Convert.ToString(cmd1.ExecuteScalar());
 
+            //Insert to OrderDetails Table
+            string command2 = "INSERT INTO [OrderDetails] VALUES (@BookID, @OrderID, @Quantity)";
+            SqlCommand cmd2 = new SqlCommand(command2, conn);
+
+            foreach(Cart item in items)
+            {
+                cmd2.Parameters.Clear(); 
+               
+                cmd2.Parameters.AddWithValue("@BookID", item.bookID);
+                cmd2.Parameters.AddWithValue("@OrderID", insertedOrderID);
+                cmd2.Parameters.AddWithValue("@Quantity", item.selectedQuantity);
+                cmd2.ExecuteNonQuery();
+
+            }
+
+            //Insert to Payment Table
+            DateTime dateTime = DateTime.UtcNow.Date;
+            dateTime.ToString("dd/MM/yyyy");
+            string command3 = "INSERT INTO [Payment] VALUES (@PaymentDate, @TotalAmount, @PaymentMethod, @ShippingAddress, @OrderID)";
+            SqlCommand cmd3 = new SqlCommand(command3, conn);
+            cmd3.Parameters.AddWithValue("@PaymentDate", dateTime);
+            cmd3.Parameters.AddWithValue("@TotalAmount", getOverllTotal());
+            cmd3.Parameters.AddWithValue("@PaymentMethod", lblPaymentMethod.Text);
+            cmd3.Parameters.AddWithValue("@ShippingAddress", txtAddress.Text);
+            cmd3.Parameters.AddWithValue("@OrderID", insertedOrderID);
+            cmd3.ExecuteNonQuery();
+
+            clearCart();
+
+            Response.Redirect("~/Order/completeOrder.aspx?orderID=" + insertedOrderID + "&reachDate=" + dateTime.AddDays(5).ToString("dd/MM/yyyy"));
+        }
+
+        public void clearCart()
+        {
+            Session.Remove("shoppingCart");
         }
     }
 }

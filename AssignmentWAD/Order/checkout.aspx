@@ -279,7 +279,7 @@
                         Tax
                     </div>
                     <div class="tax-amount">
-                        <asp:Label ID="lblTaxAmount" runat="server" Text="RM9.20" />
+                        <asp:Label ID="lblTaxAmount" runat="server" />
                     </div>
                 </div>
                 <div class="display">
@@ -287,7 +287,7 @@
                         Overall Payment
                     </div>
                     <div class="overal-amount">
-                        <asp:Label ID="lblOverallTotalPayment" runat="server" Text="RM74.2" />
+                        <asp:Label ID="lblOverallTotalPayment" runat="server"  />
                     </div>
                 </div>
             </div>
@@ -296,7 +296,7 @@
         <!--Submit-->
         <div class="btn-container mb-3">
 
-            <asp:LinkButton OnClick="btnSubmitOdr_Click" PostBackUrl="~/Order/completeOrder.aspx" ID="btnSubmitOdr" runat="server" CssClass="cta" Text="Place Order">
+            <asp:LinkButton OnClick="btnSubmitOdr_Click" ID="btnSubmitOdr" runat="server" CssClass="cta" Text="Place Order">
                     <span>Place Order</span>
                     <svg width="13px" height="10px" style="margin-top : -5px;" viewBox="0 0 13 10">
                         <path d="M1,5 L11,5"></path>

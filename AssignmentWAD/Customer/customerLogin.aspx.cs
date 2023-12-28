@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -25,11 +26,11 @@ namespace AssignmentWAD.Customer
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection conn;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             conn = new SqlConnection(strCon);
             conn.Open();
 
-            string loginSql = "SELECT * FROM [User] WHERE userName = @userName AND UserPasword = @password";
+            string loginSql = "SELECT * FROM [User] WHERE userName = @userName AND UserPassword = @password";
 
             SqlCommand cmdLogin = new SqlCommand(loginSql, conn);
 
@@ -44,6 +45,7 @@ namespace AssignmentWAD.Customer
                 {
                     string UserID = dtrLogin["UserID"].ToString();
                     Session["UserID"] = UserID.ToString();
+                    System.Diagnostics.Debug.WriteLine("UserID : " + UserID);
                     Response.Redirect("~/Home/homepage.aspx");
                 }
             }

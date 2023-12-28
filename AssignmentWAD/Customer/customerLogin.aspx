@@ -31,10 +31,9 @@
     </script>
 
     <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
-    <i class="bi-check-circle-fill"></i>
-                        <asp:Label ID="lblSuccRegMsg" runat="server" Text=""></asp:Label>
-       
-</div>
+        <i class="bi-check-circle-fill"></i>
+        <asp:Label ID="lblSuccRegMsg" runat="server" Text=""></asp:Label>
+    </div>
     <div class="loginContent">
         <div id="Loginform">
             <div class="fieldsets">
@@ -64,12 +63,13 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btnLogin pull-right" PostBackUrl="~/Customer/Register.aspx" />
 
                     </p>
-                    <asp:Button ID="btnLogin" runat="server" Text="Log In" CssClass="btnLogin pull-right" OnClick="btnLogin_Click"/>
-                    <br /><br />
-                        <br /><br />
-                        <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:Button ID="btnLogin" runat="server" Text="Log In" CssClass="btnLogin pull-right" OnClick="btnLogin_Click" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
                     <div class="clear-fix">
-                      
                     </div>
                 </div>
             </div>

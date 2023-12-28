@@ -72,7 +72,7 @@
                 <asp:Label ID="lblDate" runat="server" Text="25/12/2023"></asp:Label>
             </div>
         </div>
-            <asp:Button CssClass="btn" ID="btnCheckOrderStatus" runat="server" Text="Check Order Status" OnClick="btnCheckOrderStatus_Click" />
+            <asp:Button CssClass="btn" ID="btnCheckOrderStatus" runat="server" Text="Back to Homepage" OnClick="btnCheckOrderStatus_Click" />
         </form>
     </div>
 </body>
