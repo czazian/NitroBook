@@ -77,7 +77,7 @@
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
                 <asp:Label runat="server" ID="lblFantasyNotFound" />
-                <asp:SqlDataSource ID="FantasySource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'Fantasy';"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="FantasySource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'Fantasy' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="FantasyRepeater" runat="server">
                     <ItemTemplate>
                         <div class="w3-quarter displayborder bookContainer">
@@ -97,13 +97,10 @@
                             <br />
                             <p>
 
-                                <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+                                <asp:LinkButton PostBackUrl='<%# "~/Order/cart.aspx?bookID=" + Eval("bookiD") + "&qty=" + 1 %>' ID="btnAddToCart" runat="server" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                                 </asp:LinkButton>
-                                <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl='<%# "~/Product/IndividualProduct.aspx?bookID=" + Eval("bookID") %>' CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
 <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                                 </asp:LinkButton>
                             </p>
@@ -121,7 +118,7 @@
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
                 <asp:Label runat="server" ID="lblHorrorNotFound" />
-                <asp:SqlDataSource ID="HorrorSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'Horror';"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="HorrorSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'Horror' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="HorrorRepeater" runat="server">
                     <ItemTemplate>
                         <div class="w3-quarter displayborder bookContainer">
@@ -141,13 +138,10 @@
                             <br />
                             <p>
 
-                                <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+                                <asp:LinkButton PostBackUrl='<%# "~/Order/cart.aspx?bookID=" + Eval("bookiD") + "&qty=" + 1 %>' ID="btnAddToCart" runat="server" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                                 </asp:LinkButton>
-                                <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl='<%# "~/Product/IndividualProduct.aspx?bookID=" + Eval("bookID") %>' CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
 <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                                 </asp:LinkButton>
                             </p>
@@ -163,7 +157,7 @@
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
                 <asp:Label runat="server" ID="lblGeneralFicNotFound" />
-                <asp:SqlDataSource ID="GeneralFicSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'General Fictions';"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="GeneralFicSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND SubCategory = 'General Fictions' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="GeneralFicRepeater" runat="server">
                     <ItemTemplate>
                         <div class="w3-quarter displayborder bookContainer">
@@ -183,13 +177,10 @@
                             <br />
                             <p>
 
-                                <asp:LinkButton ID="btnAddToCart" runat="server" PostBackUrl="~/Order/cart.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
+                                <asp:LinkButton PostBackUrl='<%# "~/Order/cart.aspx?bookID=" + Eval("bookiD") + "&qty=" + 1 %>' ID="btnAddToCart" runat="server" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnAddToCart_Click">
 <i data-bs-toggle="tooltip" data-bs-title="Add to Cart" class="fa fa-shopping-cart"></i>
                                 </asp:LinkButton>
-                                <asp:LinkButton ID="btnBuyNow" runat="server" PostBackUrl="~/Order/checkout.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnBuyNow_Click">
-<i data-bs-toggle="tooltip" data-bs-title="Buy Now" class="fa fa-shopping-bag"></i>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl="~/Product/IndividualProduct.aspx" CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
+                                <asp:LinkButton ID="btnViewMore" runat="server" PostBackUrl='<%# "~/Product/IndividualProduct.aspx?bookID=" + Eval("bookID") %>' CssClass="mrg btn btn-2 btn-sep icon-cart" OnClick="btnViewMore_Click">
 <i data-bs-toggle="tooltip" data-bs-title="View More" class="fa fa-arrows"></i>
                                 </asp:LinkButton>
                             </p>

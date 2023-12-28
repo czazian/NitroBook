@@ -27,6 +27,7 @@ namespace AssignmentWAD.BookCategories
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
+
         }
 
         protected void btnBuyNow_Click(object sender, EventArgs e)
@@ -154,5 +155,6 @@ namespace AssignmentWAD.BookCategories
                 PicBookRepeater.DataBind();
             }
         }
+
     }
 }
