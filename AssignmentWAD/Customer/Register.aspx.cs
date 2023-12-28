@@ -97,14 +97,14 @@ namespace AssignmentWAD.Customer
         private bool CheckIfUsernameExists(string username)
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            
-                conn.Open();
 
-                string checkDuplicateSql = "SELECT UserName FROM [User] WHERE UserName LIKE @Username";
+            conn.Open();
+
+            string checkDuplicateSql = "SELECT UserName FROM [User] WHERE UserName LIKE @Username";
 
             SqlCommand cmdCheck = new SqlCommand(checkDuplicateSql, conn);
-                
-                    cmdCheck.Parameters.AddWithValue("@Username", username);
+
+            cmdCheck.Parameters.AddWithValue("@Username", username);
 
             SqlDataReader dtrCheck = cmdCheck.ExecuteReader();
 
@@ -118,7 +118,7 @@ namespace AssignmentWAD.Customer
             }
 
             return isExists;
-            
+
         }
 
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)

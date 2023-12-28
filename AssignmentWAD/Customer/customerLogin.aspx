@@ -60,12 +60,14 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="btnLogin pull-right" PostBackUrl="~/Customer/Register.aspx" />
 
                     </p>
-                    <asp:Button ID="btnLogin" runat="server" Text="Log In" CssClass="btnLogin pull-right" OnClick="btnLogin_Click"/>
-                    <br /><br />
-                        <br /><br />
-                        <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
+                    <asp:Button ID="btnLogin" runat="server" Text="Log In" CssClass="btnLogin pull-right" OnClick="btnLogin_Click" />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
                     <div class="clear-fix">
-                       <%-- <br />
+                        <%-- <br />
                         <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#FF3300" />
                         <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
                         <br />--%>

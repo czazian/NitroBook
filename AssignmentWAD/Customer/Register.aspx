@@ -3,15 +3,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
-    function validateForm() {
-        // Perform client-side validation
-        if (/* validation fails */) {
-            alert("Validation failed!");
-            return false; // Cancel form submission
-        } else {
-            return true;  // Allow form submission
+        function validateForm() {
+            // Perform client-side validation
+            if (/* validation fails */) {
+                alert("Validation failed!");
+                return false; // Cancel form submission
+            } else {
+                return true;  // Allow form submission
+            }
         }
-    }
     </script>
 
     <style type="text/css">
@@ -67,7 +67,7 @@
             <br />
             <br />
 
-            <asp:LinkButton ID="lbtSubmit" runat="server" CssClass="action-button" Style="font-family: 'HelveticaNeue','Arial', sans-serif;" Text="Submit" OnClick="lbtSubmit_Click" OnClientClick="return validateForm();"/>
+            <asp:LinkButton ID="lbtSubmit" runat="server" CssClass="action-button" Style="font-family: 'HelveticaNeue','Arial', sans-serif;" Text="Submit" OnClick="lbtSubmit_Click" OnClientClick="return validateForm();" />
             <br />
             <br />
             <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
