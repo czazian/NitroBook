@@ -157,8 +157,8 @@ nav .sidebar-button i {
     margin-bottom: 15px;
 }
 
-.width-25{
-    width:25%;
+.width-25 {
+    width: 25%;
 }
 
 .width-50 {
@@ -169,8 +169,8 @@ nav .sidebar-button i {
     width: 75%;
 }
 
-select.input-field a{
-    background-color:red;
+select.input-field a {
+    background-color: red;
 }
 
 .red {
@@ -263,7 +263,7 @@ nav .profile-details i {
 .overview-boxes .box-topic {
     font-size: 20px;
     font-weight: 500;
-    margin-bottom:8px;
+    margin-bottom: 8px;
 }
 
 .home-content .box .number {
@@ -407,7 +407,7 @@ nav .profile-details i {
     margin-bottom: 10px;
     width: 160px;
     height: 40px;
-    border:white;
+    border: white;
 }
 
 a {
@@ -461,8 +461,8 @@ a {
 }
 
 .img-small {
-    width:50px;
-    height:80px;
+    width: 50px;
+    height: 80px;
 }
 
 .sales-boxes .top-sales li a {
@@ -509,6 +509,7 @@ a {
 
 .txt-center {
     text-align: center;
+    height: 18px;
 }
 
 /* Responsive Media Query */

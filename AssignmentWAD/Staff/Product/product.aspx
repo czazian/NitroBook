@@ -33,7 +33,7 @@
                                 <li class="topic">No</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# DataBinder.Eval(Container, "ItemIndex", "")%></li>
+                            <li><%# Container.ItemIndex + 1 %></li>
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -102,7 +102,7 @@
                                 <%--still trying make it query string send and retrieve work--%>
                                 <a href="product_view.aspx?bookID=<%# Eval("BookID") %>"><i class='bx bx-show'></i></a>
                                 <a href="product_edit.aspx?bookID=<%# Eval("BookID") %>"><i class='bx bxs-edit'></i></a>
-                                <asp:HyperLink runat="server" ID="Hyperlink1" NavigateUrl=""><i class='bx bxs-trash'></i></asp:HyperLink>
+                                <asp:LinkButton runat="server" ID="Hyperlink1" OnClientClick='<%# CreateConfirmation(Eval("Title")) %>' OnCommand="delete_click" CommandName="deleteClick" CommandArgument=<%# Eval("BookID")%>><i class='bx bxs-trash'></i></asp:LinkButton>
                             </li>
                         </ItemTemplate>
                         <FooterTemplate>
@@ -112,7 +112,7 @@
 
                 </div>
 
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [BookID], [Title], [Description], [Author], [Price], [Category], [Quantity], [Language] FROM [Book]"></asp:SqlDataSource>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book]" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                 <br />
                 <br />
             </div>

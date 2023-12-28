@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -12,12 +13,9 @@ namespace AssignmentWAD.Staff.Product
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string connetionString;
             SqlConnection cnn;
-
-            connetionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\xampp\htdocs\Web-Application-Development\AssignmentWAD\App_Data\NitroBooks.mdf;Integrated Security=True";
-
-            cnn = new SqlConnection(connetionString);
+            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            cnn = new SqlConnection(strConnection);
             cnn.Open();
 
             String sql = "";
@@ -33,14 +31,46 @@ namespace AssignmentWAD.Staff.Product
             {
                 //work, can get query string
                 txtTitle.Text = book.GetValue(1).ToString();
-                txtDesc.Text = book.GetValue(2).ToString();
-                txtAuthor.Text = book.GetValue(3).ToString();
+                txtAuthor.Text = book.GetValue(2).ToString();
+                ddlProductCategory.SelectedValue = book.GetValue(3).ToString();
+
+                int selectedIndex = ddlProductCategory.SelectedIndex;
+                ddlSubCategory.Items.Clear();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        ddlSubCategory.Items.Add("Fiction New Arrivals");
+                        ddlSubCategory.Items.Add("Non-Fiction New Arrivals");
+                        ddlSubCategory.Items.Add("Manga & Light Novel New Arrivals");
+                        ddlSubCategory.Items.Add("Children's New Arrivals");
+                        break;
+                    case 1:
+                        ddlSubCategory.Items.Add("Fantasy");
+                        ddlSubCategory.Items.Add("Horror");
+                        ddlSubCategory.Items.Add("General Fiction");
+                        break;
+                    case 2:
+                        ddlSubCategory.Items.Add("Marketing & Sales");
+                        ddlSubCategory.Items.Add("Computing & Information technology");
+                        ddlSubCategory.Items.Add("Foods & Drinks");
+                        break;
+                    case 3:
+                        ddlSubCategory.Items.Add("Character Stories");
+                        ddlSubCategory.Items.Add("Picture Books");
+                        break;
+                    case 4:
+                        ddlSubCategory.Items.Add("Reincarnation");
+                        ddlSubCategory.Items.Add("Action");
+                        ddlSubCategory.Items.Add("Romance");
+                        ddlSubCategory.Items.Add("Slice-of-Life");
+                        break;
+                }
                 txtPrice.Text = book.GetValue(4).ToString();
-                ddlProductCategory.SelectedValue = book.GetValue(5).ToString();
+                ddlLanguage.SelectedValue = book.GetValue(5).ToString();
                 txtQuantity.Text = book.GetValue(6).ToString();
-                image.ImageUrl = book.GetValue(7).ToString();
-                ddlLanguage.SelectedValue = book.GetValue(8).ToString();
-           
+                txtDesc.Text = book.GetValue(7).ToString();
+                image.ImageUrl = book.GetValue(8).ToString();
+                ddlSubCategory.SelectedValue = book.GetValue(9).ToString();
             }
             else
             {

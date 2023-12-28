@@ -23,15 +23,18 @@
                 <br>
                     <label class="label-field">Phone No </label>
                 </br>
-                <asp:TextBox runat="server" ID="TextBox1" CssClass="input-field" ReadOnly="True"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtPhoneNo" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
                     <label class="label-field">Date of Birth </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtDateOfBirth" CssClass="input-field-1-4"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtDateOfBirth" CssClass="input-field width-25" ReadOnly="True"></asp:TextBox>
+                <br>
+                <label class="label-field">Profile Image:</label></br>
+                <asp:Image runat="server" ID="image"/>
                 <br>
                     <label class="label-field">Address </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtAddress" CssClass="input-field"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtAddress" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
 
                 <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />

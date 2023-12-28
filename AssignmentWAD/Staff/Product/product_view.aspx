@@ -30,6 +30,16 @@
                     <label class="label-field">Category: </label>
                 </br>
                 <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="input-field" Enabled="False">
+                    <asp:ListItem Text="New Arrivals" Value="New Arrivals"></asp:ListItem>
+                    <asp:ListItem Text="Fiction" Value="Fiction"></asp:ListItem>
+                    <asp:ListItem Text="Non-Fiction" Value="Non-Fiction" Selected="True"></asp:ListItem>
+                    <asp:ListItem>Children&#39;s</asp:ListItem>
+                    <asp:ListItem>Manga &amp; Light Novel</asp:ListItem>
+                </asp:DropDownList>
+                </br>
+                    <label class="label-field">Sub-Category: </label>
+                </br>
+                <asp:DropDownList runat="server" ID="ddlSubCategory" CssClass="input-field" Enabled="False">
                     <asp:ListItem Text="Horror" Value="Horror"></asp:ListItem>
                     <asp:ListItem Text="Yellow" Value="Yellow"></asp:ListItem>
                     <asp:ListItem Text="Comedy" Value="Comedy" Selected="True"></asp:ListItem>
@@ -51,7 +61,6 @@
                 </asp:DropDownList>
                 </br>
 
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Product/product.aspx" />
                 <br />
             </div>

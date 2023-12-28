@@ -21,46 +21,86 @@
             <div class="recent-sales box">
 
                 <div>
-                    <button class="form-button"><asp:HyperLink runat="server" ID="memberCreateLink" NavigateUrl="~/Staff/Member/member_create.aspx">Create</asp:HyperLink></button>
+                    <button class="form-button">
+                        <asp:HyperLink runat="server" ID="memberCreateLink" NavigateUrl="~/Staff/Member/member_create.aspx">Create</asp:HyperLink></button>
                 </div>
                 <div class="sales-details">
 
-                    <ul class="details">
-                        <li class="topic">No.</li>
+                    <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">No</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Container.ItemIndex + 1 %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
-                        <li><a>1</a></li>
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Username</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("UserName") %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
+                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Email</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("UserEmail") %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
+                    <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Phone No</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("PhoneNo") %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Username</li>
-
-                        <li><a href="#">Ali</a></li>
-
-
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Email</li>
-
-                        <li><a href="#">ali@gmail.com</a></li>
-
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Operation</li>
-
-                        <li class="txt-center">
+                    <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Operation</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
                             <li class="txt-center">
-                                <asp:HyperLink runat="server" ID="hrefCreate" NavigateUrl="~/Staff/Member/member_view.aspx"><i class='bx bx-show'></i></asp:HyperLink>
-                                <asp:HyperLink runat="server" ID="hrefEdit" NavigateUrl="~/Staff/Member/member_edit.aspx"><i class='bx bxs-edit'></i></asp:HyperLink>
-                                <asp:HyperLink runat="server" ID="Hyperlink1" NavigateUrl=""><i class='bx bxs-trash'></i></asp:HyperLink>
+                                <%--still trying make it query string send and retrieve work--%>
+                                <a href="member_view.aspx?userID=<%# Eval("UserID") %>"><i class='bx bx-show'></i></a>
+                                <a href="member_edit.aspx?userID=<%# Eval("UserID") %>"><i class='bx bxs-edit'></i></a>
+                                <asp:LinkButton runat="server" ID="Hyperlink1" OnClientClick='<%# CreateConfirmation(Eval("UserName")) %>' OnCommand="delete_click" CommandName="deleteClick" CommandArgument='<%# Eval("UserID")%>'><i class='bx bxs-trash'></i></asp:LinkButton>
                             </li>
-                        </li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
-                    </ul>
                 </div>
 
             </div>
         </div>
     </div>
+    <br />
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
 </asp:Content>
