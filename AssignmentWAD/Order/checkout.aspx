@@ -39,7 +39,7 @@
         <!--Header-->
         <div class="checkout-title">
             <div class="back-btn">
-                <asp:LinkButton runat="server" ID="btnBack" CssClass="back" OnClientClick="JavaScript:window:history.back(); return false" Style="margin-left: 25px; font-size: 22px;">
+                <asp:LinkButton CausesValidation="false" runat="server" ID="btnBack" CssClass="back" OnClick="btnBack_Click" Style="margin-left: 25px; font-size: 22px;">
                     <p style="height : 50px; width: 50px; margin-left: 25px;">
                     <i class="fa fa-chevron-left ic" aria-hidden="true" style="margin-left: -15px; margin-top: 5px;"></i>
                     </p>
@@ -57,7 +57,7 @@
             </div>
             <div class="shipping-input">
                 <div class="shipping-title">
-                    <div class="t-ship">
+                    <div class="t-ship" style="font-size: 16px;">
                         Shipping Address
                     </div>
                 </div>
@@ -199,7 +199,7 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align:right">
+                        <div class="invalid-feedback" style="text-align: right">
                             Please enter 16 digits card number with correct format before proceeding.
                         </div>
                     </div>
@@ -208,11 +208,11 @@
 
                     <div class="input-group mb-3 col-lg-2">
                         <span class="input-group-text">Expiration Date</span>
-                        <asp:TextBox required="" pattern="[0-9]{4}" runat="server" ID="txtFront" CssClass="bd form-control" onkeypress="return this.value.length<5" />
+                        <asp:TextBox required="" pattern="^(0[1-9]|1[0-2])\/\d{2}$" runat="server" ID="txtFront" CssClass="bd form-control" onkeypress="return this.value.length<5" />
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align:right">
+                        <div class="invalid-feedback" style="text-align: right">
                             Please enter your expiration date with correct format before proceeding.
                         </div>
                     </div>
@@ -225,7 +225,7 @@
                         <div class="valid-feedback" style="text-align: right;" bis_skin_checked="1">
                             Looks great!
                         </div>
-                        <div class="invalid-feedback" style="text-align:right">
+                        <div class="invalid-feedback" style="text-align: right">
                             Please enter your 3 digits CCV/Security Code with correct format before proceeding.
                         </div>
                     </div>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="customer.css" />
     <script>
         $(document).ready(function () {
-            var formInputs = $('input[type="text"], input[type="password"], <%= txtUsername.ClientID %>, <%= txtPassword.ClientID %>');
+            var formInputs = $('input[type="text"], input[type="password"], <%= txtUserName.ClientID %>, <%= txtPassword.ClientID %>');
 
             formInputs.focus(function () {
                 $(this).parent().children('p.formLabel').addClass('formTop');
@@ -30,17 +30,21 @@
         });
     </script>
 
+    <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
+    <i class="bi-check-circle-fill"></i>
+                        <asp:Label ID="lblSuccRegMsg" runat="server" Text=""></asp:Label>
+       
+</div>
     <div class="loginContent">
         <div id="Loginform">
             <div class="fieldsets">
-
                 <h2 class="fs-title"><strong>Customer Login</strong></h2>
                 <h3 class="fs-subtitleLogin">Create an account if you haven't register</h3>
 
 
                 <div class="form-item">
-                    <p class="formLabel">Username</p>
-                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-style" AutoCompleteType="None"></asp:TextBox>
+                    <p class="formLabel">userName</p>
+                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-style" AutoCompleteType="None"></asp:TextBox>
                     <br />
                 </div>
                 <div class="form-item">
@@ -65,10 +69,7 @@
                         <br /><br />
                         <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
                     <div class="clear-fix">
-                       <%-- <br />
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="#FF3300" />
-                        <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
-                        <br />--%>
+                      
                     </div>
                 </div>
             </div>

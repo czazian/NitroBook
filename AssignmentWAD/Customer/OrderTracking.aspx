@@ -25,7 +25,7 @@
             });
         });
 
-            function openModal() {
+        function openModal() {
             var exampleModal = new bootstrap.Modal(document.getElementById('exampleModal'));
 
             // Update the modal's content (optional)
@@ -40,27 +40,27 @@
         }
 
 
-            $(function () {
+        $(function () {
 
-                $(document).on({
-                    mouseover: function (event) {
-                        $(this).find('.far').addClass('star-over');
-                        $(this).prevAll().find('.far').addClass('star-over');
-                    },
-                    mouseleave: function (event) {
-                        $(this).find('.far').removeClass('star-over');
-                        $(this).prevAll().find('.far').removeClass('star-over');
-                    }
-                }, '.rate');
+            $(document).on({
+                mouseover: function (event) {
+                    $(this).find('.far').addClass('star-over');
+                    $(this).prevAll().find('.far').addClass('star-over');
+                },
+                mouseleave: function (event) {
+                    $(this).find('.far').removeClass('star-over');
+                    $(this).prevAll().find('.far').removeClass('star-over');
+                }
+            }, '.rate');
 
 
             $(document).on('click', '.rate', function () {
                 if (!$(this).find('.star').hasClass('rate-active')) {
-                $(this).siblings().find('.star').addClass('far').removeClass('fas rate-active');
-            $(this).find('.star').addClass('rate-active fas').removeClass('far star-over');
-            $(this).prevAll().find('.star').addClass('fas').removeClass('far star-over');
+                    $(this).siblings().find('.star').addClass('far').removeClass('fas rate-active');
+                    $(this).find('.star').addClass('rate-active fas').removeClass('far star-over');
+                    $(this).prevAll().find('.star').addClass('fas').removeClass('far star-over');
                 } else {
-                console.log('has');
+                    console.log('has');
                 }
             });
 
@@ -99,311 +99,146 @@
                         <!--An Order-->
                         <div class="w3-panel w3-border-top">
                             <br />
-                            <%--assign DataList--%>
                             <br />
 
                             <div class="row" style="background-color: white; font-family: Arial, Helvetica, sans-serif;">
-                                <!--Items in a box-->
+                                <!--Items in a box--><br />
                                 <div class="items-container row">
 
-                                    <div class="top-container" style="width: 100%; display: flex; justify-content: space-between; margin-left: 20px; margin-top: 25px; margin-bottom: 10px;">
-                                        <div class="orderDate" style="color: crimson; font-weight: bold;">
-                                            <i class="far fa-clipboard" style="color: crimson"></i>
-                                            Order Date :
-                                            <asp:Label runat="server" ID="lblOrderDate" Text="20/12/2023" />
-                                        </div>
-                                        <div style="margin-right: 20px;">
-                                            <asp:Label CssClass="shippingStatus" runat="server" ID="lblDeliveryStatus" Text="Delivered" />
-                                        </div>
-                                    </div>
+                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
+                                        <SelectParameters>
+                                            <asp:Parameter Name="userID" />
+                                        </SelectParameters>
 
-                                    <!--An item in one box-->
-                                    <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
-                                        <asp:Image ID="image1" runat="server" ImageUrl="/image/book/book12.jpg" AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
-                                        <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
-                                            <div class="PurchaseDetails">
-                                                <div style="margin-bottom: 10px;">
-                                                    <b>
-                                                        <asp:Label runat="server" ID="lblBookName1" Text="Suzume" /></b>
+                                    </asp:SqlDataSource>
+                                    <asp:Repeater ID="TrackingRepeater" runat="server">
+                                        <ItemTemplate>
+                                            <div class="top-container" style="width: 100%; display: flex; justify-content: space-between; margin-left: 20px; margin-top: 25px; margin-bottom: 10px;">
+                                                <div class="orderDate" style="color: crimson; font-weight: bold;">
+                                                    <i class="far fa-clipboard" style="color: crimson"></i>
+                                                    Order Date :
+                                            <asp:Label runat="server" ID="lblOrderDate" Text='<%# Bind("PaymentDate", "{0:dd-MM-yyyy}") %>' />
                                                 </div>
-                                                <div>
-                                                    x<asp:Label Style="color: #6c6b6b" ID="lblQty" runat="server" Text="1" />
+                                                <div style="margin-right: 20px;">
+                                                    <asp:Label CssClass="shippingStatus" runat="server" ID="lblDeliveryStatus" Text='<%#Eval("OrderStatus") %>' />
                                                 </div>
                                             </div>
-                                            <div class="priceLabel">
-                                                <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="lblBookPrice" Text="RM 20.00" />
-                                            </div>
-                                        </div>
-                                    </div>
 
-
-
-                                    <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
-                                        <asp:Image ID="image2" runat="server" ImageUrl="/image/book/book26.jpg" AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
-                                        <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
-                                            <div class="PurchaseDetails">
-                                                <div style="margin-bottom: 10px;">
-                                                    <b>
-                                                        <asp:Label runat="server" ID="Label2" Text="Capturing Hope"/></b>
-                                                </div>
-                                                <div>
-                                                    x<asp:Label Style="color: #6c6b6b" ID="Label3" runat="server" Text="1" />
-                                                </div>
-                                            </div>
-                                            <div class="priceLabel">
-                                                <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="Label4" Text="RM 100.00" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <hr />
-                                </div>
-
-
-
-
-
-                                <div class="bottom-container" style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
-                                    <div style="display: flex; flex-flow: row nowrap; align-items: end; margin-bottom: 20px;">
-                                        <span style="color: #6c6b6b; font-size: 10px;">Estimated Arrival Date: </span>
-                                        <asp:Label runat="server" ID="lblDate" Style="color: #6c6b6b; font-size: 10px; margin-top: -30px;" Text="26/12/2023" />
-                                    </div>
-                                    <div style="display: flex; flex-flow: column nowrap;">
-                                        <div>
-                                            <asp:Label runat="server" ID="Label1" Style="font-size: 20px; margin-right: 10px;" Text="Total: RM 120.00" />
-                                        </div>
-                                        <div style="margin: 15px 10px 15px 0;">
-                                            <asp:Button ID="Button1" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-                                <!--Rating Model-->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px;"><b>Product Feedback</b></h5>
-                                                <asp:Button ID="btnClose" OnClientClick="return false;" runat="server" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-
-                                                    <asp:Label ID="lblRate" runat="server" CssClass="col-form-label" Text="Product Rating: " Style="margin-top: 100px;"></asp:Label>
-
-                                                    <div class="wrap">
-                                                        <div class="stars">
-                                                            <asp:Label ID="lblRate1" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="rbtRate1" runat="server" value="star1" CssClass="rbtRating" />
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star one-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="lblRate2" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="rbtRate2" runat="server" value="star2" CssClass="rbtRating" />
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star two-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="lblRate3" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="rbtRate3" runat="server" value="star3" CssClass="rbtRating" />
-
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star three-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="lblRate4" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="rbtRate4" runat="server" value="star4" CssClass="rbtRating" />
-
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star four-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="lblRate5" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="rbtRate5" runat="server" value="star5" CssClass="rbtRating" />
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star five-star"></i>
-                                                            </asp:Label>
+                                            <!--An item in one box-->
+                                            <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
+                                                <asp:Image ID="image1" runat="server" ImageUrl='<%#Eval("Image") %>' AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
+                                                <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
+                                                    <div class="PurchaseDetails">
+                                                        <div style="margin-bottom: 10px;">
+                                                            <b>
+                                                                <asp:Label runat="server" ID="lblBookName1" Text='<%#Eval("BookTitle")%>' /></b>
+                                                        </div>
+                                                        <div>
+                                                            <asp:Label Style="color: #6c6b6b" ID="lblQty" runat="server" Text='<%# "x" + Eval("OrderQuantity") %>' />
                                                         </div>
                                                     </div>
-
-                                                </div>
-                                                <div class="mb-3">
-                                                    <br />
-                                                    <asp:Label ID="lblFeedback" runat="server" Text="Feedback: " CssClass="col-form-label"></asp:Label>
-                                                    <asp:TextBox ID="txtFeedback" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                                    <div class="priceLabel">
+                                                        <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="lblBookPrice" Text='<%# "RM " + Eval("BookPrice") %>' />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-danger" Text="Submit" />
+                                            <hr />
+                                            <div class="bottom-container" style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
+                                                <div style="display: flex; flex-flow: row nowrap; align-items: end; margin-bottom: 20px;">
+                                                    <span style="color: #6c6b6b; font-size: 10px;">Estimated Arrival Date: </span>
+                                                    <asp:Label runat="server" ID="lblArrivalDate" Style="color: #6c6b6b; font-size: 10px; margin-top: -30px;" />
+                                                </div>
+                                                <div style="display: flex; flex-flow: column nowrap;">
+                                                    <div>
+                                                        <asp:Label runat="server" ID="Label1" Style="font-size: 20px; margin-right: 5px;" Text='<%# "Total: RM " + Eval("TotalAmount") %>' />
+                                                    </div>
+                                                    <div style="margin: 15px 10px 15px 0;">
+                                                        <asp:Button ID="Button1" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+
+
+
+
+
+
+
+
+                                    <!--Rating Model-->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px;"><b>Product Feedback</b></h5>
+                                                    <asp:Button ID="btnClose" OnClientClick="return false;" runat="server" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+
+                                                        <asp:Label ID="lblRate" runat="server" CssClass="col-form-label" Text="Product Rating: " Style="margin-top: 100px;"></asp:Label>
+
+                                                        <div class="wrap">
+                                                            <div class="stars">
+                                                                <asp:Label ID="lblRate1" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton ID="rbtRate1" runat="server" value="star1" CssClass="rbtRating" />
+                                                                    <div class="face"></div>
+                                                                    <i class="far fa-star star one-star"></i>
+                                                                </asp:Label>
+                                                                <asp:Label ID="lblRate2" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton ID="rbtRate2" runat="server" value="star2" CssClass="rbtRating" />
+                                                                    <div class="face"></div>
+                                                                    <i class="far fa-star star two-star"></i>
+                                                                </asp:Label>
+                                                                <asp:Label ID="lblRate3" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton ID="rbtRate3" runat="server" value="star3" CssClass="rbtRating" />
+
+                                                                    <div class="face"></div>
+                                                                    <i class="far fa-star star three-star"></i>
+                                                                </asp:Label>
+                                                                <asp:Label ID="lblRate4" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton ID="rbtRate4" runat="server" value="star4" CssClass="rbtRating" />
+
+                                                                    <div class="face"></div>
+                                                                    <i class="far fa-star star four-star"></i>
+                                                                </asp:Label>
+                                                                <asp:Label ID="lblRate5" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton ID="rbtRate5" runat="server" value="star5" CssClass="rbtRating" />
+                                                                    <div class="face"></div>
+                                                                    <i class="far fa-star star five-star"></i>
+                                                                </asp:Label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <br />
+                                                        <asp:Label ID="lblFeedback" runat="server" Text="Feedback: " CssClass="col-form-label"></asp:Label>
+                                                        <asp:TextBox ID="txtFeedback" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-danger" Text="Submit" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!--End of an order-->
+
+
+
+
+
+
+
                         </div>
-                        <!--End of an order-->
-
-
-
-
-                        <!--An Order-->
-                        <div class="w3-panel w3-border-top">
-                            <br />
-                            <%--assign DataList--%>
-                            <br />
-
-                            <div class="row" style="background-color: white; font-family: Arial, Helvetica, sans-serif;">
-                                <!--Items in a box-->
-                                <div class="items-container row">
-
-                                    <div class="top-container" style="width: 100%; display: flex; justify-content: space-between; margin-left: 20px; margin-top: 25px; margin-bottom: 10px;">
-                                        <div class="orderDate" style="color: crimson; font-weight: bold;">
-                                            <i class="far fa-clipboard" style="color: crimson"></i>
-                                            Order Date :
-                                            <asp:Label runat="server" ID="Label5" Text="20/12/2023" />
-                                        </div>
-                                        <div style="margin-right: 20px;">
-                                            <!--Shipping Details Color & Rate Button display is depend on this text value --> 
-                                            <asp:Label CssClass="shippingStatus" runat="server" ID="Label6" Text="Shipping" />
-                                        </div>
-                                    </div>
-
-                                    <!--An item in one box-->
-                                    <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
-                                        <asp:Image ID="image3" runat="server" ImageUrl="/image/book/book12.jpg" AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
-                                        <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
-                                            <div class="PurchaseDetails">
-                                                <div style="margin-bottom: 10px;">
-                                                    <b>
-                                                        <asp:Label runat="server" ID="Label7" Text="Suzume" /></b>
-                                                </div>
-                                                <div>
-                                                    x<asp:Label Style="color: #6c6b6b" ID="Label8" runat="server" Text="1" />
-                                                </div>
-                                            </div>
-                                            <div class="priceLabel">
-                                                <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="Label9" Text="RM 20.00" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
-                                        <asp:Image ID="image4" runat="server" ImageUrl="/image/book/book26.jpg" AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
-                                        <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
-                                            <div class="PurchaseDetails">
-                                                <div style="margin-bottom: 10px;">
-                                                    <b>
-                                                        <asp:Label runat="server" ID="Label10" Text="Capturing Hope" /></b>
-                                                </div>
-                                                <div>
-                                                    x<asp:Label Style="color: #6c6b6b" ID="Label11" runat="server" Text="1" />
-                                                </div>
-                                            </div>
-                                            <div class="priceLabel">
-                                                <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="Label12" Text="RM 100.00" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <hr />
-                                </div>
-
-
-
-
-
-                                <div class="bottom-container" style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
-                                    <div style="display: flex; flex-flow: row nowrap; align-items: end; margin-bottom: 20px;">
-                                        <span style="color: #6c6b6b; font-size: 10px;">Estimated Arrival Date: </span>
-                                        <asp:Label runat="server" ID="Label13" Style="color: #6c6b6b; font-size: 10px; margin-top: -30px;" Text="26/12/2023" />
-                                    </div>
-                                    <div style="display: flex; flex-flow: column nowrap;">
-                                        <div>
-                                            <asp:Label runat="server" ID="Label14" Style="font-size: 20px; margin-right: 10px;" Text="Total: RM 120.00" />
-                                        </div>
-                                        <div style="margin: 15px 10px 15px 0;">
-                                            <asp:Button ID="Button2" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-
-                                <!--Rating Model-->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px;"><b>Product Feedback</b></h5>
-                                                <asp:Button ID="Button3" OnClientClick="return false;" runat="server" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="mb-3">
-
-                                                    <asp:Label ID="Label15" runat="server" CssClass="col-form-label" Text="Product Rating: " Style="margin-top: 100px;"></asp:Label>
-
-                                                    <div class="wrap">
-                                                        <div class="stars">
-                                                            <asp:Label ID="Label16" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="RadioButton1" runat="server" value="star1" CssClass="rbtRating" />
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star one-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="Label17" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="RadioButton2" runat="server" value="star2" CssClass="rbtRating" />
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star two-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="Label18" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="RadioButton3" runat="server" value="star3" CssClass="rbtRating" />
-
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star three-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="Label19" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="RadioButton4" runat="server" value="star4" CssClass="rbtRating" />
-
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star four-star"></i>
-                                                            </asp:Label>
-                                                            <asp:Label ID="Label20" CssClass="rate" runat="server">
-                                                                <asp:RadioButton ID="RadioButton5" runat="server" value="star5" CssClass="rbtRating" />
-                                                                <div class="face"></div>
-                                                                <i class="far fa-star star five-star"></i>
-                                                            </asp:Label>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="mb-3">
-                                                    <br />
-                                                    <asp:Label ID="Label21" runat="server" Text="Feedback: " CssClass="col-form-label"></asp:Label>
-                                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <asp:Button ID="Button4" runat="server" CssClass="btn btn-danger" Text="Submit" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End of an order-->
-
-
-
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 

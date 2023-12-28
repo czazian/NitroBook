@@ -86,6 +86,10 @@
     color: orangered;
 }
 
+.bookContainer {
+    width: 230px;
+}
+
 /*for filtering*/
 .ddlFilter {
     font-family: "Open Sans", sans-serif;

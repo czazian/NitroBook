@@ -69,13 +69,13 @@ namespace AssignmentWAD.Home
         protected global::System.Web.UI.WebControls.HyperLink hrefB1;
 
         /// <summary>
-        /// Repeater1 control.
+        /// RepeaterOne control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterOne;
 
         /// <summary>
         /// ds1 control.

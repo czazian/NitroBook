@@ -47,7 +47,7 @@
 
             <!---->
             <div class="w3-row-padding w3-center group">
-                <asp:Repeater runat="server" ID="Repeater1">
+                <asp:Repeater runat="server" ID="RepeaterOne" DataSourceID="ds1">
                     <ItemTemplate>
                         <div class="w3-quarter displayborder sContainers">
                             <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" /><br />
@@ -96,7 +96,7 @@
                 <div class="w3-row-padding w3-padding-16 w3-center group">
                     <!---->
                     <div class="w3-row-padding w3-center group">
-                        <asp:Repeater runat="server" ID="Repeater2">
+                        <asp:Repeater runat="server" ID="Repeater2" DataSourceID="ds2">
                             <ItemTemplate>
                                 <div class="w3-quarter displayborder sContainers">
                                     <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" /><br />
