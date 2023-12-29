@@ -33,21 +33,75 @@ namespace AssignmentWAD.Staff.Order
         protected global::System.Web.UI.WebControls.LinkButton linkBtnSearch;
 
         /// <summary>
-        /// hrefCreate control.
+        /// RepeaterOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hrefCreate;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterOrder;
 
         /// <summary>
-        /// hrefEdit control.
+        /// RepeaterMember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hrefEdit;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterMember;
+
+        /// <summary>
+        /// RepeaterPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterPhone;
+
+        /// <summary>
+        /// RepeaterOrderDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterOrderDate;
+
+        /// <summary>
+        /// RepeaterAmountPaid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterAmountPaid;
+
+        /// <summary>
+        /// RepeaterStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterStatus;
+
+        /// <summary>
+        /// RepeaterOperation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterOperation;
+
+        /// <summary>
+        /// SqlDataSourceOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceOrder;
     }
 }
