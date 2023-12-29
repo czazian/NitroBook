@@ -7,11 +7,18 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Reflection;
+using System.Security.Policy;
+using System.Threading;
 
 namespace AssignmentWAD.Order
 {
     public partial class IndividualProduct : System.Web.UI.Page
     {
+        public decimal percentageOfOne;
+        public decimal percentageOfTwo;
+        public decimal percentageOfThree;
+        public decimal percentageOfFour;
+        public decimal percentageOfFive;
         protected void Page_Load(object sender, EventArgs e)
         {
             //Query String
@@ -77,6 +84,118 @@ namespace AssignmentWAD.Order
                     rangevalidator.MinimumValue = "1";
                 }
 
+
+                //Count the 1,2,3,4,5 stars of each book comment
+                SqlConnection conn2;
+                string strConnection2 = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+                conn2 = new SqlConnection(strConnection2);
+
+                conn2.Open();
+                int one;
+                int two;
+                int three;
+                int four;
+                int five;
+
+                string cmd1Star = "SELECT COUNT(*) FROM [Comment] c, [Book] b WHERE c.BookID = b.BookID AND c.RateStar = 1 AND c.BookID = @BookID";
+                string cmd2Star = "SELECT COUNT(*) FROM [Comment] c, [Book] b WHERE c.BookID = b.BookID AND c.RateStar = 2 AND c.BookID = @BookID";
+                string cmd3Star = "SELECT COUNT(*) FROM [Comment] c, [Book] b WHERE c.BookID = b.BookID AND c.RateStar = 3 AND c.BookID = @BookID";
+                string cmd4Star = "SELECT COUNT(*) FROM [Comment] c, [Book] b WHERE c.BookID = b.BookID AND c.RateStar = 4 AND c.BookID = @BookID";
+                string cmd5Star = "SELECT COUNT(*) FROM [Comment] c, [Book] b WHERE c.BookID = b.BookID AND c.RateStar = 5 AND c.BookID = @BookID";
+                SqlCommand cmd1 = new SqlCommand(cmd1Star, conn2);
+                SqlCommand cmd2 = new SqlCommand(cmd2Star, conn2);
+                SqlCommand cmd3 = new SqlCommand(cmd3Star, conn2);
+                SqlCommand cmd4 = new SqlCommand(cmd4Star, conn2);
+                SqlCommand cmd5 = new SqlCommand(cmd5Star, conn2);
+                cmd1.Parameters.AddWithValue("@BookID", Request.QueryString["bookID"]);
+                cmd2.Parameters.AddWithValue("@BookID", Request.QueryString["bookID"]);
+                cmd3.Parameters.AddWithValue("@BookID", Request.QueryString["bookID"]);
+                cmd4.Parameters.AddWithValue("@BookID", Request.QueryString["bookID"]);
+                cmd5.Parameters.AddWithValue("@BookID", Request.QueryString["bookID"]);
+                one = (int)cmd1.ExecuteScalar();
+                two = (int)cmd2.ExecuteScalar();
+                three = (int)cmd3.ExecuteScalar();
+                four = (int)cmd4.ExecuteScalar();
+                five = (int)cmd5.ExecuteScalar();
+                lblOneStar.Text = one.ToString();
+                lblTwoStar.Text = two.ToString();
+                lblThreeStar.Text = three.ToString();
+                lblFourStar.Text = four.ToString();
+                lblFiveStar.Text = five.ToString();
+
+
+                int totalNumberOfItems = one + two + three + four + five;  
+                if(one != 0)
+                {
+                    percentageOfOne = (decimal)one * 100 / totalNumberOfItems;
+                } else
+                {
+                    percentageOfOne = 0;
+                }
+
+                if(two != 0)
+                {
+                    percentageOfTwo = (decimal)two * 100 / totalNumberOfItems;
+                }
+                else
+                {
+                    percentageOfTwo = 0;
+                }
+
+                if(three != 0)
+                {
+                    percentageOfThree = (decimal)three * 100 / totalNumberOfItems;
+                } else
+                {
+                    percentageOfThree = 0;
+                }
+
+                if(four != 0)
+                {
+                    percentageOfFour = (decimal)four * 100 / totalNumberOfItems;
+                } else
+                {
+                    percentageOfFour = 0;
+                }
+
+                if(five != 0)
+                {
+                    percentageOfFive = (decimal)five * 100 / totalNumberOfItems;
+                }
+                else
+                {
+                    percentageOfFive = 0;
+                }
+
+
+
+                //Calculate the customer reviews by 5.0 decimal point
+                //ranking.Text = "N/A"; //Testing Purpose
+
+                lblRate.Text = totalNumberOfItems.ToString();
+                decimal circleMark = 0;
+                if (totalNumberOfItems != 0)
+                {
+                    circleMark = ((one * 1) + (two * 2) + (three * 3) + (four * 4) + (five * 5)) / (one + two + three + four + five);
+                    lblRate.Text = circleMark.ToString("F1");
+                    if (circleMark >= 4)
+                    {
+                        ranking.Text = "Excellent";
+                    }
+                    else if (circleMark >= 3)
+                    {
+                        ranking.Text = "Good";
+                    }
+                    else
+                    {
+                        ranking.Text = "Unsatisfied";
+                    }
+                }
+                else
+                {
+                    lblRate.Text = circleMark.ToString("F1");
+                    ranking.Text = "N/A";
+                }
             }
         }
 
