@@ -88,12 +88,12 @@
                     </div>
                 </div>
 
+
                 <div class="col-9">
                     <div id="row-profile" style="display: flex; flex-flow: column nowrap; justify-content: center; border-style: solid; border-color: #D0D0D0; border-radius: 2px;">
                         <div class="row">
                             <h2 class="heading"
                                 style="color: crimson; font-size: 1.3rem; font-weight: bold; margin-top: 20px; margin-left: 20px; font-family: Arial, Helvetica, sans-serif">My Purchase</h2>
-
                         </div>
 
                         <!--An Order-->
@@ -102,17 +102,19 @@
                             <br />
 
                             <div class="row" style="background-color: white; font-family: Arial, Helvetica, sans-serif;">
-                                <!--Items in a box--><br />
+                                <!--Items in a box-->
+                                <br />
                                 <div class="items-container row">
+                                    <asp:Label ID="lblFail" runat="server" Text=""></asp:Label>
 
                                     <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
                                         <SelectParameters>
                                             <asp:Parameter Name="userID" />
                                         </SelectParameters>
-
                                     </asp:SqlDataSource>
                                     <asp:Repeater ID="TrackingRepeater" runat="server">
                                         <ItemTemplate>
+
                                             <div class="top-container" style="width: 100%; display: flex; justify-content: space-between; margin-left: 20px; margin-top: 25px; margin-bottom: 10px;">
                                                 <div class="orderDate" style="color: crimson; font-weight: bold;">
                                                     <i class="far fa-clipboard" style="color: crimson"></i>
@@ -182,30 +184,31 @@
 
                                                         <div class="wrap">
                                                             <div class="stars">
+
                                                                 <asp:Label ID="lblRate1" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate1" runat="server" value="star1" CssClass="rbtRating" />
+                                                                    <asp:RadioButton ID="rbtRate1" runat="server" value="1" CssClass="rbtRating" AutoPostBack="false" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star one-star"></i>
                                                                 </asp:Label>
                                                                 <asp:Label ID="lblRate2" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate2" runat="server" value="star2" CssClass="rbtRating" />
+                                                                    <asp:RadioButton ID="rbtRate2" runat="server" value="2" CssClass="rbtRating" AutoPostBack="false" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star two-star"></i>
                                                                 </asp:Label>
                                                                 <asp:Label ID="lblRate3" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate3" runat="server" value="star3" CssClass="rbtRating" />
+                                                                    <asp:RadioButton ID="rbtRate3" runat="server" value="3" CssClass="rbtRating" AutoPostBack="false" />
 
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star three-star"></i>
                                                                 </asp:Label>
                                                                 <asp:Label ID="lblRate4" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate4" runat="server" value="star4" CssClass="rbtRating" />
+                                                                    <asp:RadioButton ID="rbtRate4" runat="server" value="4" CssClass="rbtRating" AutoPostBack="false" />
 
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star four-star"></i>
                                                                 </asp:Label>
                                                                 <asp:Label ID="lblRate5" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate5" runat="server" value="star5" CssClass="rbtRating" />
+                                                                    <asp:RadioButton ID="rbtRate5" runat="server" value="5" CssClass="rbtRating" AutoPostBack="false" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star five-star"></i>
                                                                 </asp:Label>
@@ -220,7 +223,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-danger" Text="Submit" />
+                                                    <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-danger" Text="Submit" OnClick="btnSubmit_Click" />
                                                 </div>
                                             </div>
                                         </div>
