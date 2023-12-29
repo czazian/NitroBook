@@ -11,7 +11,20 @@ namespace AssignmentWAD
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                Label adminNameLabel = FindControl("adminNameLabel") as Label;
 
+                if (adminNameLabel != null && Session["StaffName"] != null)
+                {
+                    adminNameLabel.Text = Session["StaffName"].ToString();
+                }
+                else
+                {
+                    Response.Redirect("/Staff/staffLogin.aspx");
+                }
+
+            }
         }
     }
 }
