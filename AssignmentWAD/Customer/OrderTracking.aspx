@@ -105,7 +105,7 @@
                                 <!--Items in a box--><br />
                                 <div class="items-container row">
 
-                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
+                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
                                         <SelectParameters>
                                             <asp:Parameter Name="userID" />
                                         </SelectParameters>

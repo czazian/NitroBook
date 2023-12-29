@@ -20,7 +20,7 @@ namespace AssignmentWAD.Customer
                 string userID = Session["UserID"].ToString();
 
                 SqlConnection conn;
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
                 conn = new SqlConnection(strCon);
                 conn.Open();
 
