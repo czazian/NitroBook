@@ -42,6 +42,15 @@ namespace AssignmentWAD.Customer
         protected global::System.Web.UI.WebControls.LinkButton lkbLogout;
 
         /// <summary>
+        /// lblFail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFail;
+
+        /// <summary>
         /// TrackingSource control.
         /// </summary>
         /// <remarks>
