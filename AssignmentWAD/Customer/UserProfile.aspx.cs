@@ -19,7 +19,7 @@ namespace AssignmentWAD.Customer
         
 
             SqlConnection conn;
-            string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             conn = new SqlConnection(strCon);
             conn.Open();
 
@@ -76,7 +76,7 @@ namespace AssignmentWAD.Customer
                 string updateSql = "UPDATE [User] SET ProfileImage = @imageUrl WHERE UserID = @userID";
 
                 SqlConnection conn;
-                string strCon = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+                string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
                 conn = new SqlConnection(strCon);
                 conn.Open();
 

@@ -26,9 +26,11 @@
                     <asp:ListItem Text="Manager" Value="Manager"></asp:ListItem>
                     <asp:ListItem Text="Crew" Value="Crew"></asp:ListItem>
                 </asp:DropDownList>
+                <br />
+                <asp:Label ID="lblMessage" runat="server"></asp:Label>
                 <br>
 
-                <asp:Button runat="server" ID="btnSubmit" Text="Update" CssClass="form-button" />
+                <asp:Button runat="server" ID="btnSubmit" Text="Update" CssClass="form-button" OnClick="btnSubmit_Click" />
             </div>
 
         </div>

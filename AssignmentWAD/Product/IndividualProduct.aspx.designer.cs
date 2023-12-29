@@ -150,6 +150,15 @@ namespace AssignmentWAD.Order
         protected global::System.Web.UI.WebControls.Label lblRate;
 
         /// <summary>
+        /// ranking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ranking;
+
+        /// <summary>
         /// people control.
         /// </summary>
         /// <remarks>
@@ -159,111 +168,75 @@ namespace AssignmentWAD.Order
         protected global::System.Web.UI.WebControls.Label people;
 
         /// <summary>
-        /// imgUser1 control.
+        /// lblFiveStar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgUser1;
+        protected global::System.Web.UI.WebControls.Label lblFiveStar;
 
         /// <summary>
-        /// lblName1 control.
+        /// lblFourStar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName1;
+        protected global::System.Web.UI.WebControls.Label lblFourStar;
 
         /// <summary>
-        /// lblDate control.
+        /// lblThreeStar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDate;
+        protected global::System.Web.UI.WebControls.Label lblThreeStar;
 
         /// <summary>
-        /// lblComment1 control.
+        /// lblTwoStar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComment1;
+        protected global::System.Web.UI.WebControls.Label lblTwoStar;
 
         /// <summary>
-        /// imgUser2 control.
+        /// lblOneStar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgUser2;
+        protected global::System.Web.UI.WebControls.Label lblOneStar;
 
         /// <summary>
-        /// lblName2 control.
+        /// emptyComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName2;
+        protected global::System.Web.UI.WebControls.Label emptyComment;
 
         /// <summary>
-        /// lblDate2 control.
+        /// CommentRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDate2;
+        protected global::System.Web.UI.WebControls.Repeater CommentRepeater;
 
         /// <summary>
-        /// lblComment2 control.
+        /// dsBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComment2;
-
-        /// <summary>
-        /// imgUser3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgUser3;
-
-        /// <summary>
-        /// lblName3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName3;
-
-        /// <summary>
-        /// lblDate3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDate3;
-
-        /// <summary>
-        /// lblComment3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblComment3;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsBook;
     }
 }
