@@ -45,7 +45,7 @@ namespace AssignmentWAD.Customer
                 {
                     string UserID = dtrLogin["UserID"].ToString();
                     Session["UserID"] = UserID.ToString();
-                    System.Diagnostics.Debug.WriteLine("UserID : " + UserID);
+                    System.Diagnostics.Debug.WriteLine("UserID : " + Session["UserID"].ToString());
                     Response.Redirect("~/Home/homepage.aspx");
                 }
             }

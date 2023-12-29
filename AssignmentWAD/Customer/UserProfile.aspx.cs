@@ -16,7 +16,7 @@ namespace AssignmentWAD.Customer
 
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+
 
             SqlConnection conn;
             string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
@@ -83,10 +83,10 @@ namespace AssignmentWAD.Customer
                 SqlCommand cmdEditProfile = new SqlCommand(updateSql, conn);
 
                 cmdEditProfile.Parameters.AddWithValue("@imageUrl", "~/image/" + fileName);
-                cmdEditProfile.Parameters.AddWithValue("@uname", userID);
+                cmdEditProfile.Parameters.AddWithValue("@userID", userID);
 
-                        // Execute the update command
-                        int isUpdated = cmdEditProfile.ExecuteNonQuery();
+                // Execute the update command
+                int isUpdated = cmdEditProfile.ExecuteNonQuery();
 
                 if (isUpdated > 0)
                 {
@@ -94,10 +94,10 @@ namespace AssignmentWAD.Customer
                     image1.ImageUrl = "~/image/" + fileName;
                 }
 
-               
+
             }
 
-         
+
         }
 
     }

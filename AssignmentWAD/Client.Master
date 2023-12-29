@@ -217,28 +217,24 @@
             <div class="button-container" id="btn">
 
 
-                <div class="login">
+                <div class="login" id="loginn">
 
                     <asp:LinkButton ID="btnLgn" runat="server" CssClass="topBtns btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" Style="background-color: rgb(215, 7, 7);">
                         <asp:Image ID="Image2" runat="server" ImageUrl="/image/administrator-icon.png" AlternateText="AdminLogo" Style="width: 30%; border-radius: 50%; margin-top: 5px; margin-bottom: -8px;" />
-
-
-
-
                         Login
                     </asp:LinkButton>
 
                     <ul class="dropdown-menu">
-                        <li>
+                        <li id="identityUser">
                             <asp:HyperLink runat="server" ID="hrefCustomer" NavigateUrl="~/Customer/customerLogin.aspx" Text="Customer" CssClass="dropdown-item"></asp:HyperLink>
                         </li>
-                        <li>
+                        <li id="identityStaff">
                             <asp:HyperLink runat="server" ID="hrefStaff" NavigateUrl="~/Staff/staffLogin.aspx" Text="Staff" CssClass="dropdown-item"></asp:HyperLink>
                         </li>
                     </ul>
                 </div>
 
-                <div class="cart-container">
+                <div class="cart-container" id="profile" style="display: none;">
                     <div style="padding-left: 10px;">
                         <asp:LinkButton ID="lkbAccount" runat="server" CssClass="myAccount" data-bs-toggle="tooltip" data-bs-title="User Profile" PostBackUrl="~/Customer/UserProfile.aspx">
                         <i style="font-size: 19px; padding-left: 4.5px; padding-right: 4.5px;" class="fa-solid fa-user"></i>
@@ -362,12 +358,30 @@
             </div>
         </footer>
 
+
+      
+
         <script type="text/javascript" src="home.js"></script>
         <script type="text/javascript">
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
         </script>
         <script src="https://kit.fontawesome.com/06c32b9e65.js" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var userIDFromSession = <%= Session["UserID"] %>;
+      
+                if (userIDFromSession == 0 || userIDFromSession == null || userIDFromSession == "") {
+                    document.getElementById('identityUser').style.display = "flex";
+                    document.getElementById('profile').style.display = "none";
+                } else {
+                    document.getElementById('identityUser').style.display = "none";
+                    document.getElementById('profile').style.display = "flex";
+                }
+            });
+        </script>
+
         <asp:ContentPlaceHolder ID="jsScript" runat="server"></asp:ContentPlaceHolder>
     </form>
 </body>

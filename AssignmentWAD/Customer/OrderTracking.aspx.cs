@@ -21,7 +21,7 @@ namespace AssignmentWAD.Customer
             TrackingSource.SelectParameters["userID"].DefaultValue = userID;
             TrackingRepeater.DataBind();
             CalculateEstimatedArrivalDate();
-       
+
         }
         private void CalculateEstimatedArrivalDate()
         {
@@ -39,7 +39,7 @@ namespace AssignmentWAD.Customer
                     if (DateTime.TryParse(lblOrderDate.Text, out paymentDate))
                     {
                         // Calculate estimated arrival date
-                        DateTime estimatedArrivalDate = paymentDate.AddDays(7);
+                        DateTime estimatedArrivalDate = paymentDate.AddDays(5);
 
                         // Set the values for lblArrivalDate
                         lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
@@ -76,7 +76,7 @@ namespace AssignmentWAD.Customer
 
             string rateSql = "INSERT INTO Comment (RateStar,Comment,CommentDate,BookID,UserID) VALUES (@RateStar,@Comment,@CommentDate,@BookID,@UserID)";
 
-            SqlCommand cmdRate = new SqlCommand(rateSql,conn);
+            SqlCommand cmdRate = new SqlCommand(rateSql, conn);
 
             cmdRate.Parameters.AddWithValue("@RateStar", rateStar);
             cmdRate.Parameters.AddWithValue("@Comment", feedback);
@@ -86,8 +86,10 @@ namespace AssignmentWAD.Customer
 
             int successRate = cmdRate.ExecuteNonQuery();
 
-            if (successRate>0) {
-                Response.Redirect("~/Home/homepage.aspx");
+            if (successRate > 0)
+            {
+                
+                Response.Redirect("~/Home/OrderTracking.aspx");
             }
             else
             {
@@ -101,8 +103,8 @@ namespace AssignmentWAD.Customer
 
         private int findBookID()
         {
-         
-                    SqlConnection conn = getConnection();
+
+            SqlConnection conn = getConnection();
 
             string matchSql = "SELECT BookID FROM Book WHERE Title = @title";
 
@@ -172,4 +174,4 @@ namespace AssignmentWAD.Customer
 
     }
 
-    }
+}
