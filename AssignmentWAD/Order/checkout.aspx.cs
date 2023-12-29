@@ -127,9 +127,9 @@ namespace AssignmentWAD.Order
                 Session["shoppingCart"] = shoppingCart;
             }
             List<Cart> items = shoppingCart.getCartItems();
-            int userID = Convert.ToInt32(Session["UserID"]);
-            System.Diagnostics.Debug.WriteLine("Checkout - UserID : " + userID);
-            //int userID = 2; //For Testing Purpose
+            //int userID = Convert.ToInt32(Session["UserID"]);
+            //System.Diagnostics.Debug.WriteLine("Checkout - UserID : " + userID);
+            int userID = 2; //For Testing Purpose
 
             //DB
             SqlConnection conn;
@@ -137,7 +137,6 @@ namespace AssignmentWAD.Order
             conn = new SqlConnection(strConnection);
 
             conn.Open();
-
             //Processing
             //Insert to Order Table
             string command1 = "INSERT INTO [Order] VALUES (@Status, @UserID)" + "SELECT SCOPE_IDENTITY()";
@@ -173,44 +172,30 @@ namespace AssignmentWAD.Order
             cmd3.Parameters.AddWithValue("@OrderID", insertedOrderID);
             cmd3.ExecuteNonQuery();
 
-
-
-            //Update the purchase book quantity
-            //Get All Books
-            string command4 = "SELECT BookID, Quantity FROM Book";
-            SqlCommand cmd4 = new SqlCommand(command4, conn);
-            SqlDataReader reader = cmd4.ExecuteReader();
-
+            //teesting
+            SqlConnection conn2;
+            string strConnection2 = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            conn2 = new SqlConnection(strConnection2);
+            conn2.Open();
             //Update
-            string updateQtyCmd = "UPDATE Book SET Quantity = @Quantity WHERE BookID = @BookID";
+            string updateQtyCmd = "UPDATE Book SET Quantity = (Quantity - @quantity) WHERE BookID = @BookID";
             SqlCommand cmd5 = new SqlCommand(updateQtyCmd, conn);
 
-            if(items.Count > 0)
+            //testing & developing
+            string commandSelectOrder = "SELECT * FROM OrderDetails WHERE OrderID = @orderID";
+            SqlCommand cmdSelectOrder = new SqlCommand(commandSelectOrder, conn2);
+            cmdSelectOrder.Parameters.AddWithValue("@orderID", insertedOrderID);
+            SqlDataReader orderDetails = cmdSelectOrder.ExecuteReader();
+
+            if (orderDetails.HasRows)
             {
-                int i = 0;
-                int different = 0;
-                int affected = 0;
-                while (reader.Read())
+                while (orderDetails.Read())
                 {
-                    cmd5.Parameters.Clear();
-
-                    if (reader["BookID"].Equals(items[i].bookID))
-                    {
-                        different = Convert.ToInt32(reader["Quantity"]) - items[i].selectedQuantity;
-                        cmd5.Parameters.AddWithValue("@Quantity", different);
-                        cmd5.Parameters.AddWithValue("@BookID", items[i].bookID);
-                        affected = cmd5.ExecuteNonQuery();
-                        System.Diagnostics.Debug.WriteLine("Affetced : " + affected);
-                    }
-
-                    if (i + 1 >= items.Count)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        i++;
-                    }
+                    string bookID =  orderDetails.GetValue(0).ToString();
+                    int quantity = int.Parse(orderDetails.GetValue(2).ToString());
+                    cmd5.Parameters.AddWithValue("@quantity", quantity);
+                    cmd5.Parameters.AddWithValue("@BookID", bookID);
+                    int i = cmd5.ExecuteNonQuery();
                 }
             }
 

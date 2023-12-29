@@ -22,71 +22,130 @@
 
                 <div class="sales-details">
 
-                    <ul class="details">
-                        <li class="topic">No.</li>
-                        <li><a>1</a></li>
-                        <li><a>2</a></li>
-                        <li><a>3</a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Member</li>
-                        <li><a href="#"><span class="product">Zi An</span></a></li>
-                        <li><a href="#"><span class="product">Angeline</span></a></li>
-                        <li><a href="#"><span class="product">Kyan</span></a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Phone No</li>
-                        <li><a href="#"><span class="product">011 12345678</span></a></li>
-                        <li><a href="#"><span class="product">012 12345645</span></a></li>
-                        <li><a href="#"><span class="product">045 45612378</span></a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Order Date</li>
-                        <li><a href="#"><span class="product">1/12/2023</span></a></li>
-                        <li><a href="#"><span class="product">1/12/2023</span></a></li>
-                        <li><a href="#"><span class="product">2/12/2023</span></a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Amount Paid (RM)</li>
-                        <li><a href="#">300</a></li>
-                        <li><a href="#">400</a></li>
-                        <li><a href="#">500</a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Status</li>
-                        <li><a href="#" class="Packing">Packing</a></li>
-                        <li><a href="#" class="Shipping">Shipping</a></li>
-                        <li><a href="#" class="Delivery">Delivered</a></li>
-                    </ul>
-                    <ul class="details">
-                        <li class="topic">Operation</li>
-                        <li class="txt-center">
-                            <asp:HyperLink runat="server" ID="hrefCreate" NavigateUrl="~/Staff/Order/order_view.aspx"><i class='bx bx-show'></i></asp:HyperLink>
-                            <asp:HyperLink runat="server" ID="hrefEdit" NavigateUrl="~/Staff/Order/order_edit.aspx"><i class='bx bxs-edit'></i></asp:HyperLink>
-                        </li>
-                        <li class="txt-center">
-                            <a><i class='bx bx-show'></i></a>
-                            <a><i class='bx bxs-edit'></i></a>
-                        </li>
-                        <li class="txt-center">
-                            <a><i class='bx bx-show'></i></a>
-                            <a><i class='bx bxs-edit'></i></a>
-                        </li>
-                    </ul>
+                    <asp:Repeater ID="RepeaterOrder" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Order ID.</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("OrderID") %></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterMember" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Member</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><a href="#"><span class="product"><%# Eval("UserName") %></span></a></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterPhone" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Phone No</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><a href="#"><span class="product"><%# Eval("PhoneNo") %></span></a></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterOrderDate" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Order Date</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><a href="#"><span class="product"><%# String.Format("{0:dd-MM-yyyy}", Eval("OrderDate")) %></span></a></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterAmountPaid" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Amount Paid (RM)</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><a href="#"><%# Eval("TotalAmount") %></a></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterStatus" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Status</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><a href="#" class="status"><%# Eval("Status") %></a></li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterOperation" runat="server" DataSourceID="SqlDataSourceOrder">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Operation</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li class="txt-center">
+                                <asp:HyperLink runat="server" ID="hrefView" NavigateUrl='<%# "~/Staff/Order/order_view.aspx?OrderID=" + Eval("OrderID") %>'><i class='bx bx-show'></i></asp:HyperLink>
+                                <asp:HyperLink runat="server" ID="hrefEdit" NavigateUrl='<%# "~/Staff/Order/order_edit.aspx?OrderID=" + Eval("OrderID") %>'><i class='bx bxs-edit'></i></asp:HyperLink>
+                            </li>
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
                 </div>
             </div>
         </div>
     </div>
 
     <style>
-    .Packing {
-        color:darkblue!important;
-    }
-    .Shipping {
-        color:orange!important;
-    }
-    .Delivery{
-        color:lime!important;
-    }
-</style>
+        .Packing {
+            color: darkblue !important;
+        }
+
+        .Shipping {
+            color: orange !important;
+        }
+
+        .Delivery {
+            color: lime !important;
+        }
+    </style>
+
+    <asp:SqlDataSource ID="SqlDataSourceOrder" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT
+    U.UserName,
+    U.PhoneNo,
+    P.PaymentDate AS OrderDate, -- Assuming PaymentDate corresponds to the order date
+    P.TotalAmount,
+    O.Status,
+    O.OrderID
+FROM
+    [User] U
+JOIN
+    [Order] O ON U.UserID = O.UserID
+JOIN
+    Payment P ON O.OrderID = P.OrderID;"></asp:SqlDataSource>
 </asp:Content>
