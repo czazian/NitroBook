@@ -66,7 +66,7 @@ namespace AssignmentWAD.Staff
 
         private bool IsValidStaff(string email, string password)
         {
-            string query = "SELECT COUNT(*) FROM Staff WHERE StaffName = @Email AND StaffPassword = @Password";
+            string query = "SELECT StaffID FROM Staff WHERE StaffName = @Email AND StaffPassword = @Password";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString))
             {
@@ -77,12 +77,12 @@ namespace AssignmentWAD.Staff
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Password", password);
 
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    object staffID = cmd.ExecuteScalar();
 
-                    if (count > 0)
+                    if (staffID != null)
                     {
-                        // Successful login, set session variable
-                        Session["StaffName"] = email;
+                        // Successful login, set session variable with StaffID
+                        Session["StaffID"] = staffID.ToString();
                         return true;
                     }
                 }
