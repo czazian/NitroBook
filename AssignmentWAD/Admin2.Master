@@ -31,12 +31,12 @@
             <span class="logo_name">Nitro-Books</span>
         </div>
         <ul class="nav-links">
-<%--            <li>
+            <li>
                 <asp:HyperLink runat="server" ID="dashboardLink" NavigateUrl="~/Staff/Dashboard/dashboard.aspx">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </asp:HyperLink>
-            </li>--%>
+            </li>
             <li>
                 <asp:HyperLink runat="server" ID="productLink" NavigateUrl="~/Staff/Product/product.aspx">
                     <i class='bx bx-box'></i>
@@ -92,7 +92,7 @@
             </div>
             <div class="profile-details">
                 <i class='bx bxs-user-circle bx-align-right'></i>
-                <span class="admin_name">Managers</span>
+                <asp:Label runat="server" ID="adminNameLabel"></asp:Label>
 
                 <div onclick="myFunction()" class="dropbtn"><i class='bx bx-chevron-down'></i></div>
                 <div id="myDropdown" class="dropdown-content">
@@ -119,7 +119,7 @@
 <style>
     div#myDropdown a:hover {
         background-color: #ff5722;
-        color:white;
+        color: white;
     }
 
     .dropbtn {
