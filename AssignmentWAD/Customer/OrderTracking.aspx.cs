@@ -21,7 +21,6 @@ namespace AssignmentWAD.Customer
             TrackingSource.SelectParameters["userID"].DefaultValue = userID;
             TrackingRepeater.DataBind();
             CalculateEstimatedArrivalDate();
-
         }
         private void CalculateEstimatedArrivalDate()
         {
@@ -64,7 +63,9 @@ namespace AssignmentWAD.Customer
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            int rateStar = GetSelectedRating();
+
+            int rateStar = Convert.ToInt32(r.SelectedValue);
+            //System.Diagnostics.Debug.WriteLine(rateStar);
             string feedback = txtFeedback.Text;
             string userID = Session["UserID"].ToString();
             DateTime dateNow = DateTime.Now;
@@ -88,8 +89,8 @@ namespace AssignmentWAD.Customer
 
             if (successRate > 0)
             {
-                
-                Response.Redirect("~/Home/OrderTracking.aspx");
+
+                Response.Redirect("~/Customer/OrderTracking.aspx");
             }
             else
             {
@@ -136,40 +137,6 @@ namespace AssignmentWAD.Customer
             conn.Close();
 
             return bookID;
-        }
-
-        private int GetSelectedRating()
-        {
-            RadioButton rbtRate1 = (RadioButton)lblRate1.FindControl("rbtRate1");
-            RadioButton rbtRate2 = (RadioButton)lblRate2.FindControl("rbtRate2");
-            RadioButton rbtRate3 = (RadioButton)lblRate3.FindControl("rbtRate3");
-            RadioButton rbtRate4 = (RadioButton)lblRate4.FindControl("rbtRate4");
-            RadioButton rbtRate5 = (RadioButton)lblRate5.FindControl("rbtRate5");
-
-            if (rbtRate1.Checked)
-            {
-                return 1;
-            }
-            else if (rbtRate2.Checked)
-            {
-                return 2;
-            }
-            else if (rbtRate3.Checked)
-            {
-                return 3;
-            }
-            else if (rbtRate4.Checked)
-            {
-                return 4;
-            }
-            else if (rbtRate5.Checked)
-            {
-                return 5;
-            }
-            else
-            {
-                return 0;
-            }
         }
 
     }

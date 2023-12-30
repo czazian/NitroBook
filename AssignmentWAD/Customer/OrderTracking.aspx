@@ -166,11 +166,6 @@
 
 
 
-
-
-
-
-
                                     <!--Rating Model-->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -184,37 +179,47 @@
 
                                                         <asp:Label ID="lblRate" runat="server" CssClass="col-form-label" Text="Product Rating: " Style="margin-top: 100px;"></asp:Label>
 
-                                                        <div class="wrap">
-                                                            <div class="stars">
 
-                                                                <asp:Label ID="lblRate1" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate1" runat="server" value="1" CssClass="rbtRating" AutoPostBack="false" />
+                                                        <div class="wrap" style="margin-bottom: 20px;">
+                                                            
+                                                                <asp:RadioButtonList RepeatDirection="Horizontal" ID="r" runat="server">
+                                                                    <asp:ListItem Value="1" Style="margin-right : 10px; display:flex; flex-flow: column nowrap; color: crimson">&#9733;1</asp:ListItem>
+                                                                    <asp:ListItem Value="2" Style="margin-right : 10px; display:flex; flex-flow: column nowrap; color: crimson">&#9733;2</asp:ListItem>
+                                                                    <asp:ListItem Value="3" Style="margin-right : 10px; display:flex; flex-flow: column nowrap; color: crimson">&#9733;3</asp:ListItem>
+                                                                    <asp:ListItem Value="4" Style="margin-right : 10px; display:flex; flex-flow: column nowrap; color: crimson">&#9733;4</asp:ListItem>
+                                                                    <asp:ListItem Value="5" Style="margin-right : 10px; display:flex; flex-flow: column nowrap; color: crimson">&#9733;5</asp:ListItem>
+                                                                </asp:RadioButtonList>
+
+                                                                <%--                                                   <asp:Label ID="lblRate1" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton GroupName="rate" ID="rbRate1" runat="server" Text="1" CssClass="rbtRating" AutoPostBack="true" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star one-star"></i>
                                                                 </asp:Label>
+
                                                                 <asp:Label ID="lblRate2" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate2" runat="server" value="2" CssClass="rbtRating" AutoPostBack="false" />
+                                                                    <asp:RadioButton GroupName="rate" ID="rbRate2" runat="server" Text="2" CssClass="rbtRating" AutoPostBack="true" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star two-star"></i>
                                                                 </asp:Label>
-                                                                <asp:Label ID="lblRate3" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate3" runat="server" value="3" CssClass="rbtRating" AutoPostBack="false" />
 
+                                                                <asp:Label ID="lblRate3" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton GroupName="rate" ID="rbRate3" runat="server" Text="3" CssClass="rbtRating" AutoPostBack="true" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star three-star"></i>
                                                                 </asp:Label>
-                                                                <asp:Label ID="lblRate4" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate4" runat="server" value="4" CssClass="rbtRating" AutoPostBack="false" />
 
+                                                                <asp:Label ID="lblRate4" CssClass="rate" runat="server">
+                                                                    <asp:RadioButton GroupName="rate" ID="rbRate4" runat="server" Text="4" CssClass="rbtRating" AutoPostBack="true" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star four-star"></i>
                                                                 </asp:Label>
+
                                                                 <asp:Label ID="lblRate5" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate5" runat="server" value="5" CssClass="rbtRating" AutoPostBack="false" />
+                                                                    <asp:RadioButton ID="rbRate5" runat="server" Text="5" CssClass="rbtRating" AutoPostBack="true" />
                                                                     <div class="face"></div>
                                                                     <i class="far fa-star star five-star"></i>
-                                                                </asp:Label>
-                                                            </div>
+                                                                </asp:Label>--%>
+                                                        
                                                         </div>
 
                                                     </div>
