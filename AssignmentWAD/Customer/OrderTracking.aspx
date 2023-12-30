@@ -98,74 +98,81 @@
 
                         <!--An Order-->
                         <div class="w3-panel w3-border-top">
-                            <br />
-                            <br />
+
 
                             <div class="row" style="background-color: white; font-family: Arial, Helvetica, sans-serif;">
                                 <!--Items in a box-->
                                 <br />
                                 <div class="items-container row">
-                                    <asp:Label ID="lblFail" runat="server" Text=""></asp:Label>
+                                    <asp:Label ID="lblFail" runat="server" Text="" Style="font-weight: bold; color: red; font-size: 20px; margin-top: 15px; margin-bottom: 5px;"></asp:Label>
 
-                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
+                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT DISTINCT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.OrderID AS OrderID, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.BookID AS BookID, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
                                         <SelectParameters>
                                             <asp:Parameter Name="userID" />
                                         </SelectParameters>
                                     </asp:SqlDataSource>
-                                    <asp:Repeater ID="TrackingRepeater" runat="server">
+
+                                    <asp:Repeater ID="OuterRepeater" runat="server" OnItemDataBound="OuterRepeater_ItemDataBound">
                                         <ItemTemplate>
-
-                                            <div class="top-container" style="width: 100%; display: flex; justify-content: space-between; margin-left: 20px; margin-top: 25px; margin-bottom: 10px;">
-                                                <div class="orderDate" style="color: crimson; font-weight: bold;">
-                                                    <i class="far fa-clipboard" style="color: crimson"></i>
-                                                    Order Date :
+                                            <div style="margin-bottom: 15px">
+                                                <div class="top-container" style="width: 100%; display: flex; justify-content: space-between; margin-left: 20px; margin-top: 10px; margin-bottom: 10px;">
+                                                    <div class="orderDate" style="color: crimson; font-weight: bold;">
+                                                        <i class="far fa-clipboard" style="color: crimson"></i>
+                                                        Order Date :
                                             <asp:Label runat="server" ID="lblOrderDate" Text='<%# Bind("PaymentDate", "{0:dd-MM-yyyy}") %>' />
+                                                    </div>
+                                                    <div style="margin-right: 20px;">
+                                                        <asp:Label CssClass="shippingStatus" runat="server" ID="lblDeliveryStatus" Text='<%#Eval("OrderStatus") %>' />
+                                                    </div>
                                                 </div>
-                                                <div style="margin-right: 20px;">
-                                                    <asp:Label CssClass="shippingStatus" runat="server" ID="lblDeliveryStatus" Text='<%#Eval("OrderStatus") %>' />
-                                                </div>
-                                            </div>
 
-                                            <!--An item in one box-->
-                                            <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
-                                                <asp:Image ID="image1" runat="server" ImageUrl='<%#Eval("Image") %>' AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
-                                                <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
-                                                    <div class="PurchaseDetails">
-                                                        <div style="margin-bottom: 10px;">
-                                                            <b>
-                                                                <asp:Label runat="server" ID="lblBookName1" Text='<%#Eval("BookTitle")%>' /></b>
+                                                <asp:Repeater ID="InnerRepeater" runat="server">
+                                                    <ItemTemplate>
+                                                        <div class="an-item">
+                                                            <div class="an-item" style="width: 100%; display: flex; flex-flow: row nowrap;">
+                                                                <asp:ImageButton PostBackUrl='<%# "~/Product/IndividualProduct.aspx?bookID=" + Eval("bookID") %>' ID="image1" runat="server" ImageUrl='<%#Eval("Image") %>' AlternateText="PurchaseImage" CssClass="bookImage" Style="width: 120px; margin-left: 30px; margin-top: 15px; float: left;" />
+                                                                <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; width: 100%; margin-top: 15px; margin-left: 10px; margin-right: 5px;">
+                                                                    <div class="PurchaseDetails">
+                                                                        <div style="margin-bottom: 10px;">
+                                                                            <b>
+                                                                                <asp:Label runat="server" ID="lblBookName1" Text='<%#Eval("BookTitle")%>' /></b>
+                                                                        </div>
+                                                                        <div>
+                                                                            <asp:Label Style="color: #6c6b6b" ID="lblQty" runat="server" Text='<%# "x" + Eval("OrderQuantity") %>' />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="priceLabel">
+                                                                        <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="lblBookPrice" Text='<%# "RM " + Eval("BookPrice") %>' />
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div style="margin: 15px 10px 5px 0;">
+                                                                <asp:Button Visible="true" ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
+                                                            </div>
+
+                                                            <hr />
+
                                                         </div>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                                <div class="bottom-container" style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
+                                                    <div style="display: flex; flex-flow: row nowrap; align-items: end; margin-bottom: 20px;">
+                                                        <span style="color: #6c6b6b; font-size: 10px;">Estimated Arrival Date: </span>
+                                                        <asp:Label runat="server" ID="lblArrivalDate" Style="color: #6c6b6b; font-size: 10px; margin-top: -30px;" />
+                                                    </div>
+                                                    <div style="display: flex; flex-flow: column nowrap;">
                                                         <div>
-                                                            <asp:Label Style="color: #6c6b6b" ID="lblQty" runat="server" Text='<%# "x" + Eval("OrderQuantity") %>' />
+                                                            <asp:Label runat="server" ID="Label1" Style="font-size: 20px; margin-right: 5px;" Text='<%# "Total: RM " + Eval("TotalAmount") %>' />
                                                         </div>
-                                                    </div>
-                                                    <div class="priceLabel">
-                                                        <asp:Label Style="color: #6c6b6b; margin-top: -30px;" runat="server" ID="lblBookPrice" Text='<%# "RM " + Eval("BookPrice") %>' />
+
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <hr />
-                                            <div class="bottom-container" style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
-                                                <div style="display: flex; flex-flow: row nowrap; align-items: end; margin-bottom: 20px;">
-                                                    <span style="color: #6c6b6b; font-size: 10px;">Estimated Arrival Date: </span>
-                                                    <asp:Label runat="server" ID="lblArrivalDate" Style="color: #6c6b6b; font-size: 10px; margin-top: -30px;" />
-                                                </div>
-                                                <div style="display: flex; flex-flow: column nowrap;">
-                                                    <div>
-                                                        <asp:Label runat="server" ID="Label1" Style="font-size: 20px; margin-right: 5px;" Text='<%# "Total: RM " + Eval("TotalAmount") %>' />
-                                                    </div>
-                                                    <div style="margin: 15px 10px 15px 0;">
-                                                        <asp:Button ID="Button1" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
-                                                    </div>
-                                                </div>
+                                                <hr style="height: 2px; border-width: 0; color: black; background-color: black">
                                             </div>
                                         </ItemTemplate>
                                     </asp:Repeater>
-
-
-
-
-
 
 
 
@@ -182,39 +189,17 @@
 
                                                         <asp:Label ID="lblRate" runat="server" CssClass="col-form-label" Text="Product Rating: " Style="margin-top: 100px;"></asp:Label>
 
-                                                        <div class="wrap">
-                                                            <div class="stars">
 
-                                                                <asp:Label ID="lblRate1" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate1" runat="server" value="1" CssClass="rbtRating" AutoPostBack="false" />
-                                                                    <div class="face"></div>
-                                                                    <i class="far fa-star star one-star"></i>
-                                                                </asp:Label>
-                                                                <asp:Label ID="lblRate2" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate2" runat="server" value="2" CssClass="rbtRating" AutoPostBack="false" />
-                                                                    <div class="face"></div>
-                                                                    <i class="far fa-star star two-star"></i>
-                                                                </asp:Label>
-                                                                <asp:Label ID="lblRate3" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate3" runat="server" value="3" CssClass="rbtRating" AutoPostBack="false" />
+                                                        <div class="wrap" style="margin-bottom: 20px;">
 
-                                                                    <div class="face"></div>
-                                                                    <i class="far fa-star star three-star"></i>
-                                                                </asp:Label>
-                                                                <asp:Label ID="lblRate4" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate4" runat="server" value="4" CssClass="rbtRating" AutoPostBack="false" />
-
-                                                                    <div class="face"></div>
-                                                                    <i class="far fa-star star four-star"></i>
-                                                                </asp:Label>
-                                                                <asp:Label ID="lblRate5" CssClass="rate" runat="server">
-                                                                    <asp:RadioButton ID="rbtRate5" runat="server" value="5" CssClass="rbtRating" AutoPostBack="false" />
-                                                                    <div class="face"></div>
-                                                                    <i class="far fa-star star five-star"></i>
-                                                                </asp:Label>
-                                                            </div>
+                                                            <asp:RadioButtonList RepeatDirection="Horizontal" ID="r" runat="server">
+                                                                <asp:ListItem Value="1" Style="margin-right: 10px; display: flex; flex-flow: column nowrap; color: crimson">&#9733;1</asp:ListItem>
+                                                                <asp:ListItem Value="2" Style="margin-right: 10px; display: flex; flex-flow: column nowrap; color: crimson">&#9733;2</asp:ListItem>
+                                                                <asp:ListItem Value="3" Style="margin-right: 10px; display: flex; flex-flow: column nowrap; color: crimson">&#9733;3</asp:ListItem>
+                                                                <asp:ListItem Value="4" Style="margin-right: 10px; display: flex; flex-flow: column nowrap; color: crimson">&#9733;4</asp:ListItem>
+                                                                <asp:ListItem Value="5" Style="margin-right: 10px; display: flex; flex-flow: column nowrap; color: crimson">&#9733;5</asp:ListItem>
+                                                            </asp:RadioButtonList>
                                                         </div>
-
                                                     </div>
                                                     <div class="mb-3">
                                                         <br />
@@ -231,7 +216,6 @@
                                 </div>
                             </div>
                             <!--End of an order-->
-
 
 
 

@@ -21,6 +21,7 @@ namespace AssignmentWAD.Order
         public decimal percentageOfFive;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //Query String
             string bookID = Request.QueryString["bookID"];
 

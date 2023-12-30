@@ -60,13 +60,13 @@ namespace AssignmentWAD.Customer
         protected global::System.Web.UI.WebControls.SqlDataSource TrackingSource;
 
         /// <summary>
-        /// TrackingRepeater control.
+        /// OuterRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater TrackingRepeater;
+        protected global::System.Web.UI.WebControls.Repeater OuterRepeater;
 
         /// <summary>
         /// btnClose control.
@@ -87,94 +87,13 @@ namespace AssignmentWAD.Customer
         protected global::System.Web.UI.WebControls.Label lblRate;
 
         /// <summary>
-        /// lblRate1 control.
+        /// r control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRate1;
-
-        /// <summary>
-        /// rbtRate1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtRate1;
-
-        /// <summary>
-        /// lblRate2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRate2;
-
-        /// <summary>
-        /// rbtRate2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtRate2;
-
-        /// <summary>
-        /// lblRate3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRate3;
-
-        /// <summary>
-        /// rbtRate3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtRate3;
-
-        /// <summary>
-        /// lblRate4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRate4;
-
-        /// <summary>
-        /// rbtRate4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtRate4;
-
-        /// <summary>
-        /// lblRate5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRate5;
-
-        /// <summary>
-        /// rbtRate5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtRate5;
+        protected global::System.Web.UI.WebControls.RadioButtonList r;
 
         /// <summary>
         /// lblFeedback control.
