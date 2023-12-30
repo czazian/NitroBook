@@ -148,15 +148,20 @@
                                                                 </div>
 
                                                             </div>
-                                                            <div style="margin: 15px 10px 5px 0;">
-                                                                <asp:Button Visible="true" ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
-                                                            </div>
+                                                                        <asp:Button Visible='<%# Eval("OrderStatus").ToString().Equals("Delivered") %>' ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
+
+                                                            <%--<div style="margin: 25px 10px 5px 0;">
+                                                                <asp:Button Visible='<%# Eval("OrderStatus").ToString().Equals("Delivered") %>' ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
+
+<%--                                                                <asp:Button Visible="true" ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" OnClientClick="openModal(); return false;" />
+                                                            </div>--%>
 
                                                             <hr />
 
                                                         </div>
                                                     </ItemTemplate>
                                                 </asp:Repeater>
+
                                                 <div class="bottom-container" style="display: flex; flex-flow: row nowrap; justify-content: space-between;">
                                                     <div style="display: flex; flex-flow: row nowrap; align-items: end; margin-bottom: 20px;">
                                                         <span style="color: #6c6b6b; font-size: 10px;">Estimated Arrival Date: </span>
