@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,10 +17,8 @@ namespace AssignmentWAD.Customer
             {
                 lblSuccRegMsg.Text = Session["SuccessMessage"].ToString();
             }
-            
-        }
 
-    
+        }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
@@ -29,6 +26,7 @@ namespace AssignmentWAD.Customer
             string strCon = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             conn = new SqlConnection(strCon);
             conn.Open();
+
 
             string loginSql = "SELECT * FROM [User] WHERE userName = @userName AND UserPassword = @password";
 
@@ -45,8 +43,8 @@ namespace AssignmentWAD.Customer
                 {
                     string UserID = dtrLogin["UserID"].ToString();
                     Session["UserID"] = UserID.ToString();
-                    System.Diagnostics.Debug.WriteLine("UserID : " + UserID);
-                    Response.Redirect("~/Home/homepage.aspx");
+                    System.Diagnostics.Debug.WriteLine("UserID : " + Session["UserID"].ToString());
+                    Response.Redirect("~/Customer/UserProfile.aspx");
                 }
             }
             else
@@ -54,7 +52,10 @@ namespace AssignmentWAD.Customer
                 lblLoginErr.Text = "*Invalid ID or password. Please try again.";
             }
 
+            conn.Close();
 
         }
+
+
     }
 }

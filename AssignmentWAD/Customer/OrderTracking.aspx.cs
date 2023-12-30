@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,19 +15,69 @@ namespace AssignmentWAD.Customer
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                BindData();
+            }
+        }
 
-            TrackingRepeater.DataSource = TrackingSource;
-
+        private void BindData()
+        {
             string userID = Session["UserID"].ToString();
 
-            TrackingSource.SelectParameters["userID"].DefaultValue = userID;
-            TrackingRepeater.DataBind();
-            CalculateEstimatedArrivalDate();
-       
+            DataTable data = GetDataFromDatabase(userID);
+
+            if (data.Rows.Count > 0)
+            {
+                OuterRepeater.DataSource = data;
+                OuterRepeater.DataBind();
+            }
+            else
+            {
+                lblFail.Text = "*Sorry, You have no purchased record.";
+            }
         }
+
+        private DataTable GetDataFromDatabase(string userID)
+        {
+            TrackingSource.SelectParameters["userID"].DefaultValue = userID;
+            DataView dv = (DataView)TrackingSource.Select(DataSourceSelectArguments.Empty);
+            DataTable distinctDataTable = dv.ToTable(true, "OrderID", "PaymentDate", "TotalAmount", "OrderStatus");
+            return distinctDataTable;
+        }
+
+        protected void OuterRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                Repeater innerRepeater = (Repeater)e.Item.FindControl("InnerRepeater");
+
+                // Get the current order's data
+                DataRowView orderData = (DataRowView)e.Item.DataItem;
+                int orderID = orderData.Row.Field<int>("OrderID");
+
+                // Filter the DataTable to get items for the current order
+                DataTable itemsForOrder = ((DataView)TrackingSource.Select(DataSourceSelectArguments.Empty))
+                    .Table
+                    .Select($"OrderID = {orderID}")
+                    .CopyToDataTable();
+
+                innerRepeater.DataSource = itemsForOrder;
+                innerRepeater.DataBind();
+
+                CalculateEstimatedArrivalDate();
+            }
+            else
+            {
+                lblFail.Text = "You have no purchased record.";
+            }
+        }
+
+
+
         private void CalculateEstimatedArrivalDate()
         {
-            foreach (RepeaterItem item in TrackingRepeater.Items)
+            foreach (RepeaterItem item in OuterRepeater.Items)
             {
                 // Find the controls within the item
                 Label lblOrderDate = (Label)item.FindControl("lblOrderDate");
@@ -36,22 +88,73 @@ namespace AssignmentWAD.Customer
                     // Assuming lblOrderDate.Text contains the payment date
                     DateTime paymentDate;
 
-                    if (DateTime.TryParse(lblOrderDate.Text, out paymentDate))
+                    // Specify the expected date format
+                    string[] dateFormats = { "dd-MM-yyyy" }; // Adjust according to your actual date format
+
+                    // Use DateTime.TryParseExact to handle specific date formats
+                    if (DateTime.TryParseExact(lblOrderDate.Text, dateFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out paymentDate))
                     {
                         // Calculate estimated arrival date
-                        DateTime estimatedArrivalDate = paymentDate.AddDays(7);
+                        DateTime estimatedArrivalDate = paymentDate.AddDays(5);
 
                         // Set the values for lblArrivalDate
                         lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
                     }
                     else
                     {
-                        // Handle parsing failure if needed
-                        lblArrivalDate.Text = "Invalid Date";
+                        // Handle parsing failure
+                        lblArrivalDate.Text = "Invalid Date Format";
                     }
                 }
             }
         }
+
+
+
+
+
+
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+
+        //    TrackingRepeater.DataSource = TrackingSource;
+
+        //    string userID = Session["UserID"].ToString();
+
+        //    TrackingSource.SelectParameters["userID"].DefaultValue = userID;
+        //    TrackingRepeater.DataBind();
+        //    CalculateEstimatedArrivalDate();
+
+        //}
+        //private void CalculateEstimatedArrivalDate()
+        //{
+        //    foreach (RepeaterItem item in OuterRepeater.Items)
+        //    {
+        //        // Find the controls within the item
+        //        Label lblOrderDate = (Label)item.FindControl("lblOrderDate");
+        //        Label lblArrivalDate = (Label)item.FindControl("lblArrivalDate");
+
+        //        if (lblOrderDate != null && lblArrivalDate != null)
+        //        {
+        //            // Assuming lblOrderDate.Text contains the payment date
+        //            DateTime paymentDate;
+
+        //            if (DateTime.TryParse(lblOrderDate.Text, out paymentDate))
+        //            {
+        //                // Calculate estimated arrival date
+        //                DateTime estimatedArrivalDate = paymentDate.AddDays(5);
+
+        //                // Set the values for lblArrivalDate
+        //                lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
+        //            }
+        //            else
+        //            {
+        //                // Handle parsing failure if needed
+        //                lblArrivalDate.Text = "Invalid Date";
+        //            }
+        //        }
+        //    }
+        //}
 
         private SqlConnection getConnection()
         {
@@ -64,19 +167,26 @@ namespace AssignmentWAD.Customer
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            int rateStar = GetSelectedRating();
+
+            int rateStar = Convert.ToInt32(r.SelectedValue);
+            //System.Diagnostics.Debug.WriteLine(rateStar);
             string feedback = txtFeedback.Text;
             string userID = Session["UserID"].ToString();
             DateTime dateNow = DateTime.Now;
             //string date = dateNow.ToString("dd/MM/yyyy");
 
+
+
             int bookID = findBookID();
 
             SqlConnection conn = getConnection();
 
+            System.Diagnostics.Debug.WriteLine(bookID);
+
+
             string rateSql = "INSERT INTO Comment (RateStar,Comment,CommentDate,BookID,UserID) VALUES (@RateStar,@Comment,@CommentDate,@BookID,@UserID)";
 
-            SqlCommand cmdRate = new SqlCommand(rateSql,conn);
+            SqlCommand cmdRate = new SqlCommand(rateSql, conn);
 
             cmdRate.Parameters.AddWithValue("@RateStar", rateStar);
             cmdRate.Parameters.AddWithValue("@Comment", feedback);
@@ -86,8 +196,10 @@ namespace AssignmentWAD.Customer
 
             int successRate = cmdRate.ExecuteNonQuery();
 
-            if (successRate>0) {
-                Response.Redirect("~/Home/homepage.aspx");
+            if (successRate > 0)
+            {
+
+                Response.Redirect("~/Customer/OrderTracking.aspx");
             }
             else
             {
@@ -101,75 +213,40 @@ namespace AssignmentWAD.Customer
 
         private int findBookID()
         {
-         
-                    SqlConnection conn = getConnection();
+            int bookID = 0;
+
+            SqlConnection conn = getConnection();
 
             string matchSql = "SELECT BookID FROM Book WHERE Title = @title";
-
             SqlCommand cmdMatch = new SqlCommand(matchSql, conn);
 
-
-            foreach (RepeaterItem item in TrackingRepeater.Items)
+            foreach (RepeaterItem item in OuterRepeater.Items)
             {
                 // Find the controls within the item
                 Label lblBookName1 = (Label)item.FindControl("lblBookName1");
+
                 if (lblBookName1 != null)
                 {
                     cmdMatch.Parameters.Clear();  // Clear existing parameters
                     cmdMatch.Parameters.AddWithValue("@title", lblBookName1.Text);
 
+                    SqlDataReader dtrMatch = cmdMatch.ExecuteReader();
+
+                    if (dtrMatch.HasRows)
+                    {
+                        while (dtrMatch.Read())
+                        {
+                            bookID = int.Parse(dtrMatch["BookID"].ToString());
+                        }
+                    }
+
+                    dtrMatch.Close();  // Close the SqlDataReader to avoid issues
                 }
             }
-
-            SqlDataReader dtrMatch = cmdMatch.ExecuteReader();
-
-            int bookID = 0;
-            if (dtrMatch.HasRows)
-            {
-                while (dtrMatch.Read())
-                {
-                    bookID = int.Parse(dtrMatch["BookID"].ToString());
-                }
-            }
-            conn.Close();
 
             return bookID;
         }
 
-        private int GetSelectedRating()
-        {
-            RadioButton rbtRate1 = (RadioButton)lblRate1.FindControl("rbtRate1");
-            RadioButton rbtRate2 = (RadioButton)lblRate2.FindControl("rbtRate2");
-            RadioButton rbtRate3 = (RadioButton)lblRate3.FindControl("rbtRate3");
-            RadioButton rbtRate4 = (RadioButton)lblRate4.FindControl("rbtRate4");
-            RadioButton rbtRate5 = (RadioButton)lblRate5.FindControl("rbtRate5");
-
-            if (rbtRate1.Checked)
-            {
-                return 1;
-            }
-            else if (rbtRate2.Checked)
-            {
-                return 2;
-            }
-            else if (rbtRate3.Checked)
-            {
-                return 3;
-            }
-            else if (rbtRate4.Checked)
-            {
-                return 4;
-            }
-            else if (rbtRate5.Checked)
-            {
-                return 5;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
     }
 
-    }
+}
