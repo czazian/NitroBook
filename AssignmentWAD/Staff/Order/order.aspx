@@ -139,7 +139,9 @@
                             </ul>
                         </FooterTemplate>
                     </asp:Repeater>
+                    <br />
                 </div>
+                <asp:Label ID="lblNoRecordsFound" runat="server" Text="No matching records found." CssClass="lblNoRecord"></asp:Label>
             </div>
         </div>
     </div>
@@ -155,6 +157,11 @@
 
         .Delivery {
             color: lime !important;
+        }
+
+        .lblNoRecord {
+            text-align: center;
+            line-height: 100px;
         }
     </style>
 </asp:Content>

@@ -30,7 +30,6 @@ namespace AssignmentWAD.Staff.Order
         {
             try
             {
-                // You may need to adjust the connection string based on your environment
                 string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -42,7 +41,6 @@ namespace AssignmentWAD.Staff.Order
                                    "JOIN [Order] O ON U.UserID = O.UserID " +
                                    "JOIN Payment P ON O.OrderID = P.OrderID ";
 
-                    // Append the WHERE clause for searching if a search term is provided
                     if (!string.IsNullOrEmpty(searchTerm))
                     {
                         query += "WHERE U.UserName LIKE '%' + @SearchTerm + '%' OR O.Status LIKE '%' + @SearchTerm + '%' " +
@@ -53,7 +51,6 @@ namespace AssignmentWAD.Staff.Order
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        // Add parameters for search
                         if (!string.IsNullOrEmpty(searchTerm))
                         {
                             command.Parameters.AddWithValue("@SearchTerm", searchTerm);
@@ -64,6 +61,7 @@ namespace AssignmentWAD.Staff.Order
                             DataTable dataTable = new DataTable();
                             dataTable.Load(reader);
 
+                            // Always show the repeater controls
                             RepeaterOrder.DataSource = dataTable;
                             RepeaterOrder.DataBind();
                             RepeaterPhone.DataSource = dataTable;
@@ -78,20 +76,33 @@ namespace AssignmentWAD.Staff.Order
                             RepeaterOperation.DataBind();
                             RepeaterOrderDate.DataSource = dataTable;
                             RepeaterOrderDate.DataBind();
+
+                            if (dataTable.Rows.Count > 0)
+                            {
+                                // Records found, hide the "No matching records found" message
+                                lblNoRecordsFound.Visible = false;
+                            }
+                            else
+                            {
+                                // No records found, display the "No matching records found" message
+                                lblNoRecordsFound.Visible = true;
+                                lblNoRecordsFound.Text = "No matching records found.";
+                            }
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Handle exceptions, log errors, or display an error message
+                lblNoRecordsFound.Visible = true;
+                lblNoRecordsFound.Text = "No matching records found.";
             }
         }
+
         protected void RepeaterStatus_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                // Assuming 'Status' is a Label in your Repeater template
                 Label statusLabel = (Label)e.Item.FindControl("StatusLabel");
 
                 if (statusLabel != null)
