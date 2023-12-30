@@ -50,7 +50,7 @@
                 <asp:TextBox runat="server" ID="txtQuantity" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 </br>
                      <label class="label-field">Image:</label></br>
-                <asp:Image runat="server" ID="image"/>
+                <asp:Image runat="server" ID="image" CssClass="width-25"/>
                 <br>
                     <label class="label-field">Language: </label>
                 </br>

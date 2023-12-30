@@ -30,7 +30,7 @@
                 <asp:TextBox runat="server" ID="txtDateOfBirth" CssClass="input-field width-25" ReadOnly="True"></asp:TextBox>
                 <br>
                 <label class="label-field">Profile Image:</label></br>
-                <asp:Image runat="server" ID="image"/>
+                <asp:Image runat="server" ID="image" CssClass="width-25"/>
                 <br>
                     <label class="label-field">Address </label>
                 </br>
