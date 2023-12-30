@@ -91,7 +91,23 @@ namespace AssignmentWAD.Staff.Product
             else //post back when user input add quantity
             {
                 //latest = current + add (integer)
-                txtLatestQuantity.Text = (int.Parse(txtCurrentQuantity.Text) + int.Parse(txtAddQuantity.Text)).ToString();
+                int currentQuantity;
+                if (int.TryParse(txtCurrentQuantity.Text, out currentQuantity))
+                {
+                    int addQuantity;
+                    if (int.TryParse(txtAddQuantity.Text, out addQuantity))
+                    {
+                        txtLatestQuantity.Text = (currentQuantity + addQuantity).ToString();
+                    }
+                    else
+                    {
+                        // Handle the case where txtAddQuantity is not a valid integer
+                    }
+                }
+                else
+                {
+                    // Handle the case where txtCurrentQuantity is not a valid integer
+                }
             }
 
         }
@@ -151,7 +167,7 @@ namespace AssignmentWAD.Staff.Product
             int i = cmdUpdate.ExecuteNonQuery();
             if (i > 0)
             {
-                Response.Redirect("~/Staff/Product/product.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to add stock!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
             }
             else
             {
@@ -166,7 +182,7 @@ namespace AssignmentWAD.Staff.Product
         protected void btnShortCutQuantity_Click(object sender, EventArgs e)
         {
             Button clickedShortCutQuantityBtn = sender as Button;
-            switch(clickedShortCutQuantityBtn.ID)
+            switch (clickedShortCutQuantityBtn.ID)
             {
                 case "btn10":
                     txtAddQuantity.Text = "10";

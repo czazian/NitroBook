@@ -11,6 +11,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
 
     <div class="home-content">
         <div class="sales-boxes">
@@ -78,20 +79,26 @@
 
                 <label class="label-field">Add Quantity: </label>
                 </br>
-                <asp:TextBox runat="server" ID="txtAddQuantity" CssClass="input-field border-lightsalmon" OnTextChanged="Page_Load">0</asp:TextBox>               
-
+                <asp:TextBox runat="server" ID="txtAddQuantity" CssClass="input-field border-lightsalmon" OnTextChanged="Page_Load">0</asp:TextBox>
                 <div>
-                    <asp:Button ID="btn10" runat="server" Text="10" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" />
-                    <asp:Button ID="btn20" runat="server" Text="20" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" />
-                    <asp:Button ID="btn30" runat="server" Text="30" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" />
-                    <asp:Button ID="btn40" runat="server" Text="40" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" />
-                    <asp:Button ID="btn50" runat="server" Text="50" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" />
+                    <asp:Button ID="btn10" runat="server" Text="10" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" CausesValidation="False" />
+                    <asp:Button ID="btn20" runat="server" Text="20" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" CausesValidation="False" />
+                    <asp:Button ID="btn30" runat="server" Text="30" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" CausesValidation="False" />
+                    <asp:Button ID="btn40" runat="server" Text="40" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" CausesValidation="False" />
+                    <asp:Button ID="btn50" runat="server" Text="50" CssClass="form-button2" OnClick="btnShortCutQuantity_Click" CausesValidation="False" />
                 </div>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddQuantity" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
-
+                <br />
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtAddQuantity" ErrorMessage="This field is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidatorQuantity" runat="server"
+                    ControlToValidate="txtAddQuantity"
+                    ErrorMessage="Please enter a valid numeric format"
+                    ValidationExpression="\d+"
+                    ForeColor="Red"
+                    Display="Dynamic">
+                </asp:RegularExpressionValidator>
                 <br>
                 <br>
-                   <asp:Button ID="btnCal" runat="server" Text="Calculate" CssClass="form-button2 width-100 mb-10" OnClick="btnCal_Click" />
+                <asp:Button ID="btnCal" runat="server" Text="Calculate" CssClass="form-button2 width-100 mb-10" OnClick="btnCal_Click" />
                 <br>
 
                     <label class="label-field">Latest Quantity: </label>

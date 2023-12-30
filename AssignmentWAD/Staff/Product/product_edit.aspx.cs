@@ -170,7 +170,7 @@ namespace AssignmentWAD.Staff.Product
             int i = cmdUpdate.ExecuteNonQuery();
             if (i > 0)
             {
-                Response.Redirect("~/Staff/Product/product.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to edit product!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
             }
             else
             {

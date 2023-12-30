@@ -13,21 +13,32 @@
                 <div class="title">View Product</div>
                 <label class="label-field">Title: </label>
                 </br>
+                </br>
                 <asp:TextBox runat="server" ID="txtTitle" CssClass="input-field" ReadOnly="True"></asp:TextBox>
+                <br>
                 <br>
                     <label class="label-field">Description: </label>
                 </br>
+                </br>
                 <asp:TextBox runat="server" ID="txtDesc" CssClass="input-field" ReadOnly="True"></asp:TextBox>
+                <br>
                 <br>
                     <label class="label-field">Author: </label>
                 </br>
+                </br>
                 <asp:TextBox runat="server" ID="txtAuthor" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
-                    <label class="label-field">Price: (RM XX.XX)</label></br>
+                <br>
+                    <label class="label-field">Price: (RM XX.XX)</label>
+                </br>
+                </br>
+
                 <%--                <input type="text" name="price" value="" class="input-field" pattern="(\d+\.\d{1,2})" required>--%>
                 <asp:TextBox runat="server" ID="txtPrice" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
+                <br>
                     <label class="label-field">Category: </label>
+                </br>
                 </br>
                 <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="input-field" Enabled="False">
                     <asp:ListItem Text="New Arrivals" Value="New Arrivals"></asp:ListItem>
@@ -37,7 +48,9 @@
                     <asp:ListItem>Manga &amp; Light Novel</asp:ListItem>
                 </asp:DropDownList>
                 </br>
+                </br>
                     <label class="label-field">Sub-Category: </label>
+                </br>
                 </br>
                 <asp:DropDownList runat="server" ID="ddlSubCategory" CssClass="input-field" Enabled="False">
                     <asp:ListItem Text="Horror" Value="Horror"></asp:ListItem>
@@ -45,14 +58,21 @@
                     <asp:ListItem Text="Comedy" Value="Comedy" Selected="True"></asp:ListItem>
                 </asp:DropDownList>
                 </br>
+                </br>
                 <label class="label-field">Quantity: </label>
+                </br>
                 </br>
                 <asp:TextBox runat="server" ID="txtQuantity" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 </br>
-                     <label class="label-field">Image:</label></br>
-                <asp:Image runat="server" ID="image" CssClass="width-25"/>
+                </br>
+                     <label class="label-field">Image:</label>
+                </br>
+                </br>
+                <asp:Image runat="server" ID="image" CssClass="width-25" />
+                <br>
                 <br>
                     <label class="label-field">Language: </label>
+                </br>
                 </br>
                 <asp:DropDownList runat="server" ID="ddlLanguage" CssClass="input-field" Enabled="false">
                     <asp:ListItem>English</asp:ListItem>

@@ -4,6 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager runat="server" ID="ScriptManager1"></asp:ScriptManager>
 
     <div class="home-content">
         <div class="sales-boxes">
@@ -59,7 +60,7 @@
                             <ul class="details">
                                 <li class="topic">Price</li>
                         </HeaderTemplate>
-                        <ItemTemplate>                           
+                        <ItemTemplate>
                             <li>RM <%# Eval("Price") %></li>
                             <hr />
                         </ItemTemplate>

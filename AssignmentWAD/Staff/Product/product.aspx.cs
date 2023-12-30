@@ -42,7 +42,7 @@ namespace AssignmentWAD.Staff.Product
                 cmdDelete.Dispose();
                 cnn.Close();
 
-                Response.Redirect(Request.RawUrl);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to delete product!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
             }
         }
 

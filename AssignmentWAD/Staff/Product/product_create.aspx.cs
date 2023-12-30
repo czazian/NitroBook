@@ -57,7 +57,7 @@ namespace AssignmentWAD.Staff.Product
             int i = cmdInsert.ExecuteNonQuery();
             if (i > 0)
             {
-                Response.Redirect("~/Staff/Product/product.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to add product!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
             }
             else
             {
