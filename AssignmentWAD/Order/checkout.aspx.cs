@@ -70,6 +70,7 @@ namespace AssignmentWAD.Order
                     lblDiscountAmount.Text = getDiscount().ToString("C2");
                     lblTaxAmount.Text = getTax().ToString("C2");
                     lblOverallTotalPayment.Text = getOverllTotal().ToString("C2");
+                    lblBookAmount.Text = overallPrice.ToString("C2");
                 }
 
             }
