@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin2.master.cs" Inherits="AssignmentWAD.Admin2" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin2.master.cs" Inherits="AssignmentWAD.Admin2" %>
 
 <!DOCTYPE html>
 
@@ -31,43 +31,43 @@
             <span class="logo_name">Nitro-Books</span>
         </div>
         <ul class="nav-links">
-            <li>
+            <li id="dashbLi" runat="server">
                 <asp:HyperLink runat="server" ID="dashboardLink" NavigateUrl="~/Staff/Dashboard/dashboard.aspx">
                     <i class='bx bx-grid-alt'></i>
                     <span class="links_name">Dashboard</span>
                 </asp:HyperLink>
             </li>
-            <li>
+            <li id="prodLi" runat="server">
                 <asp:HyperLink runat="server" ID="productLink" NavigateUrl="~/Staff/Product/product.aspx">
                     <i class='bx bx-box'></i>
                     <span class="links_name">Product</span>
                 </asp:HyperLink>
             </li>
-            <li>
+            <li id="orderLi" runat="server">
                 <asp:HyperLink runat="server" ID="orderLink" NavigateUrl="~/Staff/Order/order.aspx">
                     <i class='bx bx-list-ul'></i>
                     <span class="links_name">Order List</span>
                 </asp:HyperLink>
             </li>
-            <li>
+            <li id="reportLi" runat="server">
                 <asp:HyperLink runat="server" ID="reportLink" NavigateUrl="~/Staff/Report/report.aspx">
                     <i class='bx bx-pie-chart-alt-2'></i>
                     <span class="links_name">Sales Report</span>
                 </asp:HyperLink>
             </li>
-            <li>
+            <li id="memberLi" runat="server">
                 <asp:HyperLink runat="server" ID="memberLink" NavigateUrl="~/Staff/Member/member.aspx">
                     <i class='bx bx-user'></i>
                     <span class="links_name">Member</span>
                 </asp:HyperLink>
             </li>
-            <li>
+            <li id="staffLi" runat="server">
                 <asp:HyperLink runat="server" ID="staffLink" NavigateUrl="~/Staff/Staff/staff.aspx">
                     <i class='bx bxs-user-account'></i>
                     <span class="links_name">Staff</span>
                 </asp:HyperLink>
             </li>
-            <li>
+            <li id="roleLi" runat="server">
                 <asp:HyperLink runat="server" ID="roleLink" NavigateUrl="~/Staff/Role/role.aspx">
                     <i class='bx bxs-user-badge'></i>
                     <span class="links_name">Role</span>

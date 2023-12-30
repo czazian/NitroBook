@@ -213,6 +213,15 @@ namespace AssignmentWAD.Order
         protected global::System.Web.UI.WebControls.Label lblOneStar;
 
         /// <summary>
+        /// ddlFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFilter;
+
+        /// <summary>
         /// emptyComment control.
         /// </summary>
         /// <remarks>
@@ -229,14 +238,5 @@ namespace AssignmentWAD.Order
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater CommentRepeater;
-
-        /// <summary>
-        /// dsBook control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsBook;
     }
 }

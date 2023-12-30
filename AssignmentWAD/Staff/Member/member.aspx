@@ -11,7 +11,7 @@
                 <div class="title">Member</div>
                 <div class="search-box">
                     <asp:TextBox runat="server" ID="txtSearch" placeholder="Search..."></asp:TextBox>
-                    <asp:LinkButton runat="server" ID="linkBtnSearch"><i class='bx bx-search'></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="linkBtnSearch" OnClick="linkBtnSearch_Click"><i class='bx bx-search'></i></asp:LinkButton>
                 </div>
             </div>
 
@@ -21,31 +21,18 @@
             <div class="recent-sales box">
 
                 <div>
-                    <button class="form-button">
-                        <asp:HyperLink runat="server" ID="memberCreateLink" NavigateUrl="~/Staff/Member/member_create.aspx">Create</asp:HyperLink></button>
+                    <asp:Button runat="server" ID="createMemberBtn" Text="Create" CssClass="form-button" PostBackUrl="~/Staff/Member/member_create.aspx" />
                 </div>
                 <div class="sales-details">
 
-                    <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">No</li>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Container.ItemIndex + 1 %></li>
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </ul>
-                        </FooterTemplate>
-                    </asp:Repeater>
-
-                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
-                        <HeaderTemplate>
-                            <ul class="details">
-                                <li class="topic">Username</li>
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <li><%# Eval("UserName") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -55,10 +42,11 @@
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Email</li>
+                                <li class="topic">Username</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("UserEmail") %></li>
+                            <li><%# Eval("UserName") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -68,17 +56,32 @@
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Phone No</li>
+                                <li class="topic">Email</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("PhoneNo") %></li>
+                            <li><%# Eval("UserEmail") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
                         </FooterTemplate>
                     </asp:Repeater>
 
-                    <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource1">
+                    <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSource1">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Phone No</li>
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li><%# Eval("PhoneNo") %></li>
+                            <hr />
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">Operation</li>
@@ -90,6 +93,7 @@
                                 <a href="member_edit.aspx?userID=<%# Eval("UserID") %>"><i class='bx bxs-edit'></i></a>
                                 <asp:LinkButton runat="server" ID="Hyperlink1" OnClientClick='<%# CreateConfirmation(Eval("UserName")) %>' OnCommand="delete_click" CommandName="deleteClick" CommandArgument='<%# Eval("UserID")%>'><i class='bx bxs-trash'></i></asp:LinkButton>
                             </li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -103,4 +107,10 @@
     </div>
     <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [User]"></asp:SqlDataSource>
+    <br />
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [User] WHERE ([UserName] LIKE '%' + @UserName + '%')">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="txtSearch" Name="UserName" PropertyName="Text" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 </asp:Content>

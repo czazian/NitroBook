@@ -45,8 +45,8 @@ namespace AssignmentWAD.Staff.Report
                     sql3 = "SELECT SUM([OrderDetails].Quantity*[Book].Price) AS 'Total Price' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID";
                     sql4 = "SELECT SUM(Payment.TotalAmount) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID";
                     sql5 = "SELECT [Book].BookID, [Book].Title, [Book].Price, SUM([OrderDetails].Quantity) AS 'Quantity Sold', SUM([OrderDetails].Quantity*[Book].Price) AS 'Total Price' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID GROUP BY [Book].BooKID, [Book].Title, [Book].Price";
-                    sql6 = "SELECT TOP 5 [Book].BookID, [Book].Title, [Book].Price, [Book].[Image], SUM([OrderDetails].Quantity) AS 'Quantity Sold' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID GROUP BY [Book].BooKID, [Book].Title, [Book].Price, [Book].[Image] ORDER BY 'Quantity Sold' DESC";
-                    sql7 = "SELECT TOP 5 [Book].BookID, [Book].Title, [Book].Price, [Book].[Image], SUM([OrderDetails].Quantity) AS 'Quantity Sold' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID GROUP BY [Book].BooKID, [Book].Title, [Book].Price, [Book].[Image] ORDER BY 'Quantity Sold' ASC";
+                    sql6 = "SELECT TOP 10 [Book].BookID, [Book].Title, [Book].Price, [Book].[Image], SUM([OrderDetails].Quantity) AS 'Quantity Sold' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID GROUP BY [Book].BooKID, [Book].Title, [Book].Price, [Book].[Image] ORDER BY 'Quantity Sold' DESC";
+                    sql7 = "SELECT TOP 10 [Book].BookID, [Book].Title, [Book].Price, [Book].[Image], SUM([OrderDetails].Quantity) AS 'Quantity Sold' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID GROUP BY [Book].BooKID, [Book].Title, [Book].Price, [Book].[Image] ORDER BY 'Quantity Sold' ASC";
                     break;
 
                 case "today":
@@ -99,12 +99,21 @@ namespace AssignmentWAD.Staff.Report
                 lblSalesProfit.Text = salesProfit.GetValue(0).ToString();
                 lblTotalProfit.Text = totalProfit.GetValue(0).ToString();
 
+                //if total order = 0 means no sales then put 0 for all label
                 if(totalOrder.GetValue(0).ToString() == "0")
                 {
                     lblQuanSales.Text = "0";
                     lblSalesProfit.Text = "0";
                     lblTotalProfit.Text = "0";
                     lblNoRecord.Text = "No records found...";
+                    lblTop.Text = "No records found...";
+                    lblLeast.Text = "No records found...";
+                }
+                else
+                {
+                    lblNoRecord.Text = "";
+                    lblTop.Text = "";
+                    lblLeast.Text = "";
                 }
                 //bind to a data source
                 SqlDataSource1.SelectCommand = sql5;

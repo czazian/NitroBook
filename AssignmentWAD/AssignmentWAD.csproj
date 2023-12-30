@@ -144,6 +144,7 @@
     <Content Include="Staff\Order\order_view.aspx" />
     <Content Include="Staff\Product\product.aspx" />
     <Content Include="Staff\Product\product_create.aspx" />
+    <Content Include="Staff\Product\product_addStock.aspx" />
     <Content Include="Staff\Product\product_edit.aspx" />
     <Content Include="Staff\Product\product_view.aspx" />
     <Content Include="Staff\profile.aspx" />
@@ -365,6 +366,13 @@
     </Compile>
     <Compile Include="Staff\Product\product_create.aspx.designer.cs">
       <DependentUpon>product_create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Product\product_addStock.aspx.cs">
+      <DependentUpon>product_addStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Product\product_addStock.aspx.designer.cs">
+      <DependentUpon>product_addStock.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff\Product\product_edit.aspx.cs">
       <DependentUpon>product_edit.aspx</DependentUpon>
