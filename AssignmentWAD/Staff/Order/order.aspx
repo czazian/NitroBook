@@ -1,15 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin2.Master" AutoEventWireup="true" CodeBehind="order.aspx.cs" Inherits="AssignmentWAD.Staff.Order.order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <script type="text/javascript">
-            function onEnterKeyPress(event) {
-                if (event.keyCode === 13) { 
-                    document.getElementById('<%= linkBtnSearch.ClientID %>').click();
-                    return false;
-                }
-                return true;
+    <script type="text/javascript">
+        function onEnterKeyPress(event) {
+            if (event.keyCode === 13) {
+                document.getElementById('<%= linkBtnSearch.ClientID %>').click();
+                return false;
             }
-        </script>
+            return true;
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -132,7 +132,9 @@
                             </ul>
                         </FooterTemplate>
                     </asp:Repeater>
+                    <br />
                 </div>
+                <asp:Label ID="lblNoRecordsFound" runat="server" Text="No matching records found." CssClass="lblNoRecord"></asp:Label>
             </div>
         </div>
     </div>
@@ -148,6 +150,11 @@
 
         .Delivery {
             color: lime !important;
+        }
+
+        .lblNoRecord {
+            text-align: center;
+            line-height: 100px;
         }
     </style>
 </asp:Content>
