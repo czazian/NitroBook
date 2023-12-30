@@ -67,7 +67,9 @@ namespace AssignmentWAD.Customer
                 DataTable itemsForOrder = ((DataView)TrackingSource.Select(DataSourceSelectArguments.Empty))
                     .Table
                     .Select($"OrderID = {orderID}")
+                    .OrderByDescending(x => x.Field<DateTime>("PaymentDate"))
                     .CopyToDataTable();
+                itemsForOrder.DefaultView.Sort = "PaymentDate DESC";
 
                 innerRepeater.DataSource = itemsForOrder;
                 innerRepeater.DataBind();

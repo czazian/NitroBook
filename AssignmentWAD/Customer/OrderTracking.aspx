@@ -106,7 +106,7 @@
                                 <div class="items-container row">
                                     <asp:Label ID="lblFail" runat="server" Text="" Style="font-weight: bold; color: red; font-size: 20px; margin-top: 15px; margin-bottom: 5px;"></asp:Label>
 
-                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT DISTINCT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.OrderID AS OrderID, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.BookID AS BookID, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID;">
+                                    <asp:SqlDataSource ID="TrackingSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT DISTINCT P.PaymentDate AS PaymentDate, P.TotalAmount AS TotalAmount, O.OrderID AS OrderID, O.Status AS OrderStatus, OD.Quantity AS OrderQuantity, B.BookID AS BookID, B.Image AS Image, B.Title AS BookTitle, B.Price AS BookPrice FROM Payment P JOIN [Order] O ON P.OrderID = O.OrderID JOIN [User] U ON O.UserID = U.UserID JOIN OrderDetails OD ON OD.OrderID = O.OrderID JOIN Book B ON OD.BooKID = B.BookID WHERE O.UserID = @userID ORDER BY PaymentDate DESC;">
                                         <SelectParameters>
                                             <asp:Parameter Name="userID" />
                                         </SelectParameters>
@@ -143,15 +143,15 @@
                                                                             <asp:Label Style="color: #6c6b6b" ID="lblQty" runat="server" Text='<%# "x" + Eval("OrderQuantity") %>' />
                                                                         </div>
                                                                     </div>
-                                                                    <div style="display: flex; flex-flow: column nowrap; justify-content:end;">
-<%--                                                                        <asp:HiddenField ID="BookPrice" runat="server" Value='<%# Eval("BookPrice") %>' />
+                                                                    <div style="display: flex; flex-flow: column nowrap; justify-content: end;">
+                                                                        <%--                                                                        <asp:HiddenField ID="BookPrice" runat="server" Value='<%# Eval("BookPrice") %>' />
                                                                         <asp:HiddenField ID="BookQty" runat="server" Value='<%# Eval("OrderQuantity") %>' />
                                                                         <div class="priceLabel" style="margin-right: 10px;">
                                                                             <asp:Label Style="color: #6c6b6b;" runat="server" ID="lblBookPrice" />
                                                                         </div>--%>
                                                                         <div style="margin-top: 5px;">
                                                                             <!--Rate Button-->
-                                                                            <asp:Button ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" CommandArgument='<%# Eval("bookID") %>'  OnCommand="btnToOpenFeedback_Command" />
+                                                                            <asp:Button ID="btnToOpenFeedback" runat="server" CssClass="RatingButton pull-right ratebtn" Text="Rate" CommandArgument='<%# Eval("bookID") %>' OnCommand="btnToOpenFeedback_Command" />
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -172,7 +172,8 @@
                                                         </div>
                                                         <div style="display: flex; flex-flow: column nowrap;">
                                                             <div>
-                                                                <b><asp:Label runat="server" ID="Label1" Style="font-size: 20px; margin-right: 5px;" Text='<%# "Total: RM " + Eval("TotalAmount") %>' /></b>
+                                                                <b>
+                                                                    <asp:Label runat="server" ID="Label1" Style="font-size: 20px; margin-right: 5px;" Text='<%# "Total: RM " + Eval("TotalAmount") %>' /></b>
                                                             </div>
 
                                                         </div>
