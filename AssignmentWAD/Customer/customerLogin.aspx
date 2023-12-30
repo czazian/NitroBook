@@ -1,13 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Client.Master" AutoEventWireup="true" CodeBehind="customerLogin.aspx.cs" Inherits="AssignmentWAD.Customer.customerLogin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link rel="stylesheet" type="text/css" href="customer.css" />
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <link rel="stylesheet" type="text/css" href="customer.css" />
     <script>
-        $(document).ready(function () {
+ 
+    $(document).ready(function () {
             var formInputs = $('input[type="text"], input[type="password"], <%= txtUserName.ClientID %>, <%= txtPassword.ClientID %>');
 
             formInputs.focus(function () {
@@ -28,12 +30,11 @@
                 $(this).parent().children('.form-style').focus();
             });
         });
+
     </script>
 
-    <div class="alert alert-success alert-dismissible d-flex align-items-center fade show">
-        <i class="bi-check-circle-fill"></i>
-        <asp:Label ID="lblSuccRegMsg" runat="server" Text=""></asp:Label>
-    </div>
+
+    <asp:Label ID="lblSuccRegMsg" runat="server" Text="" CssClass="successReg"></asp:Label>
     <div class="loginContent">
         <div id="Loginform">
             <div class="fieldsets">
@@ -42,7 +43,7 @@
 
 
                 <div class="form-item">
-                    <p class="formLabel">userName</p>
+                    <p class="formLabel">Username</p>
                     <asp:TextBox ID="txtUserName" runat="server" CssClass="form-style" AutoCompleteType="None"></asp:TextBox>
                     <br />
                 </div>
@@ -52,7 +53,7 @@
 
                     <br />
                     <p>
-                        <asp:HyperLink runat="server" ID="hrefForgotPass" NavigateUrl="~/Customer/ForgotPassword.aspx" CssClass="hlk" Text="Forgot password?" />
+                        <asp:HyperLink runat="server" ID="hrefForgotPassw" CssClass="hlk" Text="Forgot password?" NavigateUrl="~/Customer/ForgotPassword.aspx"/>
                         <br />
 
                     </p>
@@ -69,8 +70,11 @@
                     <br />
                     <br />
                     <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
+                    
+                
                     <div class="clear-fix">
                     </div>
+
                 </div>
             </div>
 
