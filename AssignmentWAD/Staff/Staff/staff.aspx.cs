@@ -45,5 +45,28 @@ namespace AssignmentWAD.Staff.Staff
         {
             return String.Format("return confirm('Are you sure you want to delete {0}?');", title);
         }
+
+        protected void linkBtnSearch_Click(object sender, EventArgs e)
+        {
+            //trigger here when search is click
+            //if have search value is not null
+            //use sqldataSource2
+            if (txtSearch.Text != "")
+            {
+                Repeater1.DataSourceID = SqlDataSource2.ID;
+                Repeater2.DataSourceID = SqlDataSource2.ID;
+                Repeater3.DataSourceID = SqlDataSource2.ID;
+                Repeater4.DataSourceID = SqlDataSource2.ID;
+
+            }
+            else //if search value is empty
+            {
+                //use sqldataSource1
+                Repeater1.DataSourceID = SqlDataSource1.ID;
+                Repeater2.DataSourceID = SqlDataSource1.ID;
+                Repeater3.DataSourceID = SqlDataSource1.ID;
+                Repeater4.DataSourceID = SqlDataSource1.ID;
+            }
+        }
     }
 }

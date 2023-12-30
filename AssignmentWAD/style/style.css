@@ -158,15 +158,43 @@ nav .sidebar-button i {
 }
 
 .width-25 {
-    width: 25%;
+    width: 25% !important;
 }
 
 .width-50 {
-    width: 50%;
+    width: 50% !important;
 }
 
 .width-75 {
-    width: 75%;
+    width: 75% !important;
+}
+
+.width-100 {
+    width: 100% !important;
+}
+
+.mb-10{
+    margin-bottom:10px;
+}
+
+.mb-20{
+    margin-bottom:20px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mr-20{
+    margin-right:20px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-20 {
+    margin-left:20px;
 }
 
 select.input-field a {
@@ -363,6 +391,7 @@ nav .profile-details i {
 .sales-boxes .sales-details li.topic {
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 18px;
 }
 
 .sales-boxes .sales-details li {
@@ -411,6 +440,33 @@ nav .profile-details i {
     border: white;
 }
 
+    .form-button:hover {
+        background-color: #fa6464;
+    }
+
+.form-button2 {
+    color: #fff;
+    background-color: lightsalmon;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 30px;
+    border: white;
+}
+
+    .form-button2:hover {
+        background-color: white;
+        border: 1px solid lightsalmon;
+        color: lightsalmon;
+    }
+
+    .border-lightsalmon{
+        border: 2px solid lightsalmon;
+    }
+
 a {
     color: white;
     text-decoration: none;
@@ -447,7 +503,7 @@ a {
 }
 
     .sales-boxes .top-sales li a img {
-        height: 40px;
+        height: 60px;
         width: 40px;
         object-fit: cover;
         border-radius: 12px;
@@ -505,6 +561,11 @@ a {
 
 .bxs-trash {
     background-color: red;
+    color: white;
+}
+
+.bxs-package {
+    background-color: #0091D5;
     color: white;
 }
 

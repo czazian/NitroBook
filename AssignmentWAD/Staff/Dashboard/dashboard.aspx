@@ -29,7 +29,8 @@
                                 <br>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("OrderID") %></li>
+                            <li class="txt-center"><%# Eval("OrderID") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -43,7 +44,8 @@
                                 <br>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("UserName") %></li>
+                            <li class="txt-center"><%# Eval("UserName") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -57,7 +59,8 @@
                                 <br>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# String.Format("{0:dd-MM-yyyy}", Eval("OrderDate")) %></li>
+                            <li class="txt-center"><%# String.Format("{0:dd-MM-yyyy}", Eval("OrderDate")) %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -67,11 +70,12 @@
                     <asp:Repeater ID="RepeaterAmountPaid" runat="server" DataSourceID="SqlDataSourceOrder">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Amount Paid (RM)</li>
+                                <li class="topic">Amount Paid</li>
                                 <br>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("TotalAmount") %></li>
+                            <li class="txt-center">RM <%# Eval("TotalAmount") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -85,8 +89,11 @@
                                 <br>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li>
-                                <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>'></asp:Label></li>
+                            <li class="txt-center">
+                                <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>'></asp:Label>
+
+                            </li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -104,6 +111,7 @@
                                 <asp:HyperLink runat="server" ID="hrefView" NavigateUrl='<%# "~/Staff/Order/order_view.aspx?OrderID=" + Eval("OrderID") %>'><i class='bx bx-show'></i></asp:HyperLink>
                                 <asp:HyperLink runat="server" ID="hrefEdit" NavigateUrl='<%# "~/Staff/Order/order_edit.aspx?OrderID=" + Eval("OrderID") %>'><i class='bx bxs-edit'></i></asp:HyperLink>
                             </li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -122,6 +130,7 @@
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">Image</li>
+                                <hr />
                                 <br />
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -141,6 +150,7 @@
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">Product</li>
+                                <hr />
                                 <br />
                         </HeaderTemplate>
                         <ItemTemplate>
@@ -161,12 +171,13 @@
                     <asp:Repeater ID="RepeaterPrice" runat="server" DataSourceID="SqlDataSourceLowStock">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Price (RM)</li>
+                                <li class="topic">Price</li>
+                                <hr />
                                 <br />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li>
-                                <%# Eval("Price") %>
+                            <li class="txt-center">
+                                RM <%# Eval("Price") %>
                             </li>
                             <br />
                             <br />
@@ -182,10 +193,11 @@
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">Stock</li>
+                                <hr />
                                 <br />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li>
+                            <li class="txt-center">
                                 <%# Eval("Quantity") %>
                             </li>
                             <br />

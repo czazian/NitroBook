@@ -33,22 +33,13 @@ namespace AssignmentWAD.Staff.Staff
         protected global::System.Web.UI.WebControls.LinkButton linkBtnSearch;
 
         /// <summary>
-        /// memberCreateLink control.
+        /// createStaffBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink memberCreateLink;
-
-        /// <summary>
-        /// Repeater5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater5;
+        protected global::System.Web.UI.WebControls.Button createStaffBtn;
 
         /// <summary>
         /// Repeater1 control.
@@ -69,13 +60,22 @@ namespace AssignmentWAD.Staff.Staff
         protected global::System.Web.UI.WebControls.Repeater Repeater2;
 
         /// <summary>
-        /// Repeater6 control.
+        /// Repeater3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater6;
+        protected global::System.Web.UI.WebControls.Repeater Repeater3;
+
+        /// <summary>
+        /// Repeater4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater Repeater4;
 
         /// <summary>
         /// SqlDataSource1 control.
@@ -85,5 +85,14 @@ namespace AssignmentWAD.Staff.Staff
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// SqlDataSource2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
     }
 }

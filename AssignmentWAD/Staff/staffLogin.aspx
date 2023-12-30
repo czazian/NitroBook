@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Client.Master" AutoEventWireup="true" CodeBehind="staffLogin.aspx.cs" Inherits="AssignmentWAD.Staff.staffLogin" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Client.Master" AutoEventWireup="true" CodeFile="staffLogin.aspx.cs" Inherits="AssignmentWAD.Staff.staffLogin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="staffLogin.css" rel="stylesheet">

@@ -53,7 +53,7 @@
                 <br>
                     <label class="label-field">Default Profile Image: </label>
                 </br>
-                <asp:Image runat="server" ID="profileImg" />
+                <asp:Image runat="server" ID="profileImg" CssClass="width-25"/>
                 <br>
                     <label class="label-field">Address </label>
                 </br>

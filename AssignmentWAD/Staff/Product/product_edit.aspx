@@ -64,7 +64,7 @@
                 <br>
                     <label class="label-field">Default Image: </label>
                 </br>
-                <asp:Image runat="server" ID="image"/>
+                <asp:Image runat="server" ID="image" CssClass="width-25"/>
                 <br>
                 <label class="label-field">Language: </label>
                 <br>

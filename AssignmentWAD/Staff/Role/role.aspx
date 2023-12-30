@@ -10,7 +10,7 @@
                 <div class="title">Role</div>
                 <div class="search-box">
                     <asp:TextBox runat="server" ID="txtSearch" placeholder="Search..."></asp:TextBox>
-                    <asp:LinkButton runat="server" ID="linkBtnSearch"><i class='bx bx-search'></i></asp:LinkButton>
+                    <asp:LinkButton runat="server" ID="linkBtnSearch" OnClick="linkBtnSearch_Click"><i class='bx bx-search'></i></asp:LinkButton>
                 </div>
 
             </div>
@@ -20,9 +20,7 @@
         <div class="sales-boxes">
             <div class="recent-sales box">
                 <div>
-                    <!--                            not nessasary redirect to servlet-->
-                    <button class="form-button">
-                        <asp:HyperLink runat="server" ID="roleCreateLink" NavigateUrl="~/Staff/Role/role_create.aspx">Create</asp:HyperLink></button>
+                    <asp:Button runat="server" ID="createRoleBtn" Text="Create" CssClass="form-button" PostBackUrl="~/Staff/Role/role_create.aspx" />
                 </div>
                 <div class="sales-details">
 
@@ -33,6 +31,7 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Container.ItemIndex + 1 %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -46,6 +45,7 @@
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("RoleName") %></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -58,7 +58,9 @@
                                 <li class="topic">Product</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="box"><input type="hidden" value="<%# Eval("ProductPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <li class="box txt-center">
+                                <input type="hidden" value="<%# Eval("ProductPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -71,7 +73,9 @@
                                 <li class="topic">Report</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="box"><input type="hidden" value="<%# Eval("ReportPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <li class="box txt-center">
+                                <input type="hidden" value="<%# Eval("ReportPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -84,7 +88,9 @@
                                 <li class="topic">Member</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="box"><input type="hidden" value="<%# Eval("MemberPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <li class="box txt-center">
+                                <input type="hidden" value="<%# Eval("MemberPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -97,7 +103,9 @@
                                 <li class="topic">Staff</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="box"><input type="hidden" value="<%# Eval("StaffPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <li class="box txt-center">
+                                <input type="hidden" value="<%# Eval("StaffPermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -110,7 +118,9 @@
                                 <li class="topic">Role</li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="box"><input type="hidden" value="<%# Eval("RolePermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <li class="box txt-center">
+                                <input type="hidden" value="<%# Eval("RolePermission") %>" class="hiddenF"><i class="icon "></i></li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -129,6 +139,7 @@
                                 <a href="role_edit.aspx?roleID=<%# Eval("RoleID") %>"><i class='bx bxs-edit'></i></a>
                                 <asp:LinkButton runat="server" ID="Hyperlink1" OnClientClick='<%# CreateConfirmation(Eval("RoleName")) %>' OnCommand="delete_click" CommandName="deleteClick" CommandArgument='<%# Eval("RoleID")%>'><i class='bx bxs-trash'></i></asp:LinkButton>
                             </li>
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -156,11 +167,17 @@
                 if (value == 0) {
                     icon.addClass('bx bxs-x-circle');
                 } else if (value == 1) {
-                    icon.addClass('bx bxs-check-circle');           
+                    icon.addClass('bx bxs-check-circle');
                 }
             });
         });
 
 
     </script>
+    <br />
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Role] WHERE ([RoleName] LIKE '%' + @RoleName + '%')">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="txtSearch" Name="RoleName" PropertyName="Text" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 </asp:Content>
