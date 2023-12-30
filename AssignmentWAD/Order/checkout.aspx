@@ -260,6 +260,14 @@
                 </div>
                 <div class="display">
                     <div class="title">
+                        Total Book Amount
+                    </div>
+                    <div class="bookAmount">
+                        <asp:Label ID="lblBookAmount" runat="server" />
+                    </div>
+                </div>
+                <div class="display">
+                    <div class="title">
                         Shipping Fee
                     </div>
                     <div class="shipping-amount">
@@ -287,7 +295,7 @@
                         Overall Payment
                     </div>
                     <div class="overal-amount">
-                        <asp:Label ID="lblOverallTotalPayment" runat="server"  />
+                        <asp:Label ID="lblOverallTotalPayment" runat="server" />
                     </div>
                 </div>
             </div>

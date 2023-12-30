@@ -1,35 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Client.Master" AutoEventWireup="true" CodeBehind="customerLogin.aspx.cs" Inherits="AssignmentWAD.Customer.customerLogin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <link rel="stylesheet" type="text/css" href="customer.css" />
+    <link rel="stylesheet" type="text/css" href="customer.css" />
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script>
- 
-    $(document).ready(function () {
+
+        $(document).ready(function () {
             var formInputs = $('input[type="text"], input[type="password"], <%= txtUserName.ClientID %>, <%= txtPassword.ClientID %>');
 
-            formInputs.focus(function () {
-                $(this).parent().children('p.formLabel').addClass('formTop');
-                $('div#formWrapper').addClass('darken-bg');
-                $('div.logo').addClass('logo-active');
-            });
-
-            formInputs.focusout(function () {
-                if ($.trim($(this).val()).length == 0) {
-                    $(this).parent().children('p.formLabel').removeClass('formTop');
-                }
-                $('div#formWrapper').removeClass('darken-bg');
-                $('div.logo').removeClass('logo-active');
-            });
-
-            $('p.formLabel').click(function () {
-                $(this).parent().children('.form-style').focus();
-            });
+        formInputs.focus(function () {
+            $(this).parent().children('p.formLabel').addClass('formTop');
+            $('div#formWrapper').addClass('darken-bg');
+            $('div.logo').addClass('logo-active');
         });
+
+        formInputs.focusout(function () {
+            if ($.trim($(this).val()).length == 0) {
+                $(this).parent().children('p.formLabel').removeClass('formTop');
+            }
+            $('div#formWrapper').removeClass('darken-bg');
+            $('div.logo').removeClass('logo-active');
+        });
+
+        $('p.formLabel').click(function () {
+            $(this).parent().children('.form-style').focus();
+        });
+    });
 
     </script>
 
@@ -53,7 +53,7 @@
 
                     <br />
                     <p>
-                        <asp:HyperLink runat="server" ID="hrefForgotPassw" CssClass="hlk" Text="Forgot password?" NavigateUrl="~/Customer/ForgotPassword.aspx"/>
+                        <asp:HyperLink runat="server" ID="hrefForgotPassw" CssClass="hlk" Text="Forgot password?" NavigateUrl="~/Customer/ForgotPassword.aspx" />
                         <br />
 
                     </p>
@@ -70,8 +70,8 @@
                     <br />
                     <br />
                     <asp:Label ID="lblLoginErr" runat="server" ForeColor="Red"></asp:Label>
-                    
-                
+
+
                     <div class="clear-fix">
                     </div>
 

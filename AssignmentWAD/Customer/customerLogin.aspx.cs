@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -33,7 +35,7 @@ namespace AssignmentWAD.Customer
             SqlCommand cmdLogin = new SqlCommand(loginSql, conn);
 
             cmdLogin.Parameters.AddWithValue("@userName", txtUserName.Text);
-            cmdLogin.Parameters.AddWithValue("@password", txtPassword.Text);
+            cmdLogin.Parameters.AddWithValue("@password", HashPassword(txtPassword.Text));
 
             SqlDataReader dtrLogin = cmdLogin.ExecuteReader();
 
@@ -54,6 +56,14 @@ namespace AssignmentWAD.Customer
 
             conn.Close();
 
+        }
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
         }
 
 

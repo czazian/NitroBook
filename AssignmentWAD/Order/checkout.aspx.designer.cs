@@ -159,6 +159,15 @@ namespace AssignmentWAD.Order
         protected global::System.Web.UI.WebControls.Label lblPaymentMethod;
 
         /// <summary>
+        /// lblBookAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBookAmount;
+
+        /// <summary>
         /// lblShippingAmount control.
         /// </summary>
         /// <remarks>

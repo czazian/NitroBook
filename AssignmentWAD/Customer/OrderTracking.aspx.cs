@@ -13,6 +13,9 @@ namespace AssignmentWAD.Customer
 {
     public partial class OrderTracking : System.Web.UI.Page
     {
+
+        Label status;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -50,6 +53,10 @@ namespace AssignmentWAD.Customer
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
+
+                //Assign status to page variable
+                status = (Label)e.Item.FindControl("lblDeliveryStatus");
+
                 Repeater innerRepeater = (Repeater)e.Item.FindControl("InnerRepeater");
 
                 // Get the current order's data
@@ -60,7 +67,9 @@ namespace AssignmentWAD.Customer
                 DataTable itemsForOrder = ((DataView)TrackingSource.Select(DataSourceSelectArguments.Empty))
                     .Table
                     .Select($"OrderID = {orderID}")
+                    .OrderByDescending(x => x.Field<DateTime>("PaymentDate"))
                     .CopyToDataTable();
+                itemsForOrder.DefaultView.Sort = "PaymentDate DESC";
 
                 innerRepeater.DataSource = itemsForOrder;
                 innerRepeater.DataBind();
@@ -75,10 +84,13 @@ namespace AssignmentWAD.Customer
 
 
 
+
+
         private void CalculateEstimatedArrivalDate()
         {
             foreach (RepeaterItem item in OuterRepeater.Items)
             {
+
                 // Find the controls within the item
                 Label lblOrderDate = (Label)item.FindControl("lblOrderDate");
                 Label lblArrivalDate = (Label)item.FindControl("lblArrivalDate");
@@ -111,51 +123,6 @@ namespace AssignmentWAD.Customer
 
 
 
-
-
-
-        //protected void Page_Load(object sender, EventArgs e)
-        //{
-
-        //    TrackingRepeater.DataSource = TrackingSource;
-
-        //    string userID = Session["UserID"].ToString();
-
-        //    TrackingSource.SelectParameters["userID"].DefaultValue = userID;
-        //    TrackingRepeater.DataBind();
-        //    CalculateEstimatedArrivalDate();
-
-        //}
-        //private void CalculateEstimatedArrivalDate()
-        //{
-        //    foreach (RepeaterItem item in OuterRepeater.Items)
-        //    {
-        //        // Find the controls within the item
-        //        Label lblOrderDate = (Label)item.FindControl("lblOrderDate");
-        //        Label lblArrivalDate = (Label)item.FindControl("lblArrivalDate");
-
-        //        if (lblOrderDate != null && lblArrivalDate != null)
-        //        {
-        //            // Assuming lblOrderDate.Text contains the payment date
-        //            DateTime paymentDate;
-
-        //            if (DateTime.TryParse(lblOrderDate.Text, out paymentDate))
-        //            {
-        //                // Calculate estimated arrival date
-        //                DateTime estimatedArrivalDate = paymentDate.AddDays(5);
-
-        //                // Set the values for lblArrivalDate
-        //                lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
-        //            }
-        //            else
-        //            {
-        //                // Handle parsing failure if needed
-        //                lblArrivalDate.Text = "Invalid Date";
-        //            }
-        //        }
-        //    }
-        //}
-
         private SqlConnection getConnection()
         {
             SqlConnection conn;
@@ -169,15 +136,13 @@ namespace AssignmentWAD.Customer
         {
 
             int rateStar = Convert.ToInt32(r.SelectedValue);
-            //System.Diagnostics.Debug.WriteLine(rateStar);
             string feedback = txtFeedback.Text;
             string userID = Session["UserID"].ToString();
             DateTime dateNow = DateTime.Now;
             //string date = dateNow.ToString("dd/MM/yyyy");
 
+            string bookID = Session["bID"].ToString();
 
-
-            int bookID = findBookID();
 
             SqlConnection conn = getConnection();
 
@@ -198,8 +163,8 @@ namespace AssignmentWAD.Customer
 
             if (successRate > 0)
             {
-
                 Response.Redirect("~/Customer/OrderTracking.aspx");
+                Session.Remove("bID");
             }
             else
             {
@@ -210,43 +175,35 @@ namespace AssignmentWAD.Customer
         }
 
 
-
-        private int findBookID()
+        protected void InnerRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            int bookID = 0;
-
-            SqlConnection conn = getConnection();
-
-            string matchSql = "SELECT BookID FROM Book WHERE Title = @title";
-            SqlCommand cmdMatch = new SqlCommand(matchSql, conn);
-
-            foreach (RepeaterItem item in OuterRepeater.Items)
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                // Find the controls within the item
-                Label lblBookName1 = (Label)item.FindControl("lblBookName1");
 
-                if (lblBookName1 != null)
+                //To set the visibility of rate button  -> Status is Page variable
+                Button btn = (Button)e.Item.FindControl("btnToOpenFeedback");
+                if(status.Text == "Delivered")
                 {
-                    cmdMatch.Parameters.Clear();  // Clear existing parameters
-                    cmdMatch.Parameters.AddWithValue("@title", lblBookName1.Text);
-
-                    SqlDataReader dtrMatch = cmdMatch.ExecuteReader();
-
-                    if (dtrMatch.HasRows)
-                    {
-                        while (dtrMatch.Read())
-                        {
-                            bookID = int.Parse(dtrMatch["BookID"].ToString());
-                        }
-                    }
-
-                    dtrMatch.Close();  // Close the SqlDataReader to avoid issues
+                    btn.Visible = true;
+                    status.ForeColor = System.Drawing.Color.LawnGreen;
+                } else
+                {
+                    btn.Visible = false;
+                    status.ForeColor = System.Drawing.Color.LightSalmon;
                 }
+
             }
-
-            return bookID;
         }
+        
 
+        //Set BookID to comment to Session
+        protected void btnToOpenFeedback_Command(object sender, CommandEventArgs e)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "text", "openModal()", true);
+
+            System.Diagnostics.Debug.WriteLine("ID : " + e.CommandArgument.ToString());
+            Session["bID"] = e.CommandArgument.ToString();
+        }
     }
 
 }

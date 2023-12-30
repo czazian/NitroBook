@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace AssignmentWAD.Customer
 {
@@ -27,6 +30,7 @@ namespace AssignmentWAD.Customer
 
         protected void lbtSubmit_Click(object sender, EventArgs e)
         {
+
             SqlConnection conn = getConnection();
 
             string RegisterSql = "INSERT INTO [User] (UserName,UserEmail,UserPassword,PhoneNo,DateOfBirth,Address,ProfileImage) VALUES (@userName,@UserEmail,@UserPassword,@PhoneNo,@DateOfBirth,@Address,'')";
@@ -35,7 +39,7 @@ namespace AssignmentWAD.Customer
 
             cmdRegister.Parameters.AddWithValue("@userName", txtUserName.Text);
             cmdRegister.Parameters.AddWithValue("@UserEmail", txtEmail.Text);
-            cmdRegister.Parameters.AddWithValue("@UserPassword", txtConfirmPass.Text);
+            cmdRegister.Parameters.AddWithValue("@UserPassword", HashPassword(txtConfirmPass.Text));
             cmdRegister.Parameters.AddWithValue("@PhoneNo", txtPhoneNum.Text);
             cmdRegister.Parameters.AddWithValue("@DateOfBirth", txtDOB.Text);
             cmdRegister.Parameters.AddWithValue("@Address", txtAddress.Text);
@@ -56,6 +60,13 @@ namespace AssignmentWAD.Customer
                 lblFailReg.Text = "*Fail to Register!";
             }
         }
-       
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
+        }
     }
 }

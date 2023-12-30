@@ -96,8 +96,8 @@
                             <ul class="details">
                                 <li class="topic">Product</li>
                         </HeaderTemplate>
-                        <ItemTemplate>
-                            <li><%# Eval("Title") %></li>
+                        <ItemTemplate>                          
+                                <li><a href="../../Staff/Product/product_view.aspx?bookID=<%# Eval("BookID") %>"><%# Eval("Title") %></a></li>                           
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
