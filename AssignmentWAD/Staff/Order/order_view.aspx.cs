@@ -78,7 +78,7 @@ namespace AssignmentWAD.Staff.Order
                             txtPayMethod.Text = reader["PaymentMethod"].ToString();
                             txtShippingAdd.Text = reader["ShippingAddress"].ToString();
                             txtTotalAmount.Text = reader["TotalAmount"].ToString();
-                            txtOrderDate.Text = Convert.ToDateTime(reader["OrderDate"]).ToString("yyyy-MM-dd");
+                            txtOrderDate.Text = Convert.ToDateTime(reader["OrderDate"]).ToString("dd-MM-yyyy");
                             ddlStatus.SelectedValue = reader["Status"].ToString();
 
                             // Order Detail

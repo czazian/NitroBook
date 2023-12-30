@@ -21,6 +21,7 @@ namespace AssignmentWAD.Staff.Order
                     if (int.TryParse(Request.QueryString["OrderID"], out orderID))
                     {
                         LoadOrderDetails(orderID);
+                        Button1.Visible = ddlStatus.SelectedValue != "Delivered";
                     }
                     else
                     {
@@ -34,6 +35,14 @@ namespace AssignmentWAD.Staff.Order
             }
 
         }
+
+        protected void ddlStatus_DataBound(object sender, EventArgs e)
+        {
+            // Assuming you want to hide the button when 'Delivered' is selected
+            Button1.Visible = ddlStatus.SelectedValue != "Delivered";
+        }
+
+
         private void LoadOrderDetails(int orderID)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
@@ -77,7 +86,7 @@ namespace AssignmentWAD.Staff.Order
                             txtPayMethod.Text = reader["PaymentMethod"].ToString();
                             txtShippingAdd.Text = reader["ShippingAddress"].ToString();
                             txtTotalAmount.Text = reader["TotalAmount"].ToString();
-                            txtOrderDate.Text = Convert.ToDateTime(reader["OrderDate"]).ToString("yyyy-MM-dd");
+                            txtOrderDate.Text = Convert.ToDateTime(reader["OrderDate"]).ToString("dd-MM-yyyy");
                             ddlStatus.SelectedValue = reader["Status"].ToString();
 
                             // Order Detail
@@ -139,7 +148,6 @@ namespace AssignmentWAD.Staff.Order
         {
             try
             {
-                // Implement your data access layer logic to update the status in the database
                 string connectionString = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
