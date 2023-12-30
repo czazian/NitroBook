@@ -7,12 +7,12 @@
         }
     </style>
     <script type="text/javascript">
-    function confirmStatusUpdate() {
-        var selectedStatus = document.getElementById('<%= ddlStatus.ClientID %>').value;
+        function confirmStatusUpdate() {
+            var selectedStatus = document.getElementById('<%= ddlStatus.ClientID %>').value;
         document.getElementById('<%= hdnSelectedStatus.ClientID %>').value = selectedStatus;
 
-        return confirm('Are you sure you want to update the status to ' + selectedStatus + '?');
-    }
+            return confirm('Are you sure you want to update the status to ' + selectedStatus + '?');
+        }
     </script>
 </asp:Content>
 
@@ -63,13 +63,13 @@
                 <br>
                     <label class="label-field">Status:</label></br>
                 </br>
-                    <asp:DropDownList runat="server" ID="ddlStatus" Enabled="true" CssClass="input-field">
-                        <asp:ListItem Value="Pending" Selected="False"></asp:ListItem>
-                        <asp:ListItem Value="Shipping"></asp:ListItem>
-                        <asp:ListItem Value="Delivered"></asp:ListItem>
-                    </asp:DropDownList>
+                <asp:DropDownList runat="server" ID="ddlStatus" Enabled="true" CssClass="input-field" OnDataBound="ddlStatus_DataBound">
+                    <asp:ListItem Value="Pending" Selected="False"></asp:ListItem>
+                    <asp:ListItem Value="Shipping"></asp:ListItem>
+                    <asp:ListItem Value="Delivered"></asp:ListItem>
+                </asp:DropDownList>
                 <asp:HiddenField runat="server" ID="hdnSelectedStatus" />
-                <asp:Button runat="server" ID="Button1" Text="Submit" CssClass="form-button" OnClientClick="return confirmStatusUpdate();" Onclick="Button1_Click"/>
+                <asp:Button runat="server" ID="Button1" Text="Submit" CssClass="form-button" OnClientClick="return confirmStatusUpdate();" OnClick="Button1_Click" />
                 <asp:Button runat="server" ID="Button2" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Order/order.aspx" />
                 <br>
             </div>
