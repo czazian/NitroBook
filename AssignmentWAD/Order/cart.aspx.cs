@@ -16,61 +16,67 @@ namespace AssignmentWAD.Order
         decimal overallPrice = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Session["UserID"] == null)
             {
-                //SESSION
-                //In case the shopping cart is not empty, load the session into shoppingCart.
-                ShoppingCart shoppingCart = (ShoppingCart)Session["shoppingCart"];
-
-                //In case the shopping cart is null, create a shopping cart, and add to the session.
-                if (shoppingCart == null)
+                Response.Redirect("~/Customer/customerLogin.aspx");
+            }
+            else
+            {
+                if (!Page.IsPostBack)
                 {
-                    shoppingCart = new ShoppingCart();
-                    Session["shoppingCart"] = shoppingCart;
-                }
+                    //SESSION
+                    //In case the shopping cart is not empty, load the session into shoppingCart.
+                    ShoppingCart shoppingCart = (ShoppingCart)Session["shoppingCart"];
 
-
-                //Obtain values
-                int bookID = Convert.ToInt32(Request.QueryString["bookID"]);
-                int selectedQuantity = Convert.ToInt32(Request.QueryString["qty"]);
-
-                SqlConnection conn;
-                string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
-                conn = new SqlConnection(strConnection);
-
-                conn.Open();
-
-                string command = "SELECT * FROM Book WHERE BookID = @bookID";
-                SqlCommand cmd = new SqlCommand(command, conn);
-                cmd.Parameters.AddWithValue("@bookID", bookID);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    string msg = "";
-                    while (reader.Read())
+                    //In case the shopping cart is null, create a shopping cart, and add to the session.
+                    if (shoppingCart == null)
                     {
-                        msg += reader["Title"].ToString() + "|" + reader["Author"].ToString() + "|" + reader["Price"] + "|" + reader["Image"].ToString();
+                        shoppingCart = new ShoppingCart();
+                        Session["shoppingCart"] = shoppingCart;
                     }
 
-                    string[] data = msg.Split('|');
 
-                    //Object creation
-                    decimal p = Convert.ToDecimal(data[2]);
-                    Cart book = new Cart(bookID, data[0], data[1], Decimal.Round(p, 2), selectedQuantity, data[3]);
+                    //Obtain values
+                    int bookID = Convert.ToInt32(Request.QueryString["bookID"]);
+                    int selectedQuantity = Convert.ToInt32(Request.QueryString["qty"]);
 
-                    shoppingCart.addItem(book);
+                    SqlConnection conn;
+                    string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+                    conn = new SqlConnection(strConnection);
+
+                    conn.Open();
+
+                    string command = "SELECT * FROM Book WHERE BookID = @bookID";
+                    SqlCommand cmd = new SqlCommand(command, conn);
+                    cmd.Parameters.AddWithValue("@bookID", bookID);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        string msg = "";
+                        while (reader.Read())
+                        {
+                            msg += reader["Title"].ToString() + "|" + reader["Author"].ToString() + "|" + reader["Price"] + "|" + reader["Image"].ToString();
+                        }
+
+                        string[] data = msg.Split('|');
+
+                        //Object creation
+                        decimal p = Convert.ToDecimal(data[2]);
+                        Cart book = new Cart(bookID, data[0], data[1], Decimal.Round(p, 2), selectedQuantity, data[3]);
+
+                        shoppingCart.addItem(book);
+                    }
+
+                    //Define the data source for the repeater
+                    BookRepeater.DataSource = shoppingCart.getCartItems();
+                    BookRepeater.DataBind();
+
+
                 }
 
-                //Define the data source for the repeater
-                BookRepeater.DataSource = shoppingCart.getCartItems();
-                BookRepeater.DataBind();
-
-
             }
-
-
 
         }
 
