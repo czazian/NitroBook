@@ -86,7 +86,7 @@
                                     <asp:Label ID="lblDOB" runat="server" Text="Label"></asp:Label>
                                     </p>
                                     <br>
-                                    <p style="margin-left: 35px;"><b>Address</b> :<asp:Label ID="lblAddress" runat="server" Text="Label"></asp:Label></p>
+                                    <p style="margin-left: 35px;"><b>Address</b> : <asp:Label ID="lblAddress" runat="server" Text="Label"></asp:Label></p>
 
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
