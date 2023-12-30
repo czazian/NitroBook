@@ -107,6 +107,7 @@ namespace AssignmentWAD.Order
 
             conn2.Close();
 
+
             //Count the 1,2,3,4,5 stars of each book comment
             SqlConnection conn3;
             string strConnection3 = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
@@ -221,6 +222,12 @@ namespace AssignmentWAD.Order
                 lblRate.Text = circleMark.ToString("F1");
                 ranking.Text = "N/A";
             }
+
+
+            //Get Number of records
+            people.Text = (one + two + three + four + five).ToString() + " People Rated";
+
+
 
         }
 

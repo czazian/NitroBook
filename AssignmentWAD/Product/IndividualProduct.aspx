@@ -140,13 +140,6 @@
 
 
 
-
-
-            <%
-                people.Text = Convert.ToInt32(CommentRepeater.Controls.Count) + " People Rated";
-            %>
-
-
             <!--Addtional Feature Product Rating-->
             <hr style="margin-top: 40px; padding: 0px;">
             <div class="rating-container" style="width: 100%;">
