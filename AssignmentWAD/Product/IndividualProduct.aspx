@@ -177,7 +177,9 @@
                                 </div>
                             </div>
                             <div class="side right">
-                                <div><asp:Label runat="server" ID="lblFiveStar"/></div>
+                                <div>
+                                    <asp:Label runat="server" ID="lblFiveStar" />
+                                </div>
                             </div>
                             <div class="side">
                                 <div>4 <i class="fa-solid fa-star" style="color: lightcoral"></i></div>
@@ -188,7 +190,9 @@
                                 </div>
                             </div>
                             <div class="side right">
-                                <div><asp:Label runat="server" ID="lblFourStar"/></div>
+                                <div>
+                                    <asp:Label runat="server" ID="lblFourStar" />
+                                </div>
                             </div>
                             <div class="side">
                                 <div>3 <i class="fa-solid fa-star" style="color: lightcoral"></i></div>
@@ -199,7 +203,9 @@
                                 </div>
                             </div>
                             <div class="side right">
-                                <div><asp:Label runat="server" ID="lblThreeStar"/></div>
+                                <div>
+                                    <asp:Label runat="server" ID="lblThreeStar" />
+                                </div>
                             </div>
                             <div class="side">
                                 <div>2 <i class="fa-solid fa-star" style="color: lightcoral"></i></div>
@@ -210,7 +216,9 @@
                                 </div>
                             </div>
                             <div class="side right">
-                                <div><asp:Label runat="server" ID="lblTwoStar"/></div>
+                                <div>
+                                    <asp:Label runat="server" ID="lblTwoStar" />
+                                </div>
                             </div>
                             <div class="side">
                                 <div>1 &nbsp;<i class="fa-solid fa-star" style="color: lightcoral"></i></div>
@@ -221,7 +229,9 @@
                                 </div>
                             </div>
                             <div class="side right">
-                                <div><asp:Label runat="server" ID="lblOneStar"/></div>
+                                <div>
+                                    <asp:Label runat="server" ID="lblOneStar" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -232,7 +242,8 @@
                     {
                         emptyComment.Visible = true;
                         emptyComment.Text = "No comment";
-                    } else
+                    }
+                    else
                     {
                         emptyComment.Visible = false;
                         emptyComment.Text = "";
@@ -240,11 +251,24 @@
                 %>
 
                 <div class="comment-container" style="width: 100%;">
-                    <h1 style="font-size: 22px; margin-bottom: 20px; color: dimgrey; font-weight: bold;">Comments</h1>
-                    <asp:Label Style="padding: 10px; padding-top: 20px; padding-bottom: 20px; border: 1.5px grey solid; color:dimgray; font-size: 1.2rem; text-align:center; width: 100%; display:flex; flex-flow: row nowrap; justify-content:center; margin-top: 5px;" runat="server" ID="emptyComment" />
+                    <div style="display: flex; flex-flow: row nowrap; justify-content: space-between; margin-bottom: 10px;">
+                        <h1 style="font-size: 22px; margin-bottom: 20px; color: dimgrey; font-weight: bold;">Comments</h1>
+                        <asp:DropDownList Style="font-size: 15px; height: 30px; margin-top: 5px;" runat="server" ID="ddlFilter" OnSelectedIndexChanged="ddlFilter_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:ListItem Selected="True" Value="0">Sort by Star (1-5)</asp:ListItem>
+                            <asp:ListItem Value="1">Sort by Star (5-1)</asp:ListItem>
+                            <asp:ListItem Value="2">Sort by Latest</asp:ListItem>
+                            <asp:ListItem Value="3">Sort by Oldest</asp:ListItem>
+                            <asp:ListItem Value="4">Show Only 1 Star</asp:ListItem>
+                            <asp:ListItem Value="5">Show Only 2 Star</asp:ListItem>
+                            <asp:ListItem Value="6">Show Only 3 Star</asp:ListItem>
+                            <asp:ListItem Value="7">Show Only 4 Star</asp:ListItem>
+                            <asp:ListItem Value="8">Show Only 5 Star</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <asp:Label Style="padding: 10px; padding-top: 20px; padding-bottom: 20px; border: 1.5px grey solid; color: dimgray; font-size: 1.2rem; text-align: center; width: 100%; display: flex; flex-flow: row nowrap; justify-content: center; margin-top: 5px;" runat="server" ID="emptyComment" />
 
                     <!--Comment Repeater-->
-                    <asp:Repeater runat="server" ID="CommentRepeater" DataSourceID="dsBook">
+                    <asp:Repeater runat="server" ID="CommentRepeater">
                         <ItemTemplate>
                             <div class="one-comment" style="padding: 10px; margin-bottom: 20px;">
                                 <div style="display: flex;">
@@ -271,20 +295,9 @@
                                     <asp:Label runat="server" ID="Label3" Text='<%# Eval("Comment") %>' />
                                 </div>
                             </div>
-                            <hr/>
+                            <hr />
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:SqlDataSource runat="server" ID="dsBook" ConnectionString='<%$ ConnectionStrings:NitroBooks %>'
-                        SelectCommand="SELECT * 
-                            FROM [Comment] c, [User] u, [Book] b
-                            WHERE c.UserID = u.UserID 
-                            AND b.BookID = c.BookID
-                            AND c.BookID = @BookID">
-                        <SelectParameters>
-                            <asp:QueryStringParameter QueryStringField="bookID" Name="BookID"></asp:QueryStringParameter>
-                        </SelectParameters>
-                    </asp:SqlDataSource>
-                    <!---->
 
                 </div>
             </div>
