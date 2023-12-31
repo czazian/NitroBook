@@ -34,29 +34,31 @@
         <br />
         <br />
         <br />
-        <div class="loginContent">
+        <div class="loginContent" >
             <div id="Loginform">
-                <div class="fieldsets">
+                <div class="fieldsets" style="margin-bottom: 50px;">
                     <h2 class="fs-title"><strong>Staff Login</strong></h2>
                     <h3 class="fs-subtitleLogin">Sign in with your username and password.</h3>
 
 
-                    <div class="form-item" style="text-align: left;">
-                        <asp:TextBox ID="txtStaffId" runat="server" placeholder="Enter Staff Username" CssClass="form-style" name="id" /><br />
+                    <div class="form-item" style="text-align: left; width: 100%; ">
+                        <asp:TextBox Style="width: 100%;" ID="txtStaffId" runat="server" placeholder="Enter Staff Username" CssClass="form-style" name="id" /><br />
                         <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
 
                     </div>
 
-                    <div class="form-item" style="text-align: left;">
-                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-style" placeholder="Enter your password" /><br />
+                    <div class="form-item" style="text-align: left; width: 100%;">
+                        <asp:TextBox Style="width: 100%;" ID="txtPassword" runat="server" CssClass="form-style" placeholder="Enter your password" /><br />
                         <asp:Label ID="lblError0" runat="server" ForeColor="Red"></asp:Label>
 
                     </div>
 
                     <div class="form-item">
-                        <p class="pull-left">
-                            <asp:Button ID="btnSubmit" runat="server" Text="Sign in" CssClass="btnLogin pull-right" />
-                        </p>
+
+                        <div style="display: flex; width: 100%;">
+                            <asp:Button Style="width: 100%;" ID="btnSubmit" runat="server" Text="Sign in" CssClass="btnLogin pull-right" />
+                        </div>
+
                         <br />
                         <br />
                         <br />

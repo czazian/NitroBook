@@ -44,12 +44,12 @@
 
                 <div class="form-item">
                     <p class="formLabel">Username</p>
-                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-style" AutoCompleteType="None"></asp:TextBox>
+                    <asp:TextBox Style="width: 100%;"  ID="txtUserName" runat="server" CssClass="form-style" AutoCompleteType="None"></asp:TextBox>
                     <br />
                 </div>
                 <div class="form-item">
                     <p class="formLabel">Password</p>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-style"></asp:TextBox>
+                    <asp:TextBox Style="width: 100%;" ID="txtPassword" runat="server" TextMode="Password" CssClass="form-style"></asp:TextBox>
 
                     <br />
                     <p>
