@@ -35,10 +35,9 @@
                     <asp:CheckBox runat="server" ID="cbRolePermit" CssClass="toggle-checkbox" Text="Role" Enabled="False"></asp:CheckBox>
                 </label>
                 <br>
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Role/role.aspx" />
             </div>
 
         </div>
-    s
+    
 </asp:Content>

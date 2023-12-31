@@ -28,14 +28,14 @@
                     ErrorMessage="Enter a valid email address(eg. XX@XX.XXX)" ForeColor="Red" Display="Dynamic"
                     ValidationExpression="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"></asp:RegularExpressionValidator>
                 <br><br />
-                    <label class="label-field">Previous Password (Change Password only if it is correct)</label></br>
+                    <label class="label-field">Previous Password (Change Password only if it is correct):</label></br>
                 <asp:TextBox runat="server" ID="txtPrevPassw" CssClass="input-field" AutoPostBack="True" OnTextChanged="txtPrevPassw_TextChanged"></asp:TextBox>
                 <asp:Label ID="lblPrevPassErrorMsg" runat="server" ForeColor="#FF3300"></asp:Label>
                 <asp:HiddenField ID="prevPasswHashed" runat="server" />
                 <asp:HiddenField ID="hiddenVal_prevPass" runat="server" Value="no" />
                 <br />
                 <br>
-                    <label class="label-field">New Password</label></br>
+                    <label class="label-field">New Password:</label></br>
                 <asp:TextBox runat="server" ID="txtNewPassw" CssClass="input-field"></asp:TextBox>
                 <br>
                     <label class="label-field">Phone No: </label>

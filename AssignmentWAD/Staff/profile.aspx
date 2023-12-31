@@ -10,21 +10,22 @@
 
             <div class="recent-sales box">
                 <div class="title">Profile</div>
-                <label class="label-field">Username </label>
+                <label class="label-field">Username: </label>
                 </br>
                             <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUsername" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br>
-                    <label class="label-field">Previous Password (Change Password only if it is correct)</label></br>
+                    <label class="label-field">Previous Password (Change Password only if it is correct):</label></br>
                 <asp:TextBox runat="server" ID="txtPrevPassw" CssClass="input-field" AutoPostBack="True" OnTextChanged="txtPrevPassw_TextChanged"></asp:TextBox>
                 <asp:Label ID="lblPrevPassErrorMsg" runat="server" ForeColor="#FF3300"></asp:Label>
                 <asp:HiddenField ID="prevPasswHashed" runat="server" />
                 <asp:HiddenField ID="hiddenVal_prevPass" runat="server" Value="no" />
                 <br />
                 <br>
-                    <label class="label-field">New Password</label></br>
+                    <label class="label-field">New Password:</label></br>
                 <asp:TextBox runat="server" ID="txtNewPassw" CssClass="input-field"></asp:TextBox>
                 <br>
-                    <label class="label-field">Role </label>
+                    <label class="label-field">Role: </label>
                 </br>
 
                 <!--                            edit role is not allow in profile-->

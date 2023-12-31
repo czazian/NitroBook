@@ -81,7 +81,7 @@ namespace AssignmentWAD.Staff.Member
                 String sql2 = "UPDATE[User] SET UserName=@username, UserEmail=@email, PhoneNo=@phoneNo, DateOfBirth=@dob, Address=@address, ProfileImage=@profileImg WHERE UserID=@id";
                 SqlCommand cmdUpdate;
 
-                //if empty, no need update password
+                //if empty, no need to update password
                 if (hiddenVal_prevPass.Value == "no")
                 {
                     cmdUpdate = new SqlCommand(sql2, cnn);
@@ -99,7 +99,7 @@ namespace AssignmentWAD.Staff.Member
                 cmdUpdate.Parameters.AddWithValue("@dob", dateOfBirth.SelectedDate);
                 cmdUpdate.Parameters.AddWithValue("@address", txtAddress.Text);
                 //uploading image file if new 
-                //done successful
+                //done successfully
                 if (newProfileImg.HasFile)
                 {
                     try
@@ -120,6 +120,19 @@ namespace AssignmentWAD.Staff.Member
                 //where condition
                 cmdUpdate.Parameters.AddWithValue("@id", Request.QueryString["userID"]);
 
+
+                if (!string.IsNullOrEmpty(txtPrevPassw.Text))
+                {
+                    // Check if the previous password is correct before updating
+                    if (!IsPreviousPasswordCorrect(Request.QueryString["userID"], cnn))
+                    {
+                        ShowErrorMessage("Incorrect Previous Password.");
+                        return;
+                    }
+
+                }
+
+
                 int i = cmdUpdate.ExecuteNonQuery();
                 if (i > 0)
                 {
@@ -127,25 +140,39 @@ namespace AssignmentWAD.Staff.Member
                 }
                 else
                 {
-                    Response.Write("Fail to update!");
+                    ShowErrorMessage("Fail to update!");
                 }
-
 
                 cmdUpdate.Dispose();
                 cnn.Close();
             }
             else if (IsUsernameDuplicate(txtUsername.Text, Request.QueryString["userID"]))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Error to edit member " + txtUsername.Text + "! The username alreadt exits, please re-enter.');", true);
-
+                ShowErrorMessage("Error to edit member " + txtUsername.Text + "! The username already exists, please re-enter.");
             }
             else if (IsEmailDuplicate(txtEmail.Text, Request.QueryString["userID"]))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Error to edit member " + txtUsername.Text + "! The email already exits, please re-enter.');", true);
-
+                ShowErrorMessage("Error to edit member " + txtUsername.Text + "! The email already exists, please re-enter.");
             }
+        }
 
+        private bool IsPreviousPasswordCorrect(string userId, SqlConnection conn)
+        {
+            string query = "SELECT COUNT(*) FROM [User] WHERE UserID = @id AND UserPassword = @PrevPassword";
 
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", userId);
+                cmd.Parameters.AddWithValue("@PrevPassword", HashPassword(txtPrevPassw.Text));
+
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "errorScript", $"alert('{message}');", true);
         }
 
         private bool IsUsernameDuplicate(string username, string userId)
