@@ -83,7 +83,7 @@
                                 <br />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><a href="#"><span class="product"><%# String.Format("{0:dd-MM-yyyy}", Eval("OrderDate")) %></span></a></li>
+                            <li><a href="#"><span class="product"><%# String.Format("{0:dd/MM/yyyy}", Eval("OrderDate")) %></span></a></li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
