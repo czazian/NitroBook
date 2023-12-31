@@ -119,7 +119,8 @@
                                                     <div class="orderDate" style="color: crimson; font-weight: bold;">
                                                         <i class="far fa-clipboard" style="color: crimson"></i>
                                                         Order Date :
-                                            <asp:Label runat="server" ID="lblOrderDate" Text='<%# Bind("PaymentDate", "{0:dd-MM-yyyy}") %>' />
+                                            <asp:Label runat="server" ID="lblOrderDate" Text='<%# Bind("PaymentDate", "{0:dd-MM-yyyy}") %>' /><br/><br />
+                                                        <i class="fa-solid fa-hashtag"></i>&nbsp;Order ID : <asp:Label runat="server" ID="oID" Text='<%# "MY"+Eval("OrderID") %>' />
                                                     </div>
                                                     <div style="margin-right: 20px;">
                                                         <asp:Label CssClass="shippingStatus" runat="server" ID="lblDeliveryStatus" Text='<%#Eval("OrderStatus") %>' />
@@ -191,7 +192,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalLabel" style="font-size: 25px;"><b>Product Feedback</b></h5>
-                                                    <asp:Button ID="btnClose" OnClientClick="return false;" runat="server" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
+                                                    <asp:Button ID="btnClose" runat="server" class="btn-close" data-bs-dismiss="modal" aria-label="Close" />
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="mb-3">
