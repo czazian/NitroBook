@@ -174,7 +174,7 @@ namespace AssignmentWAD.Staff.Product
             int i = cmdUpdate.ExecuteNonQuery();
             if (i > 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to add stock!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to add stock to "+ txtTitle.Text + "!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
             }
             else
             {

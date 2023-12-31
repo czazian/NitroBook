@@ -25,6 +25,8 @@ namespace AssignmentWAD.Staff.Member
         {
             if (e.CommandName == "deleteClick")
             {
+                string usernameToDelete = GetUsernameToDelete(e.CommandArgument);
+
                 //delete the record according to the argument
                 SqlConnection cnn;
                 string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
@@ -42,8 +44,36 @@ namespace AssignmentWAD.Staff.Member
                 cmdDelete.Dispose();
                 cnn.Close();
 
-                Response.Redirect(Request.RawUrl);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to delete " + usernameToDelete + "!'); window.location ='" + ResolveUrl("~/Staff/Member/member.aspx") + "';", true);
             }
+        }
+
+        private string GetUsernameToDelete(object userID)
+        {
+            string username = string.Empty;
+
+            SqlConnection cnn;
+            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            cnn = new SqlConnection(strConnection);
+            cnn.Open();
+
+            string sql = "SELECT UserName FROM [User] WHERE UserID=@id";
+
+            SqlCommand cmdGetUsername = new SqlCommand(sql, cnn);
+            cmdGetUsername.Parameters.AddWithValue("@id", userID);
+
+            using (SqlDataReader reader = cmdGetUsername.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    username = reader["UserName"].ToString();
+                }
+            }
+
+            cmdGetUsername.Dispose();
+            cnn.Close();
+
+            return username;
         }
 
         public String CreateConfirmation(Object title)

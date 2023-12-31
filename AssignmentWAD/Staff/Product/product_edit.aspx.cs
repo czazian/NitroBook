@@ -177,7 +177,7 @@ namespace AssignmentWAD.Staff.Product
             int i = cmdUpdate.ExecuteNonQuery();
             if (i > 0)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to edit product!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to edit " + txtTitle.Text + "!'); window.location ='" + ResolveUrl("~/Staff/Product/product.aspx") + "';", true);
             }
             else
             {

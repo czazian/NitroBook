@@ -28,6 +28,18 @@ namespace AssignmentWAD.Staff.Member
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (!IsUsernameUnique(txtUsername.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Username is already taken. Please choose a different username.');", true);
+                return;
+            }
+
+            if (!IsEmailUnique(txtEmail.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Email is already registered. Please use a different email address.');", true);
+                return;
+            }
+
             //uploading image file
             //done successful
             if (profileImg.HasFile)
@@ -64,7 +76,7 @@ namespace AssignmentWAD.Staff.Member
             int i = cmdInsert.ExecuteNonQuery();
             if (i > 0)
             {
-                Response.Redirect("~/Staff/Member/member.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to add member " + txtUsername.Text + "!'); window.location ='" + ResolveUrl("~/Staff/Member/member.aspx") + "';", true);
             }
             else
             {
@@ -74,6 +86,46 @@ namespace AssignmentWAD.Staff.Member
 
             cmdInsert.Dispose();
             cnn.Close();
+        }
+
+        private bool IsUsernameUnique(string username)
+        {
+            SqlConnection cnn;
+            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            cnn = new SqlConnection(strConnection);
+            cnn.Open();
+
+            string sql = "SELECT COUNT(*) FROM [User] WHERE UserName = @username";
+
+            SqlCommand cmdCheckUsername = new SqlCommand(sql, cnn);
+            cmdCheckUsername.Parameters.AddWithValue("@username", username);
+
+            int count = Convert.ToInt32(cmdCheckUsername.ExecuteScalar());
+
+            cmdCheckUsername.Dispose();
+            cnn.Close();
+
+            return count == 0;
+        }
+
+        private bool IsEmailUnique(string email)
+        {
+            SqlConnection cnn;
+            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            cnn = new SqlConnection(strConnection);
+            cnn.Open();
+
+            string sql = "SELECT COUNT(*) FROM [User] WHERE UserEmail = @email";
+
+            SqlCommand cmdCheckEmail = new SqlCommand(sql, cnn);
+            cmdCheckEmail.Parameters.AddWithValue("@email", email);
+
+            int count = Convert.ToInt32(cmdCheckEmail.ExecuteScalar());
+
+            cmdCheckEmail.Dispose();
+            cnn.Close();
+
+            return count == 0; 
         }
     }
 }

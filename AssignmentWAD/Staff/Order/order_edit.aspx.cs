@@ -38,7 +38,7 @@ namespace AssignmentWAD.Staff.Order
 
         protected void ddlStatus_DataBound(object sender, EventArgs e)
         {
-            // Assuming you want to hide the button when 'Delivered' is selected
+            // hide the button when 'Delivered' is selected
             Button1.Visible = ddlStatus.SelectedValue != "Delivered";
         }
 
@@ -86,7 +86,7 @@ namespace AssignmentWAD.Staff.Order
                             txtPayMethod.Text = reader["PaymentMethod"].ToString();
                             txtShippingAdd.Text = reader["ShippingAddress"].ToString();
                             txtTotalAmount.Text = reader["TotalAmount"].ToString();
-                            txtOrderDate.Text = Convert.ToDateTime(reader["OrderDate"]).ToString("dd-MM-yyyy");
+                            txtOrderDate.Text = Convert.ToDateTime(reader["OrderDate"]).ToString("dd/MM/yyyy");
                             ddlStatus.SelectedValue = reader["Status"].ToString();
 
                             // Order Detail
@@ -122,13 +122,12 @@ namespace AssignmentWAD.Staff.Order
                 int orderID;
                 if (int.TryParse(Request.QueryString["OrderID"], out orderID))
                 {
-                    // Assuming you have a method to update the status in your data access layer
                     bool updateSuccess = UpdateOrderStatus(orderID, selectedStatus);
 
                     if (updateSuccess)
                     {
                         // Show a confirmation message
-                        ClientScript.RegisterStartupScript(GetType(), "confirmStatusUpdate", "alert('Status updated successfully.');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Status updated successfully to Order " + orderID + "!'); window.location ='" + ResolveUrl("~/Staff/Order/order.aspx") + "';", true);
                     }
                     else
                     {
