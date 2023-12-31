@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Client.Master" AutoEventWireup="true" CodeBehind="ForgotPassword.aspx.cs" Inherits="AssignmentWAD.Customer.ForgotPassword" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Client.Master" AutoEventWireup="true" CodeFile="ForgotPassword.aspx.cs" Inherits="AssignmentWAD.Customer.ForgotPassword" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="customer.css" />
