@@ -75,7 +75,7 @@
             <h1 id="list-item-1" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Character Stories</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblCharStoryNotFound"/>
+                <asp:Label runat="server" ID="lblCharStoryNotFound" ForeColor="Red" />
                 <asp:SqlDataSource ID="CharStorySource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Childrens' AND SubCategory = 'Character Stories' AND NOT Quantity = 0; "></asp:SqlDataSource>
                 <asp:Repeater ID="CharStoryRepeater" runat="server">
                     <ItemTemplate>
@@ -114,7 +114,7 @@
             <!-- Photo Grid-->
             <h1 id="list-item-2" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Picture Books</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
-                                <asp:Label runat="server" ID="lblPicBookNotFound"/>
+                                <asp:Label runat="server" ID="lblPicBookNotFound" ForeColor="Red" />
 
                 <asp:SqlDataSource ID="PicBookSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Childrens' AND SubCategory = 'Picture Books' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="PicBookRepeater" runat="server">
@@ -152,20 +152,7 @@
             </div>
         </div>
     </div>
-    <%--<script type="text/javascript">
-    function AddHoverClass(buttonText, event) {
-        var btn = event.target;  // The element that triggered the event
-        btn.classList.add("hover-effect");
-        btn.innerText = buttonText;  // Set the text based on the parameter
-    }
-
-    function RemoveHoverClass(iconClass, event) {
-        var btn = event.target;  // The element that triggered the event
-        btn.classList.remove("hover-effect");
-        // Set the content to the respective <i> element
-        btn.innerHTML = `<i class="fa ${iconClass}"></i>`;
-    }
-</script>--%>
+   
 </asp:Content><asp:Content runat="server" ID="Content3" ContentPlaceHolderID="jsScript">
     <script type="text/javascript" src="../Home/home.js"></script>
 </asp:Content>

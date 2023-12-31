@@ -78,7 +78,7 @@
             <h1 id="list-item-1" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Marketing & Sales</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblSalesNotFound" />
+                <asp:Label runat="server" ID="lblSalesNotFound"  ForeColor="Red"/>
                 <asp:SqlDataSource ID="SalesSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Non-Fiction' AND SubCategory = 'Marketing & Sales' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="SalesRepeater" runat="server">
                     <ItemTemplate>
@@ -118,7 +118,7 @@
             <!-- Photo Grid-->
             <h1 id="list-item-2" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Computing & Information Technology</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
-                <asp:Label runat="server" ID="lblITNotFound" />
+                <asp:Label runat="server" ID="lblITNotFound" ForeColor="Red" />
                 <asp:SqlDataSource ID="ITSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Non-Fiction' AND SubCategory = 'Computing & Information Technology' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="ITRepeater" runat="server">
                     <ItemTemplate>
@@ -158,7 +158,7 @@
             <h1 id="list-item-3" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Foods & Drinks</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblFDNotFound" />
+                <asp:Label runat="server" ID="lblFDNotFound" ForeColor="Red" />
                 <asp:SqlDataSource ID="FoodDrinkSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Non-Fiction' AND SubCategory = 'Food & Drinks' AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="FoodDrinkRepeater" runat="server">
                     <ItemTemplate>

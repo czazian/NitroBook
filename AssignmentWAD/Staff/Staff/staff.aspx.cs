@@ -13,7 +13,12 @@ namespace AssignmentWAD.Staff.Staff
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if no permission
+            if (Session["staff_permit"] == null || Session["staff_permit"].ToString() != "1")
+            {
+                Response.Redirect("/Staff/Error/invalid_access_permission.aspx");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "noPermission", "alert('You hav no permission!')", true);
+            }
         }
 
         protected void delete_click(object sender, CommandEventArgs e)

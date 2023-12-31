@@ -82,7 +82,7 @@
             <h1 id="list-item-1" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Fiction New Arrivals</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblFNANotFound" />
+                <asp:Label runat="server" ID="lblFNANotFound" ForeColor="Red" />
                 <asp:SqlDataSource ID="FNASource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Fiction' AND (SubCategory = 'General Fictions' OR SubCategory= 'Fantasy' OR SubCategory = 'Horror') AND Price < 45.50 AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="FNARepeater" runat="server">
                     <ItemTemplate>
@@ -123,7 +123,7 @@
             <h1 id="list-item-2" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Non-fiction New Arrivals</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblNFNANotFound" />
+                <asp:Label runat="server" ID="lblNFNANotFound" ForeColor="Red"/>
                 <asp:SqlDataSource ID="NFNASource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Non-Fiction' AND (SubCategory = 'Marketing & Sales' OR SubCategory= 'Computing & Information Technology' OR SubCategory = 'Food & Drinks') AND Price < 47 AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="NFNARepeater" runat="server">
                     <ItemTemplate>
@@ -163,7 +163,7 @@
             <h1 id="list-item-3" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Manga & Light Novel New Arrivals</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblMangaNANotFound" />
+                <asp:Label runat="server" ID="lblMangaNANotFound" ForeColor="Red" />
                 <asp:SqlDataSource ID="MangaNASource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Manga & Light Novel' AND (SubCategory = 'Reincarnation' OR SubCategory= 'Action' OR SubCategory = 'Romance' OR SubCategory= 'Slice-of-Life') AND Price < 47 AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="MangaNARepeater" runat="server">
                     <ItemTemplate>
@@ -203,7 +203,7 @@
             <h1 id="list-item-4" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Childred's New Arrivals</strong></h1>
             <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                <asp:Label runat="server" ID="lblCNANotFound" />
+                <asp:Label runat="server" ID="lblCNANotFound" ForeColor="Red" />
                 <asp:SqlDataSource ID="CNASource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Childrens' AND (SubCategory = 'Character Stories' OR SubCategory= 'Picture Books') AND Price < 40 AND Not Quantity = 0;"></asp:SqlDataSource>
                 <asp:Repeater ID="CNARepeater" runat="server">
                     <ItemTemplate>
