@@ -14,9 +14,6 @@
                 </br>
                             <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
-                    <label class="label-field">Password</label></br>
-                <asp:TextBox runat="server" ID="txtPass" CssClass="input-field" ReadOnly="True"></asp:TextBox>
-                <br>
                     <label class="label-field">Role </label>
                 </br>
                 <asp:DropDownList runat="server" ID="ddlRole" CssClass="input-field" Enabled="False" DataSourceID="SqlDataSource1" DataTextField="RoleName" DataValueField="RoleID">

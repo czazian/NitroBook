@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -75,7 +77,7 @@ namespace AssignmentWAD.Staff
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Password", password);
+                    cmd.Parameters.AddWithValue("@Password", HashPassword(password));
 
                     object staffID = cmd.ExecuteScalar();
 
@@ -88,6 +90,14 @@ namespace AssignmentWAD.Staff
                 }
             }
             return false;
+        }
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
         }
     }
 }

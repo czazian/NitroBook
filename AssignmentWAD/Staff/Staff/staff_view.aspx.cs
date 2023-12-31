@@ -38,7 +38,6 @@ namespace AssignmentWAD.Staff.Staff
             {
                 //work, can get query string
                 txtUsername.Text = staff.GetValue(1).ToString();
-                txtPass.Text = staff.GetValue(2).ToString();
                 ddlRole.SelectedValue = staff.GetValue(3).ToString();
 
             }

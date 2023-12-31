@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -36,7 +38,7 @@ namespace AssignmentWAD.Staff.Staff
             SqlCommand cmdInsert = new SqlCommand(sql, cnn);
 
             cmdInsert.Parameters.AddWithValue("@name", txtUsername.Text);
-            cmdInsert.Parameters.AddWithValue("@passw", txtPass.Text);
+            cmdInsert.Parameters.AddWithValue("@passw", HashPassword(txtPass.Text));
             cmdInsert.Parameters.AddWithValue("@roleID", ddlRole.SelectedItem.Value);
 
             int i = cmdInsert.ExecuteNonQuery();
@@ -53,5 +55,14 @@ namespace AssignmentWAD.Staff.Staff
             cmdInsert.Dispose();
             cnn.Close();
         }
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
+        }
     }
+
 }
