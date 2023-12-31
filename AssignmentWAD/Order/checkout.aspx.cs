@@ -128,9 +128,9 @@ namespace AssignmentWAD.Order
                 Session["shoppingCart"] = shoppingCart;
             }
             List<Cart> items = shoppingCart.getCartItems();
-            //int userID = Convert.ToInt32(Session["UserID"]);
+            int userID = Convert.ToInt32(Session["UserID"]);
             //System.Diagnostics.Debug.WriteLine("Checkout - UserID : " + userID);
-            int userID = 2; //For Testing Purpose
+            //int userID = 2; //For Testing Purpose
 
             //DB
             SqlConnection conn;
@@ -179,7 +179,7 @@ namespace AssignmentWAD.Order
             conn2 = new SqlConnection(strConnection2);
             conn2.Open();
             //Update
-            string updateQtyCmd = "UPDATE Book SET Quantity = (Quantity - @quantity) WHERE BookID = @BookID";
+            string updateQtyCmd = "UPDATE Book SET Quantity = (Quantity - @qty) WHERE BookID = @BookID";
             SqlCommand cmd5 = new SqlCommand(updateQtyCmd, conn);
 
             //testing & developing
@@ -192,9 +192,10 @@ namespace AssignmentWAD.Order
             {
                 while (orderDetails.Read())
                 {
+                    cmd5.Parameters.Clear();
                     string bookID =  orderDetails.GetValue(0).ToString();
                     int quantity = int.Parse(orderDetails.GetValue(2).ToString());
-                    cmd5.Parameters.AddWithValue("@quantity", quantity);
+                    cmd5.Parameters.AddWithValue("@qty", quantity);
                     cmd5.Parameters.AddWithValue("@BookID", bookID);
                     int i = cmd5.ExecuteNonQuery();
                 }

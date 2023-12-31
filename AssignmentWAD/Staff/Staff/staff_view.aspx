@@ -13,11 +13,6 @@
                 <label class="label-field">Username: </label>
                 </br>
                             <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field" ReadOnly="True"></asp:TextBox>
-                <br></br>
-                    <label class="label-field">Password:</label>
-                <br>
-                <asp:TextBox runat="server" ID="txtPass" CssClass="input-field" ReadOnly="True"></asp:TextBox>
-                <br>
                 <br>
                     <label class="label-field">Role: </label>
                 </br>
@@ -28,6 +23,7 @@
                 </asp:DropDownList>
                 <br>
 
+                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Staff/staff.aspx" />
                 <br />
                 <br />

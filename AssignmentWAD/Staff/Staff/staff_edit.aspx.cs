@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -40,8 +42,10 @@ namespace AssignmentWAD.Staff.Staff
                 {
                     //work, can get query string
                     txtUsername.Text = staff.GetValue(1).ToString();
-                    txtPass.Text = staff.GetValue(2).ToString();
                     ddlRole.SelectedValue = staff.GetValue(3).ToString();
+
+                    //put old password into hidden field
+                    prevPasswHashed.Value = staff.GetValue(2).ToString();
 
                 }
                 else
@@ -56,69 +60,77 @@ namespace AssignmentWAD.Staff.Staff
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (IsUsernameUnique(txtUsername.Text, Request.QueryString["staffID"]))
-            {
-                UpdateStaff();
-            }
-            else
-            {
-                // Display error message for duplicate username
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorScript", "alert('Username already exists. Please choose a different username.');", true);
-            }
-        }
-
-        private void UpdateStaff()
-        {
             SqlConnection cnn;
             string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             cnn = new SqlConnection(strConnection);
             cnn.Open();
 
-            String sql = "UPDATE Staff SET StaffName=@name, StaffPassword=@passw, RoleID=@roleID WHERE StaffID=@id";
+            //with update password
+            String sql1 = "UPDATE Staff SET StaffName=@name, StaffPassword=@passw, RoleID=@roleID WHERE StaffID=@id";
+            //w/o update password
+            String sql2 = "UPDATE Staff SET StaffName=@name, RoleID=@roleID WHERE StaffID=@id";
 
-            SqlCommand cmdUpdate = new SqlCommand(sql, cnn);
+            SqlCommand cmdUpdate;
+            //if empty, no need update password
+            if (txtNewPassw.Text == "")
+            {
+                cmdUpdate = new SqlCommand(sql2, cnn);
+            }
+            else
+            {
+                cmdUpdate = new SqlCommand(sql1, cnn);
+                cmdUpdate.Parameters.AddWithValue("@passw", HashPassword(txtNewPassw.Text));
+            }
 
+
+            //update detail
             cmdUpdate.Parameters.AddWithValue("@name", txtUsername.Text);
-            cmdUpdate.Parameters.AddWithValue("@passw", txtPass.Text);
             cmdUpdate.Parameters.AddWithValue("@roleID", ddlRole.SelectedItem.Value);
+            //where condition
             cmdUpdate.Parameters.AddWithValue("@id", Request.QueryString["StaffID"]);
 
             int i = cmdUpdate.ExecuteNonQuery();
             if (i > 0)
             {
                 System.Diagnostics.Debug.WriteLine("Idx of Item : " + i);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to edit staff " + txtUsername.Text + "!'); window.location ='" + ResolveUrl("~/Staff/Staff/staff.aspx") + "';", true);
+                Response.Redirect("~/Staff/Staff/staff.aspx");
             }
             else
             {
                 Response.Write("Fail to update!");
             }
 
+
             cmdUpdate.Dispose();
             cnn.Close();
         }
 
-        private bool IsUsernameUnique(string username, string staffID)
+        //Hash Password Function
+        public string HashPassword(string password)
         {
-            SqlConnection cnn;
-            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
-            cnn = new SqlConnection(strConnection);
-            cnn.Open();
-
-            String sql = "SELECT COUNT(*) FROM [Staff] WHERE StaffName=@name AND StaffID<>@id";
-
-            SqlCommand cmdCheckUsername = new SqlCommand(sql, cnn);
-            cmdCheckUsername.Parameters.AddWithValue("@name", username);
-            cmdCheckUsername.Parameters.AddWithValue("@id", staffID);
-
-            int count = (int)cmdCheckUsername.ExecuteScalar();
-
-            cmdCheckUsername.Dispose();
-            cnn.Close();
-
-            return count == 0;
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
         }
 
+        protected void txtPrevPassw_TextChanged(object sender, EventArgs e)
+        {
+            //if the prev passw not empty
+            if (txtPrevPassw.Text != "")
+            {
+                //if not match
+                if (prevPasswHashed.Value != HashPassword(txtPrevPassw.Text))
+                {
+                    lblPrevPassErrorMsg.Text = "Incorrect Previous Password";
+                }
+                else //if match
+                {
+                    lblPrevPassErrorMsg.Text = "Correct Previous Password";
+                    lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Green;
+                    reqValiNewPassw.ControlToValidate = txtNewPassw.ID;
+                }
+            }
 
+        }
     }
 }
