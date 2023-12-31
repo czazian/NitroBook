@@ -58,10 +58,15 @@ namespace AssignmentWAD.BookCategories
 
                 if (maxPrice < 0 || minPrice < 0)
                 {
-                    throw new Exception("*Value must be non-negative.");
-                }else if(maxPrice < minPrice)
+                    throw new Exception("*Value must be non-negative");
+                }
+                else if (maxPrice < minPrice)
                 {
                     throw new Exception("*Max price must be larger than min price");
+                }
+                else if (maxPrice == minPrice)
+                {
+                    throw new Exception("*Max price and min price cannot be same");
                 }
 
 
