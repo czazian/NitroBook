@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="staffLogin.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../Customer/customer.css" />
     <script src="staffLogin.js"></script>
     <script type="text/javascript">
         var status = '<%= Session["status"] %>';
@@ -24,42 +25,53 @@
             top: -1px;
             height: 584%;
         }
-        </style>
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-            <main>
-            <!-- Login Form -->
-            <div class="container">
-                <div class="form-container">
-                    <div class="staff-forms">
-                        <div class="form login">
-                            <span class="login-title">
-                                Staff Login Page
-                            </span>
-                            <%--have to add required but it is not available in asp net--%>
-                                <div class="input-field">
-                                    <asp:TextBox ID="txtStaffId" runat="server" placeholder="Enter Staff Username" class="auto-style1" name="id"/>
-                                    <i class="fa-solid fa-user"></i>
-                                </div>
-                                <asp:Label ID="lblError" runat="server" ForeColor="Red"><%= Session["emailError"] %></asp:Label>
-                                <div class="input-field">
-                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" class="password" placeholder="Enter your password"/>
-                                    <i class="fa-solid fa-lock"></i>
-                                    <i class="uil uil-eye-slash showHidePw"></i>
-                                </div>
-                                <asp:Label ID="lblError0" runat="server" ForeColor="Red"><%= Session["passwordError"] %></asp:Label>
-                                <div class="input-field button">
-                                    <%--redirect to admin page--%>
-                                    <asp:Button ID="btnSubmit" runat="server" Text="Submit"/>
-                                </div>
+    <main>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="loginContent">
+            <div id="Loginform">
+                <div class="fieldsets">
+                    <h2 class="fs-title"><strong>Staff Login</strong></h2>
+                    <h3 class="fs-subtitleLogin">Sign in with your username and password.</h3>
 
-                            <br />
-                            
 
+                    <div class="form-item" style="text-align: left;">
+                        <asp:TextBox ID="txtStaffId" runat="server" placeholder="Enter Staff Username" CssClass="form-style" name="id" /><br />
+                        <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+
+                    </div>
+
+                    <div class="form-item" style="text-align: left;">
+                        <asp:TextBox ID="txtPassword" runat="server" CssClass="form-style" placeholder="Enter your password" /><br />
+                        <asp:Label ID="lblError0" runat="server" ForeColor="Red"></asp:Label>
+
+                    </div>
+
+                    <div class="form-item">
+                        <p class="pull-left">
+                            <asp:Button ID="btnSubmit" runat="server" Text="Sign in" CssClass="btnLogin pull-right" />
+                        </p>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+
+                        <div class="clear-fix">
                         </div>
-                        </div>
+
                     </div>
                 </div>
-        </main>
+
+            </div>
+
+        </div>
+
+    </main>
 </asp:Content>
