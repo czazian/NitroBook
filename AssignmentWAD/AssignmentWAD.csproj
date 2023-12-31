@@ -135,6 +135,7 @@
     <Content Include="Home\homepage.css" />
     <Content Include="Staff\adminPage.css" />
     <Content Include="Staff\Dashboard\dashboard.aspx" />
+    <Content Include="Staff\Error\invalid_access_permission.aspx" />
     <Content Include="Staff\Member\member.aspx" />
     <Content Include="Staff\Member\member_create.aspx" />
     <Content Include="Staff\Member\member_edit.aspx" />
@@ -303,6 +304,13 @@
     </Compile>
     <Compile Include="Staff\Dashboard\dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Staff\Error\invalid_access_permission.aspx.cs">
+      <DependentUpon>invalid_access_permission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Staff\Error\invalid_access_permission.aspx.designer.cs">
+      <DependentUpon>invalid_access_permission.aspx</DependentUpon>
     </Compile>
     <Compile Include="Staff\Member\member.aspx.cs">
       <DependentUpon>member.aspx</DependentUpon>

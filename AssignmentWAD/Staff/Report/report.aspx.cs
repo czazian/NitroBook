@@ -14,7 +14,14 @@ namespace AssignmentWAD.Staff.Report
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SqlConnection cnn1, cnn2, cnn3, cnn4, cnn5;
+            //if no permission
+            if (Session["report_permit"] == null || Session["report_permit"].ToString() != "1")
+            {
+                Response.Redirect("/Staff/Error/invalid_access_permission.aspx");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "noPermission", "alert('You hav no permission!')", true);
+            }
+
+            SqlConnection cnn1, cnn2, cnn3, cnn4;
             string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             cnn1 = new SqlConnection(strConnection);
             cnn2 = new SqlConnection(strConnection);
@@ -50,7 +57,7 @@ namespace AssignmentWAD.Staff.Report
                     break;
 
                 case "today":
-                    sql1 = "SELECT COUNT(*) FROM [Order], [Payment] WHERE [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate = convert(Date, getdate(), 103)";             
+                    sql1 = "SELECT COUNT(*) FROM [Order], [Payment] WHERE [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate = convert(Date, getdate(), 103)";
                     sql2 = "SELECT SUM(Quantity) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate = convert(Date, getdate(), 103)";
                     sql3 = "SELECT SUM([OrderDetails].Quantity*[Book].Price) AS 'Total Price' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate = convert(Date, getdate(), 103)";
                     sql4 = "SELECT SUM(Payment.TotalAmount) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate = convert(Date, getdate(), 103)";
@@ -60,7 +67,7 @@ namespace AssignmentWAD.Staff.Report
                     break;
 
                 case "month":
-                    sql1 = "SELECT COUNT(*) FROM [Order], [Payment] WHERE [Order].OrderID = Payment.OrderID AND Payment.PaymentDate >= format(GETDATE(), '01-MM-yyyy')";                  
+                    sql1 = "SELECT COUNT(*) FROM [Order], [Payment] WHERE [Order].OrderID = Payment.OrderID AND Payment.PaymentDate >= format(GETDATE(), '01-MM-yyyy')";
                     sql2 = "SELECT SUM(Quantity) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate >= format(GETDATE(), '01-MM-yyyy')";
                     sql3 = "SELECT SUM([OrderDetails].Quantity*[Book].Price) AS 'Total Price' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate >= format(GETDATE(), '01-MM-yyyy')";
                     sql4 = "SELECT SUM(Payment.TotalAmount) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate >= format(GETDATE(), '01-MM-yyyy')";
@@ -70,7 +77,7 @@ namespace AssignmentWAD.Staff.Report
                     break;
 
                 case "year":
-                    sql1 = "SELECT COUNT(*) FROM [Order], [Payment] WHERE [Order].OrderID = Payment.OrderID AND Payment.PaymentDate >= format(GETDATE(), '01-01-yyyy')";                 
+                    sql1 = "SELECT COUNT(*) FROM [Order], [Payment] WHERE [Order].OrderID = Payment.OrderID AND Payment.PaymentDate >= format(GETDATE(), '01-01-yyyy')";
                     sql2 = "SELECT SUM(Quantity) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate >= format(GETDATE(), '01-01-yyyy')";
                     sql3 = "SELECT SUM([OrderDetails].Quantity*[Book].Price) AS 'Total Price' FROM [OrderDetails], [Order], [Payment], [Book] WHERE [Book].BookID = [OrderDetails].BooKID AND [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate >= format(GETDATE(), '01-01-yyyy')";
                     sql4 = "SELECT SUM(Payment.TotalAmount) FROM [OrderDetails], [Order], [Payment] WHERE [OrderDetails].OrderID = [Order].OrderID AND [Order].OrderID = [Payment].OrderID AND [Payment].PaymentDate >= format(GETDATE(), '01-01-yyyy')";
@@ -100,7 +107,7 @@ namespace AssignmentWAD.Staff.Report
                 lblTotalProfit.Text = totalProfit.GetValue(0).ToString();
 
                 //if total order = 0 means no sales then put 0 for all label
-                if(totalOrder.GetValue(0).ToString() == "0")
+                if (totalOrder.GetValue(0).ToString() == "0")
                 {
                     lblQuanSales.Text = "0";
                     lblSalesProfit.Text = "0";
@@ -132,7 +139,6 @@ namespace AssignmentWAD.Staff.Report
             {
                 Response.Write("Invalid Records");
             }
-
         }
 
         protected void timeFilter_SelectedIndexChanged(object sender, EventArgs e)

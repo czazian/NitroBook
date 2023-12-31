@@ -63,7 +63,7 @@
                 <br>
                     <label class="label-field">Status:</label></br>
                 </br>
-                <asp:DropDownList runat="server" ID="ddlStatus" Enabled="true" CssClass="input-field" OnDataBound="ddlStatus_DataBound">
+                <asp:DropDownList runat="server" ID="ddlStatus" Enabled="true" CssClass="input-field border-lightsalmon" OnDataBound="ddlStatus_DataBound">
                     <asp:ListItem Value="Pending" Selected="False"></asp:ListItem>
                     <asp:ListItem Value="Shipping"></asp:ListItem>
                     <asp:ListItem Value="Delivered"></asp:ListItem>

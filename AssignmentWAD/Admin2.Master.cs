@@ -55,6 +55,12 @@ namespace AssignmentWAD
                         String role_permit = role.GetValue(5).ToString();
                         String staff_permit = role.GetValue(6).ToString();
 
+                        //set login staff role permission into session for permission checking
+                        Session["prod_permit"]   = prod_permit;
+                        Session["report_permit"] = report_permit;
+                        Session["member_permit"] = member_permit;
+                        Session["role_permit"]   = role_permit;
+                        Session["staff_permit"]  = staff_permit;
                         //display none if no permission to the corresponding module
                         if (prod_permit == "0")
                         {
@@ -83,6 +89,7 @@ namespace AssignmentWAD
             else
             {
                 //if session expired or something
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Login Session Expired", "alert('Your login session have expired. Please try to login again!')", true);
                 Response.Redirect("/Staff/staffLogin.aspx");
             }
 

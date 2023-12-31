@@ -13,6 +13,13 @@ namespace AssignmentWAD.Staff.Member
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if no permission
+            if (Session["member_permit"] == null || Session["member_permit"].ToString() != "1")
+            {
+                Response.Redirect("/Staff/Error/invalid_access_permission.aspx");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "noPermission", "alert('You hav no permission!')", true);
+            }
+
             if (!IsPostBack)
             {
                 SqlConnection cnn;

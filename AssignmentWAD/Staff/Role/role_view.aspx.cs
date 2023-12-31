@@ -13,6 +13,13 @@ namespace AssignmentWAD.Staff.Role
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if no permission
+            if (Session["role_permit"] == null || Session["role_permit"].ToString() != "1")
+            {
+                Response.Redirect("/Staff/Error/invalid_access_permission.aspx");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "noPermission", "alert('You hav no permission!')", true);
+            }
+
             SqlConnection cnn;
             string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             cnn = new SqlConnection(strConnection);
