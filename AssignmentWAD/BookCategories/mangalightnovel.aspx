@@ -80,7 +80,7 @@
                 <h1 id="list-item-1" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Reincarnation</strong></h1>
                 <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                    <asp:Label runat="server" ID="lblReinNotFound" />
+                    <asp:Label runat="server" ID="lblReinNotFound" ForeColor="Red" />
                     <asp:SqlDataSource ID="ReinSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Manga & Light Novel' AND SubCategory = 'Reincarnation' AND Not Quantity = 0;"></asp:SqlDataSource>
                     <asp:Repeater ID="ReinRepeater" runat="server">
                         <ItemTemplate>
@@ -121,7 +121,7 @@
                 <h1 id="list-item-2" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Action</strong></h1>
                 <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                    <asp:Label runat="server" ID="lblActionNotFound" />
+                    <asp:Label runat="server" ID="lblActionNotFound" ForeColor="Red" />
                     <asp:SqlDataSource ID="ActionSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Manga & Light Novel' AND SubCategory = 'Action' AND Not Quantity = 0;"></asp:SqlDataSource>
                     <asp:Repeater ID="ActionRepeater" runat="server">
                         <ItemTemplate>
@@ -162,7 +162,7 @@
                 <h1 id="list-item-3" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Romance</strong></h1>
                 <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                    <asp:Label runat="server" ID="lblRomanceNotFound" />
+                    <asp:Label runat="server" ID="lblRomanceNotFound" ForeColor="Red" />
                     <asp:SqlDataSource ID="RomanceSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Manga & Light Novel' AND SubCategory = 'Romance' AND Not Quantity = 0;"></asp:SqlDataSource>
                     <asp:Repeater ID="RomanceRepeater" runat="server">
                         <ItemTemplate>
@@ -203,7 +203,7 @@
                 <h1 id="list-item-4" style="margin-top: 52px; margin-bottom: 20px; padding-left: 15px; font-size: 30px;"><strong>Slice-of-Life</strong></h1>
                 <div class="w3-row-padding w3-center" style="display: flex; flex-flow: row wrap;">
 
-                    <asp:Label runat="server" ID="lblSliceNotFound" />
+                    <asp:Label runat="server" ID="lblSliceNotFound" ForeColor="Red" />
                     <asp:SqlDataSource ID="SliceSource" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="SELECT * FROM [Book] WHERE Category = 'Manga & Light Novel' AND SubCategory = 'Slice-of-Life' AND Not Quantity = 0;"></asp:SqlDataSource>
                     <asp:Repeater ID="SliceRepeater" runat="server">
                         <ItemTemplate>

@@ -33,7 +33,7 @@ namespace AssignmentWAD.Customer
 
             SqlConnection conn = getConnection();
 
-            string RegisterSql = "INSERT INTO [User] (UserName,UserEmail,UserPassword,PhoneNo,DateOfBirth,Address,ProfileImage) VALUES (@userName,@UserEmail,@UserPassword,@PhoneNo,@DateOfBirth,@Address,'')";
+            string RegisterSql = "INSERT INTO [User] (UserName,UserEmail,UserPassword,PhoneNo,DateOfBirth,Address,ProfileImage) VALUES (@userName,@UserEmail,@UserPassword,@PhoneNo,@DateOfBirth,@Address,@ProfileImg)";
 
             SqlCommand cmdRegister = new SqlCommand(RegisterSql, conn);
 
@@ -43,7 +43,7 @@ namespace AssignmentWAD.Customer
             cmdRegister.Parameters.AddWithValue("@PhoneNo", txtPhoneNum.Text);
             cmdRegister.Parameters.AddWithValue("@DateOfBirth", txtDOB.Text);
             cmdRegister.Parameters.AddWithValue("@Address", txtAddress.Text);
-
+            cmdRegister.Parameters.AddWithValue("@ProfileImg", "~/image/administrator-icon.png");
 
             int registerNum = cmdRegister.ExecuteNonQuery();
 

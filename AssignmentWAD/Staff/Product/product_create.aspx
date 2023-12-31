@@ -33,7 +33,7 @@
                 <asp:TextBox runat="server" ID="txtAuthor" CssClass="input-field"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAuthor" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br></br>
-                <label class="label-field">Price: (RM XX.XX)</label></br>
+                <label class="label-field">Price: (RM XX.XX)</label></br></br>
                     <asp:TextBox runat="server" ID="txtPrice" CssClass="input-field"></asp:TextBox><br />
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
                     ControlToValidate="txtPrice"
