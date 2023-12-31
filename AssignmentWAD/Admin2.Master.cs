@@ -126,9 +126,6 @@ namespace AssignmentWAD
         {
             string staffName = string.Empty;
 
-            // Use your database connection and query to get the StaffName
-            // Replace the following code with your actual database logic
-
             string connectionString = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -151,6 +148,15 @@ namespace AssignmentWAD
             }
 
             return staffName;
+        }
+
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            // Clear the session
+            Session["StaffID"] = null;
+
+            // Redirect to the homepage or the desired logout page
+            Response.Redirect("~/Home/homepage.aspx");
         }
 
     }

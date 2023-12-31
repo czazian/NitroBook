@@ -50,20 +50,15 @@ namespace AssignmentWAD.Staff
             }
             else
             {
-                // Authentication failedS
+                // Authentication failed
                 ShowErrorMessage("Invalid email or password", "Invalid email or password");
             }
         }
 
         private void ShowErrorMessage(string emailMessage, string passwordMessage)
         {
-            Session["emailError"] = emailMessage;
-            Session["passwordError"] = passwordMessage;
-
             lblError.Text = emailMessage;
             lblError0.Text = passwordMessage;
-
-            Response.Redirect("staffLogin.aspx");
         }
 
         private bool IsValidStaff(string email, string password)

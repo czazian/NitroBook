@@ -75,7 +75,7 @@
             </li>
 
             <li class="log_out">
-                <asp:HyperLink runat="server" ID="logoutLink" NavigateUrl="~/Home/homepage.aspx">
+                <asp:HyperLink runat="server" ID="logoutLink" NavigateUrl="~/Home/homepage.aspx" OnClick="Logout_Click">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                 </asp:HyperLink>
@@ -90,16 +90,16 @@
                 <i class='bx bx-menu sidebarBtn'></i>
                 <span class="dashboard"></span>
             </div>
-            <div class="profile-details">
-                <i class='bx bxs-user-circle bx-align-right'></i>
+            <div class="profile-details" style="background-color: #FF6600; color: #FFFFFF;">
+                <i class='bx bxs-user-circle bx-align-right' style="color: #FFFFFF"></i>
                 <asp:Label runat="server" ID="adminNameLabel"></asp:Label>
 
-                <div onclick="myFunction()" class="dropbtn"><i class='bx bx-chevron-down'></i></div>
+                &nbsp;&nbsp;&nbsp;<div onclick="myFunction()" class="dropbtn"><i class='bx bx-chevron-down' style="color: #FFFFFF"></i></div>
                 <div id="myDropdown" class="dropdown-content">
                     <asp:HyperLink runat="server" ID="HyperLink2" NavigateUrl="~/Staff/profile.aspx">
                     Profile
                     </asp:HyperLink>
-                    <asp:HyperLink runat="server" ID="HyperLink1" NavigateUrl="~/Home/homepage.aspx">
+                    <asp:HyperLink runat="server" ID="HyperLink1" NavigateUrl="~/Home/homepage.aspx" OnClick="Logout_Click">
                     Logout
                     </asp:HyperLink>
                 </div>
