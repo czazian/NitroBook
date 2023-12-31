@@ -74,7 +74,7 @@ namespace AssignmentWAD.Customer
                 innerRepeater.DataSource = itemsForOrder;
                 innerRepeater.DataBind();
 
-                CalculateEstimatedArrivalDate();
+                CalculateEstimatedArrivalDate(e.Item);
             }
             else
             {
@@ -82,46 +82,36 @@ namespace AssignmentWAD.Customer
             }
         }
 
-
-
-
-
-        private void CalculateEstimatedArrivalDate()
+        private void CalculateEstimatedArrivalDate(RepeaterItem item)
         {
-            foreach (RepeaterItem item in OuterRepeater.Items)
+            // Find the controls within the item
+            Label lblOrderDate = (Label)item.FindControl("lblOrderDate");
+            Label lblArrivalDate = (Label)item.FindControl("lblArrivalDate");
+
+            if (lblOrderDate != null && lblArrivalDate != null)
             {
+                // Assuming lblOrderDate.Text contains the payment date
+                DateTime paymentDate;
 
-                // Find the controls within the item
-                Label lblOrderDate = (Label)item.FindControl("lblOrderDate");
-                Label lblArrivalDate = (Label)item.FindControl("lblArrivalDate");
+                // Specify the expected date format
+                string[] dateFormats = { "dd-MM-yyyy" }; // Adjust according to your actual date format
 
-                if (lblOrderDate != null && lblArrivalDate != null)
+                // Use DateTime.TryParseExact to handle specific date formats
+                if (DateTime.TryParseExact(lblOrderDate.Text, dateFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out paymentDate))
                 {
-                    // Assuming lblOrderDate.Text contains the payment date
-                    DateTime paymentDate;
+                    // Calculate estimated arrival date
+                    DateTime estimatedArrivalDate = paymentDate.AddDays(5);
 
-                    // Specify the expected date format
-                    string[] dateFormats = { "dd-MM-yyyy" }; // Adjust according to your actual date format
-
-                    // Use DateTime.TryParseExact to handle specific date formats
-                    if (DateTime.TryParseExact(lblOrderDate.Text, dateFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out paymentDate))
-                    {
-                        // Calculate estimated arrival date
-                        DateTime estimatedArrivalDate = paymentDate.AddDays(5);
-
-                        // Set the values for lblArrivalDate
-                        lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
-                    }
-                    else
-                    {
-                        // Handle parsing failure
-                        lblArrivalDate.Text = "Invalid Date Format";
-                    }
+                    // Set the values for lblArrivalDate
+                    lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
+                }
+                else
+                {
+                    // Handle parsing failure
+                    lblArrivalDate.Text = "Invalid Date Format";
                 }
             }
         }
-
-
 
         private SqlConnection getConnection()
         {
@@ -182,11 +172,12 @@ namespace AssignmentWAD.Customer
 
                 //To set the visibility of rate button  -> Status is Page variable
                 Button btn = (Button)e.Item.FindControl("btnToOpenFeedback");
-                if(status.Text == "Delivered")
+                if (status.Text == "Delivered")
                 {
                     btn.Visible = true;
                     status.ForeColor = System.Drawing.Color.LawnGreen;
-                } else
+                }
+                else
                 {
                     btn.Visible = false;
                     status.ForeColor = System.Drawing.Color.LightSalmon;
@@ -194,7 +185,7 @@ namespace AssignmentWAD.Customer
 
             }
         }
-        
+
 
         //Set BookID to comment to Session
         protected void btnToOpenFeedback_Command(object sender, CommandEventArgs e)
