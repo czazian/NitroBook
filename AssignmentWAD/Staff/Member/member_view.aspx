@@ -18,10 +18,7 @@
 
                 </br></br>
                 <asp:TextBox runat="server" ID="txtEmail" CssClass="input-field" ReadOnly="True"></asp:TextBox>
-                <br></br>
-                    <label class="label-field">Password: </label>
-                </br></br>
-                <asp:TextBox runat="server" ID="txtPass" CssClass="input-field" ReadOnly="True"></asp:TextBox>
+
                 <br></br>
                     <label class="label-field">Phone No: </label>
                 </br></br>

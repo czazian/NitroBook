@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -41,7 +44,7 @@ namespace AssignmentWAD.Staff.Member
                     //work, can get query string
                     txtUsername.Text = user.GetValue(1).ToString();
                     txtEmail.Text = user.GetValue(2).ToString();
-                    txtPass.Text = user.GetValue(3).ToString();
+                    prevPasswHashed.Value = user.GetValue(3).ToString();
                     txtPhoneNo.Text = user.GetValue(4).ToString();
                     txtDateOfBirth.Text = user.GetValue(5).ToString();
                     dateOfBirth.SelectedDate = user.GetDateTime(5).Date;
@@ -74,14 +77,24 @@ namespace AssignmentWAD.Staff.Member
                 cnn = new SqlConnection(strConnection);
                 cnn.Open();
 
-                String sql = "UPDATE [User] SET UserName=@username, UserEmail=@email, UserPassword=@passw, PhoneNo=@phoneNo, DateOfBirth=@dob, Address=@address, ProfileImage=@profileImg WHERE UserID=@id";
+                String sql1 = "UPDATE [User] SET UserName=@username, UserEmail=@email, UserPassword=@passw, PhoneNo=@phoneNo, DateOfBirth=@dob, Address=@address, ProfileImage=@profileImg WHERE UserID=@id";
+                String sql2 = "UPDATE[User] SET UserName=@username, UserEmail=@email, PhoneNo=@phoneNo, DateOfBirth=@dob, Address=@address, ProfileImage=@profileImg WHERE UserID=@id";
+                SqlCommand cmdUpdate;
 
-                SqlCommand cmdUpdate = new SqlCommand(sql, cnn);
+                //if empty, no need update password
+                if (hiddenVal_prevPass.Value == "no")
+                {
+                    cmdUpdate = new SqlCommand(sql2, cnn);
+                }
+                else
+                {
+                    cmdUpdate = new SqlCommand(sql1, cnn);
+                    cmdUpdate.Parameters.AddWithValue("@passw", HashPassword(txtNewPassw.Text));
+                }
 
                 //update detail
                 cmdUpdate.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmdUpdate.Parameters.AddWithValue("@email", txtEmail.Text);
-                cmdUpdate.Parameters.AddWithValue("@passw", txtPass.Text);
                 cmdUpdate.Parameters.AddWithValue("@phoneNo", txtPhoneNo.Text);
                 cmdUpdate.Parameters.AddWithValue("@dob", dateOfBirth.SelectedDate);
                 cmdUpdate.Parameters.AddWithValue("@address", txtAddress.Text);
@@ -175,6 +188,41 @@ namespace AssignmentWAD.Staff.Member
             cnn.Close();
 
             return count > 0;
+        }
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
+        }
+
+        protected void txtPrevPassw_TextChanged(object sender, EventArgs e)
+        {
+            //if the prev passw not empty
+            if (txtPrevPassw.Text != "")
+            {
+                //if not match
+                if (prevPasswHashed.Value != HashPassword(txtPrevPassw.Text))
+                {
+                    lblPrevPassErrorMsg.Text = "Incorrect Previous Password";
+                    hiddenVal_prevPass.Value = "no";
+                    lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else //if match
+                {
+                    lblPrevPassErrorMsg.Text = "Correct Previous Password";
+                    hiddenVal_prevPass.Value = "yes";
+                    lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else
+            {
+                lblPrevPassErrorMsg.Text = "";
+                hiddenVal_prevPass.Value = "no";
+            }
+
         }
     }
 }
