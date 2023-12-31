@@ -112,13 +112,13 @@ namespace AssignmentWAD.Staff
 
                         if (rowsAffected > 0)
                         {
-                            lblMessage.Text = "Success Updated!";
-                            lblMessage.ForeColor = System.Drawing.Color.Green;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
+
                         }
                         else
                         {
-                            lblMessage.Text = " Sorry, there are something problem here.";
-                            lblMessage.ForeColor = System.Drawing.Color.Red;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Failed to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
+
                         }
                     }
                 }

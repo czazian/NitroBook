@@ -20,6 +20,8 @@ namespace AssignmentWAD.Staff.Staff
         {
             if (e.CommandName == "deleteClick")
             {
+                string staffNameToDelete = GetStaffNameToDelete(e.CommandArgument);
+
                 //delete the record according to the argument
                 SqlConnection cnn;
                 string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
@@ -37,13 +39,38 @@ namespace AssignmentWAD.Staff.Staff
                 cmdDelete.Dispose();
                 cnn.Close();
 
-                Response.Redirect(Request.RawUrl);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to delete staff " + staffNameToDelete + "!'); window.location ='" + ResolveUrl("~/Staff/Staff/staff.aspx") + "';", true);
             }
+        }
+
+        private string GetStaffNameToDelete(object staffID)
+        {
+            // Retrieve the staff name based on the staffID
+            string staffName = "";
+            SqlConnection cnn;
+            string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
+            cnn = new SqlConnection(strConnection);
+            cnn.Open();
+
+            String sql = "SELECT StaffName FROM Staff WHERE StaffID=@id";
+            SqlCommand cmdRetrieve = new SqlCommand(sql, cnn);
+            cmdRetrieve.Parameters.AddWithValue("@id", staffID);
+
+            SqlDataReader reader = cmdRetrieve.ExecuteReader();
+            if (reader.HasRows && reader.Read())
+            {
+                staffName = reader.GetString(0);
+            }
+
+            cmdRetrieve.Dispose();
+            cnn.Close();
+
+            return staffName;
         }
 
         public String CreateConfirmation(Object title)
         {
-            return String.Format("return confirm('Are you sure you want to delete {0}?');", title);
+            return String.Format("return confirm('Are you sure you want to delete staff {0}?');", title);
         }
 
         protected void linkBtnSearch_Click(object sender, EventArgs e)
