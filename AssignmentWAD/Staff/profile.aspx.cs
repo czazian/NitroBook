@@ -101,11 +101,28 @@ namespace AssignmentWAD.Staff
                 {
                     conn.Open();
 
+                    // Check for duplicate username
+                    if (IsDuplicateUsername(newUsername, staffID, conn))
+                    {
+                        ShowErrorMessage("Username already exists. Please choose a different one.");
+                        return;
+                    }
+
+                    if (!string.IsNullOrEmpty(txtPrevPassw.Text))
+                    {
+                        // Check if the previous password is correct
+                        if (!IsPreviousPasswordCorrect(staffID, conn))
+                        {
+                            ShowErrorMessage("Incorrect Previous Password.");
+                            return;
+                        }
+                    }
+
                     string query = "UPDATE Staff SET StaffName = @NewUsername, StaffPassword = @NewPassword WHERE StaffID = @StaffID";
                     string query2 = "UPDATE Staff SET StaffName = @NewUsername WHERE StaffID = @StaffID";
 
                     SqlCommand cmdUpdate;
-                    //if empty, no need update password
+                    //if empty, no need to update password
                     if (hiddenVal_prevPass.Value == "no")
                     {
                         cmdUpdate = new SqlCommand(query2, conn);
@@ -123,15 +140,12 @@ namespace AssignmentWAD.Staff
 
                     if (rowsAffected > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
-
+                        ShowSuccessMessage("Success to update!");
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Failed to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
-
+                        ShowErrorMessage("Failed to update!");
                     }
-
                 }
             }
             else
@@ -139,6 +153,44 @@ namespace AssignmentWAD.Staff
                 // Handle the case where parsing StaffID to int fails
                 Response.Redirect("staffLogin.aspx");
             }
+        }
+
+        private bool IsDuplicateUsername(string username, int staffID, SqlConnection conn)
+        {
+            string query = "SELECT COUNT(*) FROM Staff WHERE StaffName = @Username AND StaffID != @StaffID";
+
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@StaffID", staffID);
+
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        private bool IsPreviousPasswordCorrect(int staffID, SqlConnection conn)
+        {
+            string query = "SELECT COUNT(*) FROM Staff WHERE StaffID = @StaffID AND StaffPassword = @PrevPassword";
+
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@StaffID", staffID);
+                cmd.Parameters.AddWithValue("@PrevPassword", HashPassword(txtPrevPassw.Text));
+
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "errorScript", $"alert('{message}');", true);
+        }
+
+        private void ShowSuccessMessage(string message)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", $"alert('{message}'); window.location ='{ResolveUrl("profile.aspx")}';", true);
         }
 
         //Hash Password Function

@@ -60,18 +60,34 @@ namespace AssignmentWAD.Staff.Staff
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+
+            // Check if the previous password is correct
+            if (!string.IsNullOrEmpty(txtPrevPassw.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "prevPassError", "alert('Incorrect Previous Password');", true);
+                return;
+            }
+
+            // Check for duplicate username
+            if (IsDuplicateUsername(txtUsername.Text, Request.QueryString["StaffID"]))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "duplicateUsername", "alert('Username already exists. Please choose a different username.');", true);
+                return;
+            }
+
+            // Proceed with the update
             SqlConnection cnn;
             string strConnection = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
             cnn = new SqlConnection(strConnection);
             cnn.Open();
 
-            //with update password
+            // with update password
             String sql1 = "UPDATE Staff SET StaffName=@name, StaffPassword=@passw, RoleID=@roleID WHERE StaffID=@id";
-            //w/o update password
+            // without update password
             String sql2 = "UPDATE Staff SET StaffName=@name, RoleID=@roleID WHERE StaffID=@id";
 
             SqlCommand cmdUpdate;
-            //if empty, no need update password
+            // if empty, no need update password
             if (hiddenVal_prevPass.Value == "no")
             {
                 cmdUpdate = new SqlCommand(sql2, cnn);
@@ -82,28 +98,46 @@ namespace AssignmentWAD.Staff.Staff
                 cmdUpdate.Parameters.AddWithValue("@passw", HashPassword(txtNewPassw.Text));
             }
 
-
-
-            //update detail
+            // update detail
             cmdUpdate.Parameters.AddWithValue("@name", txtUsername.Text);
             cmdUpdate.Parameters.AddWithValue("@roleID", ddlRole.SelectedItem.Value);
-            //where condition
+            // where condition
             cmdUpdate.Parameters.AddWithValue("@id", Request.QueryString["StaffID"]);
 
             int i = cmdUpdate.ExecuteNonQuery();
             if (i > 0)
             {
                 System.Diagnostics.Debug.WriteLine("Idx of Item : " + i);
-                Response.Redirect("~/Staff/Staff/staff.aspx");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to edit staff " + txtUsername.Text + "!'); window.location ='" + ResolveUrl("~/Staff/Staff/staff.aspx") + "';", true);
             }
             else
             {
                 Response.Write("Fail to update!");
             }
 
-
             cmdUpdate.Dispose();
             cnn.Close();
+        }
+
+        private bool IsDuplicateUsername(string username, string staffID)
+        {
+            // Check if the given username already exists (excluding the current staff ID)
+            string query = "SELECT COUNT(*) FROM Staff WHERE StaffName = @Username AND StaffID != @StaffID";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@StaffID", staffID);
+
+                    int count = (int)cmd.ExecuteScalar();
+
+                    return count > 0;
+                }
+            }
         }
 
         //Hash Password Function
