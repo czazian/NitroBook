@@ -10,11 +10,11 @@
             <div class="recent-sales box">
 
                 <div class="title">View Role</div>
-                <label class="label-field">Name </label>
+                <label class="label-field">Name: </label>
                 </br>
                 <asp:TextBox runat="server" ID="txtRoleName" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
-                    <label class="label-field">Module Permission</label></br>
+                    <label class="label-field">Module Permission:</label></br>
                 <label class="toggle">
                     <asp:CheckBox runat="server" ID="cbProdPermit" CssClass="toggle-checkbox" Text="Product" Enabled="False"></asp:CheckBox>
                 </label>

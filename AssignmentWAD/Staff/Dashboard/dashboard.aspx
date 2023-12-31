@@ -25,11 +25,12 @@
                     <asp:Repeater ID="RepeaterOrder" runat="server" DataSourceID="SqlDataSourceOrder">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Order ID.</li>
-                                <br>
+                                <hr />
+                                <li class="topic">Order ID</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="txt-center"><%# Eval("OrderID") %></li>
+                            <li class="txt-center"><%# Eval("OrderID") %>.</li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
@@ -40,8 +41,9 @@
                     <asp:Repeater ID="RepeaterMember" runat="server" DataSourceID="SqlDataSourceOrder">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Member</li>
-                                <br>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center"><%# Eval("UserName") %></li>
@@ -55,8 +57,9 @@
                     <asp:Repeater ID="RepeaterOrderDate" runat="server" DataSourceID="SqlDataSourceOrder">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Order Date</li>
-                                <br>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center"><%# String.Format("{0:dd-MM-yyyy}", Eval("OrderDate")) %></li>
@@ -70,8 +73,9 @@
                     <asp:Repeater ID="RepeaterAmountPaid" runat="server" DataSourceID="SqlDataSourceOrder">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Amount Paid</li>
-                                <br>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">RM <%# Eval("TotalAmount") %></li>
@@ -85,8 +89,9 @@
                     <asp:Repeater ID="RepeaterStatus" runat="server" DataSourceID="SqlDataSourceOrder" OnItemDataBound="RepeaterStatus_ItemDataBound">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Status</li>
-                                <br>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">
@@ -103,8 +108,9 @@
                     <asp:Repeater ID="RepeaterOperation" runat="server" DataSourceID="SqlDataSourceOrder">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Operation</li>
-                                <br>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">
@@ -119,8 +125,8 @@
                     </asp:Repeater>
                 </div>
             </div>
-            </div>
-                <div class="sales-boxes">
+        </div>
+        <div class="sales-boxes">
 
             <div class="recent-sales box" style="font-size: large">
                 <div class="title" style="font-weight: bold; font-style: italic; font-variant: normal;">Low Stock Product</div>
@@ -129,9 +135,9 @@
                     <asp:Repeater ID="RepeaterImage" runat="server" DataSourceID="SqlDataSourceLowStock">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Image</li>
                                 <hr />
-                                <br />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li>
@@ -141,6 +147,7 @@
                             <br />
                             <br />
                             <br />
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -149,9 +156,9 @@
                     <asp:Repeater ID="RepeaterProduct" runat="server" DataSourceID="SqlDataSourceLowStock">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Product</li>
                                 <hr />
-                                <br />
                         </HeaderTemplate>
                         <ItemTemplate>
 
@@ -162,7 +169,7 @@
                             <br />
                             <br />
                             <br />
-
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul> 
@@ -171,19 +178,18 @@
                     <asp:Repeater ID="RepeaterPrice" runat="server" DataSourceID="SqlDataSourceLowStock">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Price</li>
                                 <hr />
-                                <br />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li class="txt-center">
-                                RM <%# Eval("Price") %>
+                            <li class="txt-center">RM <%# Eval("Price") %>
                             </li>
                             <br />
                             <br />
                             <br />
                             <br />
-
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -192,9 +198,9 @@
                     <asp:Repeater ID="RepeaterQuantity" runat="server" DataSourceID="SqlDataSourceLowStock">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Stock</li>
                                 <hr />
-                                <br />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">
@@ -204,7 +210,29 @@
                             <br />
                             <br />
                             <br />
+                            <hr />
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
 
+                    <asp:Repeater ID="RepeaterOperationLow" runat="server" DataSourceID="SqlDataSourceLowStock">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <hr />
+                                <li class="topic">Operation</li>
+                                <hr />
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li class="txt-center">
+                                <a href="../Product/product_addStock.aspx?bookID=<%# Eval("BookID") %>"><i class='bx bxs-package'">Add</i></a>
+                            </li>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -212,9 +240,8 @@
                     </asp:Repeater>
                 </div>
             </div>
-            <asp:SqlDataSource ID="SqlDataSourceLowStock" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" SelectCommand="
-                        SELECT TOP 5 Image, Title, Price, Quantity FROM [Book] WHERE Quantity < 20 ORDER BY Quantity ASC;">
-                    </asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceLowStock" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" 
+                SelectCommand="SELECT TOP 5 BookID, Image, Title, Price, Quantity FROM [Book] WHERE Quantity < 15 ORDER BY Quantity ASC;"></asp:SqlDataSource>
         </div>
     </div>
 
@@ -232,6 +259,7 @@
         JOIN
             Payment P ON O.OrderID = P.OrderID
         ORDER BY
+            O.OrderID DESC,
             P.PaymentDate DESC;"></asp:SqlDataSource>
 
 </asp:Content>

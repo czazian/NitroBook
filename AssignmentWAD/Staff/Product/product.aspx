@@ -30,10 +30,12 @@
                     <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">No</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Container.ItemIndex + 1 %></li>
+                            <li><%# Container.ItemIndex + 1 %>.</li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
@@ -44,7 +46,9 @@
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Title</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("Title") %></li>
@@ -58,7 +62,9 @@
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Price</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li>RM <%# Eval("Price") %></li>
@@ -72,7 +78,9 @@
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Category</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("Category") %></li>
@@ -86,7 +94,9 @@
                     <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Language</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("Language") %></li>
@@ -100,7 +110,9 @@
                     <asp:Repeater ID="Repeater7" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Quantity</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center"><%# Eval("Quantity") %></li>
@@ -114,7 +126,9 @@
                     <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource1" OnItemCommand="Repeater6_ItemCommand">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Operation</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">

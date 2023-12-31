@@ -15,12 +15,12 @@
             <div class="recent-sales box">
 
                 <div class="title">Edit Role</div>
-                <label class="label-field">Name </label>
+                <label class="label-field">Name: </label>
                 </br>
                 <asp:TextBox runat="server" ID="txtRoleName" CssClass="input-field"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRoleName" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br>
-                    <label class="label-field">Module Permission</label></br>
+                    <label class="label-field">Module Permission:</label></br>
                 <label class="toggle">
                     <asp:CheckBox runat="server" ID="cbProdPermit" CssClass="toggle-checkbox" Text="Product"></asp:CheckBox>
                 </label>

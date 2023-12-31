@@ -9,7 +9,7 @@
     <script type="text/javascript">
         function confirmStatusUpdate() {
             var selectedStatus = document.getElementById('<%= ddlStatus.ClientID %>').value;
-        document.getElementById('<%= hdnSelectedStatus.ClientID %>').value = selectedStatus;
+            document.getElementById('<%= hdnSelectedStatus.ClientID %>').value = selectedStatus;
 
             return confirm('Are you sure you want to update the status to ' + selectedStatus + '?');
         }
@@ -85,10 +85,37 @@
                     <asp:Repeater ID="RepeaterNo" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">No.</li>
+                                <li class="topic">No</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Container.ItemIndex + 1 %></li>
+                            <li><%# Container.ItemIndex + 1 %>.</li>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+
+                    <asp:Repeater ID="RepeaterImage" runat="server">
+                        <HeaderTemplate>
+                            <ul class="details">
+                                <li class="topic">Image</li>
+                                <hr />
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li>
+                                <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" Height="90" Width="70" /><br />
+                            </li>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -99,9 +126,15 @@
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">Product</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("Title") %></li>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -112,9 +145,15 @@
                         <HeaderTemplate>
                             <ul class="details">
                                 <li class="topic">Quantity</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("Quantity") %></li>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -124,10 +163,16 @@
                     <asp:Repeater ID="RepeaterPrice" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Price (RM)</li>
+                                <li class="topic">Price </li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("Price") %></li>
+                            <li>RM <%# Eval("Price") %></li>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
                         </ItemTemplate>
                         <FooterTemplate>
                             </ul>
@@ -136,7 +181,7 @@
                 </div>
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>"
-                    SelectCommand="SELECT B.Title, B.Price, OD.Quantity
+                    SelectCommand="SELECT B.Image, B.Title, B.Price, OD.Quantity
                    FROM [Order] O
                    JOIN OrderDetails OD ON O.OrderID = OD.OrderID
                    JOIN Book B ON OD.BookID = B.BookID

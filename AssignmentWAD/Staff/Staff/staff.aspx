@@ -28,10 +28,12 @@
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">No</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Container.ItemIndex + 1 %></li>
+                            <li><%# Container.ItemIndex + 1 %>.</li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
@@ -42,7 +44,9 @@
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Username</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("StaffName") %></li>
@@ -56,7 +60,9 @@
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Role</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("RoleName") %></li>
@@ -70,7 +76,9 @@
                     <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Operation</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">

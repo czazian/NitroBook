@@ -27,10 +27,12 @@
                     <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">No</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Container.ItemIndex + 1 %></li>
+                            <li><%# Container.ItemIndex + 1 %>.</li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
@@ -41,7 +43,9 @@
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Role</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Eval("RoleName") %></li>
@@ -55,7 +59,9 @@
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Product</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="box txt-center">
@@ -70,7 +76,9 @@
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Report</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="box txt-center">
@@ -85,7 +93,9 @@
                     <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Member</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="box txt-center">
@@ -100,7 +110,9 @@
                     <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Staff</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="box txt-center">
@@ -115,7 +127,9 @@
                     <asp:Repeater ID="Repeater8" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Role</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="box txt-center">
@@ -130,7 +144,9 @@
                     <asp:Repeater ID="Repeater7" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Operation</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">

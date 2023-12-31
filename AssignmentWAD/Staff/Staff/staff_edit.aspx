@@ -10,7 +10,7 @@
             <div class="recent-sales box">
 
                 <div class="title">Edit Staff</div>
-                <label class="label-field">Username </label>
+                <label class="label-field">Username: </label>
                 </br>
                 <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field"></asp:TextBox>
                 <br>

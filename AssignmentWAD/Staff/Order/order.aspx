@@ -34,11 +34,12 @@
                     <asp:Repeater ID="RepeaterOrder" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
-                                <li class="topic">Order ID.</li>
-                                <br />
+                                <hr />
+                                <li class="topic">Order ID</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li><%# Eval("OrderID") %></li>
+                            <li><%# Eval("OrderID") %>.</li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
@@ -49,8 +50,9 @@
                     <asp:Repeater ID="RepeaterMember" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Member</li>
-                                <br />
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><a href="#"><span class="product"><%# Eval("UserName") %></span></a></li>
@@ -64,8 +66,9 @@
                     <asp:Repeater ID="RepeaterPhone" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Phone No</li>
-                                <br />
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><a href="#"><span class="product"><%# Eval("PhoneNo") %></span></a></li>
@@ -79,8 +82,9 @@
                     <asp:Repeater ID="RepeaterOrderDate" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Order Date</li>
-                                <br />
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><a href="#"><span class="product"><%# String.Format("{0:dd/MM/yyyy}", Eval("OrderDate")) %></span></a></li>
@@ -94,8 +98,9 @@
                     <asp:Repeater ID="RepeaterAmountPaid" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Amount Paid</li>
-                                <br />
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center"><a href="#">RM <%# Eval("TotalAmount") %></a></li>
@@ -109,8 +114,9 @@
                     <asp:Repeater ID="RepeaterStatus" runat="server" OnItemDataBound="RepeaterStatus_ItemDataBound">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Status</li>
-                                <br />
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li>
@@ -125,8 +131,9 @@
                     <asp:Repeater ID="RepeaterOperation" runat="server">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Operation</li>
-                                <br />
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center">

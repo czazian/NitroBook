@@ -85,6 +85,9 @@ namespace AssignmentWAD.Staff.Order
                             RepeaterNo.DataSource = SqlDataSource1;
                             RepeaterNo.DataBind();
 
+                            RepeaterImage.DataSource = SqlDataSource1;
+                            RepeaterImage.DataBind();
+
                             RepeaterProduct.DataSource = SqlDataSource1;
                             RepeaterProduct.DataBind();
 
