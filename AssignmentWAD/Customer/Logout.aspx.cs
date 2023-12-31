@@ -13,6 +13,10 @@ namespace AssignmentWAD.Customer
         {
             Session.Remove("UserID");
             Session.Remove("shoppingCart");
+            Session.Remove("SuccessMessage");
+
+
+
         }
     }
 }
