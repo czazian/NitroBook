@@ -80,7 +80,9 @@
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">No</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li><%# Container.ItemIndex + 1 %></li>
@@ -94,10 +96,12 @@
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Product</li>
+                                <hr />
                         </HeaderTemplate>
-                        <ItemTemplate>                          
-                                <li><a href="../../Staff/Product/product_view.aspx?bookID=<%# Eval("BookID") %>"><%# Eval("Title") %></a></li>                           
+                        <ItemTemplate>
+                            <li><a href="../../Staff/Product/product_view.aspx?bookID=<%# Eval("BookID") %>"><%# Eval("Title") %></a></li>
                             <hr />
                         </ItemTemplate>
                         <FooterTemplate>
@@ -108,7 +112,9 @@
                     <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Pirce</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li>RM <%# Eval("Price") %></li>
@@ -122,7 +128,9 @@
                     <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Sold</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li class="txt-center"><%# Eval("Quantity Sold") %></li>
@@ -136,7 +144,9 @@
                     <asp:Repeater ID="Repeater5" runat="server" DataSourceID="SqlDataSource1">
                         <HeaderTemplate>
                             <ul class="details">
+                                <hr />
                                 <li class="topic">Total</li>
+                                <hr />
                         </HeaderTemplate>
                         <ItemTemplate>
                             <li>RM <%# Eval("Total Price") %></li>
@@ -151,60 +161,72 @@
                 </br>
                  <asp:Label ID="lblNoRecord" runat="server"></asp:Label>
             </div>
-            <div class="top-sales box">
+        </div>
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="top-sales box" style="padding-top: auto; padding-right: auto; padding-bottom: auto; padding-left: auto; margin: auto; width: auto">
 
-                <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource2">
-                    <HeaderTemplate>
-                        <div class="title">Top 10 Product</div>
-                        <div style="display:flex;justify-content:space-between; height:25px;">
-                            <div>Rank</div>
-                            <div>Sold</div>
-                        </div>
-                        <ul class="top-sales-details">
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <li>
-                            <a href="../Product/product_view.aspx?bookID=<%# Eval("BookID") %>">
-                                <span class="product mr-20 ml-10"><%# Container.ItemIndex + 1 %></span>
-                                <img src="../../<%# Eval("Image").ToString().Substring(1) %>">
-                                <span class="product"><%# Eval("Title") %></span>
-                            </a>
-                            &nbsp;<span class="quantitySold"><%# Eval("Quantity Sold") %></span></li>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                        </ul>
-                    </FooterTemplate>
-                </asp:Repeater>
-                </br>
+
+                    <asp:Repeater ID="Repeater6" runat="server" DataSourceID="SqlDataSource2">
+                        <HeaderTemplate>
+                            <div class="title">Top 10 Product</div>
+                            <hr />
+                            <div style="display: flex; justify-content: space-between; height: 25px;">
+                                <div>Rank</div>
+                                <div>Sold</div>
+                            </div>
+                            <hr />
+                            <ul class="details" style="padding-top: auto; padding-right: auto; padding-bottom: auto; padding-left: auto; margin: auto; font-style: italic;">
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li>
+                                <a href="../Product/product_view.aspx?bookID=<%# Eval("BookID") %>">
+                                    <span class="product mr-20 ml-20"><%# Container.ItemIndex + 1 %></span>
+                                    <img src="../../<%# Eval("Image").ToString().Substring(1) %>" width="100">
+                                    <span class="product"><%# Eval("Title") %></span>
+                                </a>
+                                &nbsp;<span class="quantitySold"><b><%# Eval("Quantity Sold") %></b></span></li><hr />
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                    </br>
                 <asp:Label ID="lblTop" runat="server"></asp:Label>
+                </div>
             </div>
 
-            <div class="top-sales box">
+            <div class="recent-sales box">
 
-                <asp:Repeater ID="Repeater7" runat="server" DataSourceID="SqlDataSource3">
-                    <HeaderTemplate>
-                        <div class="title">Least 10 Product</div>
-                        <div style="display:flex;justify-content:space-between; height:25px;">
-                            <div>Rank</div>
-                            <div>Sold</div>
-                        </div>
-                        <ul class="top-sales-details">
-                    </HeaderTemplate>
-                    <ItemTemplate>
-                        <li>
-                            <a href="~/Staff/Product/product_view.aspx?bookID=<%# Eval("BookID") %>">
-                                <span class="product mr-20 ml-10"><%# Container.ItemIndex + 1 %></span>
-                                <img src="<%# Eval("Image").ToString().Substring(1) %>">
-                                <span class="product"><%# Eval("Title") %></span>
-                            </a>
-                            &nbsp;<span class="quantitySold"><%# Eval("Quantity Sold") %></span></li>
-                    </ItemTemplate>
-                    <FooterTemplate>
-                        </ul>
-                    </FooterTemplate>
-                </asp:Repeater>
-                </br>
+                <div class="top-sales box" style="padding-top: auto; padding-right: auto; padding-bottom: auto; padding-left: auto; margin: auto; width: auto">
+
+                    <asp:Repeater ID="Repeater7" runat="server" DataSourceID="SqlDataSource3">
+                        <HeaderTemplate>
+                            <div class="title">Least 10 Product</div>
+                            <hr />
+                            <div style="display: flex; justify-content: space-between; height: 25px;">
+                                <div>Rank</div>
+                                <div>Sold</div>
+                            </div>
+                            <hr />
+                            <ul class="details" style="font-style: italic">
+                        </HeaderTemplate>
+                        <ItemTemplate>
+                            <li>
+                                <a href="../Product/product_view.aspx?bookID=<%# Eval("BookID") %>">
+                                    <span class="product mr-20 ml-20"><%# Container.ItemIndex + 1 %></span>
+                                    <img src="../../<%# Eval("Image").ToString().Substring(1) %>" width="100">
+                                    <span class="product"><%# Eval("Title") %></span>
+                                </a>
+                                &nbsp;<span class="quantitySold"><b><%# Eval("Quantity Sold") %></b></span></li><hr />
+                        </ItemTemplate>
+                        <FooterTemplate>
+                            </ul>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                    </br>
                 <asp:Label ID="lblLeast" runat="server"></asp:Label>
+                </div>
             </div>
         </div>
     </div>

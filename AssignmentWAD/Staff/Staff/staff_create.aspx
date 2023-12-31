@@ -10,18 +10,18 @@
             <div class="recent-sales box">
 
                 <div class="title">Create Staff</div>
-                <label class="label-field">Username </label>
+                <label class="label-field">Username: </label>
                 </br>
                 <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field"></asp:TextBox>
                 <br>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorUsername" runat="server" ControlToValidate="txtUsername" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                     <br /></br>
-                    <label class="label-field">Password</label></br>
+                    <label class="label-field">Password:</label></br>
                 <asp:TextBox runat="server" ID="txtPass" CssClass="input-field"></asp:TextBox>
                 <br>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidatorPassword" runat="server" ControlToValidate="txtPass" ErrorMessage="This field is required" ForeColor="Red"></asp:RequiredFieldValidator>
                     <br /></br>
-                    <label class="label-field">Role </label>
+                    <label class="label-field">Role: </label>
                 </br>
                 <asp:DropDownList runat="server" ID="ddlRole" CssClass="input-field" DataSourceID="SqlDataSource1" DataTextField="RoleName" DataValueField="RoleID">
                     <asp:ListItem Text="Admin" Value="Admin"></asp:ListItem>

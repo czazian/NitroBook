@@ -39,7 +39,6 @@
                 <asp:TextBox runat="server" ID="txtAddress" CssClass="input-field" ReadOnly="True"></asp:TextBox>
                 <br>
 
-                <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="form-button" />
                 <asp:Button runat="server" ID="btnBack" Text="Back" CssClass="form-button" PostBackUrl="~/Staff/Member/member.aspx" />
             </div>
 
