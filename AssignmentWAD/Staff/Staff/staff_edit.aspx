@@ -14,15 +14,15 @@
                 </br>
                 <asp:TextBox runat="server" ID="txtUsername" CssClass="input-field"></asp:TextBox>
                 <br>
-                    <label class="label-field">Previous Password</label></br>
+                    <label class="label-field">Previous Password (Change Password only if it is correct)</label></br>
                 <asp:TextBox runat="server" ID="txtPrevPassw" CssClass="input-field" AutoPostBack="True" OnTextChanged="txtPrevPassw_TextChanged"></asp:TextBox>
                 <asp:Label ID="lblPrevPassErrorMsg" runat="server" ForeColor="#FF3300"></asp:Label>
                 <asp:HiddenField ID="prevPasswHashed" runat="server" />
+                <asp:HiddenField ID="hiddenVal_prevPass" runat="server" Value="no" />
                 <br />
                 <br>
                     <label class="label-field">New Password</label></br>
                 <asp:TextBox runat="server" ID="txtNewPassw" CssClass="input-field"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="reqValiNewPassw" runat="server" ErrorMessage="New Password is require to change password" ForeColor="Red"></asp:RequiredFieldValidator>
                 <br>
                 <br />
                     <label class="label-field">Role </label>

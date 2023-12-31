@@ -51,6 +51,15 @@ namespace AssignmentWAD.Staff.Staff
         protected global::System.Web.UI.WebControls.HiddenField prevPasswHashed;
 
         /// <summary>
+        /// hiddenVal_prevPass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hiddenVal_prevPass;
+
+        /// <summary>
         /// txtNewPassw control.
         /// </summary>
         /// <remarks>
@@ -58,15 +67,6 @@ namespace AssignmentWAD.Staff.Staff
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewPassw;
-
-        /// <summary>
-        /// reqValiNewPassw control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValiNewPassw;
 
         /// <summary>
         /// ddlRole control.

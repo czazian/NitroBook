@@ -7,6 +7,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Drawing;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace AssignmentWAD.Staff
 {
@@ -63,8 +65,8 @@ namespace AssignmentWAD.Staff
                             if (int.TryParse(reader["RoleID"].ToString(), out staffRole))
                             {
                                 txtUsername.Text = staffName;
-                                txtPass.Text = staffPassword;
                                 ddlRole.SelectedValue = staffRole.ToString();
+                                prevPasswHashed.Value = staffPassword;
                             }
                             else
                             {
@@ -92,7 +94,6 @@ namespace AssignmentWAD.Staff
             if (int.TryParse(Session["StaffID"].ToString(), out staffID))
             {
                 string newUsername = txtUsername.Text;
-                string newPassword = txtPass.Text;
 
                 string connectionString = ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString;
 
@@ -101,26 +102,36 @@ namespace AssignmentWAD.Staff
                     conn.Open();
 
                     string query = "UPDATE Staff SET StaffName = @NewUsername, StaffPassword = @NewPassword WHERE StaffID = @StaffID";
+                    string query2 = "UPDATE Staff SET StaffName = @NewUsername WHERE StaffID = @StaffID";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    SqlCommand cmdUpdate;
+                    //if empty, no need update password
+                    if (hiddenVal_prevPass.Value == "no")
                     {
-                        cmd.Parameters.AddWithValue("@NewUsername", newUsername);
-                        cmd.Parameters.AddWithValue("@NewPassword", newPassword);
-                        cmd.Parameters.AddWithValue("@StaffID", staffID);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
-
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Failed to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
-
-                        }
+                        cmdUpdate = new SqlCommand(query2, conn);
                     }
+                    else
+                    {
+                        cmdUpdate = new SqlCommand(query, conn);
+                        cmdUpdate.Parameters.AddWithValue("@NewPassword", HashPassword(txtNewPassw.Text));
+                    }
+
+                    cmdUpdate.Parameters.AddWithValue("@NewUsername", newUsername);
+                    cmdUpdate.Parameters.AddWithValue("@StaffID", staffID);
+
+                    int rowsAffected = cmdUpdate.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Success to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
+
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "successScript", "alert('Failed to update!'); window.location ='" + ResolveUrl("profile.aspx") + "';", true);
+
+                    }
+
                 }
             }
             else
@@ -128,6 +139,41 @@ namespace AssignmentWAD.Staff
                 // Handle the case where parsing StaffID to int fails
                 Response.Redirect("staffLogin.aspx");
             }
+        }
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
+        }
+
+        protected void txtPrevPassw_TextChanged(object sender, EventArgs e)
+        {
+            //if the prev passw not empty
+            if (txtPrevPassw.Text != "")
+            {
+                //if not match
+                if (prevPasswHashed.Value != HashPassword(txtPrevPassw.Text))
+                {
+                    lblPrevPassErrorMsg.Text = "Incorrect Previous Password";
+                    hiddenVal_prevPass.Value = "no";
+                    lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Red;
+                }
+                else //if match
+                {
+                    lblPrevPassErrorMsg.Text = "Correct Previous Password";
+                    hiddenVal_prevPass.Value = "yes";
+                    lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+            else //if empty
+            {
+                lblPrevPassErrorMsg.Text = "";
+                hiddenVal_prevPass.Value = "no";
+            }
+
         }
 
 

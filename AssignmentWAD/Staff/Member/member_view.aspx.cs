@@ -39,7 +39,6 @@ namespace AssignmentWAD.Staff.Member
                 //work, can get query string
                 txtUsername.Text = user.GetValue(1).ToString();
                 txtEmail.Text = user.GetValue(2).ToString();
-                txtPass.Text = user.GetValue(3).ToString();
                 txtPhoneNo.Text = user.GetValue(4).ToString();
                 txtDateOfBirth.Text = user.GetValue(5).ToString();
                 txtAddress.Text = user.GetValue(6).ToString();

@@ -72,7 +72,7 @@ namespace AssignmentWAD.Staff.Staff
 
             SqlCommand cmdUpdate;
             //if empty, no need update password
-            if (txtNewPassw.Text == "")
+            if (hiddenVal_prevPass.Value == "no")
             {
                 cmdUpdate = new SqlCommand(sql2, cnn);
             }
@@ -81,6 +81,7 @@ namespace AssignmentWAD.Staff.Staff
                 cmdUpdate = new SqlCommand(sql1, cnn);
                 cmdUpdate.Parameters.AddWithValue("@passw", HashPassword(txtNewPassw.Text));
             }
+
 
 
             //update detail
@@ -122,13 +123,20 @@ namespace AssignmentWAD.Staff.Staff
                 if (prevPasswHashed.Value != HashPassword(txtPrevPassw.Text))
                 {
                     lblPrevPassErrorMsg.Text = "Incorrect Previous Password";
+                    hiddenVal_prevPass.Value = "no";
+                    lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Red;
                 }
                 else //if match
                 {
                     lblPrevPassErrorMsg.Text = "Correct Previous Password";
+                    hiddenVal_prevPass.Value = "yes";
                     lblPrevPassErrorMsg.ForeColor = System.Drawing.Color.Green;
-                    reqValiNewPassw.ControlToValidate = txtNewPassw.ID;
                 }
+            }
+            else
+            {
+                lblPrevPassErrorMsg.Text = "";
+                hiddenVal_prevPass.Value = "no";
             }
 
         }
