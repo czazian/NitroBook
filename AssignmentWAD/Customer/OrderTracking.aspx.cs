@@ -103,7 +103,7 @@ namespace AssignmentWAD.Customer
                     DateTime estimatedArrivalDate = paymentDate.AddDays(5);
 
                     // Set the values for lblArrivalDate
-                    lblArrivalDate.Text = estimatedArrivalDate.ToShortDateString();
+                    lblArrivalDate.Text = estimatedArrivalDate.ToString("dd-MM-yyyy");
                 }
                 else
                 {
