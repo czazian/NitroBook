@@ -77,6 +77,10 @@ namespace AssignmentWAD.BookCategories
                 {
                     lblFNANotFound.Text = "Sorry, No Result Found.";
                 }
+                else
+                {
+                    lblFNANotFound.Text = "";
+                }
 
 
                 // Update the SelectCommand with the new SQL statement
@@ -92,6 +96,10 @@ namespace AssignmentWAD.BookCategories
                 {
                     lblNFNANotFound.Text = "Sorry, No Result Found.";
                 }
+                else
+                {
+                    lblNFNANotFound.Text = "";
+                }
 
                 // Update the SelectCommand with the new SQL statement
                 MangaNASource.SelectCommand = "SELECT * FROM [Book] WHERE Category = 'Manga & Light Novel' AND (SubCategory = 'Reincarnation' OR SubCategory= 'Action' OR SubCategory = 'Romance' OR SubCategory= 'Slice-of-Life') AND Price < 47 AND Price BETWEEN @minPrice AND @maxPrice";
@@ -105,6 +113,9 @@ namespace AssignmentWAD.BookCategories
                 if (MangaNARepeater.Items.Count == 0)
                 {
                     lblMangaNANotFound.Text = "Sorry, No Result Found.";
+                }
+                else{
+                    lblMangaNANotFound.Text = "";
                 }
 
                 // Update the SelectCommand with the new SQL statement
@@ -120,6 +131,10 @@ namespace AssignmentWAD.BookCategories
                 {
                     lblCNANotFound.Text = "Sorry, No Result Found.";
                 }
+                else
+                {
+                    lblCNANotFound.Text = "";
+                }
 
                 lblErrMsg.Text = "";
 
@@ -129,11 +144,18 @@ namespace AssignmentWAD.BookCategories
             catch (FormatException ex)
             {
                 lblErrMsg.Text = "*Only number accepted";
+                lblCNANotFound.Text = "";
+                lblFNANotFound.Text = "";
+                lblMangaNANotFound.Text = "";
+                lblNFNANotFound.Text = "";
             }
             catch (Exception ex)
             {
                 lblErrMsg.Text = ex.Message;
-
+                lblCNANotFound.Text = "";
+                lblFNANotFound.Text = "";
+                lblMangaNANotFound.Text = "";
+                lblNFNANotFound.Text = "";
             }
         }
 

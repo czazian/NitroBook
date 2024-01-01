@@ -83,6 +83,10 @@ namespace AssignmentWAD.BookCategories
                 {
                     lblCharStoryNotFound.Text = "Sorry, No Result Found.";
                 }
+                else
+                {
+                    lblCharStoryNotFound.Text = "";
+                }
 
 
                 // Update the SelectCommand with the new SQL statement
@@ -98,6 +102,10 @@ namespace AssignmentWAD.BookCategories
                 {
                     lblPicBookNotFound.Text = "Sorry, No Result Found.";
                 }
+                else
+                {
+                    lblPicBookNotFound.Text = "";
+                }
 
                 lblErrMsg.Text = "";
 
@@ -107,11 +115,14 @@ namespace AssignmentWAD.BookCategories
             catch (FormatException ex)
             {
                 lblErrMsg.Text = "*Only number accepted";
+                lblCharStoryNotFound.Text = "";
+                lblPicBookNotFound.Text = "";
             }
             catch (Exception ex)
             {
                 lblErrMsg.Text = ex.Message;
-
+                lblCharStoryNotFound.Text = "";
+                lblPicBookNotFound.Text = "";
             }
         }
 
