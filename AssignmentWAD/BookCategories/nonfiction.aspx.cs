@@ -116,6 +116,8 @@ namespace AssignmentWAD.BookCategories
                     lblFDNotFound.Visible = false;
                 }
 
+                lblErrMsg.Text = "";
+
                 int totalShow = SalesRepeater.Items.Count + ITRepeater.Items.Count + FoodDrinkRepeater.Items.Count;
                 lblTotalShow.Text = "Showing 1 - " + totalShow.ToString();
             }

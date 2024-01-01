@@ -116,6 +116,8 @@ namespace AssignmentWAD.BookCategories
                     lblGeneralFicNotFound.Visible = false;
                 }
 
+                lblErrMsg.Text = "";
+
                 int totalShow = FantasyRepeater.Items.Count + HorrorRepeater.Items.Count + GeneralFicRepeater.Items.Count;
                 lblTotalShow.Text = "Showing 1 - " + totalShow.ToString();
             }

@@ -138,6 +138,8 @@ namespace AssignmentWAD.BookCategories
                     lblSliceNotFound.Visible = false;
                 }
 
+                lblErrMsg.Text = "";
+
                 int totalShow = ReinRepeater.Items.Count + ActionRepeater.Items.Count + RomanceRepeater.Items.Count + SliceRepeater.Items.Count;
                 lblTotalShow.Text = "Showing 1 - " + totalShow.ToString();
             }

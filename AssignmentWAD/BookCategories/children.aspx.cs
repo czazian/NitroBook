@@ -99,6 +99,8 @@ namespace AssignmentWAD.BookCategories
                     lblPicBookNotFound.Text = "Sorry, No Result Found.";
                 }
 
+                lblErrMsg.Text = "";
+
                 int totalShow = CharStoryRepeater.Items.Count + PicBookRepeater.Items.Count;
                 lblTotalShow.Text = "Showing 1 - " + totalShow.ToString();
             }

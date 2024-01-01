@@ -121,6 +121,8 @@ namespace AssignmentWAD.BookCategories
                     lblCNANotFound.Text = "Sorry, No Result Found.";
                 }
 
+                lblErrMsg.Text = "";
+
                 int totalShow = FNARepeater.Items.Count + NFNARepeater.Items.Count + MangaNARepeater.Items.Count + CNARepeater.Items.Count;
                 lblTotalShow.Text = "Showing 1 - " + totalShow.ToString();
             }
