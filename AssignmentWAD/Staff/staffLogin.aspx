@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="form-item" style="text-align: left; width: 100%;">
-                        <asp:TextBox Style="width: 100%;" ID="txtPassword" runat="server" CssClass="form-style" placeholder="Enter your password" /><br />
+                        <asp:TextBox TextMode="Password" Style="width: 100%;" ID="txtPassword" runat="server" CssClass="form-style" placeholder="Enter your password" /><br />
                         <asp:Label ID="lblError0" runat="server" ForeColor="Red"></asp:Label>
 
                     </div>
