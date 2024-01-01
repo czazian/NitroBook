@@ -29,12 +29,12 @@ namespace AssignmentWAD.Staff
             // Validate inputs
             if (string.IsNullOrEmpty(email) && string.IsNullOrEmpty(password))
             {
-                ShowErrorMessage("Please enter email", "Please enter password");
+                ShowErrorMessage("Please enter username", "Please enter password");
                 return;
             }
             else if (string.IsNullOrEmpty(email))
             {
-                ShowErrorMessage("Please enter email", "");
+                ShowErrorMessage("Please enter username", "");
                 return;
             }
             else if (string.IsNullOrEmpty(password))
@@ -51,7 +51,7 @@ namespace AssignmentWAD.Staff
             else
             {
                 // Authentication failed
-                ShowErrorMessage("Invalid email or password", "Invalid email or password");
+                ShowErrorMessage("Invalid username or password", "Invalid username or password");
             }
         }
 

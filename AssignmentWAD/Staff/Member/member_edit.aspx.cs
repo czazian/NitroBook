@@ -148,11 +148,11 @@ namespace AssignmentWAD.Staff.Member
             }
             else if (IsUsernameDuplicate(txtUsername.Text, Request.QueryString["userID"]))
             {
-                ShowErrorMessage("Error to edit member " + txtUsername.Text + "! The username already exists, please re-enter.");
+                ShowErrorMessage("Error to edit member! The username already exists, please re-enter.");
             }
             else if (IsEmailDuplicate(txtEmail.Text, Request.QueryString["userID"]))
             {
-                ShowErrorMessage("Error to edit member " + txtUsername.Text + "! The email already exists, please re-enter.");
+                ShowErrorMessage("Error to edit member! The email already exists, please re-enter.");
             }
         }
 

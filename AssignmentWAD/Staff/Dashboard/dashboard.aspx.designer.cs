@@ -69,6 +69,15 @@ namespace AssignmentWAD.Staff.Dashboard
         protected global::System.Web.UI.WebControls.Repeater RepeaterOperation;
 
         /// <summary>
+        /// pnlLowStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLowStock;
+
+        /// <summary>
         /// RepeaterImage control.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace AssignmentWAD.Staff.Dashboard
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterImage;
+
+        /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
 
         /// <summary>
         /// RepeaterProduct control.
@@ -87,6 +105,15 @@ namespace AssignmentWAD.Staff.Dashboard
         protected global::System.Web.UI.WebControls.Repeater RepeaterProduct;
 
         /// <summary>
+        /// Panel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel2;
+
+        /// <summary>
         /// RepeaterPrice control.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace AssignmentWAD.Staff.Dashboard
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterPrice;
+
+        /// <summary>
+        /// Panel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel3;
 
         /// <summary>
         /// RepeaterQuantity control.
@@ -105,6 +141,15 @@ namespace AssignmentWAD.Staff.Dashboard
         protected global::System.Web.UI.WebControls.Repeater RepeaterQuantity;
 
         /// <summary>
+        /// Panel4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel4;
+
+        /// <summary>
         /// RepeaterOperationLow control.
         /// </summary>
         /// <remarks>
@@ -112,6 +157,15 @@ namespace AssignmentWAD.Staff.Dashboard
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterOperationLow;
+
+        /// <summary>
+        /// pnlNoLowStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNoLowStock;
 
         /// <summary>
         /// SqlDataSourceLowStock control.

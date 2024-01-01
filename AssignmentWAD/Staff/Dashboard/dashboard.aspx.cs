@@ -9,14 +9,36 @@ using System.Web.UI.WebControls;
 using System.Drawing;
 
 
+
 namespace AssignmentWAD.Staff.Dashboard
 {
     public partial class dashboard : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                pnlNoLowStock.Visible = !HasLowStockProducts();
+            }
         }
+        protected bool HasLowStockProducts()
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NitroBooks"].ConnectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT TOP 5 BookID, Image, Title, Price, Quantity FROM [Book] WHERE Quantity < 10";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        // Check if there are low stock products
+                        return reader.HasRows;
+                    }
+                }
+            }
+        }
+
 
         protected void RepeaterStatus_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {

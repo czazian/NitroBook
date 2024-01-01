@@ -40,7 +40,7 @@
                 <asp:TextBox runat="server" ID="txtPhoneNo" CssClass="input-field"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPhoneNo" ErrorMessage="Phone number is required" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidatorPhone" runat="server" ControlToValidate="txtPhoneNo"
-                    ErrorMessage="Enter a valid phone number(eg. XXXXXXXXXX)" ForeColor="Red" Display="Dynamic"
+                    ErrorMessage="Enter a valid phone number with 10 digit(eg. XXXXXXXXXX)" ForeColor="Red" Display="Dynamic"
                     ValidationExpression="^\d{10}$"></asp:RegularExpressionValidator>
                 <br>
                     <br />

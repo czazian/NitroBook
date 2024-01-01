@@ -4,21 +4,6 @@
     <link href="staffLogin.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../Customer/customer.css" />
     <script src="staffLogin.js"></script>
-    <script type="text/javascript">
-        var status = '<%= Session["status"] %>';
-        if (status === "loginError") {
-            lblError.Text = "Invalid email or password";
-            lblError.Visible = true;
-        }
-        if (status === "EmptyEmail") {
-            lblError.Text = "Please enter email";
-            lblError.Visible = true;
-        }
-        if (status === "EmptyPass") {
-            lblError0.Text = "Please enter password";
-            lblError0.Visible = true;
-        }
-    </script>
     <style type="text/css">
         .auto-style1 {
             left: 0px;

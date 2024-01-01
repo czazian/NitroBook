@@ -113,10 +113,10 @@ namespace AssignmentWAD.Staff.Order
                     switch (status)
                     {
                         case "Pending":
-                            statusLabel.ForeColor = System.Drawing.Color.Blue;
+                            statusLabel.ForeColor = System.Drawing.Color.Chocolate;
                             break;
                         case "Shipping":
-                            statusLabel.ForeColor = System.Drawing.Color.Chocolate;
+                            statusLabel.ForeColor = System.Drawing.Color.Blue;
                             break;
                         case "Delivered":
                             statusLabel.ForeColor = System.Drawing.Color.Green;

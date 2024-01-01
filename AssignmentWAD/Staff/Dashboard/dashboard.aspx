@@ -132,116 +132,136 @@
                 <div class="title" style="font-weight: bold; font-style: italic; font-variant: normal;">Low Stock Product</div>
                 <br />
                 <div class="sales-details">
-                    <asp:Repeater ID="RepeaterImage" runat="server" DataSourceID="SqlDataSourceLowStock">
-                        <HeaderTemplate>
-                            <ul class="details">
-                                <hr />
-                                <li class="topic">Image</li>
-                                <hr />
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <li>
-                                <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" Height="90" Width="70" /><br />
-                            </li>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <hr />
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </ul>
-                        </FooterTemplate>
-                    </asp:Repeater>
-                    <asp:Repeater ID="RepeaterProduct" runat="server" DataSourceID="SqlDataSourceLowStock">
-                        <HeaderTemplate>
-                            <ul class="details">
-                                <hr />
-                                <li class="topic">Product</li>
-                                <hr />
-                        </HeaderTemplate>
-                        <ItemTemplate>
+                    <asp:Panel ID="pnlLowStock" runat="server" Visible='<%# HasLowStockProducts() %>'>
 
-                            <li>
-                                <%# Eval("Title") %>
-                            </li>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <hr />
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </ul> 
-                        </FooterTemplate>
-                    </asp:Repeater>
-                    <asp:Repeater ID="RepeaterPrice" runat="server" DataSourceID="SqlDataSourceLowStock">
-                        <HeaderTemplate>
-                            <ul class="details">
+                        <asp:Repeater ID="RepeaterImage" runat="server" DataSourceID="SqlDataSourceLowStock">
+                            <HeaderTemplate>
+                                <ul class="details">
+                                    <hr />
+                                    <li class="topic">Image</li>
+                                    <hr />
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li>
+                                    <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Image") %>' CssClass="poster" Height="90" Width="70" /><br />
+                                </li>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
                                 <hr />
-                                <li class="topic">Price</li>
-                                <hr />
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <li class="txt-center">RM <%# Eval("Price") %>
-                            </li>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <hr />
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </ul>
-                        </FooterTemplate>
-                    </asp:Repeater>
-                    <asp:Repeater ID="RepeaterQuantity" runat="server" DataSourceID="SqlDataSourceLowStock">
-                        <HeaderTemplate>
-                            <ul class="details">
-                                <hr />
-                                <li class="topic">Stock</li>
-                                <hr />
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <li class="txt-center">
-                                <%# Eval("Quantity") %>
-                            </li>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <hr />
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </ul>
-                        </FooterTemplate>
-                    </asp:Repeater>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </asp:Panel>
+                    <asp:Panel ID="Panel1" runat="server" Visible='<%# HasLowStockProducts() %>'>
 
-                    <asp:Repeater ID="RepeaterOperationLow" runat="server" DataSourceID="SqlDataSourceLowStock">
-                        <HeaderTemplate>
-                            <ul class="details">
+                        <asp:Repeater ID="RepeaterProduct" runat="server" DataSourceID="SqlDataSourceLowStock">
+                            <HeaderTemplate>
+                                <ul class="details">
+                                    <hr />
+                                    <li class="topic">Product</li>
+                                    <hr />
+                            </HeaderTemplate>
+                            <ItemTemplate>
+
+                                <li>
+                                    <%# Eval("Title") %>
+                                </li>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
                                 <hr />
-                                <li class="topic">Operation</li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul> 
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </asp:Panel>
+                    <asp:Panel ID="Panel2" runat="server" Visible='<%# HasLowStockProducts() %>'>
+
+                        <asp:Repeater ID="RepeaterPrice" runat="server" DataSourceID="SqlDataSourceLowStock">
+                            <HeaderTemplate>
+                                <ul class="details">
+                                    <hr />
+                                    <li class="topic">Price</li>
+                                    <hr />
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li class="txt-center">RM <%# Eval("Price") %>
+                                </li>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
                                 <hr />
-                        </HeaderTemplate>
-                        <ItemTemplate>
-                            <li class="txt-center">
-                                <a href="../Product/product_addStock.aspx?bookID=<%# Eval("BookID") %>"><i class='bx bxs-package'">Add</i></a>
-                            </li>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                            <hr />
-                        </ItemTemplate>
-                        <FooterTemplate>
-                            </ul>
-                        </FooterTemplate>
-                    </asp:Repeater>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </asp:Panel>
+                    <asp:Panel ID="Panel3" runat="server" Visible='<%# HasLowStockProducts() %>'>
+                        <asp:Repeater ID="RepeaterQuantity" runat="server" DataSourceID="SqlDataSourceLowStock">
+                            <HeaderTemplate>
+                                <ul class="details">
+                                    <hr />
+                                    <li class="topic">Stock</li>
+                                    <hr />
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li class="txt-center">
+                                    <%# Eval("Quantity") %>
+                                </li>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <hr />
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>
+                    </asp:Panel>
+                    <asp:Panel ID="Panel4" runat="server" Visible='<%# HasLowStockProducts() %>'>
+                        <asp:Repeater ID="RepeaterOperationLow" runat="server" DataSourceID="SqlDataSourceLowStock">
+                            <HeaderTemplate>
+                                <ul class="details">
+                                    <hr />
+                                    <li class="topic">Operation</li>
+                                    <hr />
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li class="txt-center">
+                                    <a href="../Product/product_addStock.aspx?bookID=<%# Eval("BookID") %>"><i class='bx bxs-package'">Add</i></a>
+                                </li>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <hr />
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>
+
+                    </asp:Panel>
+
                 </div>
+                <br />
+                <!-- Display message if no low stock products -->
+                <asp:Panel ID="pnlNoLowStock" runat="server">
+                    <p>No low stock product records.</p>
+                </asp:Panel>
+                <br />
             </div>
-            <asp:SqlDataSource ID="SqlDataSourceLowStock" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>" 
-                SelectCommand="SELECT TOP 5 BookID, Image, Title, Price, Quantity FROM [Book] WHERE Quantity < 15 ORDER BY Quantity ASC;"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSourceLowStock" runat="server" ConnectionString="<%$ ConnectionStrings:NitroBooks %>"
+                SelectCommand="SELECT TOP 5 BookID, Image, Title, Price, Quantity FROM [Book] WHERE Quantity < 10 ORDER BY Quantity ASC;"></asp:SqlDataSource>
         </div>
     </div>
 
