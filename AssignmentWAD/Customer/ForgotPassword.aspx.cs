@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -65,7 +67,7 @@ namespace AssignmentWAD.Customer
                 string resetSql = "UPDATE [USER] SET UserPassword = @password WHERE UserEmail = @email";
 
                 SqlCommand cmdReset = new SqlCommand(resetSql, conn);
-                cmdReset.Parameters.AddWithValue("@password", txtConfirmPass.Text);
+                cmdReset.Parameters.AddWithValue("@password", HashPassword(txtConfirmPass.Text));
                 cmdReset.Parameters.AddWithValue("@email", txtEmail.Text);
 
                 int resetPassw = cmdReset.ExecuteNonQuery();
@@ -78,6 +80,14 @@ namespace AssignmentWAD.Customer
                 //  clear the error message
                 lblErrMsg.Text = "";
             }
+        }
+
+        //Hash Password Function
+        public string HashPassword(string password)
+        {
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] inArray = HashAlgorithm.Create("SHA1").ComputeHash(bytes);
+            return Convert.ToBase64String(inArray);
         }
     }
 }
