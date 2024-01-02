@@ -79,7 +79,8 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblReinNotFound.Visible = false;
+                    lblReinNotFound.Text = "";
+                    //lblReinNotFound.Visible = false;
                 }
 
 
@@ -98,7 +99,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblActionNotFound.Visible = false;
+                    lblActionNotFound.Text = "";
                 }
 
                 // Update the SelectCommand with the new SQL statement
@@ -116,7 +117,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblRomanceNotFound.Visible = false;
+                    lblRomanceNotFound.Text = "";
                 }
 
 
@@ -135,7 +136,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblSliceNotFound.Visible = false;
+                    lblSliceNotFound.Text = "";
                 }
 
                 lblErrMsg.Text = "";
@@ -146,11 +147,19 @@ namespace AssignmentWAD.BookCategories
             catch (FormatException ex)
             {
                 lblErrMsg.Text = "*Only number accepted";
+                lblActionNotFound.Text = "";
+                lblReinNotFound.Text = "";
+                lblRomanceNotFound.Text = "";
+                lblSliceNotFound.Text = "";
+
             }
             catch (Exception ex)
             {
                 lblErrMsg.Text = ex.Message;
-
+                lblActionNotFound.Text = "";
+                lblReinNotFound.Text = "";
+                lblRomanceNotFound.Text = "";
+                lblSliceNotFound.Text = "";
             }
         }
 

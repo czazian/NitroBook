@@ -76,7 +76,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblSalesNotFound.Visible = false;
+                    lblSalesNotFound.Text = "";
                 }
 
 
@@ -95,7 +95,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblITNotFound.Visible = false;
+                    lblITNotFound.Text = "";
                 }
 
                 // Update the SelectCommand with the new SQL statement
@@ -113,7 +113,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblFDNotFound.Visible = false;
+                    lblFDNotFound.Text = "";
                 }
 
                 lblErrMsg.Text = "";
@@ -124,11 +124,16 @@ namespace AssignmentWAD.BookCategories
             catch (FormatException ex)
             {
                 lblErrMsg.Text = "*Only number accepted";
+                lblFDNotFound.Text = "";
+                lblITNotFound.Text = "";
+                lblSalesNotFound.Text = "";
             }
             catch (Exception ex)
             {
                 lblErrMsg.Text = ex.Message;
-
+                lblFDNotFound.Text = "";
+                lblITNotFound.Text = "";
+                lblSalesNotFound.Text = "";
             }
         }
 

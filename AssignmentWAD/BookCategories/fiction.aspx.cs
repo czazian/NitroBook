@@ -76,7 +76,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblFantasyNotFound.Visible = false;
+                    lblFantasyNotFound.Text = "";
                 }
 
 
@@ -95,7 +95,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblHorrorNotFound.Visible = false;
+                    lblHorrorNotFound.Text = "";
                 }
 
                 // Update the SelectCommand with the new SQL statement
@@ -113,7 +113,7 @@ namespace AssignmentWAD.BookCategories
                 }
                 else
                 {
-                    lblGeneralFicNotFound.Visible = false;
+                    lblGeneralFicNotFound.Text = "";
                 }
 
                 lblErrMsg.Text = "";
@@ -124,11 +124,17 @@ namespace AssignmentWAD.BookCategories
             catch (FormatException ex)
             {
                 lblErrMsg.Text = "*Only number accepted";
+                lblFantasyNotFound.Text = "";
+                lblGeneralFicNotFound.Text = "";
+                lblHorrorNotFound.Text = "";
+
             }
             catch (Exception ex)
             {
                 lblErrMsg.Text = ex.Message;
-
+                lblFantasyNotFound.Text = "";
+                lblGeneralFicNotFound.Text = "";
+                lblHorrorNotFound.Text = "";
             }
         }
 
