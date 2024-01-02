@@ -44,7 +44,6 @@ namespace AssignmentWAD.Staff.Dashboard
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                // Assuming 'Status' is a Label in your Repeater template
                 Label statusLabel = (Label)e.Item.FindControl("StatusLabel");
 
                 if (statusLabel != null)
